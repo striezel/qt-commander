@@ -6,6 +6,8 @@ CreateDirectoryDialog::CreateDirectoryDialog(QWidget *parent)
     , ui(new Ui::CreateDirectoryDialog)
 {
     ui->setupUi(this);
+
+    ui->lnEdName->setFocus();
 }
 
 CreateDirectoryDialog::~CreateDirectoryDialog()
