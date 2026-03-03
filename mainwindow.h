@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDir>
+#include <QString>
+#include <QTreeWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,5 +22,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    QDir currentDirectoryLeft;
+    QDir currentDirectoryRight;
+
+    void fillTreeWidget(QTreeWidget& treeWidget, const QString& path);
 };
 #endif // MAINWINDOW_H
