@@ -39,7 +39,7 @@
      </widget>
     </item>
     <item row="1" column="0" colspan="3">
-     <widget class="QTreeWidget" name="treeWidgetLeft">
+     <widget class="FocusTrackingTreeWidget" name="treeWidgetLeft">
       <property name="columnCount">
        <number>3</number>
       </property>
@@ -61,7 +61,7 @@
      </widget>
     </item>
     <item row="1" column="3" colspan="3">
-     <widget class="QTreeWidget" name="treeWidgetRight">
+     <widget class="FocusTrackingTreeWidget" name="treeWidgetRight">
       <property name="columnCount">
        <number>3</number>
       </property>
@@ -165,6 +165,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FocusTrackingTreeWidget</class>
+   <extends>QTreeWidget</extends>
+   <header>focustrackingtreewidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

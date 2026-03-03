@@ -32,5 +32,9 @@ private:
     QDir currentDirectoryRight;
 
     void fillTreeWidget(QTreeWidget& treeWidget, const QString& path);
+
+    /// Checks whether the left tree widget is the latest tree widget to get
+    /// the focus.
+    bool leftTreeIsLatest() const;
 };
 #endif // MAINWINDOW_H

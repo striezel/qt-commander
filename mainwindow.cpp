@@ -114,7 +114,11 @@ void MainWindow::fillTreeWidget(QTreeWidget &treeWidget, const QString &path)
         currentDirectoryRight = dir;
         ui->lnEdPathRight->setText(currentDirectoryRight.absolutePath());
     }
+}
 
+bool MainWindow::leftTreeIsLatest() const
+{
+    return ui->treeWidgetLeft->focusTime() > ui->treeWidgetRight->focusTime();
 }
 
 void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
@@ -159,8 +163,7 @@ void MainWindow::btnCreateDirectoryClicked()
         return;
     }
 
-    const bool isLeftTree = ui->treeWidgetLeft->hasFocus();
-    QDir& baseDir = isLeftTree ? currentDirectoryLeft : currentDirectoryRight;
+    QDir& baseDir = leftTreeIsLatest() ? currentDirectoryLeft : currentDirectoryRight;
     const bool success = baseDir.mkdir(name);
     if (!success)
     {
