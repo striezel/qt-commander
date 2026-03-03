@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::treeItemDoubleClicked);
 
     connect(ui->btnCreateDirectory, &QPushButton::clicked, this, &MainWindow::btnCreateDirectoryClicked);
+    connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
 
     // focus on left tree view
     ui->treeWidgetLeft->setFocus();
@@ -121,6 +122,11 @@ bool MainWindow::leftTreeIsLatest() const
     return ui->treeWidgetLeft->focusTime() > ui->treeWidgetRight->focusTime();
 }
 
+QTreeWidget *MainWindow::latestTreeWidget() const
+{
+    return leftTreeIsLatest() ? ui->treeWidgetLeft : ui->treeWidgetRight;
+}
+
 void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     if (item == nullptr)
@@ -141,6 +147,73 @@ void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
     {
         fillTreeWidget(*(item->treeWidget()), new_path);
     }
+}
+
+void MainWindow::btnRemoveClicked()
+{
+    QTreeWidget* treeWidget = latestTreeWidget();
+    const QList<QTreeWidgetItem*> selection = treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+
+    const QString name = item->text(0);
+
+    // Do not operate on parent directory!
+    if (name == "..")
+    {
+        QMessageBox::critical(
+            this, "Fehler",
+            "Löschoperation kann nicht auf \"..\" ausgeführt werden!");
+        return;
+    }
+
+    // Ask user whether the file / directory shall really be deleted.
+    const int answer = QMessageBox::question(
+        this, "Wirklich löschen?", "Soll \"" + name + "\" wirklich gelöscht werden?");
+    if (answer != QMessageBox::Yes)
+    {
+        return;
+    }
+    QDir& baseDir = treeWidget == ui->treeWidgetLeft
+                        ? currentDirectoryLeft
+                        : currentDirectoryRight;
+    QFileInfo info(baseDir.absoluteFilePath(name));
+    bool success = false;
+    if (info.isFile())
+    {
+        success = baseDir.remove(name);
+    }
+    else
+    {
+        success = baseDir.rmdir(name);
+    }
+    if (!success)
+    {
+        QString message = "\"" + name + "\" konnte nicht gelöscht werden.";
+        if (info.isFile())
+        {
+            message = "Die Datei " + message;
+        }
+        else
+        {
+            message = "Das Verzeichnis " + message
+                      + "\n\nMöglicherweise ist das Verzeichnis nicht leer.";
+        }
+        QMessageBox::critical(this, "Fehler beim Löschen", message);
+        return;
+    }
+
+    // Delete item from tree view.
+    int index = treeWidget->indexOfTopLevelItem(item);
+    QTreeWidgetItem* toDelete = treeWidget->takeTopLevelItem(index);
+    delete toDelete;
+
+    // TODO: Check whether the other tree widget needs to be updated, too.
+
+    statusBar()->showMessage("'" + name + "' wurde gelöscht.", 5000);
 }
 
 void MainWindow::btnCreateDirectoryClicked()

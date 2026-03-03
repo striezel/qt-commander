@@ -23,6 +23,7 @@ public:
 private slots:
     void treeItemDoubleClicked(QTreeWidgetItem* item, int column);
 
+    void btnRemoveClicked();
     void btnCreateDirectoryClicked();
 
 private:
@@ -36,5 +37,8 @@ private:
     /// Checks whether the left tree widget is the latest tree widget to get
     /// the focus.
     bool leftTreeIsLatest() const;
+
+    /// Returns the latest tree widget, i.e. the left or the right one.
+    QTreeWidget* latestTreeWidget() const;
 };
 #endif // MAINWINDOW_H
