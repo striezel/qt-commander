@@ -20,6 +20,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void treeItemDoubleClicked(QTreeWidgetItem* item, int column);
+
 private:
     Ui::MainWindow *ui;
 

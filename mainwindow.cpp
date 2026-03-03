@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-#include <QDir>
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -17,6 +15,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     fillTreeWidget(*(ui->treeWidgetLeft), QDir::homePath());
     fillTreeWidget(*(ui->treeWidgetRight), QDir::homePath());
+
+    connect(ui->treeWidgetLeft, &QTreeWidget::itemDoubleClicked,
+            this, &MainWindow::treeItemDoubleClicked);
+    connect(ui->treeWidgetRight, &QTreeWidget::itemDoubleClicked,
+            this, &MainWindow::treeItemDoubleClicked);
 }
 
 MainWindow::~MainWindow()
@@ -108,4 +111,26 @@ void MainWindow::fillTreeWidget(QTreeWidget &treeWidget, const QString &path)
         ui->lnEdPathRight->setText(currentDirectoryRight.absolutePath());
     }
 
+}
+
+void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    if (item == nullptr)
+        return;
+
+    const bool isLeftTree = item->treeWidget() == ui->treeWidgetLeft;
+
+    const QString new_path = isLeftTree
+        ? currentDirectoryLeft.filePath(item->text(0))
+        : currentDirectoryRight.filePath(item->text(0));
+    const QFileInfo info(new_path);
+    if (!info.exists())
+    {
+        // possibly need to update tree widget here?
+        return;
+    }
+    if (info.isDir())
+    {
+        fillTreeWidget(*(item->treeWidget()), new_path);
+    }
 }
