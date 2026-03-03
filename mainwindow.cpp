@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include <QFileIconProvider>
 #include <QMessageBox>
 
 #include "createdirectorydialog.h"
@@ -65,15 +66,9 @@ void MainWindow::fillTreeWidget(QTreeWidget &treeWidget, const QString &path)
 
     treeWidget.clear();
 
-#if (QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
-    // QIcon::fromTheme() with enum paramater is only available from Qt 6.7.0
-    // onwards. For older Qt versions we have to use the QString overload.
-    const QIcon directory_icon = QIcon::fromTheme(QIcon::ThemeIcon::FolderOpen);
-    const QIcon file_icon = QIcon::fromTheme(QIcon::ThemeIcon::DocumentNew);
-#else
-    const QIcon directory_icon = QIcon::fromTheme("folder-open");
-    const QIcon file_icon = QIcon::fromTheme("document-new");
-#endif
+    QFileIconProvider icon_provider;
+    const QIcon directory_icon = icon_provider.icon(QAbstractFileIconProvider::Folder);
+    const QIcon file_icon = icon_provider.icon(QAbstractFileIconProvider::File);
 
     for (const QFileInfo& info: list)
     {
