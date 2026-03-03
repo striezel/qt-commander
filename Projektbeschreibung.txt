@@ -1,0 +1,24 @@
+# Projektbeschreibung
+
+Im Rahmen des Projektes soll ein grafischer Dateimanager erstellt werden.
+
+Der Dateimanager besteht dabei aus zwei nebeneinander platzierten Verzeichnis-
+ansichten, ähnlich wie bei traditionellen text-basierten Programmen wie "Norton
+Commander" oder grafischen Entsprechungen wie "Total Commander". In dieser
+Ansicht sollen Standarddateioperationen wie Kopieren, Verschieben, Löschen und
+das Erstellen neuer Verzeichnisse möglich sein. (Ggf. auch über Shortcuts.)
+
+## Zusatzfeatures unter Zeitvorbehalt
+
+Sofern die Projektzeit dafür ausreicht, können folgende weitere Features um-
+gesetzt werden:
+
+* Dateibetrachter für Textdateien
+* Vergleich von Textdateien ("diff")
+* Dateibetrachter für Multimediadateien (Bilder, Videos)
+* integrierte Ansicht der Inhalte von Archivdateien (ZIP, tar.gz, etc.) im
+  Dateimanager
+
+Die genannten, optionalen Zusatzfeatures sind nicht nach Priorität aufgelistet,
+d. h. die Reihenfolge der Umsetzung kann anders als die Reihenfolge in der
+obigen Auflistung sein.
