@@ -23,6 +23,8 @@ public:
 private slots:
     void treeItemDoubleClicked(QTreeWidgetItem* item, int column);
 
+    void btnCreateDirectoryClicked();
+
 private:
     Ui::MainWindow *ui;
 

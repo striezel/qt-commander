@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include <QMessageBox>
+
+#include "createdirectorydialog.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -20,6 +24,11 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::treeItemDoubleClicked);
     connect(ui->treeWidgetRight, &QTreeWidget::itemDoubleClicked,
             this, &MainWindow::treeItemDoubleClicked);
+
+    connect(ui->btnCreateDirectory, &QPushButton::clicked, this, &MainWindow::btnCreateDirectoryClicked);
+
+    // focus on left tree view
+    ui->treeWidgetLeft->setFocus();
 }
 
 MainWindow::~MainWindow()
@@ -133,4 +142,50 @@ void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
     {
         fillTreeWidget(*(item->treeWidget()), new_path);
     }
+}
+
+void MainWindow::btnCreateDirectoryClicked()
+{
+    CreateDirectoryDialog* dialog = new CreateDirectoryDialog(this);
+    const int choice = dialog->exec();
+    if (choice != QDialog::Accepted)
+    {
+        delete dialog;
+        return;
+    }
+
+    QString name = dialog->directoryName();
+    delete dialog;
+    dialog = nullptr;
+    if (name.isEmpty() || name.contains("../") || name.contains("..\\"))
+    {
+        QMessageBox::warning(this, "Ungültiger Verzeichnisname",
+                             "Der Verzeichnisname darf nicht leer sein.");
+        return;
+    }
+
+    const bool isLeftTree = ui->treeWidgetLeft->hasFocus();
+    QDir& baseDir = isLeftTree ? currentDirectoryLeft : currentDirectoryRight;
+    const bool success = baseDir.mkdir(name);
+    if (!success)
+    {
+        QMessageBox::critical(
+            this, "Fehler beim Erstellen des Verzeichnisses",
+            "Das Verzeichnis '" + name + "' konnte nicht erstellt werden.");
+        return;
+    }
+
+    // refresh corresponding tree widget(s)
+    // We might need to refresh both trees, if both tree widgets are showing the
+    // same directory.
+    if (baseDir.absolutePath() == currentDirectoryLeft.absolutePath())
+    {
+        fillTreeWidget(*(ui->treeWidgetLeft), currentDirectoryLeft.absolutePath());
+    }
+    if (baseDir.absolutePath() == currentDirectoryRight.absolutePath())
+    {
+        fillTreeWidget(*(ui->treeWidgetRight), currentDirectoryRight.absolutePath());
+    }
+
+    statusBar()->showMessage("Verzeichnis '" + name + "' wurde erstellt.", 5000);
 }
