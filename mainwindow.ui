@@ -85,54 +85,72 @@
     <item row="2" column="0">
      <widget class="QPushButton" name="btnView">
       <property name="text">
-       <string>Anzeigen</string>
+       <string>F3 Anzeigen</string>
+      </property>
+      <property name="shortcut">
+       <string>F3</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
      <widget class="QPushButton" name="btnCopy">
       <property name="text">
-       <string>Kopieren</string>
+       <string>F5 Kopieren</string>
       </property>
       <property name="icon">
        <iconset theme="edit-copy"/>
+      </property>
+      <property name="shortcut">
+       <string>F5</string>
       </property>
      </widget>
     </item>
     <item row="2" column="2">
      <widget class="QPushButton" name="btnMove">
       <property name="text">
-       <string>Verschieben</string>
+       <string>F6 Verschieben</string>
+      </property>
+      <property name="shortcut">
+       <string>F6</string>
       </property>
      </widget>
     </item>
     <item row="2" column="3">
      <widget class="QPushButton" name="btnCreateDirectory">
       <property name="text">
-       <string>Neuer Ordner</string>
+       <string>F7 Neuer Ordner</string>
       </property>
       <property name="icon">
        <iconset theme="folder-new"/>
+      </property>
+      <property name="shortcut">
+       <string>F7</string>
       </property>
      </widget>
     </item>
     <item row="2" column="4">
      <widget class="QPushButton" name="btnRemove">
       <property name="text">
-       <string>Löschen</string>
+       <string>F8 Löschen</string>
       </property>
       <property name="icon">
        <iconset theme="edit-delete"/>
+      </property>
+      <property name="shortcut">
+       <string>F8</string>
       </property>
      </widget>
     </item>
     <item row="2" column="5">
      <widget class="QPushButton" name="btnExit">
       <property name="text">
-       <string>Beenden</string>
+       <string>F10 Beenden</string>
       </property>
       <property name="icon">
        <iconset theme="application-exit"/>
+      </property>
+      <property name="shortcut">
+       <string>F10</string>
       </property>
      </widget>
     </item>

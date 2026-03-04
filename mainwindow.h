@@ -27,6 +27,7 @@ private slots:
     void btnCreateDirectoryClicked();
     void btnMoveClicked();
     void btnCopyClicked();
+    void btnViewClicked();
 
 private:
     Ui::MainWindow *ui;

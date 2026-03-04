@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
     connect(ui->btnMove, &QPushButton::clicked, this, &MainWindow::btnMoveClicked);
     connect(ui->btnCopy, &QPushButton::clicked, this, &MainWindow::btnCopyClicked);
+    connect(ui->btnView, &QPushButton::clicked, this, &MainWindow::btnViewClicked);
 
     // focus on left tree view
     ui->treeWidgetLeft->setFocus();
@@ -439,4 +440,11 @@ void MainWindow::btnCopyClicked()
     statusBar()->showMessage(
         "'" + name + "' wurde nach " + otherDirectory().absolutePath()
             + " kopiert.", 5000);
+}
+
+void MainWindow::btnViewClicked()
+{
+    QMessageBox::information(
+        this, "Noch nicht implementiert", "Diese Funktionalität ist noch nicht"
+            + QString(" implementiert. Versuche es später nochmal mit einer neueren Programmversion."));
 }
