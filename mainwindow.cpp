@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnCreateDirectory, &QPushButton::clicked, this, &MainWindow::btnCreateDirectoryClicked);
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
     connect(ui->btnMove, &QPushButton::clicked, this, &MainWindow::btnMoveClicked);
+    connect(ui->btnCopy, &QPushButton::clicked, this, &MainWindow::btnCopyClicked);
 
     // focus on left tree view
     ui->treeWidgetLeft->setFocus();
@@ -414,4 +415,69 @@ void MainWindow::btnMoveClicked()
     statusBar()->showMessage(
         "'" + name + "' wurde nach " + otherDirectory().absolutePath()
             + " verschoben.", 5000);
+}
+
+void MainWindow::btnCopyClicked()
+{
+    QTreeWidget* treeWidget = latestTreeWidget();
+    const QList<QTreeWidgetItem*> selection = treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+
+    const QString name = item->text(0);
+
+    // Do not operate on parent directory!
+    if (name == "..")
+    {
+        QMessageBox::critical(
+            this, "Fehler",
+            "Kopieroperation kann nicht auf \"..\" ausgeführt werden!");
+        return;
+    }
+
+    if (isSameDir(currentDirectoryLeft, currentDirectoryRight))
+    {
+        QMessageBox::warning(
+            this, "Kopieren in gleiches Verzeichnis nicht möglich",
+            "Die beiden Bäume zeigen auf das gleiche Verzeichnis (\""
+                + currentDirectoryLeft.absolutePath() + "\"). Ein Kopieren ist daher nicht möglich.");
+        return;
+    }
+
+    const QString source = currentDirectory().absoluteFilePath(name);
+    const QString destination = otherDirectory().absoluteFilePath(name);
+    qDebug() << "Source:      " << source;
+    qDebug() << "Destination: " << destination;
+    const QFileInfo info(source);
+    if (info.isFile())
+    {
+        // Copy files with QFile::copy().
+        if (!QFile::copy(source, destination))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Kopieren",
+                "Die Datei '" + name + "' konnte nicht kopiert werden.");
+            return;
+        }
+    }
+    else
+    {
+        // Directories have to be copied manually and recursively.
+        // Not implemented yet.
+        QMessageBox::warning(
+            this, "Funktionalität noch nicht implementiert",
+            QString("Verzeichnisse können im Moment noch nicht kopiert werden, sondern nur einzelne Dateien.")
+                + " Versuch's später nochmal mit einer neueren Programmversion.");
+        return;
+    }
+
+    // Refresh other tree view.
+    fillTreeWidget(otherTreeWidget(), otherDirectory().absolutePath());
+
+    statusBar()->showMessage(
+        "'" + name + "' wurde nach " + otherDirectory().absolutePath()
+            + " kopiert.", 5000);
 }
