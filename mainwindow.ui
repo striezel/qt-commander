@@ -158,7 +158,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
    <property name="icon">
-    <iconset theme="QIcon::ThemeIcon::ApplicationExit"/>
+    <iconset theme="application-exit"/>
    </property>
    <property name="text">
     <string>Beenden</string>
