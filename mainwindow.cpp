@@ -66,7 +66,8 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
     dir.setSorting(QDir::SortFlag::Name // sort by name ...
                    | QDir::SortFlag::DirsFirst  // ... and put directories first ...
                    | QDir::SortFlag::IgnoreCase); // ... and ignore casing
-    dir.setFilter(QDir::Filter::AllEntries | QDir::Filter::NoDot | QDir::Filter::Hidden);
+    dir.setFilter(QDir::Filter::AllEntries | QDir::Filter::NoDot
+                  | QDir::Filter::Hidden | QDir::Filter::System);
     const QFileInfoList list = dir.entryInfoList();
 
     treeWidget->clear();
