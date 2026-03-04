@@ -137,6 +137,37 @@ const QDir& MainWindow::otherDirectory() const
     return leftTreeIsLatest() ? currentDirectoryRight : currentDirectoryLeft;
 }
 
+bool MainWindow::isParentOf(const QDir& parent, const QDir& potentialChild)
+{
+    QString parentPath = parent.canonicalPath();
+    if (parentPath.isEmpty())
+    {
+        // Canonical path can be an empty string, if the path contains
+        // unresolvable symlinks.
+        parentPath = parent.absolutePath();
+    }
+
+    QString childPath = potentialChild.canonicalPath();
+    if (childPath.isEmpty())
+    {
+        childPath = potentialChild.absolutePath();
+    }
+
+    qDebug() << "parent path:" << parentPath;
+    qDebug() << "child path:" << childPath;
+    qDebug() << "separator:" << QDir::separator();
+#ifdef _WIN32
+    // QDir seems to use '/' as separator on Windows, too, so let's check that,
+    // too, even if we are on Windows.
+    const QChar alternativeSeparator = '/';
+#endif
+    return (parentPath == childPath)
+#ifdef _WIN32
+           || childPath.startsWith(parentPath + alternativeSeparator)
+#endif
+           || childPath.startsWith(parentPath + QDir::separator());
+}
+
 void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     if (item == nullptr)
@@ -190,7 +221,7 @@ void MainWindow::btnRemoveClicked()
     QDir& baseDir = treeWidget == ui->treeWidgetLeft
                         ? currentDirectoryLeft
                         : currentDirectoryRight;
-    QFileInfo info(baseDir.absoluteFilePath(name));
+    const QFileInfo info(baseDir.absoluteFilePath(name));
     bool success = false;
     if (info.isFile())
     {
@@ -239,6 +270,13 @@ void MainWindow::btnRemoveClicked()
         QTreeWidgetItem* toDeleteOther = other->takeTopLevelItem(indexToTake);
         delete toDeleteOther;
         toDeleteOther = nullptr;
+    }
+    // ... or when the other tree shows a subdirectory of the deleted directory,
+    // then the other tree has to change "upwards" to the directory which still
+    // exists.
+    else if (isParentOf(baseDir.absoluteFilePath(name), otherDirectory()))
+    {
+        fillTreeWidget(*otherTreeWidget(), baseDir.absolutePath());
     }
 
     statusBar()->showMessage("'" + name + "' wurde gelöscht.", 5000);

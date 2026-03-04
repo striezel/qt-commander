@@ -46,5 +46,10 @@ private:
 
     /// Returns a reference to the current directory of the "other" tree widget.
     const QDir& otherDirectory() const;
+
+    /// Checks whether the first QDir is a parent directory of the second QDir.
+    /// If both QDir instances point to the same directory, then that counts as
+    /// parent, too, although that's not a parent in the strict sense.
+    static bool isParentOf(const QDir& parent, const QDir& potentialChild);
 };
 #endif // MAINWINDOW_H
