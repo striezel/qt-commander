@@ -1,6 +1,7 @@
 #include "dirutils.h"
 
 #include <QDebug>
+#include <QFile>
 #include <QString>
 
 bool DirUtils::isParentOf(const QDir& parent, const QDir& potentialChild)
@@ -51,4 +52,50 @@ bool DirUtils::isSameDir(const QDir &one, const QDir &two)
     }
 
     return firstPath == secondPath;
+}
+
+bool DirUtils::copyRecursively(const QDir &source, const QDir &destination)
+{
+    if (!source.exists())
+    {
+        qDebug() << "copyRecursively: source does not exist.";
+        return false;
+    }
+
+    if (destination.exists())
+    {
+        qDebug() << "copyRecursively: Destination already exists.";
+        return false;
+    }
+
+    if (!destination.mkdir("."))
+    {
+        qDebug() << "copyRecursive: Failed to create directory " << destination.absoluteFilePath(".") << ".";
+        return false;
+    }
+
+    const QFileInfoList list = source.entryInfoList(
+        QDir::Filter::AllEntries | QDir::Filter::NoDotAndDotDot | QDir::Filter::Hidden);
+
+    for (const QFileInfo& info: list)
+    {
+        if (!info.isDir())
+        {
+            if (!QFile::copy(source.absoluteFilePath(info.fileName()), destination.absoluteFilePath(info.fileName())))
+            {
+                qDebug() << "copyRecursive: Failed to copy " << source.absoluteFilePath(info.fileName())
+                         << " to " << destination.absoluteFilePath(info.fileName());
+                return false;
+            }
+        }
+        else
+        {
+            // Directory has to be handled recursively.
+            return copyRecursively(source.absoluteFilePath(info.fileName()),
+                                   destination.absoluteFilePath(info.fileName()));
+        }
+    }
+
+    // Done, all elements were copied.
+    return true;
 }

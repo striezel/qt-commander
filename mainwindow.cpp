@@ -417,12 +417,20 @@ void MainWindow::btnCopyClicked()
     else
     {
         // Directories have to be copied manually and recursively.
-        // Not implemented yet.
-        QMessageBox::warning(
-            this, "Funktionalität noch nicht implementiert",
-            QString("Verzeichnisse können im Moment noch nicht kopiert werden, sondern nur einzelne Dateien.")
-                + " Versuch's später nochmal mit einer neueren Programmversion.");
-        return;
+        if (!DirUtils::copyRecursively(source, destination))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Kopieren",
+                "Das Verzeichnis '" + name + "' konnte nicht kopiert werden.");
+            // Still need to update the other widget, if at least one directory
+            // was created.
+            const QDir partialCopy(destination);
+            if (partialCopy.exists())
+            {
+                fillTreeWidget(otherTreeWidget(), otherDirectory().absolutePath());
+            }
+            return;
+        }
     }
 
     // Refresh other tree view.

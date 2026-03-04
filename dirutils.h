@@ -23,6 +23,16 @@ public:
     /// checks for sort order and filters during comparison, but this is
     /// irrelevant. Only the location in the filesystem is relevant.
     static bool isSameDir(const QDir& one, const QDir& two);
+
+    /// Recursively copies the source directory and its contents (that is, files
+    /// and sub-directories) to destination. Destination should not exist yet,
+    /// but the parent directory of destination should.
+    ///
+    /// Returns true, if all files and directories were copied successfully.
+    /// Returns false otherwise. In that case a partial copy may have taken
+    /// place, so don't assume anything about the existence of the destination
+    /// directory.
+    static bool copyRecursively(const QDir& source, const QDir& destination);
 };
 
 #endif // DIRUTILS_H
