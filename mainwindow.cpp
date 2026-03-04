@@ -127,6 +127,16 @@ QTreeWidget *MainWindow::latestTreeWidget() const
     return leftTreeIsLatest() ? ui->treeWidgetLeft : ui->treeWidgetRight;
 }
 
+QTreeWidget *MainWindow::otherTreeWidget() const
+{
+    return leftTreeIsLatest() ? ui->treeWidgetRight : ui->treeWidgetLeft;
+}
+
+const QDir& MainWindow::otherDirectory() const
+{
+    return leftTreeIsLatest() ? currentDirectoryRight : currentDirectoryLeft;
+}
+
 void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     if (item == nullptr)
@@ -210,8 +220,26 @@ void MainWindow::btnRemoveClicked()
     int index = treeWidget->indexOfTopLevelItem(item);
     QTreeWidgetItem* toDelete = treeWidget->takeTopLevelItem(index);
     delete toDelete;
+    toDelete = nullptr;
 
-    // TODO: Check whether the other tree widget needs to be updated, too.
+    // If both tree widgets show the same directory, then the other widget needs
+    // to be updated, too. That is, we have to remove the corresponding item
+    // from the other tree widget, too.
+    if (baseDir.absolutePath() == otherDirectory().absolutePath())
+    {
+        QTreeWidget* other = otherTreeWidget();
+        const QList<QTreeWidgetItem*> found = other->findItems(
+            name, Qt::MatchCaseSensitive | Qt::MatchFixedString);
+        if (found.count() != 1)
+        {
+            qDebug() << "Found " << found.count() << " items, but one was expected.";
+            return;
+        }
+        const int indexToTake = other->indexOfTopLevelItem(found.at(0));
+        QTreeWidgetItem* toDeleteOther = other->takeTopLevelItem(indexToTake);
+        delete toDeleteOther;
+        toDeleteOther = nullptr;
+    }
 
     statusBar()->showMessage("'" + name + "' wurde gelöscht.", 5000);
 }

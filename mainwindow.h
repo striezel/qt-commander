@@ -40,5 +40,11 @@ private:
 
     /// Returns the latest tree widget, i.e. the left or the right one.
     QTreeWidget* latestTreeWidget() const;
+
+    /// Returns the "other" tree widget, i. e. the one which is not the latest.
+    QTreeWidget* otherTreeWidget() const;
+
+    /// Returns a reference to the current directory of the "other" tree widget.
+    const QDir& otherDirectory() const;
 };
 #endif // MAINWINDOW_H
