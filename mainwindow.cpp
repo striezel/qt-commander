@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnCopy, &QPushButton::clicked, this, &MainWindow::btnCopyClicked);
     connect(ui->btnView, &QPushButton::clicked, this, &MainWindow::btnViewClicked);
 
+    connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
+
     // focus on left tree view
     ui->treeWidgetLeft->setFocus();
 }
@@ -447,4 +449,14 @@ void MainWindow::btnViewClicked()
     QMessageBox::information(
         this, "Noch nicht implementiert", "Diese Funktionalität ist noch nicht"
             + QString(" implementiert. Versuche es später nochmal mit einer neueren Programmversion."));
+}
+
+void MainWindow::actionRefreshTriggered()
+{
+    const QString path = currentDirectory().absolutePath();
+    fillTreeWidget(latestTreeWidget(), path);
+
+    statusBar()->showMessage("Ansicht für Verzeichnis '" + path + "' ("
+                                 + (leftTreeIsLatest() ? "links" : "rechts")
+                                 + ") wurde aktualisiert.", 5000);
 }

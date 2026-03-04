@@ -29,6 +29,8 @@ private slots:
     void btnCopyClicked();
     void btnViewClicked();
 
+    void actionRefreshTriggered();
+
 private:
     Ui::MainWindow *ui;
 
