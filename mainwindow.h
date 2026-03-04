@@ -25,6 +25,7 @@ private slots:
 
     void btnRemoveClicked();
     void btnCreateDirectoryClicked();
+    void btnMoveClicked();
 
 private:
     Ui::MainWindow *ui;
@@ -44,6 +45,9 @@ private:
     /// Returns the "other" tree widget, i. e. the one which is not the latest.
     QTreeWidget* otherTreeWidget() const;
 
+    /// Returns a reference to the current directory of the "latest" tree widget.
+    const QDir& currentDirectory() const;
+
     /// Returns a reference to the current directory of the "other" tree widget.
     const QDir& otherDirectory() const;
 
@@ -51,5 +55,12 @@ private:
     /// If both QDir instances point to the same directory, then that counts as
     /// parent, too, although that's not a parent in the strict sense.
     static bool isParentOf(const QDir& parent, const QDir& potentialChild);
+
+    /// Checks whether both QDir instances point to the same directory.
+    ///
+    /// The function is necessary, because the equality operator of QDir also
+    /// checks for sort order and filters during comparison, but this is
+    /// irrelevant. Only the location in the filesystem is relevant.
+    static bool isSameDir(const QDir& one, const QDir& two);
 };
 #endif // MAINWINDOW_H

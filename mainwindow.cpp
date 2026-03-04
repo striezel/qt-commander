@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->btnCreateDirectory, &QPushButton::clicked, this, &MainWindow::btnCreateDirectoryClicked);
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
+    connect(ui->btnMove, &QPushButton::clicked, this, &MainWindow::btnMoveClicked);
 
     // focus on left tree view
     ui->treeWidgetLeft->setFocus();
@@ -131,6 +132,11 @@ QTreeWidget *MainWindow::otherTreeWidget() const
     return leftTreeIsLatest() ? ui->treeWidgetRight : ui->treeWidgetLeft;
 }
 
+const QDir &MainWindow::currentDirectory() const
+{
+    return leftTreeIsLatest() ? currentDirectoryLeft : currentDirectoryRight;
+}
+
 const QDir& MainWindow::otherDirectory() const
 {
     return leftTreeIsLatest() ? currentDirectoryRight : currentDirectoryLeft;
@@ -165,6 +171,25 @@ bool MainWindow::isParentOf(const QDir& parent, const QDir& potentialChild)
            || childPath.startsWith(parentPath + alternativeSeparator)
 #endif
            || childPath.startsWith(parentPath + QDir::separator());
+}
+
+bool MainWindow::isSameDir(const QDir &one, const QDir &two)
+{
+    QString firstPath = one.canonicalPath();
+    if (firstPath.isEmpty())
+    {
+        // Canonical path can be an empty string, if the path contains
+        // unresolvable symlinks.
+        firstPath = one.absolutePath();
+    }
+
+    QString secondPath = two.canonicalPath();
+    if (secondPath.isEmpty())
+    {
+        secondPath = two.absolutePath();
+    }
+
+    return firstPath == secondPath;
 }
 
 void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
@@ -324,4 +349,62 @@ void MainWindow::btnCreateDirectoryClicked()
     }
 
     statusBar()->showMessage("Verzeichnis '" + name + "' wurde erstellt.", 5000);
+}
+
+void MainWindow::btnMoveClicked()
+{
+    QTreeWidget* treeWidget = latestTreeWidget();
+    const QList<QTreeWidgetItem*> selection = treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+
+    const QString name = item->text(0);
+
+    // Do not operate on parent directory!
+    if (name == "..")
+    {
+        QMessageBox::critical(
+            this, "Fehler",
+            "Verschiebeoperation kann nicht auf \"..\" ausgeführt werden!");
+        return;
+    }
+
+    if (isSameDir(currentDirectoryLeft, currentDirectoryRight))
+    {
+        QMessageBox::warning(
+            this, "Verschieben in gleiches Verzeichnis nicht möglich",
+            "Die beiden Bäume zeigen auf das gleiche Verzeichnis (\""
+                + currentDirectoryLeft.absolutePath() + "\"). Ein Verschieben ist daher nicht möglich.");
+        return;
+    }
+
+    const QString source = currentDirectory().absoluteFilePath(name);
+    const QString destination = otherDirectory().absoluteFilePath(name);
+    qDebug() << "Source:      " << source;
+    qDebug() << "Destination: " << destination;
+    // Move with QFile::rename(). Despite the name QFile it also works for
+    // directories, so it's universal.
+    if (!QFile::rename(source, destination))
+    {
+        QMessageBox::critical(
+            this, "Fehler beim Verschieben",
+            "Das Element '" + name + "' konnte nicht verschoben werden.");
+        return;
+    }
+
+    // Delete item from current tree view.
+    const int index = treeWidget->indexOfTopLevelItem(item);
+    QTreeWidgetItem* toDelete = treeWidget->takeTopLevelItem(index);
+    delete toDelete;
+    toDelete = nullptr;
+
+    // Refresh other tree view.
+    fillTreeWidget(otherTreeWidget(), otherDirectory().absolutePath());
+
+    statusBar()->showMessage(
+        "'" + name + "' wurde nach " + otherDirectory().absolutePath()
+            + " verschoben.", 5000);
 }
