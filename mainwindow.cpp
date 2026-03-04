@@ -18,8 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     currentDirectoryLeft = QDir::home();
     currentDirectoryRight = QDir::home();
 
-    fillTreeWidget(*(ui->treeWidgetLeft), QDir::homePath());
-    fillTreeWidget(*(ui->treeWidgetRight), QDir::homePath());
+    fillTreeWidget(ui->treeWidgetLeft, QDir::homePath());
+    fillTreeWidget(ui->treeWidgetRight, QDir::homePath());
 
     connect(ui->treeWidgetLeft, &QTreeWidget::itemDoubleClicked,
             this, &MainWindow::treeItemDoubleClicked);
@@ -38,14 +38,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::fillTreeWidget(QTreeWidget &treeWidget, const QString &path)
+void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
 {
-    if (path.isEmpty())
+    if ((treeWidget == nullptr) || path.isEmpty())
     {
         return;
     }
-
-    const bool isLeftTree = &treeWidget == ui->treeWidgetLeft;
 
     QDir dir(path);
     // Canonicalize path to avoid accumulation of "../" sequences.
@@ -65,7 +63,7 @@ void MainWindow::fillTreeWidget(QTreeWidget &treeWidget, const QString &path)
     dir.setFilter(QDir::Filter::AllEntries | QDir::Filter::NoDot | QDir::Filter::Hidden);
     const QFileInfoList list = dir.entryInfoList();
 
-    treeWidget.clear();
+    treeWidget->clear();
 
     QFileIconProvider icon_provider;
     const QIcon directory_icon = icon_provider.icon(QAbstractFileIconProvider::Folder);
@@ -89,7 +87,7 @@ void MainWindow::fillTreeWidget(QTreeWidget &treeWidget, const QString &path)
             item->setIcon(0, file_icon);
         }
         item->setTextAlignment(1, Qt::AlignRight);
-        treeWidget.addTopLevelItem(item);
+        treeWidget->addTopLevelItem(item);
     }
 
     // workaround for empty directory -> gets no entries
@@ -102,9 +100,10 @@ void MainWindow::fillTreeWidget(QTreeWidget &treeWidget, const QString &path)
         QTreeWidgetItem* item = new QTreeWidgetItem(data);
         item->setIcon(0, directory_icon);
         item->setTextAlignment(1, Qt::AlignRight);
-        treeWidget.addTopLevelItem(item);
+        treeWidget->addTopLevelItem(item);
     }
 
+    const bool isLeftTree = treeWidget == ui->treeWidgetLeft;
     if (isLeftTree)
     {
       currentDirectoryLeft = dir;
@@ -186,7 +185,7 @@ void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
     }
     if (info.isDir())
     {
-        fillTreeWidget(*(item->treeWidget()), new_path);
+        fillTreeWidget(item->treeWidget(), new_path);
     }
 }
 
@@ -276,7 +275,7 @@ void MainWindow::btnRemoveClicked()
     // exists.
     else if (isParentOf(baseDir.absoluteFilePath(name), otherDirectory()))
     {
-        fillTreeWidget(*otherTreeWidget(), baseDir.absolutePath());
+        fillTreeWidget(otherTreeWidget(), baseDir.absolutePath());
     }
 
     statusBar()->showMessage("'" + name + "' wurde gelöscht.", 5000);
@@ -317,11 +316,11 @@ void MainWindow::btnCreateDirectoryClicked()
     // same directory.
     if (baseDir.absolutePath() == currentDirectoryLeft.absolutePath())
     {
-        fillTreeWidget(*(ui->treeWidgetLeft), currentDirectoryLeft.absolutePath());
+        fillTreeWidget(ui->treeWidgetLeft, currentDirectoryLeft.absolutePath());
     }
     if (baseDir.absolutePath() == currentDirectoryRight.absolutePath())
     {
-        fillTreeWidget(*(ui->treeWidgetRight), currentDirectoryRight.absolutePath());
+        fillTreeWidget(ui->treeWidgetRight, currentDirectoryRight.absolutePath());
     }
 
     statusBar()->showMessage("Verzeichnis '" + name + "' wurde erstellt.", 5000);
