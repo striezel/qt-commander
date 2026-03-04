@@ -122,7 +122,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
     // Adjust width of column for modification date.
     treeWidget->resizeColumnToContents(2);
     // Column for file name is not adjusted, because that can get way out of
-    // hand with longer file names, trigering horizontal scroll bars.
+    // hand with longer file names, triggering horizontal scroll bars.
 }
 
 bool MainWindow::leftTreeIsLatest() const
