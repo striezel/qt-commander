@@ -43,6 +43,8 @@ private slots:
 
     void actionRefreshTriggered();
 
+    void actionSaveSettingsTriggered();
+
 private:
     Ui::MainWindow *ui;
 

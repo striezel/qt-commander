@@ -193,8 +193,15 @@
     <addaction name="separator"/>
     <addaction name="actionRefresh"/>
    </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <addaction name="actionSaveSettings"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
+   <addaction name="menuSettings"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
@@ -317,6 +324,11 @@
    </property>
    <property name="text">
     <string>Groß-/Kleinschreibung ignorieren</string>
+   </property>
+  </action>
+  <action name="actionSaveSettings">
+   <property name="text">
+    <string>Einstellungen speichern</string>
    </property>
   </action>
  </widget>

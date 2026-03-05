@@ -6,6 +6,7 @@
 
 #include "createdirectorydialog.h"
 #include "dirutils.h"
+#include "settings.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -519,11 +520,22 @@ void MainWindow::connectMenuActions()
     connect(ui->actionSortDirectoriesFirst, &QAction::triggered, this, &MainWindow::actionSortSomethingFirstTriggered);
 
     connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
+
+    connect(ui->actionSaveSettings, &QAction::triggered, this, &MainWindow::actionSaveSettingsTriggered);
 }
 
 void MainWindow::actionRefreshTriggered()
 {
     refreshCurrentView();
+}
+
+void MainWindow::actionSaveSettingsTriggered()
+{
+    Settings settings;
+    settings.setFilters(filters);
+    settings.setSortFlags(sortFlags);
+
+    settings.save();
 }
 
 void MainWindow::actionShowHiddenFilesTriggered(bool checked)
