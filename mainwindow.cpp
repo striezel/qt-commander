@@ -13,11 +13,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
-    connect(ui->btnExit, &QPushButton::clicked, this, &MainWindow::close);
-
     currentDirectoryLeft = QDir::home();
     currentDirectoryRight = QDir::home();
+
+    filters = QDir::Filter::AllEntries | QDir::Filter::NoDot
+              | QDir::Filter::Hidden | QDir::Filter::System;
 
     fillTreeWidget(ui->treeWidgetLeft, QDir::homePath());
     fillTreeWidget(ui->treeWidgetRight, QDir::homePath());
@@ -27,12 +27,19 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->treeWidgetRight, &QTreeWidget::itemDoubleClicked,
             this, &MainWindow::treeItemDoubleClicked);
 
+    // connect buttons in lower half of window
+    connect(ui->btnView, &QPushButton::clicked, this, &MainWindow::btnViewClicked);
+    connect(ui->btnCopy, &QPushButton::clicked, this, &MainWindow::btnCopyClicked);
+    connect(ui->btnMove, &QPushButton::clicked, this, &MainWindow::btnMoveClicked);
     connect(ui->btnCreateDirectory, &QPushButton::clicked, this, &MainWindow::btnCreateDirectoryClicked);
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
-    connect(ui->btnMove, &QPushButton::clicked, this, &MainWindow::btnMoveClicked);
-    connect(ui->btnCopy, &QPushButton::clicked, this, &MainWindow::btnCopyClicked);
-    connect(ui->btnView, &QPushButton::clicked, this, &MainWindow::btnViewClicked);
+    connect(ui->btnExit, &QPushButton::clicked, this, &MainWindow::close);
 
+    // connect menu actions
+    connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
+    connect(ui->actionShowHiddenFiles, &QAction::triggered, this, &MainWindow::actionShowHiddenFilesTriggered);
+    connect(ui->actionShowSystemFiles, &QAction::triggered, this, &MainWindow::actionShowSystemFilesTriggered);
+    connect(ui->actionHideFiles, &QAction::triggered, this, &MainWindow::actionHideFilesTriggered);
     connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
 
     // focus on left tree view
@@ -66,8 +73,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
     dir.setSorting(QDir::SortFlag::Name // sort by name ...
                    | QDir::SortFlag::DirsFirst  // ... and put directories first ...
                    | QDir::SortFlag::IgnoreCase); // ... and ignore casing
-    dir.setFilter(QDir::Filter::AllEntries | QDir::Filter::NoDot
-                  | QDir::Filter::Hidden | QDir::Filter::System);
+    dir.setFilter(filters);
     const QFileInfoList list = dir.entryInfoList();
 
     treeWidget->clear();
@@ -452,12 +458,81 @@ void MainWindow::btnViewClicked()
             + QString(" implementiert. Versuche es später nochmal mit einer neueren Programmversion."));
 }
 
+void MainWindow::refreshCurrentView()
+{
+    refreshView(latestTreeWidget(), currentDirectory(), true);
+}
+
+void MainWindow::refreshBothViews()
+{
+    refreshView(ui->treeWidgetLeft, currentDirectoryLeft, false);
+    refreshView(ui->treeWidgetRight, currentDirectoryRight, false);
+}
+
+void MainWindow::refreshView(QTreeWidget *treeWidget, const QDir &dir, const bool showStatusMessage)
+{
+    if (treeWidget == nullptr)
+    {
+        return;
+    }
+
+    const QString path = dir.absolutePath();
+    fillTreeWidget(treeWidget, path);
+
+    if (showStatusMessage)
+    {
+        statusBar()->showMessage("Ansicht für Verzeichnis '" + path + "' ("
+                                     + (treeWidget == ui->treeWidgetLeft ? "links" : "rechts")
+                                     + ") wurde aktualisiert.", 5000);
+    }
+}
+
 void MainWindow::actionRefreshTriggered()
 {
-    const QString path = currentDirectory().absolutePath();
-    fillTreeWidget(latestTreeWidget(), path);
+    refreshCurrentView();
+}
 
-    statusBar()->showMessage("Ansicht für Verzeichnis '" + path + "' ("
-                                 + (leftTreeIsLatest() ? "links" : "rechts")
-                                 + ") wurde aktualisiert.", 5000);
+void MainWindow::actionShowHiddenFilesTriggered(bool checked)
+{
+    qDebug() << "Old filter setting: " << filters;
+    if (checked)
+    {
+        filters |= QDir::Filter::Hidden;
+    }
+    else
+    {
+        filters ^= QDir::Filter::Hidden;
+    }
+    qDebug() << "New filter setting: " << filters;
+    refreshBothViews();
+}
+
+void MainWindow::actionShowSystemFilesTriggered(bool checked)
+{
+    qDebug() << "Old filter setting: " << filters;
+    if (checked)
+    {
+        filters |= QDir::Filter::System;
+    }
+    else
+    {
+        filters ^= QDir::Filter::System;
+    }
+    qDebug() << "New filter setting: " << filters;
+    refreshBothViews();
+}
+
+void MainWindow::actionHideFilesTriggered(bool checked)
+{
+    qDebug() << "Old filter setting: " << filters;
+    if (checked)
+    {
+        filters ^= QDir::Filter::Files;
+    }
+    else
+    {
+        filters |= QDir::Filter::Files;
+    }
+    qDebug() << "New filter setting: " << filters;
+    refreshBothViews();
 }

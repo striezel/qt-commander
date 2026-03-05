@@ -30,12 +30,17 @@ private slots:
     void btnViewClicked();
 
     void actionRefreshTriggered();
+    void actionShowHiddenFilesTriggered(bool checked = false);
+    void actionShowSystemFilesTriggered(bool checked = false);
+    void actionHideFilesTriggered(bool checked = false);
 
 private:
     Ui::MainWindow *ui;
 
     QDir currentDirectoryLeft;
     QDir currentDirectoryRight;
+
+    QDir::Filters filters;
 
     void fillTreeWidget(QTreeWidget* treeWidget, const QString& path);
 
@@ -54,5 +59,9 @@ private:
 
     /// Returns a reference to the current directory of the "other" tree widget.
     const QDir& otherDirectory() const;
+
+    void refreshCurrentView();
+    void refreshBothViews();
+    void refreshView(QTreeWidget* treeWidget, const QDir& dir, const bool showStatusMessage = true);
 };
 #endif // MAINWINDOW_H

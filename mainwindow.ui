@@ -175,6 +175,10 @@
     <property name="title">
      <string>Ansicht</string>
     </property>
+    <addaction name="actionShowHiddenFiles"/>
+    <addaction name="actionShowSystemFiles"/>
+    <addaction name="actionHideFiles"/>
+    <addaction name="separator"/>
     <addaction name="actionRefresh"/>
    </widget>
    <addaction name="menuFile"/>
@@ -198,6 +202,36 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionShowHiddenFiles">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Versteckte Dateien u. Verzeichnisse anzeigen</string>
+   </property>
+  </action>
+  <action name="actionShowSystemFiles">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Systemdateien und -verzeichnisse anzeigen</string>
+   </property>
+  </action>
+  <action name="actionHideFiles">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dateien ausblenden (zeigt nur Verzeichnisse)</string>
    </property>
   </action>
  </widget>
