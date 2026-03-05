@@ -40,6 +40,7 @@ private:
     QDir currentDirectoryLeft;
     QDir currentDirectoryRight;
 
+    /// current filters for shown files/directories - applies to both views
     QDir::Filters filters;
 
     void fillTreeWidget(QTreeWidget* treeWidget, const QString& path);
@@ -60,8 +61,23 @@ private:
     /// Returns a reference to the current directory of the "other" tree widget.
     const QDir& otherDirectory() const;
 
+    /// Refreshes the current (latest) view.
     void refreshCurrentView();
+
+    /// Refreshes both views.
     void refreshBothViews();
+
+    /// Refreshes the given tree widget.
+    ///
+    /// @param treeWidget  the widget to refresh - must not be nullptr
+    /// @param dir         the directory which shall be listed in the tree widget
+    /// @param showStatusMessage  whether to show a message about the refresh in the status bar
     void refreshView(QTreeWidget* treeWidget, const QDir& dir, const bool showStatusMessage = true);
+
+    /// Creates connections between signals and slots for buttons in lower half of the window.
+    void connectButtons();
+
+    /// Creates connections between signals and slots for menu actions.
+    void connectMenuActions();
 };
 #endif // MAINWINDOW_H

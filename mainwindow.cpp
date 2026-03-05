@@ -10,14 +10,12 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , currentDirectoryLeft(QDir::home())
+    , currentDirectoryRight(QDir::home())
+    , filters(QDir::Filter::AllEntries | QDir::Filter::NoDot
+              | QDir::Filter::Hidden | QDir::Filter::System)
 {
     ui->setupUi(this);
-
-    currentDirectoryLeft = QDir::home();
-    currentDirectoryRight = QDir::home();
-
-    filters = QDir::Filter::AllEntries | QDir::Filter::NoDot
-              | QDir::Filter::Hidden | QDir::Filter::System;
 
     fillTreeWidget(ui->treeWidgetLeft, QDir::homePath());
     fillTreeWidget(ui->treeWidgetRight, QDir::homePath());
@@ -27,20 +25,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->treeWidgetRight, &QTreeWidget::itemDoubleClicked,
             this, &MainWindow::treeItemDoubleClicked);
 
-    // connect buttons in lower half of window
-    connect(ui->btnView, &QPushButton::clicked, this, &MainWindow::btnViewClicked);
-    connect(ui->btnCopy, &QPushButton::clicked, this, &MainWindow::btnCopyClicked);
-    connect(ui->btnMove, &QPushButton::clicked, this, &MainWindow::btnMoveClicked);
-    connect(ui->btnCreateDirectory, &QPushButton::clicked, this, &MainWindow::btnCreateDirectoryClicked);
-    connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
-    connect(ui->btnExit, &QPushButton::clicked, this, &MainWindow::close);
-
-    // connect menu actions
-    connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
-    connect(ui->actionShowHiddenFiles, &QAction::triggered, this, &MainWindow::actionShowHiddenFilesTriggered);
-    connect(ui->actionShowSystemFiles, &QAction::triggered, this, &MainWindow::actionShowSystemFilesTriggered);
-    connect(ui->actionHideFiles, &QAction::triggered, this, &MainWindow::actionHideFilesTriggered);
-    connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
+    connectButtons();
+    connectMenuActions();
 
     // focus on left tree view
     ui->treeWidgetLeft->setFocus();
@@ -485,6 +471,25 @@ void MainWindow::refreshView(QTreeWidget *treeWidget, const QDir &dir, const boo
                                      + (treeWidget == ui->treeWidgetLeft ? "links" : "rechts")
                                      + ") wurde aktualisiert.", 5000);
     }
+}
+
+void MainWindow::connectButtons()
+{
+    connect(ui->btnView, &QPushButton::clicked, this, &MainWindow::btnViewClicked);
+    connect(ui->btnCopy, &QPushButton::clicked, this, &MainWindow::btnCopyClicked);
+    connect(ui->btnMove, &QPushButton::clicked, this, &MainWindow::btnMoveClicked);
+    connect(ui->btnCreateDirectory, &QPushButton::clicked, this, &MainWindow::btnCreateDirectoryClicked);
+    connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
+    connect(ui->btnExit, &QPushButton::clicked, this, &MainWindow::close);
+}
+
+void MainWindow::connectMenuActions()
+{
+    connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
+    connect(ui->actionShowHiddenFiles, &QAction::triggered, this, &MainWindow::actionShowHiddenFilesTriggered);
+    connect(ui->actionShowSystemFiles, &QAction::triggered, this, &MainWindow::actionShowSystemFilesTriggered);
+    connect(ui->actionHideFiles, &QAction::triggered, this, &MainWindow::actionHideFilesTriggered);
+    connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
 }
 
 void MainWindow::actionRefreshTriggered()
