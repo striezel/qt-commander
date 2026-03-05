@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
                 | QDir::SortFlag::DirsFirst // ... and put directories first ...
                 | QDir::SortFlag::IgnoreCase) // ... and ignore casing
     , sortActionGroup(QActionGroup(this))
+    , whatFirstGroup(QActionGroup(this))
 {
     ui->setupUi(this);
 
@@ -30,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::treeItemDoubleClicked);
 
     connectButtons();
-    setUpActionGroup();
+    setUpActionGroups();
     connectMenuActions();
 
     // focus on left tree view
@@ -486,12 +487,16 @@ void MainWindow::connectButtons()
     connect(ui->btnExit, &QPushButton::clicked, this, &MainWindow::close);
 }
 
-void MainWindow::setUpActionGroup()
+void MainWindow::setUpActionGroups()
 {
     sortActionGroup.addAction(ui->actionSortByName);
     sortActionGroup.addAction(ui->actionSortByTime);
     sortActionGroup.addAction(ui->actionSortBySize);
     sortActionGroup.addAction(ui->actionSortByType);
+
+    whatFirstGroup.setExclusionPolicy(QActionGroup::ExclusionPolicy::ExclusiveOptional);
+    whatFirstGroup.addAction(ui->actionSortFilesFirst);
+    whatFirstGroup.addAction(ui->actionSortDirectoriesFirst);
 }
 
 void MainWindow::connectMenuActions()
@@ -507,6 +512,9 @@ void MainWindow::connectMenuActions()
     connect(ui->actionSortByType, &QAction::triggered, this, &MainWindow::actionSortBySomethingTriggered);
 
     connect(ui->actionReverseSort, &QAction::triggered, this, &MainWindow::actionReverseSortTriggered);
+
+    connect(ui->actionSortFilesFirst, &QAction::triggered, this, &MainWindow::actionSortSomethingFirstTriggered);
+    connect(ui->actionSortDirectoriesFirst, &QAction::triggered, this, &MainWindow::actionSortSomethingFirstTriggered);
 
     connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
 }
@@ -605,6 +613,40 @@ void MainWindow::actionReverseSortTriggered(bool checked)
     else
     {
         sortFlags ^= QDir::SortFlag::Reversed;
+    }
+    qDebug() << "New sort setting: " << sortFlags;
+    refreshBothViews();
+}
+
+void MainWindow::actionSortSomethingFirstTriggered(bool checked)
+{
+    qDebug() << "Old sort setting: " << sortFlags;
+    QDir::SortFlag sortFirstFlag = QDir::SortFlag::DirsFirst;
+    if (sender() == ui->actionSortFilesFirst)
+    {
+        sortFirstFlag = QDir::SortFlag::DirsLast;
+    }
+
+    if (checked)
+    {
+        // clear other flag
+        const QDir::SortFlag otherFlag = sortFirstFlag == QDir::SortFlag::DirsFirst
+                                             ? QDir::SortFlag::DirsLast
+                                             : QDir::SortFlag::DirsFirst;
+        if (sortFlags.testFlag(otherFlag))
+        {
+            sortFlags ^= otherFlag;
+        }
+        // set flag
+        sortFlags |= sortFirstFlag;
+    }
+    else
+    {
+        // clear flag
+        if (sortFlags.testFlag(sortFirstFlag))
+        {
+            sortFlags ^= sortFirstFlag;
+        }
     }
     qDebug() << "New sort setting: " << sortFlags;
     refreshBothViews();

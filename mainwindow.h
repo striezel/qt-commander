@@ -37,6 +37,8 @@ private slots:
     void actionSortBySomethingTriggered(bool checked = false);
     void actionReverseSortTriggered(bool checked = false);
 
+    void actionSortSomethingFirstTriggered(bool checked = false);
+
     void actionRefreshTriggered();
 
 private:
@@ -52,6 +54,7 @@ private:
     QDir::SortFlags sortFlags;
 
     QActionGroup sortActionGroup;
+    QActionGroup whatFirstGroup;
 
     void fillTreeWidget(QTreeWidget* treeWidget, const QString& path);
 
@@ -90,6 +93,6 @@ private:
     /// Creates connections between signals and slots for menu actions.
     void connectMenuActions();
 
-    void setUpActionGroup();
+    void setUpActionGroups();
 };
 #endif // MAINWINDOW_H
