@@ -179,6 +179,13 @@
     <addaction name="actionShowSystemFiles"/>
     <addaction name="actionHideFiles"/>
     <addaction name="separator"/>
+    <addaction name="actionSortByName"/>
+    <addaction name="actionSortByTime"/>
+    <addaction name="actionSortBySize"/>
+    <addaction name="actionSortByType"/>
+    <addaction name="separator"/>
+    <addaction name="actionReverseSort"/>
+    <addaction name="separator"/>
     <addaction name="actionRefresh"/>
    </widget>
    <addaction name="menuFile"/>
@@ -232,6 +239,49 @@
    </property>
    <property name="text">
     <string>Dateien ausblenden (zeigt nur Verzeichnisse)</string>
+   </property>
+  </action>
+  <action name="actionSortByName">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Nach Name sortieren</string>
+   </property>
+  </action>
+  <action name="actionSortByTime">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Nach Änderungsdatum sortieren</string>
+   </property>
+  </action>
+  <action name="actionSortBySize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Nach Größe sortieren</string>
+   </property>
+  </action>
+  <action name="actionSortByType">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Nach Typ (Dateiendung) sortieren</string>
+   </property>
+  </action>
+  <action name="actionReverseSort">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Sortierung umkehren</string>
    </property>
   </action>
  </widget>

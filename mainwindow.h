@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QActionGroup>
 #include <QDir>
 #include <QString>
 #include <QTreeWidget>
@@ -29,10 +30,14 @@ private slots:
     void btnCopyClicked();
     void btnViewClicked();
 
-    void actionRefreshTriggered();
     void actionShowHiddenFilesTriggered(bool checked = false);
     void actionShowSystemFilesTriggered(bool checked = false);
     void actionHideFilesTriggered(bool checked = false);
+
+    void actionSortBySomethingTriggered(bool checked = false);
+    void actionReverseSortTriggered(bool checked = false);
+
+    void actionRefreshTriggered();
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +47,11 @@ private:
 
     /// current filters for shown files/directories - applies to both views
     QDir::Filters filters;
+
+    /// current sort flags for shown files/directories - applies to both views
+    QDir::SortFlags sortFlags;
+
+    QActionGroup sortActionGroup;
 
     void fillTreeWidget(QTreeWidget* treeWidget, const QString& path);
 
@@ -79,5 +89,7 @@ private:
 
     /// Creates connections between signals and slots for menu actions.
     void connectMenuActions();
+
+    void setUpActionGroup();
 };
 #endif // MAINWINDOW_H
