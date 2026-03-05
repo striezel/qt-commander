@@ -29,6 +29,17 @@ void Settings::save()
     settings.setValue("sort-flags", sortFlags.toInt());
 }
 
+void Settings::load()
+{
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, "Example Organization", "Qt Commander");
+
+    const int filters = settings.value("filters", defaultFilters.toInt()).toInt();
+    setFilters(QDir::Filters::fromInt(filters));
+
+    const int sort_flags = settings.value("sort-flags", defaultSortFlags.toInt()).toInt();
+    setSortFlags(QDir::SortFlags::fromInt(sort_flags));
+}
+
 QDir::Filters Settings::getFilters() const
 {
     return filters;

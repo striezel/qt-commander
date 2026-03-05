@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "settings.h"
+
 #include <QMainWindow>
 #include <QActionGroup>
 #include <QDir>
@@ -44,6 +46,7 @@ private slots:
     void actionRefreshTriggered();
 
     void actionSaveSettingsTriggered();
+    void actionLoadSettingsTriggered();
 
 private:
     Ui::MainWindow *ui;
@@ -98,5 +101,7 @@ private:
     void connectMenuActions();
 
     void setUpActionGroups();
+
+    void putSettingsIntoGui(const Settings& settings);
 };
 #endif // MAINWINDOW_H

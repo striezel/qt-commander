@@ -198,6 +198,7 @@
      <string>Einstellungen</string>
     </property>
     <addaction name="actionSaveSettings"/>
+    <addaction name="actionLoadSettings"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -329,6 +330,11 @@
   <action name="actionSaveSettings">
    <property name="text">
     <string>Einstellungen speichern</string>
+   </property>
+  </action>
+  <action name="actionLoadSettings">
+   <property name="text">
+    <string>Einstellungen laden</string>
    </property>
   </action>
  </widget>

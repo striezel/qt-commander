@@ -16,6 +16,7 @@ public:
     void resetToDefaults();
 
     void save();
+    void load();
 
     QDir::Filters getFilters() const;
     void setFilters(const QDir::Filters filters);

@@ -6,7 +6,6 @@
 
 #include "createdirectorydialog.h"
 #include "dirutils.h"
-#include "settings.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -500,9 +499,33 @@ void MainWindow::setUpActionGroups()
     whatFirstGroup.addAction(ui->actionSortDirectoriesFirst);
 }
 
+void MainWindow::putSettingsIntoGui(const Settings& settings)
+{
+    const QDir::Filters new_filters = settings.getFilters();
+    const QDir::SortFlags new_sort_flags = settings.getSortFlags();
+
+    ui->actionShowHiddenFiles->setChecked(new_filters.testFlag(QDir::Filter::Hidden));
+    ui->actionShowSystemFiles->setChecked(new_filters.testFlag(QDir::Filter::System));
+    ui->actionHideFiles->setChecked(!new_filters.testFlag(QDir::Filter::Files));
+
+    ui->actionSortByName->setChecked(!new_sort_flags.testAnyFlags(
+        QDir::SortFlag::Time | QDir::SortFlag::Size | QDir::SortFlag::Type));
+    ui->actionSortByTime->setChecked(new_sort_flags.testFlag(QDir::SortFlag::Time));
+    ui->actionSortBySize->setChecked(new_sort_flags.testFlag(QDir::SortFlag::Size));
+    ui->actionSortByType->setChecked(new_sort_flags.testFlag(QDir::SortFlag::Type));
+
+    ui->actionReverseSort->setChecked(new_sort_flags.testFlag(QDir::SortFlag::Reversed));
+
+    ui->actionSortIgnoreCase->setChecked(new_sort_flags.testFlag(QDir::SortFlag::IgnoreCase));
+
+    ui->actionSortFilesFirst->setChecked(new_sort_flags.testFlag(QDir::SortFlag::DirsLast));
+    ui->actionSortDirectoriesFirst->setChecked(new_sort_flags.testFlag(QDir::SortFlag::DirsFirst));
+}
+
 void MainWindow::connectMenuActions()
 {
     connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
+
     connect(ui->actionShowHiddenFiles, &QAction::triggered, this, &MainWindow::actionShowHiddenFilesTriggered);
     connect(ui->actionShowSystemFiles, &QAction::triggered, this, &MainWindow::actionShowSystemFilesTriggered);
     connect(ui->actionHideFiles, &QAction::triggered, this, &MainWindow::actionHideFilesTriggered);
@@ -522,6 +545,7 @@ void MainWindow::connectMenuActions()
     connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
 
     connect(ui->actionSaveSettings, &QAction::triggered, this, &MainWindow::actionSaveSettingsTriggered);
+    connect(ui->actionLoadSettings, &QAction::triggered, this, &MainWindow::actionLoadSettingsTriggered);
 }
 
 void MainWindow::actionRefreshTriggered()
@@ -536,6 +560,27 @@ void MainWindow::actionSaveSettingsTriggered()
     settings.setSortFlags(sortFlags);
 
     settings.save();
+}
+
+void MainWindow::actionLoadSettingsTriggered()
+{
+    Settings settings;
+    settings.load();
+
+    putSettingsIntoGui(settings);
+
+    const QDir::Filters new_filters = settings.getFilters();
+    const QDir::SortFlags new_sort_flags = settings.getSortFlags();
+
+    const bool needs_refresh = (new_filters != filters) || (new_sort_flags != sortFlags);
+
+    filters = new_filters;
+    sortFlags = new_sort_flags;
+
+    if (needs_refresh)
+    {
+        refreshBothViews();
+    }
 }
 
 void MainWindow::actionShowHiddenFilesTriggered(bool checked)
