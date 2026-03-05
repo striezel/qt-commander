@@ -47,6 +47,7 @@ private slots:
 
     void actionSaveSettingsTriggered();
     void actionLoadSettingsTriggered();
+    void actionRestoreDefaultSettingsTriggered();
 
 private:
     Ui::MainWindow *ui;

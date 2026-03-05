@@ -504,6 +504,7 @@ void MainWindow::putSettingsIntoGui(const Settings& settings)
     const QDir::Filters new_filters = settings.getFilters();
     const QDir::SortFlags new_sort_flags = settings.getSortFlags();
 
+    // update checked property for all relevant menu items/actions
     ui->actionShowHiddenFiles->setChecked(new_filters.testFlag(QDir::Filter::Hidden));
     ui->actionShowSystemFiles->setChecked(new_filters.testFlag(QDir::Filter::System));
     ui->actionHideFiles->setChecked(!new_filters.testFlag(QDir::Filter::Files));
@@ -520,6 +521,19 @@ void MainWindow::putSettingsIntoGui(const Settings& settings)
 
     ui->actionSortFilesFirst->setChecked(new_sort_flags.testFlag(QDir::SortFlag::DirsLast));
     ui->actionSortDirectoriesFirst->setChecked(new_sort_flags.testFlag(QDir::SortFlag::DirsFirst));
+
+    // Check whether tree widgets need a refresh.
+    const bool needs_refresh = (new_filters != filters) || (new_sort_flags != sortFlags);
+
+    // New values for filters and sort flags need to be set before a potential
+    // refresh happens, because the refresh uses the currently set flags.
+    filters = new_filters;
+    sortFlags = new_sort_flags;
+
+    if (needs_refresh)
+    {
+        refreshBothViews();
+    }
 }
 
 void MainWindow::connectMenuActions()
@@ -546,6 +560,7 @@ void MainWindow::connectMenuActions()
 
     connect(ui->actionSaveSettings, &QAction::triggered, this, &MainWindow::actionSaveSettingsTriggered);
     connect(ui->actionLoadSettings, &QAction::triggered, this, &MainWindow::actionLoadSettingsTriggered);
+    connect(ui->actionRestoreDefaultSettings, &QAction::triggered, this, &MainWindow::actionRestoreDefaultSettingsTriggered);
 }
 
 void MainWindow::actionRefreshTriggered()
@@ -568,19 +583,14 @@ void MainWindow::actionLoadSettingsTriggered()
     settings.load();
 
     putSettingsIntoGui(settings);
+}
 
-    const QDir::Filters new_filters = settings.getFilters();
-    const QDir::SortFlags new_sort_flags = settings.getSortFlags();
+void MainWindow::actionRestoreDefaultSettingsTriggered()
+{
+    Settings settings;
+    settings.resetToDefaults();
 
-    const bool needs_refresh = (new_filters != filters) || (new_sort_flags != sortFlags);
-
-    filters = new_filters;
-    sortFlags = new_sort_flags;
-
-    if (needs_refresh)
-    {
-        refreshBothViews();
-    }
+    putSettingsIntoGui(settings);
 }
 
 void MainWindow::actionShowHiddenFilesTriggered(bool checked)

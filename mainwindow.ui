@@ -199,6 +199,8 @@
     </property>
     <addaction name="actionSaveSettings"/>
     <addaction name="actionLoadSettings"/>
+    <addaction name="separator"/>
+    <addaction name="actionRestoreDefaultSettings"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -335,6 +337,11 @@
   <action name="actionLoadSettings">
    <property name="text">
     <string>Einstellungen laden</string>
+   </property>
+  </action>
+  <action name="actionRestoreDefaultSettings">
+   <property name="text">
+    <string>Auf Standard zurücksetzen</string>
    </property>
   </action>
  </widget>
