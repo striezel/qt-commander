@@ -513,6 +513,8 @@ void MainWindow::connectMenuActions()
 
     connect(ui->actionReverseSort, &QAction::triggered, this, &MainWindow::actionReverseSortTriggered);
 
+    connect(ui->actionSortIgnoreCase, &QAction::triggered, this, &MainWindow::actionSortIgnoreCaseTriggered);
+
     connect(ui->actionSortFilesFirst, &QAction::triggered, this, &MainWindow::actionSortSomethingFirstTriggered);
     connect(ui->actionSortDirectoriesFirst, &QAction::triggered, this, &MainWindow::actionSortSomethingFirstTriggered);
 
@@ -613,6 +615,21 @@ void MainWindow::actionReverseSortTriggered(bool checked)
     else
     {
         sortFlags ^= QDir::SortFlag::Reversed;
+    }
+    qDebug() << "New sort setting: " << sortFlags;
+    refreshBothViews();
+}
+
+void MainWindow::actionSortIgnoreCaseTriggered(bool checked)
+{
+    qDebug() << "Old sort setting: " << sortFlags;
+    if (checked)
+    {
+        sortFlags |= QDir::SortFlag::IgnoreCase;
+    }
+    else
+    {
+        sortFlags ^= QDir::SortFlag::IgnoreCase;
     }
     qDebug() << "New sort setting: " << sortFlags;
     refreshBothViews();

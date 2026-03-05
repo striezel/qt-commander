@@ -186,6 +186,8 @@
     <addaction name="separator"/>
     <addaction name="actionReverseSort"/>
     <addaction name="separator"/>
+    <addaction name="actionSortIgnoreCase"/>
+    <addaction name="separator"/>
     <addaction name="actionSortDirectoriesFirst"/>
     <addaction name="actionSortFilesFirst"/>
     <addaction name="separator"/>
@@ -304,6 +306,17 @@
    </property>
    <property name="text">
     <string>Dateien zuerst, dann Verzeichnisse</string>
+   </property>
+  </action>
+  <action name="actionSortIgnoreCase">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Groß-/Kleinschreibung ignorieren</string>
    </property>
   </action>
  </widget>

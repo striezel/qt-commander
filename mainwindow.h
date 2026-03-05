@@ -37,6 +37,8 @@ private slots:
     void actionSortBySomethingTriggered(bool checked = false);
     void actionReverseSortTriggered(bool checked = false);
 
+    void actionSortIgnoreCaseTriggered(bool checked = false);
+
     void actionSortSomethingFirstTriggered(bool checked = false);
 
     void actionRefreshTriggered();
