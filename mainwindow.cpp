@@ -6,6 +6,7 @@
 
 #include "createdirectorydialog.h"
 #include "dirutils.h"
+#include "textviewwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -451,9 +452,45 @@ void MainWindow::btnCopyClicked()
 
 void MainWindow::btnViewClicked()
 {
-    QMessageBox::information(
-        this, "Noch nicht implementiert", "Diese Funktionalität ist noch nicht"
-            + QString(" implementiert. Versuche es später nochmal mit einer neueren Programmversion."));
+    QTreeWidget* treeWidget = latestTreeWidget();
+    const QList<QTreeWidgetItem*> selection = treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        QMessageBox::information(
+            this, "Keine aktive Auswahl vorhanden",
+            "Es wurde keine Datei zum Anzeigen ausgewählt.");
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+    const QString name = item->text(0);
+
+    const QString selectedFile = currentDirectory().absoluteFilePath(name);
+    const QFileInfo info(selectedFile);
+
+    if (!info.isFile())
+    {
+        QMessageBox::information(
+            this, "Keine Datei ausgewählt",
+            QString("Es wurde keine Datei zum Anzeigen ausgewählt.\n\n")
+            + "Zum Betrachten können nur Dateien ausgewählt werden, nicht jedoch Verzeichnisse.");
+        return;
+    }
+
+    TextViewWindow* viewer = new TextViewWindow(this);
+    if (!viewer->loadTextFile(selectedFile))
+    {
+        QMessageBox::critical(
+            this, "Fehler beim Öffnen der Datei",
+            "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+        delete viewer;
+        return;
+    }
+
+    viewer->setWindowModality(Qt::WindowModality::WindowModal);
+    viewer->show();
+
+    // show() returns immediately, so the deletion of viewer is handled by the
+    // TextViewWindow itself in its closeEvent();
 }
 
 void MainWindow::refreshCurrentView()
