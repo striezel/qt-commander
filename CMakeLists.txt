@@ -33,6 +33,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         dirutils.h dirutils.cpp
         settings.h settings.cpp
         textviewwindow.h textviewwindow.cpp textviewwindow.ui
+        imageviewwindow.h imageviewwindow.cpp imageviewwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Projekt_Dateimanager_Dirk APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

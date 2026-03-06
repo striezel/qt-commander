@@ -6,6 +6,7 @@
 
 #include "createdirectorydialog.h"
 #include "dirutils.h"
+#include "imageviewwindow.h"
 #include "textviewwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -473,21 +474,43 @@ void MainWindow::btnViewClicked()
         return;
     }
 
-    TextViewWindow* viewer = new TextViewWindow(this);
-    if (!viewer->loadTextFile(selectedFile))
-    {
-        QMessageBox::critical(
-            this, "Fehler beim Öffnen der Datei",
-            "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
-        delete viewer;
-        return;
-    }
-    viewer->setFont(settings.getTextViewerFont());
-    viewer->setWindowModality(Qt::WindowModality::WindowModal);
-    viewer->show();
+    const bool load_as_text = !info.fileName().endsWith(".png");
 
-    // show() returns immediately, so the deletion of viewer is handled by the
-    // TextViewWindow itself in its closeEvent();
+    if (load_as_text)
+    {
+        TextViewWindow* viewer = new TextViewWindow(this);
+        if (!viewer->loadTextFile(selectedFile))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Öffnen der Datei",
+                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+            delete viewer;
+            return;
+        }
+        viewer->setFont(settings.getTextViewerFont());
+        viewer->setWindowModality(Qt::WindowModality::WindowModal);
+        viewer->show();
+
+        // show() returns immediately, so the deletion of viewer is handled by the
+        // TextViewWindow itself in its closeEvent();
+    }
+    else
+    {
+        // load as image
+        ImageViewWindow* viewer = new ImageViewWindow(this);
+        if (!viewer->loadImageFile(selectedFile))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Öffnen der Datei",
+                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+            delete viewer;
+            return;
+        }
+        viewer->setWindowModality(Qt::WindowModality::WindowModal);
+        viewer->show();
+
+        // TODO: Ensure proper cleanup of viewer instance.
+    }
 }
 
 void MainWindow::refreshCurrentView()
