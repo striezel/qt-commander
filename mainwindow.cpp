@@ -22,6 +22,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // load any previously saved settings - if any
+    {
+        Settings settings;
+        settings.load();
+
+        putSettingsIntoGui(settings, true);
+    }
+
     fillTreeWidget(ui->treeWidgetLeft, QDir::homePath());
     fillTreeWidget(ui->treeWidgetRight, QDir::homePath());
 
@@ -499,7 +507,7 @@ void MainWindow::setUpActionGroups()
     whatFirstGroup.addAction(ui->actionSortDirectoriesFirst);
 }
 
-void MainWindow::putSettingsIntoGui(const Settings& settings)
+void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRefresh)
 {
     const QDir::Filters new_filters = settings.getFilters();
     const QDir::SortFlags new_sort_flags = settings.getSortFlags();
@@ -530,7 +538,7 @@ void MainWindow::putSettingsIntoGui(const Settings& settings)
     filters = new_filters;
     sortFlags = new_sort_flags;
 
-    if (needs_refresh)
+    if (needs_refresh && !avoidRefresh)
     {
         refreshBothViews();
     }

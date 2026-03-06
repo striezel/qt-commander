@@ -103,6 +103,6 @@ private:
 
     void setUpActionGroups();
 
-    void putSettingsIntoGui(const Settings& settings);
+    void putSettingsIntoGui(const Settings& settings, const bool avoidRefresh = false);
 };
 #endif // MAINWINDOW_H
