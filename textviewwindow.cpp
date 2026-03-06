@@ -3,6 +3,8 @@
 
 #include <QDebug>
 #include <QFile>
+#include <QPrintDialog>
+#include <QPrinter>
 #include <QScrollBar>
 #include <QTextStream>
 
@@ -12,6 +14,7 @@ TextViewWindow::TextViewWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    connect(ui->actionPrint, &QAction::triggered, this, &TextViewWindow::actionPrintTriggered);
     connect(ui->actionExit, &QAction::triggered, this, &TextViewWindow::close);
 
     setMonospacedFont();
@@ -58,6 +61,19 @@ void TextViewWindow::closeEvent(QCloseEvent *event)
 void TextViewWindow::showEvent(QShowEvent *event)
 {
     scrollToTop();
+}
+
+void TextViewWindow::actionPrintTriggered()
+{
+    QPrinter printer;
+    QPrintDialog dialog(&printer, this);
+    if (dialog.exec() != QPrintDialog::Accepted)
+    {
+        return;
+    }
+
+    printer.setDocName(ui->plainTextEdit->documentTitle());
+    ui->plainTextEdit->print(&printer);
 }
 
 void TextViewWindow::scrollToTop()

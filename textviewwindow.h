@@ -29,6 +29,9 @@ protected:
 
     void showEvent(QShowEvent* event) override;
 
+private slots:
+    void actionPrintTriggered();
+
 private:
     Ui::TextViewWindow *ui;
 

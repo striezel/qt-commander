@@ -37,6 +37,7 @@
     <property name="title">
      <string>Datei</string>
     </property>
+    <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
    </widget>
    <addaction name="menuDatei"/>
@@ -51,6 +52,17 @@
    </property>
    <property name="shortcut">
     <string>F3</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="icon">
+    <iconset theme="document-print"/>
+   </property>
+   <property name="text">
+    <string>Drucken ...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>
