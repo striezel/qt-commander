@@ -58,14 +58,7 @@ private:
     QDir currentDirectoryLeft;
     QDir currentDirectoryRight;
 
-    /// current filters for shown files/directories - applies to both views
-    QDir::Filters filters;
-
-    /// current sort flags for shown files/directories - applies to both views
-    QDir::SortFlags sortFlags;
-
-    /// current text viewer font
-    QFont textViewerFont;
+    Settings settings;
 
     QActionGroup sortActionGroup;
     QActionGroup whatFirstGroup;

@@ -13,26 +13,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , currentDirectoryLeft(QDir::home())
     , currentDirectoryRight(QDir::home())
-    , filters(QDir::Filter::AllEntries | QDir::Filter::NoDot
-              | QDir::Filter::Hidden | QDir::Filter::System)
-    , sortFlags(QDir::SortFlag::Name // sort by name ...
-                | QDir::SortFlag::DirsFirst // ... and put directories first ...
-                | QDir::SortFlag::IgnoreCase) // ... and ignore casing
-    , textViewerFont(Settings::defaultTextViewerFont())
+    , settings(Settings())
     , sortActionGroup(QActionGroup(this))
     , whatFirstGroup(QActionGroup(this))
 {
     ui->setupUi(this);
 
     // load any previously saved settings - if any
-    {
-        Settings settings;
-        settings.load();
-
-        textViewerFont = settings.getTextViewerFont();
-
-        putSettingsIntoGui(settings, true);
-    }
+    settings.load();
+    putSettingsIntoGui(settings, true);
 
     fillTreeWidget(ui->treeWidgetLeft, QDir::homePath());
     fillTreeWidget(ui->treeWidgetRight, QDir::homePath());
@@ -57,7 +46,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::textViewerFontChanged(const QFont &new_font)
 {
-    textViewerFont = new_font;
+    settings.setTextViewerFont(new_font);
 }
 
 void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
@@ -79,8 +68,8 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
             dir = QDir(dir.canonicalPath());
         }
     }
-    dir.setSorting(sortFlags);
-    dir.setFilter(filters);
+    dir.setSorting(settings.getSortFlags());
+    dir.setFilter(settings.getFilters());
     const QFileInfoList list = dir.entryInfoList();
 
     treeWidget->clear();
@@ -493,7 +482,7 @@ void MainWindow::btnViewClicked()
         delete viewer;
         return;
     }
-    viewer->setFont(textViewerFont);
+    viewer->setFont(settings.getTextViewerFont());
     viewer->setWindowModality(Qt::WindowModality::WindowModal);
     viewer->show();
 
@@ -576,12 +565,14 @@ void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRe
     ui->actionSortDirectoriesFirst->setChecked(new_sort_flags.testFlag(QDir::SortFlag::DirsFirst));
 
     // Check whether tree widgets need a refresh.
-    const bool needs_refresh = (new_filters != filters) || (new_sort_flags != sortFlags);
+    const bool needs_refresh = (new_filters != this->settings.getFilters())
+                               || (new_sort_flags != this->settings.getSortFlags());
 
     // New values for filters and sort flags need to be set before a potential
     // refresh happens, because the refresh uses the currently set flags.
-    filters = new_filters;
-    sortFlags = new_sort_flags;
+    this->settings.setFilters(new_filters);
+    this->settings.setSortFlags(new_sort_flags);
+    this->settings.setTextViewerFont(settings.getTextViewerFont());
 
     if (needs_refresh && !avoidRefresh)
     {
@@ -623,73 +614,67 @@ void MainWindow::actionRefreshTriggered()
 
 void MainWindow::actionSaveSettingsTriggered()
 {
-    Settings settings;
-    settings.setFilters(filters);
-    settings.setSortFlags(sortFlags);
-    settings.setTextViewerFont(textViewerFont);
-
     settings.save();
 }
 
 void MainWindow::actionLoadSettingsTriggered()
 {
-    Settings settings;
-    settings.load();
+    Settings loaded_settings;
+    loaded_settings.load();
 
-    putSettingsIntoGui(settings);
+    putSettingsIntoGui(loaded_settings);
 }
 
 void MainWindow::actionRestoreDefaultSettingsTriggered()
 {
-    Settings settings;
-    settings.resetToDefaults();
-    textViewerFont = settings.getTextViewerFont();
+    Settings restored_settings;
+    restored_settings.resetToDefaults();
 
-    putSettingsIntoGui(settings);
+    putSettingsIntoGui(restored_settings);
 }
 
 void MainWindow::actionShowHiddenFilesTriggered(bool checked)
 {
-    qDebug() << "Old filter setting: " << filters;
+    qDebug() << "Old filter setting: " << settings.getFilters();
     if (checked)
     {
-        filters |= QDir::Filter::Hidden;
+        settings.setFilters(settings.getFilters() | QDir::Filter::Hidden);
     }
     else
     {
-        filters ^= QDir::Filter::Hidden;
+        settings.setFilters(settings.getFilters() ^ QDir::Filter::Hidden);
     }
-    qDebug() << "New filter setting: " << filters;
+    qDebug() << "New filter setting: " << settings.getFilters();
     refreshBothViews();
 }
 
 void MainWindow::actionShowSystemFilesTriggered(bool checked)
 {
-    qDebug() << "Old filter setting: " << filters;
+    qDebug() << "Old filter setting: " << settings.getFilters();
     if (checked)
     {
-        filters |= QDir::Filter::System;
+        settings.setFilters(settings.getFilters() | QDir::Filter::System);
     }
     else
     {
-        filters ^= QDir::Filter::System;
+        settings.setFilters(settings.getFilters() ^ QDir::Filter::System);
     }
-    qDebug() << "New filter setting: " << filters;
+    qDebug() << "New filter setting: " << settings.getFilters();
     refreshBothViews();
 }
 
 void MainWindow::actionHideFilesTriggered(bool checked)
 {
-    qDebug() << "Old filter setting: " << filters;
+    qDebug() << "Old filter setting: " << settings.getFilters();
     if (checked)
     {
-        filters ^= QDir::Filter::Files;
+        settings.setFilters(settings.getFilters() ^ QDir::Filter::Files);
     }
     else
     {
-        filters |= QDir::Filter::Files;
+        settings.setFilters(settings.getFilters() | QDir::Filter::Files);
     }
-    qDebug() << "New filter setting: " << filters;
+    qDebug() << "New filter setting: " << settings.getFilters();
     refreshBothViews();
 }
 
@@ -700,7 +685,7 @@ void MainWindow::actionSortBySomethingTriggered(bool checked)
         return;
     }
 
-    qDebug() << "Old sort setting: " << sortFlags;
+    qDebug() << "Old sort setting: " << settings.getSortFlags();
 
     QDir::SortFlag sortByFlag = QDir::SortFlag::Name;
     if (sender() == ui->actionSortByName)
@@ -714,52 +699,53 @@ void MainWindow::actionSortBySomethingTriggered(bool checked)
 
     // clear other "sort by ..." flags, because only one of them can be used
     // Note: QDir::SortFlag::Name is zero, so it needs not to be tested.
+    const auto sortFlags = settings.getSortFlags();
     if (sortFlags.testFlag(QDir::SortFlag::Time))
-        sortFlags ^= QDir::SortFlag::Time;
+        settings.setSortFlags(settings.getSortFlags() ^ QDir::SortFlag::Time);
     if (sortFlags.testFlag(QDir::SortFlag::Size))
-        sortFlags ^= QDir::SortFlag::Size;
+        settings.setSortFlags(settings.getSortFlags() ^ QDir::SortFlag::Size);
     if (sortFlags.testFlag(QDir::SortFlag::Type))
-        sortFlags ^= QDir::SortFlag::Type;
+        settings.setSortFlags(settings.getSortFlags() ^ QDir::SortFlag::Type);
 
     // Set new sort flag.
-    sortFlags |= sortByFlag;
-    qDebug() << "New sort setting: " << sortFlags;
+    settings.setSortFlags(settings.getSortFlags() | sortByFlag);
+    qDebug() << "New sort setting: " << settings.getSortFlags();
     refreshBothViews();
 }
 
 void MainWindow::actionReverseSortTriggered(bool checked)
 {
-    qDebug() << "Old sort setting: " << sortFlags;
+    qDebug() << "Old sort setting: " << settings.getSortFlags();
     if (checked)
     {
-        sortFlags |= QDir::SortFlag::Reversed;
+        settings.setSortFlags(settings.getSortFlags() | QDir::SortFlag::Reversed);
     }
     else
     {
-        sortFlags ^= QDir::SortFlag::Reversed;
+        settings.setSortFlags(settings.getSortFlags() ^ QDir::SortFlag::Reversed);
     }
-    qDebug() << "New sort setting: " << sortFlags;
+    qDebug() << "New sort setting: " << settings.getSortFlags();
     refreshBothViews();
 }
 
 void MainWindow::actionSortIgnoreCaseTriggered(bool checked)
 {
-    qDebug() << "Old sort setting: " << sortFlags;
+    qDebug() << "Old sort setting: " << settings.getSortFlags();
     if (checked)
     {
-        sortFlags |= QDir::SortFlag::IgnoreCase;
+        settings.setSortFlags(settings.getSortFlags() | QDir::SortFlag::IgnoreCase);
     }
     else
     {
-        sortFlags ^= QDir::SortFlag::IgnoreCase;
+        settings.setSortFlags(settings.getSortFlags() ^ QDir::SortFlag::IgnoreCase);
     }
-    qDebug() << "New sort setting: " << sortFlags;
+    qDebug() << "New sort setting: " << settings.getSortFlags();
     refreshBothViews();
 }
 
 void MainWindow::actionSortSomethingFirstTriggered(bool checked)
 {
-    qDebug() << "Old sort setting: " << sortFlags;
+    qDebug() << "Old sort setting: " << settings.getSortFlags();
     QDir::SortFlag sortFirstFlag = QDir::SortFlag::DirsFirst;
     if (sender() == ui->actionSortFilesFirst)
     {
@@ -772,21 +758,21 @@ void MainWindow::actionSortSomethingFirstTriggered(bool checked)
         const QDir::SortFlag otherFlag = sortFirstFlag == QDir::SortFlag::DirsFirst
                                              ? QDir::SortFlag::DirsLast
                                              : QDir::SortFlag::DirsFirst;
-        if (sortFlags.testFlag(otherFlag))
+        if (settings.getSortFlags().testFlag(otherFlag))
         {
-            sortFlags ^= otherFlag;
+            settings.setSortFlags(settings.getSortFlags() ^ otherFlag);
         }
         // set flag
-        sortFlags |= sortFirstFlag;
+        settings.setSortFlags(settings.getSortFlags() | sortFirstFlag);
     }
     else
     {
         // clear flag
-        if (sortFlags.testFlag(sortFirstFlag))
+        if (settings.getSortFlags().testFlag(sortFirstFlag))
         {
-            sortFlags ^= sortFirstFlag;
+            settings.setSortFlags(settings.getSortFlags() ^ sortFirstFlag);
         }
     }
-    qDebug() << "New sort setting: " << sortFlags;
+    qDebug() << "New sort setting: " << settings.getSortFlags();
     refreshBothViews();
 }
