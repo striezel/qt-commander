@@ -18,6 +18,10 @@ public:
     explicit TextViewWindow(QWidget* parent = nullptr);
     ~TextViewWindow();
 
+    /// Loads the file specified by path as text file.
+    ///
+    /// Returns true, if text was successfully loaded.
+    /// Returns false otherwise.
     bool loadTextFile(const QString& path);
 
 protected:
@@ -28,7 +32,11 @@ protected:
 private:
     Ui::TextViewWindow *ui;
 
+    /// Scrolls the text widget back to the top.
     void scrollToTop();
+
+    /// Set the system's recommended fixed-size font for the text widget.
+    void setMonospacedFont();
 };
 
 #endif // TEXTVIEWWINDOW_H

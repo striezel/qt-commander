@@ -53,6 +53,9 @@
    <property name="text">
     <string>Schließen</string>
    </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
   </action>
  </widget>
  <resources/>

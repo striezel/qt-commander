@@ -1,6 +1,7 @@
 #include "textviewwindow.h"
 #include "ui_textviewwindow.h"
 
+#include <QDebug>
 #include <QFile>
 #include <QScrollBar>
 #include <QTextStream>
@@ -12,6 +13,8 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->actionExit, &QAction::triggered, this, &TextViewWindow::close);
+
+    setMonospacedFont();
 }
 
 TextViewWindow::~TextViewWindow()
@@ -37,8 +40,6 @@ bool TextViewWindow::loadTextFile(const QString &path)
     }
     ui->plainTextEdit->setDocumentTitle(file.fileName());
     file.close();
-
-    scrollToTop();
 
     this->setWindowTitle("Textbetrachter - " + path);
 
@@ -68,4 +69,11 @@ void TextViewWindow::scrollToTop()
     }
 
     scrollBar->setValue(scrollBar->minimum());
+}
+
+void TextViewWindow::setMonospacedFont()
+{
+    QFont font = QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont);
+    qDebug() << "Setting font to " << font;
+    ui->plainTextEdit->setFont(font);
 }
