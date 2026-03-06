@@ -1,5 +1,6 @@
 #include "settings.h"
 #include <QCoreApplication>
+#include <QFontDatabase>
 #include <QSettings>
 
 const QDir::Filters Settings::defaultFilters{QDir::Filter::AllEntries
@@ -14,12 +15,19 @@ const QDir::SortFlags Settings::defaultSortFlags{QDir::SortFlag::Name
 Settings::Settings()
     : filters(defaultFilters)
     , sortFlags(defaultSortFlags)
+    , textViewerFont(defaultTextViewerFont())
 {}
+
+QFont Settings::defaultTextViewerFont()
+{
+    return QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont);
+}
 
 void Settings::resetToDefaults()
 {
     filters = defaultFilters;
     sortFlags = defaultSortFlags;
+    textViewerFont = defaultTextViewerFont();
 }
 
 void Settings::save()
@@ -30,6 +38,7 @@ void Settings::save()
 
     settings.setValue("filters", filters.toInt());
     settings.setValue("sort-flags", sortFlags.toInt());
+    settings.setValue("text-viewer-font", textViewerFont);
 }
 
 void Settings::load()
@@ -43,6 +52,9 @@ void Settings::load()
 
     const int sort_flags = settings.value("sort-flags", defaultSortFlags.toInt()).toInt();
     setSortFlags(QDir::SortFlags::fromInt(sort_flags));
+
+    QFont font = settings.value("text-viewer-font", defaultTextViewerFont()).value<QFont>();
+    setTextViewerFont(font);
 }
 
 QDir::Filters Settings::getFilters() const
@@ -86,4 +98,23 @@ void Settings::setSortFlags(QDir::SortFlags flags)
     }
 
     sortFlags = flags;
+}
+
+QFont Settings::getTextViewerFont() const
+{
+    return textViewerFont;
+}
+
+void Settings::setTextViewerFont(QFont font)
+{
+    // If font family is not set or the family does not exist in the font
+    // database, then we got something weird. Fall back to default font in that
+    // case.
+    if (font.family().isEmpty()
+        || !QFontDatabase::families().contains(font.family()))
+    {
+        qDebug() << "Falling back to default font for text viewer.";
+        font = defaultTextViewerFont();
+    }
+    textViewerFont = font;
 }

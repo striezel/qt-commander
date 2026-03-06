@@ -1,6 +1,8 @@
 #include "textviewwindow.h"
 #include "ui_textviewwindow.h"
 
+#include "mainwindow.h"
+
 #include <QDebug>
 #include <QFile>
 #include <QFontDialog>
@@ -21,10 +23,22 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     connect(ui->actionChangeFont, &QAction::triggered, this, &TextViewWindow::actionChangeFontTriggered);
 
     setMonospacedFont();
+
+    if (parent != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
+        connect(this, &TextViewWindow::textViewerFontChanged, castedParent, &MainWindow::textViewerFontChanged);
+    }
 }
 
 TextViewWindow::~TextViewWindow()
 {
+    if (parent() != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
+        disconnect(this, &TextViewWindow::textViewerFontChanged, castedParent, &MainWindow::textViewerFontChanged);
+    }
+
     delete ui;
 }
 
@@ -50,6 +64,11 @@ bool TextViewWindow::loadTextFile(const QString &path)
     this->setWindowTitle("Textbetrachter - " + path);
 
     return true;
+}
+
+void TextViewWindow::setFont(const QFont &font)
+{
+    ui->plainTextEdit->setFont(font);
 }
 
 void TextViewWindow::closeEvent(QCloseEvent *event)
@@ -89,6 +108,7 @@ void TextViewWindow::actionChangeFontTriggered()
     }
 
     ui->plainTextEdit->setFont(new_font);
+    emit textViewerFontChanged(new_font);
 }
 
 void TextViewWindow::scrollToTop()

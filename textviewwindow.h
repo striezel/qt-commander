@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QCloseEvent>
+#include <QFont>
 #include <QString>
 
 namespace Ui {
@@ -23,6 +24,12 @@ public:
     /// Returns true, if text was successfully loaded.
     /// Returns false otherwise.
     bool loadTextFile(const QString& path);
+
+    /// Sets the font for the text widget.
+    void setFont(const QFont& font);
+
+signals:
+    void textViewerFontChanged(const QFont& new_font);
 
 protected:
     void closeEvent(QCloseEvent* event) override;

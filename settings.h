@@ -2,7 +2,7 @@
 #define SETTINGS_H
 
 #include <QDir>
-#include <QSettings>
+#include <QFont>
 
 class Settings
 {
@@ -12,6 +12,8 @@ public:
     static const QDir::Filters defaultFilters;
 
     static const QDir::SortFlags defaultSortFlags;
+
+    static QFont defaultTextViewerFont();
 
     /// Resets all values to their defaults.
     void resetToDefaults();
@@ -33,12 +35,18 @@ public:
     QDir::SortFlags getSortFlags() const;
     void setSortFlags(const QDir::SortFlags flags);
 
+    QFont getTextViewerFont() const;
+    void setTextViewerFont(QFont font);
+
 private:
     /// current filters for shown files/directories - applies to both views
     QDir::Filters filters;
 
     /// current sort flags for shown files/directories - applies to both views
     QDir::SortFlags sortFlags;
+
+    /// the font which is used by the text viewer
+    QFont textViewerFont;
 };
 
 #endif // SETTINGS_H

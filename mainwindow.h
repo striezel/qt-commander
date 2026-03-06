@@ -23,6 +23,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void textViewerFontChanged(const QFont& new_font);
+
 private slots:
     void treeItemDoubleClicked(QTreeWidgetItem* item, int column);
 
@@ -60,6 +63,9 @@ private:
 
     /// current sort flags for shown files/directories - applies to both views
     QDir::SortFlags sortFlags;
+
+    /// current text viewer font
+    QFont textViewerFont;
 
     QActionGroup sortActionGroup;
     QActionGroup whatFirstGroup;

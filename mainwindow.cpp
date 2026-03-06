@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     , sortFlags(QDir::SortFlag::Name // sort by name ...
                 | QDir::SortFlag::DirsFirst // ... and put directories first ...
                 | QDir::SortFlag::IgnoreCase) // ... and ignore casing
+    , textViewerFont(Settings::defaultTextViewerFont())
     , sortActionGroup(QActionGroup(this))
     , whatFirstGroup(QActionGroup(this))
 {
@@ -27,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent)
     {
         Settings settings;
         settings.load();
+
+        textViewerFont = settings.getTextViewerFont();
 
         putSettingsIntoGui(settings, true);
     }
@@ -50,6 +53,11 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::textViewerFontChanged(const QFont &new_font)
+{
+    textViewerFont = new_font;
 }
 
 void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
@@ -485,7 +493,7 @@ void MainWindow::btnViewClicked()
         delete viewer;
         return;
     }
-
+    viewer->setFont(textViewerFont);
     viewer->setWindowModality(Qt::WindowModality::WindowModal);
     viewer->show();
 
@@ -618,6 +626,7 @@ void MainWindow::actionSaveSettingsTriggered()
     Settings settings;
     settings.setFilters(filters);
     settings.setSortFlags(sortFlags);
+    settings.setTextViewerFont(textViewerFont);
 
     settings.save();
 }
@@ -634,6 +643,7 @@ void MainWindow::actionRestoreDefaultSettingsTriggered()
 {
     Settings settings;
     settings.resetToDefaults();
+    textViewerFont = settings.getTextViewerFont();
 
     putSettingsIntoGui(settings);
 }
