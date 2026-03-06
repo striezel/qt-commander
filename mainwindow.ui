@@ -330,16 +330,25 @@
    </property>
   </action>
   <action name="actionSaveSettings">
+   <property name="icon">
+    <iconset theme="document-save"/>
+   </property>
    <property name="text">
     <string>Einstellungen speichern</string>
    </property>
   </action>
   <action name="actionLoadSettings">
+   <property name="icon">
+    <iconset theme="document-open"/>
+   </property>
    <property name="text">
     <string>Einstellungen laden</string>
    </property>
   </action>
   <action name="actionRestoreDefaultSettings">
+   <property name="icon">
+    <iconset theme="document-revert"/>
+   </property>
    <property name="text">
     <string>Auf Standard zurücksetzen</string>
    </property>
