@@ -14,7 +14,7 @@ public:
 
     const QDateTime& focusTime() const;
 protected:
-    // focusInEvent() is protacted in base class, so let's keep it that way.
+    // focusInEvent() is protected in base class, so let's keep it that way.
     void focusInEvent(QFocusEvent* event) override;
 
 private:
