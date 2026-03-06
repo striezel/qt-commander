@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QFile>
+#include <QFontDialog>
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QScrollBar>
@@ -16,6 +17,8 @@ TextViewWindow::TextViewWindow(QWidget *parent)
 
     connect(ui->actionPrint, &QAction::triggered, this, &TextViewWindow::actionPrintTriggered);
     connect(ui->actionExit, &QAction::triggered, this, &TextViewWindow::close);
+
+    connect(ui->actionChangeFont, &QAction::triggered, this, &TextViewWindow::actionChangeFontTriggered);
 
     setMonospacedFont();
 }
@@ -74,6 +77,18 @@ void TextViewWindow::actionPrintTriggered()
 
     printer.setDocName(ui->plainTextEdit->documentTitle());
     ui->plainTextEdit->print(&printer);
+}
+
+void TextViewWindow::actionChangeFontTriggered()
+{
+    bool ok = false;
+    const QFont new_font = QFontDialog::getFont(&ok, ui->plainTextEdit->font(), this);
+    if (!ok)
+    {
+        return;
+    }
+
+    ui->plainTextEdit->setFont(new_font);
 }
 
 void TextViewWindow::scrollToTop()

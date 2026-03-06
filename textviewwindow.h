@@ -31,6 +31,7 @@ protected:
 
 private slots:
     void actionPrintTriggered();
+    void actionChangeFontTriggered();
 
 private:
     Ui::TextViewWindow *ui;

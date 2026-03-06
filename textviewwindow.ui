@@ -40,7 +40,14 @@
     <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Optionen</string>
+    </property>
+    <addaction name="actionChangeFont"/>
+   </widget>
    <addaction name="menuDatei"/>
+   <addaction name="menuOptions"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
@@ -63,6 +70,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionChangeFont">
+   <property name="text">
+    <string>Schriftart ändern ...</string>
    </property>
   </action>
  </widget>
