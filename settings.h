@@ -13,9 +13,18 @@ public:
 
     static const QDir::SortFlags defaultSortFlags;
 
+    /// Resets all values to their defaults.
     void resetToDefaults();
 
+    /// Saves the settings.
+    ///
+    /// Currently, the save mechanism uses a .ini file, but that may or may not
+    /// change in future versions.
     void save();
+
+    /// Loads previously saved settings.
+    ///
+    /// If settings cannot be loaded, it falls back to default values.
     void load();
 
     QDir::Filters getFilters() const;

@@ -1,4 +1,5 @@
 #include "settings.h"
+#include <QCoreApplication>
 #include <QSettings>
 
 const QDir::Filters Settings::defaultFilters{QDir::Filter::AllEntries
@@ -23,7 +24,9 @@ void Settings::resetToDefaults()
 
 void Settings::save()
 {
-    QSettings settings(QSettings::IniFormat, QSettings::UserScope, "Example Organization", "Qt Commander");
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope,
+                       QCoreApplication::organizationName(),
+                       QCoreApplication::applicationName());
 
     settings.setValue("filters", filters.toInt());
     settings.setValue("sort-flags", sortFlags.toInt());
@@ -31,7 +34,9 @@ void Settings::save()
 
 void Settings::load()
 {
-    QSettings settings(QSettings::IniFormat, QSettings::UserScope, "Example Organization", "Qt Commander");
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope,
+                       QCoreApplication::organizationName(),
+                       QCoreApplication::applicationName());
 
     const int filters = settings.value("filters", defaultFilters.toInt()).toInt();
     setFilters(QDir::Filters::fromInt(filters));
