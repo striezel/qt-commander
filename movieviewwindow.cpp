@@ -120,7 +120,7 @@ void MovieViewWindow::btnPauseClicked()
         return;
     }
 
-    movie->setPaused(true);
+    movie->setPaused(movie->state() != QMovie::MovieState::Paused);
 }
 
 void MovieViewWindow::actionAutoStartVideosTriggered(bool checked)
