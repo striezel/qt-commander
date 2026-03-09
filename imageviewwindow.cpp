@@ -94,11 +94,12 @@ void ImageViewWindow::rescaleToFit()
         {
             return;
         }
-        qDebug() << "rescaled size:" << rescaled.size();
+        const QSize re_size = rescaled.size();
+        qDebug() << "rescaled size:" << re_size;
         ui->label->setPixmap(rescaled);
-        double percentage = lbl_size.height() > lbl_size.width()
-                                ? (lbl_size.height() * 100.0 / img_size.height())
-                                : (lbl_size.width() * 100.0 / img_size.width());
+        double percentage = img_size.height() > img_size.width()
+                                ? (re_size.height() * 100.0 / img_size.height())
+                                : (re_size.width() * 100.0 / img_size.width());
         qDebug() << "percentage: " << percentage;
         percentage = std::round(percentage * 10.0) / 10.0;
         qDebug() << "percentage rounded: " << percentage;
