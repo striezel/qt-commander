@@ -206,6 +206,8 @@
     <property name="title">
      <string>Info</string>
     </property>
+    <addaction name="actionAboutQtCommander"/>
+    <addaction name="separator"/>
     <addaction name="actionAboutQt"/>
    </widget>
    <addaction name="menuFile"/>
@@ -366,6 +368,14 @@
    </property>
    <property name="text">
     <string>Über Qt</string>
+   </property>
+  </action>
+  <action name="actionAboutQtCommander">
+   <property name="icon">
+    <iconset theme="dialog-information"/>
+   </property>
+   <property name="text">
+    <string>Über Qt Commander ...</string>
    </property>
   </action>
  </widget>

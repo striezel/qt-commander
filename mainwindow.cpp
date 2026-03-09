@@ -678,6 +678,7 @@ void MainWindow::connectMenuActions()
     connect(ui->actionLoadSettings, &QAction::triggered, this, &MainWindow::actionLoadSettingsTriggered);
     connect(ui->actionRestoreDefaultSettings, &QAction::triggered, this, &MainWindow::actionRestoreDefaultSettingsTriggered);
 
+    connect(ui->actionAboutQtCommander, &QAction::triggered, this, &MainWindow::actionAboutQtCmdrTriggered);
     connect(ui->actionAboutQt, &QAction::triggered, this, &MainWindow::actionAboutQtTriggered);
 }
 
@@ -705,6 +706,12 @@ void MainWindow::actionRestoreDefaultSettingsTriggered()
     restored_settings.resetToDefaults();
 
     putSettingsIntoGui(restored_settings);
+}
+
+void MainWindow::actionAboutQtCmdrTriggered()
+{
+    QString message = QCoreApplication::applicationName() + " " + QCoreApplication::applicationVersion();
+    QMessageBox::about(this, QCoreApplication::applicationName(), message);
 }
 
 void MainWindow::actionAboutQtTriggered()

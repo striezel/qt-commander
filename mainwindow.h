@@ -53,6 +53,7 @@ private slots:
     void actionLoadSettingsTriggered();
     void actionRestoreDefaultSettingsTriggered();
 
+    void actionAboutQtCmdrTriggered();
     void actionAboutQtTriggered();
 
 private:
