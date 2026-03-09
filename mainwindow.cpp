@@ -479,17 +479,6 @@ void MainWindow::btnViewClicked()
     const bool is_supported_image = detection.isSupportedImageFormat(mime);
     const bool is_movie = detection.isMovieFormat(mime);
     const bool is_supported_movie = detection.isSupportedMovieFormat(mime);
-    qDebug() << "MIME type:" << mime;
-    qDebug() << "is_supported_image:" << is_supported_image;
-    qDebug() << "is_movie:          " << is_movie;
-    qDebug() << "is_supported_movie:" << is_supported_movie;
-
-    qDebug() << "Supported movie formats:";
-    for (const auto& elem: QMovie::supportedFormats())
-    {
-        qDebug() << elem;
-    }
-    qDebug() << "End of supported movie formats.";
 
     // Inform user of unsupported video format and that we will be using the
     // text viewer for that. Let the user chose whether to continue here.
@@ -506,25 +495,7 @@ void MainWindow::btnViewClicked()
         }
     }
 
-    if (is_supported_image)
-    {
-        // load as image
-        ImageViewWindow* viewer = new ImageViewWindow(this);
-        if (!viewer->loadImageFile(selectedFile))
-        {
-            QMessageBox::critical(
-                this, "Fehler beim Öffnen der Datei",
-                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
-            delete viewer;
-            return;
-        }
-        viewer->setWindowModality(Qt::WindowModality::WindowModal);
-        viewer->show();
-
-        // show() returns immediately, so the deletion of viewer is handled by the
-        // ImageViewWindow itself in its closeEvent();
-    }
-    else if (is_supported_movie)
+    if (is_supported_movie)
     {
         // load as movie
         MovieViewWindow* viewer = new MovieViewWindow(this);
@@ -541,6 +512,24 @@ void MainWindow::btnViewClicked()
 
         // show() returns immediately, so the deletion of viewer is handled by the
         // MovieViewWindow itself in its closeEvent();
+    }
+    else if (is_supported_image)
+    {
+        // load as image
+        ImageViewWindow* viewer = new ImageViewWindow(this);
+        if (!viewer->loadImageFile(selectedFile))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Öffnen der Datei",
+                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+            delete viewer;
+            return;
+        }
+        viewer->setWindowModality(Qt::WindowModality::WindowModal);
+        viewer->show();
+
+        // show() returns immediately, so the deletion of viewer is handled by the
+        // ImageViewWindow itself in its closeEvent();
     }
     else
     {
