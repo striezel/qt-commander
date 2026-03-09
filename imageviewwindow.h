@@ -26,6 +26,8 @@ protected:
     void closeEvent(QCloseEvent* event) override;
     void showEvent(QShowEvent* event) override;
     void resizeEvent(QResizeEvent *event) override;
+private slots:
+    void actionSupportedFileFormatsTriggered();
 private:
     Ui::ImageViewWindow *ui;
 

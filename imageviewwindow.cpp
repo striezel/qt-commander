@@ -1,6 +1,9 @@
 #include "imageviewwindow.h"
 #include "ui_imageviewwindow.h"
 
+#include <QImageReader>
+#include <QMessageBox>
+
 ImageViewWindow::ImageViewWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::ImageViewWindow)
@@ -9,6 +12,8 @@ ImageViewWindow::ImageViewWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->actionExit, &QAction::triggered, this, &ImageViewWindow::close);
+    connect(ui->actionSupportedFileFormats, &QAction::triggered,
+            this, &ImageViewWindow::actionSupportedFileFormatsTriggered);
 }
 
 ImageViewWindow::~ImageViewWindow()
@@ -59,6 +64,16 @@ void ImageViewWindow::resizeEvent(QResizeEvent *event)
     qDebug() << "ImageViewWindow::resizeEvent";
     rescaleToFit();
     this->QMainWindow::resizeEvent(event);
+}
+
+void ImageViewWindow::actionSupportedFileFormatsTriggered()
+{
+    QString message = "Der Bildbetrachter unterstützt folgende MIME-Typen:\n";
+    for (const QByteArray& element: QImageReader::supportedMimeTypes())
+    {
+        message = message + "\n" + element;
+    }
+    QMessageBox::about(this, "Unterstützte Dateiformate", message);
 }
 
 void ImageViewWindow::rescaleToFit()
