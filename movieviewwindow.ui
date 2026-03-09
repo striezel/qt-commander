@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MovieViewWindow</class>
+ <widget class="QMainWindow" name="MovieViewWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>421</width>
+    <height>514</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Videobetrachter</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="media-playback-start"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>401</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hier könnte ein Video angezeigt werden.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnStart">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>430</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+    <property name="icon">
+     <iconset theme="media-playback-start"/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnStop">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>430</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Stop</string>
+    </property>
+    <property name="icon">
+     <iconset theme="media-playback-stop"/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPause">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>430</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Pause</string>
+    </property>
+    <property name="icon">
+     <iconset theme="media-playback-pause"/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>421</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Datei</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuInfo">
+    <property name="title">
+     <string>Info</string>
+    </property>
+    <addaction name="actionSupportedFileTypes"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuInfo"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset theme="window-close"/>
+   </property>
+   <property name="text">
+    <string>Schließen</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+  </action>
+  <action name="actionSupportedFileTypes">
+   <property name="icon">
+    <iconset theme="dialog-information"/>
+   </property>
+   <property name="text">
+    <string>Unterstützte Dateiformate</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

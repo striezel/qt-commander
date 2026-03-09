@@ -7,6 +7,7 @@
 #include "createdirectorydialog.h"
 #include "dirutils.h"
 #include "imageviewwindow.h"
+#include "movieviewwindow.h"
 #include "textviewwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -474,27 +475,38 @@ void MainWindow::btnViewClicked()
         return;
     }
 
-    const bool is_image = detection.isSupportedImageFormat(info);
+    const QMimeType mime = detection.getType(info);
+    const bool is_supported_image = detection.isSupportedImageFormat(mime);
+    const bool is_movie = detection.isMovieFormat(mime);
+    const bool is_supported_movie = detection.isSupportedMovieFormat(mime);
+    qDebug() << "MIME type:" << mime;
+    qDebug() << "is_supported_image:" << is_supported_image;
+    qDebug() << "is_movie:          " << is_movie;
+    qDebug() << "is_supported_movie:" << is_supported_movie;
 
-    if (!is_image)
+    qDebug() << "Supported movie formats:";
+    for (const auto& elem: QMovie::supportedFormats())
     {
-        TextViewWindow* viewer = new TextViewWindow(this);
-        if (!viewer->loadTextFile(selectedFile))
+        qDebug() << elem;
+    }
+    qDebug() << "End of supported movie formats.";
+
+    // Inform user of unsupported video format and that we will be using the
+    // text viewer for that. Let the user chose whether to continue here.
+    if (is_movie && !is_supported_movie)
+    {
+        const int answer = QMessageBox::warning(
+            this, "Format wird nicht unterstützt", "Wiedergabe für das Videoformat '"
+                + mime.name() + "' wird nicht unterstützt. Stattdessen wird der"
+                + " Textbetrachter verwendet. Soll die Datei als Text angezeigt werden?",
+            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+        if (answer != QMessageBox::Yes)
         {
-            QMessageBox::critical(
-                this, "Fehler beim Öffnen der Datei",
-                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
-            delete viewer;
             return;
         }
-        viewer->setFont(settings.getTextViewerFont());
-        viewer->setWindowModality(Qt::WindowModality::WindowModal);
-        viewer->show();
-
-        // show() returns immediately, so the deletion of viewer is handled by the
-        // TextViewWindow itself in its closeEvent();
     }
-    else
+
+    if (is_supported_image)
     {
         // load as image
         ImageViewWindow* viewer = new ImageViewWindow(this);
@@ -511,6 +523,42 @@ void MainWindow::btnViewClicked()
 
         // show() returns immediately, so the deletion of viewer is handled by the
         // ImageViewWindow itself in its closeEvent();
+    }
+    else if (is_supported_movie)
+    {
+        // load as movie
+        MovieViewWindow* viewer = new MovieViewWindow(this);
+        if (!viewer->loadMovieFile(selectedFile))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Öffnen der Datei",
+                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+            delete viewer;
+            return;
+        }
+        viewer->setWindowModality(Qt::WindowModality::WindowModal);
+        viewer->show();
+
+        // show() returns immediately, so the deletion of viewer is handled by the
+        // MovieViewWindow itself in its closeEvent();
+    }
+    else
+    {
+        TextViewWindow* viewer = new TextViewWindow(this);
+        if (!viewer->loadTextFile(selectedFile))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Öffnen der Datei",
+                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+            delete viewer;
+            return;
+        }
+        viewer->setFont(settings.getTextViewerFont());
+        viewer->setWindowModality(Qt::WindowModality::WindowModal);
+        viewer->show();
+
+        // show() returns immediately, so the deletion of viewer is handled by the
+        // TextViewWindow itself in its closeEvent();
     }
 }
 

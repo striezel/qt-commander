@@ -1,6 +1,7 @@
 #include "filetypedetection.h"
 
 #include <QImageReader>
+#include <QMovie>
 
 FileTypeDetection::FileTypeDetection()
 {
@@ -21,3 +22,12 @@ bool FileTypeDetection::isSupportedImageFormat(const QFileInfo &info) const
     return isSupportedImageFormat(getType(info));
 }
 
+bool FileTypeDetection::isSupportedMovieFormat(const QMimeType &mimeType) const
+{
+    return QMovie::supportedFormats().contains(mimeType.name());
+}
+
+bool FileTypeDetection::isMovieFormat(const QMimeType &mimeType) const
+{
+    return mimeType.name().startsWith("video/");
+}
