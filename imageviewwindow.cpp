@@ -1,6 +1,7 @@
 #include "imageviewwindow.h"
 #include "ui_imageviewwindow.h"
 
+#include <QDebug>
 #include <QImageReader>
 #include <QMessageBox>
 
