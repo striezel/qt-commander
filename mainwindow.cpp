@@ -85,13 +85,16 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
     const QIcon directory_icon = icon_provider.icon(QAbstractFileIconProvider::Folder);
     const QIcon file_icon = icon_provider.icon(QAbstractFileIconProvider::File);
 
+    const QLocale loc = locale();
+
     for (const QFileInfo& info: list)
     {
         QStringList data;
         data.append(info.fileName());
         const bool isDirectory = info.isDir();
         data.append(!isDirectory ? QString::number(info.size()) : "Verzeichnis");
-        data.append(info.lastModified().toString());
+        //data.append(info.lastModified().toString(Qt::DateFormat::TextDate));
+        data.append(loc.toString(info.lastModified(), QLocale::NarrowFormat));
 
         QTreeWidgetItem* item = new QTreeWidgetItem(data);
         if (info.isDir())
