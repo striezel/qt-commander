@@ -677,6 +677,8 @@ void MainWindow::connectMenuActions()
     connect(ui->actionSaveSettings, &QAction::triggered, this, &MainWindow::actionSaveSettingsTriggered);
     connect(ui->actionLoadSettings, &QAction::triggered, this, &MainWindow::actionLoadSettingsTriggered);
     connect(ui->actionRestoreDefaultSettings, &QAction::triggered, this, &MainWindow::actionRestoreDefaultSettingsTriggered);
+
+    connect(ui->actionAboutQt, &QAction::triggered, this, &MainWindow::actionAboutQtTriggered);
 }
 
 void MainWindow::actionRefreshTriggered()
@@ -703,6 +705,11 @@ void MainWindow::actionRestoreDefaultSettingsTriggered()
     restored_settings.resetToDefaults();
 
     putSettingsIntoGui(restored_settings);
+}
+
+void MainWindow::actionAboutQtTriggered()
+{
+    QMessageBox::aboutQt(this);
 }
 
 void MainWindow::actionShowHiddenFilesTriggered(bool checked)

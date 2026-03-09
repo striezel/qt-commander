@@ -202,9 +202,16 @@
     <addaction name="separator"/>
     <addaction name="actionRestoreDefaultSettings"/>
    </widget>
+   <widget class="QMenu" name="menuInfo">
+    <property name="title">
+     <string>Info</string>
+    </property>
+    <addaction name="actionAboutQt"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuSettings"/>
+   <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
@@ -351,6 +358,14 @@
    </property>
    <property name="text">
     <string>Auf Standard zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="icon">
+    <iconset theme="dialog-information"/>
+   </property>
+   <property name="text">
+    <string>Über Qt</string>
    </property>
   </action>
  </widget>
