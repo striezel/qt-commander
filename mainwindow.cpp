@@ -51,6 +51,11 @@ void MainWindow::textViewerFontChanged(const QFont &new_font)
     settings.setTextViewerFont(new_font);
 }
 
+void MainWindow::movieViewerAutoStartChanged(const bool autoStart)
+{
+    settings.setAutoStartVideos(autoStart);
+}
+
 void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
 {
     if ((treeWidget == nullptr) || path.isEmpty())
@@ -507,6 +512,7 @@ void MainWindow::btnViewClicked()
             delete viewer;
             return;
         }
+        viewer->setAutoStartVideos(settings.getAutoStartVideos());
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();
 

@@ -12,10 +12,13 @@ const QDir::SortFlags Settings::defaultSortFlags{QDir::SortFlag::Name
                                                  | QDir::SortFlag::DirsFirst
                                                  | QDir::SortFlag::IgnoreCase};
 
+const bool Settings::defaultAutoStartVideos{false};
+
 Settings::Settings()
     : filters(defaultFilters)
     , sortFlags(defaultSortFlags)
     , textViewerFont(defaultTextViewerFont())
+    , autoStartVideos(defaultAutoStartVideos)
 {}
 
 QFont Settings::defaultTextViewerFont()
@@ -28,6 +31,7 @@ void Settings::resetToDefaults()
     filters = defaultFilters;
     sortFlags = defaultSortFlags;
     textViewerFont = defaultTextViewerFont();
+    autoStartVideos = defaultAutoStartVideos;
 }
 
 void Settings::save()
@@ -39,6 +43,7 @@ void Settings::save()
     settings.setValue("filters", filters.toInt());
     settings.setValue("sort-flags", sortFlags.toInt());
     settings.setValue("text-viewer-font", textViewerFont);
+    settings.setValue("movie-viewer-auto-start", autoStartVideos);
 }
 
 void Settings::load()
@@ -55,6 +60,8 @@ void Settings::load()
 
     QFont font = settings.value("text-viewer-font", defaultTextViewerFont()).value<QFont>();
     setTextViewerFont(font);
+
+    autoStartVideos = settings.value("movie-viewer-auto-start", defaultAutoStartVideos).toBool();
 }
 
 QDir::Filters Settings::getFilters() const
@@ -117,4 +124,14 @@ void Settings::setTextViewerFont(QFont font)
         font = defaultTextViewerFont();
     }
     textViewerFont = font;
+}
+
+bool Settings::getAutoStartVideos() const
+{
+    return autoStartVideos;
+}
+
+void Settings::setAutoStartVideos(const bool autoStart)
+{
+    autoStartVideos = autoStart;
 }

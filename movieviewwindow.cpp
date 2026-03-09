@@ -1,3 +1,4 @@
+#include "mainwindow.h"
 #include "movieviewwindow.h"
 #include "ui_movieviewwindow.h"
 
@@ -11,12 +12,20 @@ MovieViewWindow::MovieViewWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->actionExit, &QAction::triggered, this, &MovieViewWindow::close);
+    connect(ui->actionAutoStartVideos, &QAction::triggered,
+            this, &MovieViewWindow::actionAutoStartVideosTriggered);
     connect(ui->actionSupportedFileTypes, &QAction::triggered,
             this, &MovieViewWindow::actionSupportedFileTypesTriggered);
 
     connect(ui->btnStart, &QPushButton::clicked, this, &MovieViewWindow::btnStartClicked);
     connect(ui->btnStop, &QPushButton::clicked, this, &MovieViewWindow::btnStopClicked);
     connect(ui->btnPause, &QPushButton::clicked, this, &MovieViewWindow::btnPauseClicked);
+
+    if (parent != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
+        connect(this, &MovieViewWindow::autoStartChanged, castedParent, &MainWindow::movieViewerAutoStartChanged);
+    }
 }
 
 MovieViewWindow::~MovieViewWindow()
@@ -26,6 +35,12 @@ MovieViewWindow::~MovieViewWindow()
         movie->stop();
         delete movie;
         movie = nullptr;
+    }
+
+    if (parent() != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
+        disconnect(this, &MovieViewWindow::autoStartChanged, castedParent, &MainWindow::movieViewerAutoStartChanged);
     }
 
     delete ui;
@@ -56,6 +71,11 @@ bool MovieViewWindow::loadMovieFile(const QString &path)
     return true;
 }
 
+void MovieViewWindow::setAutoStartVideos(const bool autoStart)
+{
+    ui->actionAutoStartVideos->setChecked(autoStart);
+}
+
 void MovieViewWindow::closeEvent(QCloseEvent *event)
 {
     // ensure deletion
@@ -63,6 +83,14 @@ void MovieViewWindow::closeEvent(QCloseEvent *event)
 
     // do the usual event handling inherited from base class
     this->QMainWindow::closeEvent(event);
+}
+
+void MovieViewWindow::showEvent(QShowEvent *event)
+{
+    if (ui->actionAutoStartVideos->isChecked())
+    {
+        btnStartClicked();
+    }
 }
 
 void MovieViewWindow::btnStartClicked()
@@ -93,6 +121,11 @@ void MovieViewWindow::btnPauseClicked()
     }
 
     movie->setPaused(true);
+}
+
+void MovieViewWindow::actionAutoStartVideosTriggered(bool checked)
+{
+    emit autoStartChanged(checked);
 }
 
 void MovieViewWindow::actionSupportedFileTypesTriggered()

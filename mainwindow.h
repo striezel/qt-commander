@@ -26,6 +26,7 @@ public:
 
 public slots:
     void textViewerFontChanged(const QFont& new_font);
+    void movieViewerAutoStartChanged(const bool autoStart);
 
 private slots:
     void treeItemDoubleClicked(QTreeWidgetItem* item, int column);

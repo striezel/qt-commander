@@ -15,6 +15,8 @@ public:
 
     static QFont defaultTextViewerFont();
 
+    static const bool defaultAutoStartVideos;
+
     /// Resets all values to their defaults.
     void resetToDefaults();
 
@@ -38,6 +40,8 @@ public:
     QFont getTextViewerFont() const;
     void setTextViewerFont(QFont font);
 
+    bool getAutoStartVideos() const;
+    void setAutoStartVideos(const bool autoStart);
 private:
     /// current filters for shown files/directories - applies to both views
     QDir::Filters filters;
@@ -47,6 +51,9 @@ private:
 
     /// the font which is used by the text viewer
     QFont textViewerFont;
+
+    /// whether videos in movie viewer start automatically
+    bool autoStartVideos;
 };
 
 #endif // SETTINGS_H

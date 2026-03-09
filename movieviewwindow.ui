@@ -81,7 +81,14 @@
     </property>
     <addaction name="actionSupportedFileTypes"/>
    </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <addaction name="actionAutoStartVideos"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuSettings"/>
    <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -102,6 +109,14 @@
    </property>
    <property name="text">
     <string>Unterstützte Dateiformate</string>
+   </property>
+  </action>
+  <action name="actionAutoStartVideos">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Videos automatisch starten</string>
    </property>
   </action>
  </widget>
