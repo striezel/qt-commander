@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "filetypedetection.h"
 #include "settings.h"
 
 #include <QMainWindow>
@@ -62,6 +63,8 @@ private:
 
     QActionGroup sortActionGroup;
     QActionGroup whatFirstGroup;
+
+    FileTypeDetection detection;
 
     void fillTreeWidget(QTreeWidget* treeWidget, const QString& path);
 

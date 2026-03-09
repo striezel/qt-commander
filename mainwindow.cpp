@@ -474,9 +474,9 @@ void MainWindow::btnViewClicked()
         return;
     }
 
-    const bool load_as_text = !info.fileName().endsWith(".png");
+    const bool is_image = detection.isSupportedImageFormat(info);
 
-    if (load_as_text)
+    if (!is_image)
     {
         TextViewWindow* viewer = new TextViewWindow(this);
         if (!viewer->loadTextFile(selectedFile))
@@ -509,7 +509,8 @@ void MainWindow::btnViewClicked()
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();
 
-        // TODO: Ensure proper cleanup of viewer instance.
+        // show() returns immediately, so the deletion of viewer is handled by the
+        // ImageViewWindow itself in its closeEvent();
     }
 }
 
