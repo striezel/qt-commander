@@ -4,6 +4,7 @@
 #include <QFileIconProvider>
 #include <QMessageBox>
 
+#include "audioplayerwindow.h"
 #include "createdirectorydialog.h"
 #include "dirutils.h"
 #include "imageviewwindow.h"
@@ -517,6 +518,10 @@ void MainWindow::btnViewClicked()
     const bool is_supported_image = detection.isSupportedImageFormat(mime);
     const bool is_movie = detection.isMovieFormat(mime);
     const bool is_supported_movie = detection.isSupportedMovieFormat(mime);
+    const bool is_audio = detection.isAudioFormat(mime);
+
+    qDebug() << "MIME type:" << mime.name();
+    qDebug() << "Is audio:" << is_audio;
 
     // Inform user of unsupported video format and that we will be using the
     // text viewer for that. Let the user chose whether to continue here.
@@ -533,7 +538,26 @@ void MainWindow::btnViewClicked()
         }
     }
 
-    if (is_supported_movie)
+    if (is_audio)
+    {
+        // load as audio file
+        AudioPlayerWindow* viewer = new AudioPlayerWindow(this);
+        if (!viewer->loadAudioFile(selectedFile))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Öffnen der Datei",
+                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+            delete viewer;
+            return;
+        }
+        // viewer->setAutoStartVideos(settings.getAutoStartVideos());
+        viewer->setWindowModality(Qt::WindowModality::WindowModal);
+        viewer->show();
+
+        // show() returns immediately, so the deletion of viewer is handled by the
+        // AudioPlayerWindow itself in its closeEvent();
+    }
+    else if (is_supported_movie)
     {
         // load as movie
         MovieViewWindow* viewer = new MovieViewWindow(this);

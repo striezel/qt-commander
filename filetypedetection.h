@@ -30,6 +30,9 @@ public:
     /// by the movie viewer. Use isSupportedMovieFormat() to check for support.
     bool isMovieFormat(const QMimeType& mimeType) const;
 
+    /// Checks whether the given MIME type is an audio format.
+    bool isAudioFormat(const QMimeType& mimeType) const;
+
 private:
     QMimeDatabase mimeDb;
 };

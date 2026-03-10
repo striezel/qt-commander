@@ -14,6 +14,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS PrintSupport)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Multimedia)
+# find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS MultimediaWidgets)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
@@ -36,6 +38,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         imageviewwindow.h imageviewwindow.cpp imageviewwindow.ui
         filetypedetection.h filetypedetection.cpp
         movieviewwindow.h movieviewwindow.cpp movieviewwindow.ui
+        audioplayerwindow.h audioplayerwindow.cpp audioplayerwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Projekt_Dateimanager_Dirk APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -59,6 +62,8 @@ target_link_libraries(Projekt_Dateimanager_Dirk PRIVATE Qt${QT_VERSION_MAJOR}::W
 target_link_libraries(Projekt_Dateimanager_Dirk PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(Projekt_Dateimanager_Dirk PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(Projekt_Dateimanager_Dirk PRIVATE Qt${QT_VERSION_MAJOR}::PrintSupport)
+target_link_libraries(Projekt_Dateimanager_Dirk PRIVATE Qt${QT_VERSION_MAJOR}::Multimedia)
+# target_link_libraries(Projekt_Dateimanager_Dirk PRIVATE Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

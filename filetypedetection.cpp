@@ -9,7 +9,6 @@ FileTypeDetection::FileTypeDetection()
 
 QMimeType FileTypeDetection::getType(const QFileInfo &info) const
 {
-
     return mimeDb.mimeTypeForFile(info);
 }
 
@@ -45,4 +44,9 @@ bool FileTypeDetection::isSupportedMovieFormat(const QMimeType &mimeType) const
 bool FileTypeDetection::isMovieFormat(const QMimeType &mimeType) const
 {
     return mimeType.name().startsWith("video/");
+}
+
+bool FileTypeDetection::isAudioFormat(const QMimeType &mimeType) const
+{
+    return mimeType.name().startsWith("audio/");
 }
