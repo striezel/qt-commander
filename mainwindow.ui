@@ -87,6 +87,9 @@
       <property name="text">
        <string>F3 Anzeigen</string>
       </property>
+      <property name="icon">
+       <iconset theme="edit-find"/>
+      </property>
       <property name="shortcut">
        <string>F3</string>
       </property>
