@@ -1,6 +1,5 @@
 #include "dirutils.h"
 
-#include <QDebug>
 #include <QFile>
 #include <QString>
 
@@ -20,9 +19,6 @@ bool DirUtils::isParentOf(const QDir& parent, const QDir& potentialChild)
         childPath = potentialChild.absolutePath();
     }
 
-    qDebug() << "parent path:" << parentPath;
-    qDebug() << "child path:" << childPath;
-    qDebug() << "separator:" << QDir::separator();
 #ifdef _WIN32
     // QDir seems to use '/' as separator on Windows, too, so let's check that,
     // too, even if we are on Windows.
@@ -58,19 +54,16 @@ bool DirUtils::copyRecursively(const QDir &source, const QDir &destination)
 {
     if (!source.exists())
     {
-        qDebug() << "copyRecursively: source does not exist.";
         return false;
     }
 
     if (destination.exists())
     {
-        qDebug() << "copyRecursively: Destination already exists.";
         return false;
     }
 
     if (!destination.mkdir("."))
     {
-        qDebug() << "copyRecursive: Failed to create directory " << destination.absoluteFilePath(".") << ".";
         return false;
     }
 
@@ -83,8 +76,6 @@ bool DirUtils::copyRecursively(const QDir &source, const QDir &destination)
         {
             if (!QFile::copy(source.absoluteFilePath(info.fileName()), destination.absoluteFilePath(info.fileName())))
             {
-                qDebug() << "copyRecursive: Failed to copy " << source.absoluteFilePath(info.fileName())
-                         << " to " << destination.absoluteFilePath(info.fileName());
                 return false;
             }
         }

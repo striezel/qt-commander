@@ -120,7 +120,6 @@ void Settings::setTextViewerFont(QFont font)
     if (font.family().isEmpty()
         || !QFontDatabase::families().contains(font.family()))
     {
-        qDebug() << "Falling back to default font for text viewer.";
         font = defaultTextViewerFont();
     }
     textViewerFont = font;

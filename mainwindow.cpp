@@ -262,7 +262,6 @@ void MainWindow::btnRemoveClicked()
             name, Qt::MatchCaseSensitive | Qt::MatchFixedString);
         if (found.count() != 1)
         {
-            qDebug() << "Found " << found.count() << " items, but one was expected.";
             return;
         }
         const int indexToTake = other->indexOfTopLevelItem(found.at(0));
@@ -358,8 +357,6 @@ void MainWindow::btnMoveClicked()
 
     const QString source = currentDirectory().absoluteFilePath(name);
     const QString destination = otherDirectory().absoluteFilePath(name);
-    qDebug() << "Source:      " << source;
-    qDebug() << "Destination: " << destination;
     // Move with QFile::rename(). Despite the name QFile it also works for
     // directories, so it's universal.
     if (!QFile::rename(source, destination))
@@ -416,8 +413,6 @@ void MainWindow::btnCopyClicked()
 
     const QString source = currentDirectory().absoluteFilePath(name);
     const QString destination = otherDirectory().absoluteFilePath(name);
-    qDebug() << "Source:      " << source;
-    qDebug() << "Destination: " << destination;
     const QFileInfo info(source);
     if (info.isFile())
     {

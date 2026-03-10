@@ -3,7 +3,6 @@
 
 #include "mainwindow.h"
 
-#include <QDebug>
 #include <QFile>
 #include <QFontDialog>
 #include <QPrintDialog>
@@ -126,6 +125,5 @@ void TextViewWindow::scrollToTop()
 void TextViewWindow::setMonospacedFont()
 {
     QFont font = QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont);
-    qDebug() << "Setting font to " << font;
     ui->plainTextEdit->setFont(font);
 }
