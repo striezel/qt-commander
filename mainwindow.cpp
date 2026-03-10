@@ -61,7 +61,7 @@ void MainWindow::movieViewerAutoStartChanged(const bool autoStart)
     settings.setAutoStartVideos(autoStart);
 }
 
-void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
+void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, const bool selectFirst)
 {
     if ((treeWidget == nullptr) || path.isEmpty())
     {
@@ -145,6 +145,11 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path)
     treeWidget->resizeColumnToContents(2);
     // Column for file name is not adjusted, because that can get way out of
     // hand with longer file names, triggering horizontal scroll bars.
+
+    if (selectFirst)
+    {
+        treeWidget->setCurrentItem(treeWidget->topLevelItem(0));
+    }
 }
 
 bool MainWindow::leftTreeIsLatest() const
@@ -190,20 +195,28 @@ void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
     }
     if (info.isDir())
     {
-        fillTreeWidget(item->treeWidget(), new_path);
+        const bool selectFirstRow = (column < 0);
+        fillTreeWidget(item->treeWidget(), new_path, selectFirstRow);
     }
 }
 
 void MainWindow::leftTreeWidgetActivated(const QModelIndex &idx)
 {
     QTreeWidgetItem* item = ui->treeWidgetLeft->topLevelItem(idx.row());
-    treeItemDoubleClicked(item, idx.column());
+    // The column value is not used by treeItemDoubleClicked(), so we use that
+    // to pass a negative value which signals to auto-select the first row after
+    // the refresh. It's hacky, but there is no way to pass additional
+    // parameters to treeItemDoubleClicked(), because it's a slot that has to
+    // have a certain method signature.
+    treeItemDoubleClicked(item, -1 - idx.column());
 }
 
 void MainWindow::rightTreeWidgetActivated(const QModelIndex &idx)
 {
     QTreeWidgetItem* item = ui->treeWidgetRight->topLevelItem(idx.row());
-    treeItemDoubleClicked(item, idx.column());
+    // Note: See the explanation in leftTreeWidgetActivated() for why we pass a
+    // negative column value to treeItemDoubleClicked().
+    treeItemDoubleClicked(item, -1 - idx.column());
 }
 
 void MainWindow::btnRemoveClicked()
