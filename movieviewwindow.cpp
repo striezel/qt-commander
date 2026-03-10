@@ -130,10 +130,11 @@ void MovieViewWindow::actionAutoStartVideosTriggered(bool checked)
 
 void MovieViewWindow::actionSupportedFileTypesTriggered()
 {
-    QString message = "Der Videobetrachter unterstützt folgende MIME-Typen:\n";
+    QString message = "Der Videobetrachter unterstützt folgende Dateitypen:\n";
     for (const QByteArray& element: QMovie::supportedFormats())
     {
         message = message + "\n" + element;
     }
+    message += "\n\nUnterstützung kann je nach System unterschiedlich ausfallen.";
     QMessageBox::about(this, "Unterstützte Dateiformate", message);
 }

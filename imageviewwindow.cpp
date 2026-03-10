@@ -74,6 +74,7 @@ void ImageViewWindow::actionSupportedFileFormatsTriggered()
     {
         message = message + "\n" + element;
     }
+    message += "\n\nDie Unterstützung kann je nach System und installierten Qt-Modulen variieren.";
     QMessageBox::about(this, "Unterstützte Dateiformate", message);
 }
 
