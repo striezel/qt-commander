@@ -33,6 +33,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->treeWidgetRight, &QTreeWidget::itemDoubleClicked,
             this, &MainWindow::treeItemDoubleClicked);
 
+    connect(ui->treeWidgetLeft, &QTreeWidget::activated,
+            this, &MainWindow::leftTreeWidgetActivated);
+    connect(ui->treeWidgetRight, &QTreeWidget::activated,
+            this, &MainWindow::rightTreeWidgetActivated);
+
     connectButtons();
     setUpActionGroups();
     connectMenuActions();
@@ -187,6 +192,18 @@ void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
     {
         fillTreeWidget(item->treeWidget(), new_path);
     }
+}
+
+void MainWindow::leftTreeWidgetActivated(const QModelIndex &idx)
+{
+    QTreeWidgetItem* item = ui->treeWidgetLeft->topLevelItem(idx.row());
+    treeItemDoubleClicked(item, idx.column());
+}
+
+void MainWindow::rightTreeWidgetActivated(const QModelIndex &idx)
+{
+    QTreeWidgetItem* item = ui->treeWidgetRight->topLevelItem(idx.row());
+    treeItemDoubleClicked(item, idx.column());
 }
 
 void MainWindow::btnRemoveClicked()

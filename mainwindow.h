@@ -30,6 +30,8 @@ public slots:
 
 private slots:
     void treeItemDoubleClicked(QTreeWidgetItem* item, int column);
+    void leftTreeWidgetActivated(const QModelIndex& idx);
+    void rightTreeWidgetActivated(const QModelIndex& idx);
 
     void btnRemoveClicked();
     void btnCreateDirectoryClicked();
