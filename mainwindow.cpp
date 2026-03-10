@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent)
     settings.load();
     putSettingsIntoGui(settings, true);
 
+    ui->treeWidgetLeft->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
+    ui->treeWidgetRight->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
+
     fillTreeWidget(ui->treeWidgetLeft, QDir::homePath());
     fillTreeWidget(ui->treeWidgetRight, QDir::homePath());
 
