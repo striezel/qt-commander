@@ -92,6 +92,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
     QFileIconProvider icon_provider;
     const QIcon directory_icon = icon_provider.icon(QAbstractFileIconProvider::Folder);
     const QIcon file_icon = icon_provider.icon(QAbstractFileIconProvider::File);
+    const bool useProvided = settings.getUseProvidedFileIcons();
 
     const QLocale loc = locale();
 
@@ -105,13 +106,14 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
         data.append(loc.toString(info.lastModified(), QLocale::NarrowFormat));
 
         QTreeWidgetItem* item = new QTreeWidgetItem(data);
+        const QIcon provided_icon = useProvided ? icon_provider.icon(info) : QIcon();
         if (info.isDir())
         {
-            item->setIcon(0, directory_icon);
+            item->setIcon(0, provided_icon.isNull() ? directory_icon : provided_icon);
         }
         else
         {
-            item->setIcon(0, file_icon);
+            item->setIcon(0, provided_icon.isNull() ? file_icon : provided_icon);
         }
         item->setTextAlignment(1, Qt::AlignRight);
         treeWidget->addTopLevelItem(item);
@@ -662,15 +664,16 @@ void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRe
     ui->actionSortFilesFirst->setChecked(new_sort_flags.testFlag(QDir::SortFlag::DirsLast));
     ui->actionSortDirectoriesFirst->setChecked(new_sort_flags.testFlag(QDir::SortFlag::DirsFirst));
 
+    ui->actionUseProvidedIcons->setChecked(settings.getUseProvidedFileIcons());
+
     // Check whether tree widgets need a refresh.
     const bool needs_refresh = (new_filters != this->settings.getFilters())
-                               || (new_sort_flags != this->settings.getSortFlags());
+                               || (new_sort_flags != this->settings.getSortFlags()
+                               || (settings.getUseProvidedFileIcons() != this->settings.getUseProvidedFileIcons()));
 
     // New values for filters and sort flags need to be set before a potential
     // refresh happens, because the refresh uses the currently set flags.
-    this->settings.setFilters(new_filters);
-    this->settings.setSortFlags(new_sort_flags);
-    this->settings.setTextViewerFont(settings.getTextViewerFont());
+    this->settings = settings;
 
     if (needs_refresh && !avoidRefresh)
     {
@@ -697,6 +700,8 @@ void MainWindow::connectMenuActions()
 
     connect(ui->actionSortFilesFirst, &QAction::triggered, this, &MainWindow::actionSortSomethingFirstTriggered);
     connect(ui->actionSortDirectoriesFirst, &QAction::triggered, this, &MainWindow::actionSortSomethingFirstTriggered);
+
+    connect(ui->actionUseProvidedIcons, &QAction::triggered, this, &MainWindow::actionUseProvidedIconsTriggered);
 
     connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
 
@@ -886,5 +891,11 @@ void MainWindow::actionSortSomethingFirstTriggered(bool checked)
         }
     }
     qDebug() << "New sort setting: " << settings.getSortFlags();
+    refreshBothViews();
+}
+
+void MainWindow::actionUseProvidedIconsTriggered(bool checked)
+{
+    settings.setUseProvidedFileIcons(checked);
     refreshBothViews();
 }

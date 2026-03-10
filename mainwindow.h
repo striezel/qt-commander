@@ -50,6 +50,8 @@ private slots:
 
     void actionSortSomethingFirstTriggered(bool checked = false);
 
+    void actionUseProvidedIconsTriggered(bool checked = false);
+
     void actionRefreshTriggered();
 
     void actionSaveSettingsTriggered();

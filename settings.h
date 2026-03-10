@@ -13,6 +13,8 @@ public:
 
     static const QDir::SortFlags defaultSortFlags;
 
+    static const bool defaultUseProvidedFileIcons;
+
     static QFont defaultTextViewerFont();
 
     static const bool defaultAutoStartVideos;
@@ -37,6 +39,9 @@ public:
     QDir::SortFlags getSortFlags() const;
     void setSortFlags(const QDir::SortFlags flags);
 
+    bool getUseProvidedFileIcons() const;
+    void setUseProvidedFileIcons(const bool useProvided);
+
     QFont getTextViewerFont() const;
     void setTextViewerFont(QFont font);
 
@@ -48,6 +53,9 @@ private:
 
     /// current sort flags for shown files/directories - applies to both views
     QDir::SortFlags sortFlags;
+
+    /// whether to use file icons provided by QFileIconProvider
+    bool useProvidedFileIcons;
 
     /// the font which is used by the text viewer
     QFont textViewerFont;

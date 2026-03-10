@@ -12,11 +12,14 @@ const QDir::SortFlags Settings::defaultSortFlags{QDir::SortFlag::Name
                                                  | QDir::SortFlag::DirsFirst
                                                  | QDir::SortFlag::IgnoreCase};
 
+const bool Settings::defaultUseProvidedFileIcons{true};
+
 const bool Settings::defaultAutoStartVideos{true};
 
 Settings::Settings()
     : filters(defaultFilters)
     , sortFlags(defaultSortFlags)
+    , useProvidedFileIcons(defaultUseProvidedFileIcons)
     , textViewerFont(defaultTextViewerFont())
     , autoStartVideos(defaultAutoStartVideos)
 {}
@@ -30,6 +33,7 @@ void Settings::resetToDefaults()
 {
     filters = defaultFilters;
     sortFlags = defaultSortFlags;
+    useProvidedFileIcons = defaultUseProvidedFileIcons;
     textViewerFont = defaultTextViewerFont();
     autoStartVideos = defaultAutoStartVideos;
 }
@@ -42,6 +46,7 @@ void Settings::save()
 
     settings.setValue("filters", filters.toInt());
     settings.setValue("sort-flags", sortFlags.toInt());
+    settings.setValue("use-provided-file-icons", useProvidedFileIcons);
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("movie-viewer-auto-start", autoStartVideos);
 }
@@ -57,6 +62,8 @@ void Settings::load()
 
     const int sort_flags = settings.value("sort-flags", defaultSortFlags.toInt()).toInt();
     setSortFlags(QDir::SortFlags::fromInt(sort_flags));
+
+    useProvidedFileIcons = settings.value("use-provided-file-icons", defaultUseProvidedFileIcons).toBool();
 
     QFont font = settings.value("text-viewer-font", defaultTextViewerFont()).value<QFont>();
     setTextViewerFont(font);
@@ -105,6 +112,16 @@ void Settings::setSortFlags(QDir::SortFlags flags)
     }
 
     sortFlags = flags;
+}
+
+bool Settings::getUseProvidedFileIcons() const
+{
+    return useProvidedFileIcons;
+}
+
+void Settings::setUseProvidedFileIcons(const bool useProvided)
+{
+    useProvidedFileIcons = useProvided;
 }
 
 QFont Settings::getTextViewerFont() const

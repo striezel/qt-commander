@@ -200,6 +200,8 @@
     <addaction name="actionSortDirectoriesFirst"/>
     <addaction name="actionSortFilesFirst"/>
     <addaction name="separator"/>
+    <addaction name="actionUseProvidedIcons"/>
+    <addaction name="separator"/>
     <addaction name="actionRefresh"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
@@ -385,6 +387,17 @@
    </property>
    <property name="text">
     <string>Über Qt Commander ...</string>
+   </property>
+  </action>
+  <action name="actionUseProvidedIcons">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Vom System bereitgestellte Dateisymbole verwenden</string>
    </property>
   </action>
  </widget>
