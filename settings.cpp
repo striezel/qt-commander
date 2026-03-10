@@ -12,7 +12,7 @@ const QDir::SortFlags Settings::defaultSortFlags{QDir::SortFlag::Name
                                                  | QDir::SortFlag::DirsFirst
                                                  | QDir::SortFlag::IgnoreCase};
 
-const bool Settings::defaultAutoStartVideos{false};
+const bool Settings::defaultAutoStartVideos{true};
 
 Settings::Settings()
     : filters(defaultFilters)
