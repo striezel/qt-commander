@@ -55,8 +55,9 @@ bool TextViewWindow::loadTextFile(const QString &path)
     QString line;
     while (!stream.atEnd())
     {
-        line = stream.readLine();
-        ui->plainTextEdit->appendPlainText(line);
+        // read up to one megabyte of data in one go
+        line = stream.read(1024 * 1024);
+        ui->plainTextEdit->insertPlainText(line);
     }
     ui->plainTextEdit->setDocumentTitle(file.fileName());
     file.close();
