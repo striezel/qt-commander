@@ -375,7 +375,7 @@
   </action>
   <action name="actionAboutQtCommander">
    <property name="icon">
-    <iconset theme="dialog-information"/>
+    <iconset theme="help-about"/>
    </property>
    <property name="text">
     <string>Über Qt Commander ...</string>
