@@ -30,6 +30,7 @@ private slots:
     void btnStopClicked();
     void btnPauseClicked();
 
+    void sliderVolumeValueChanged(int value);
 private:
     Ui::AudioPlayerWindow *ui;
 

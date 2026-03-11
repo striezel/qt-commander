@@ -15,7 +15,10 @@ AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
     connect(ui->btnStop, &QPushButton::clicked, this, &AudioPlayerWindow::btnStopClicked);
     connect(ui->btnPause, &QPushButton::clicked, this, &AudioPlayerWindow::btnPauseClicked);
 
-    // TODO: Implement volume control.
+    connect(ui->sliderVolume, &QSlider::valueChanged, this, &AudioPlayerWindow::sliderVolumeValueChanged);
+
+    // set initial volume to whatever the slider shows currently
+    sliderVolumeValueChanged(ui->sliderVolume->value());
 }
 
 AudioPlayerWindow::~AudioPlayerWindow()
@@ -80,4 +83,20 @@ void AudioPlayerWindow::btnPauseClicked()
     }
 
     mediaPlayer->pause();
+}
+
+void AudioPlayerWindow::sliderVolumeValueChanged(int value)
+{
+    if (audioOutput == nullptr)
+    {
+        return;
+    }
+
+    // Convert from logarithmic scale to linear scale.
+    const qreal linearVolume = QtAudio::convertVolume(
+        value / 100.0, QtAudio::LogarithmicVolumeScale,
+        QtAudio::LinearVolumeScale);
+    audioOutput->setVolume(linearVolume);
+
+    ui->lblVolumeValue->setText(QString::number(value) + " %");
 }
