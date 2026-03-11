@@ -44,6 +44,7 @@ private slots:
     void sliderVolumeValueChanged(int value);
     void durationChanged(qint64 duration);
     void positionChanged(qint64 position);
+    void seekableChanged(bool seekable);
 
     void actionAutoPlayAudioTriggered(bool checked = false);
     void actionSupportedFormatsTriggered();

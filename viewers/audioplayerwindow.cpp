@@ -30,6 +30,7 @@ AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
 
     connect(mediaPlayer, &QMediaPlayer::durationChanged, this, &AudioPlayerWindow::durationChanged);
     connect(mediaPlayer, &QMediaPlayer::positionChanged, this, &AudioPlayerWindow::positionChanged);
+    connect(mediaPlayer, &QMediaPlayer::seekableChanged, this, &AudioPlayerWindow::seekableChanged);
 
     connect(ui->actionAutoPlayAudio, &QAction::triggered, this, &AudioPlayerWindow::actionAutoPlayAudioTriggered);
     connect(ui->actionSupportedFormats, &QAction::triggered, this, &AudioPlayerWindow::actionSupportedFormatsTriggered);
@@ -216,6 +217,23 @@ void AudioPlayerWindow::positionChanged(qint64 position)
 {
     showPosition(position, mediaDurationMillis);
     ui->sliderPosition->setValue(position / 1000);
+}
+
+void AudioPlayerWindow::seekableChanged(bool seekable)
+{
+    if (!seekable)
+    {
+        ui->sliderPosition->setEnabled(false);
+        return;
+    }
+
+    // Seekable from now on, so adjust slider min/max.
+    if (mediaDurationMillis > 0)
+    {
+        ui->sliderPosition->setMinimum(0);
+        ui->sliderPosition->setMaximum(mediaDurationMillis / 1000);
+        ui->sliderPosition->setEnabled(true);
+    }
 }
 
 void AudioPlayerWindow::actionAutoPlayAudioTriggered(bool checked)
