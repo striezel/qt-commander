@@ -30,12 +30,21 @@ private slots:
     void btnStopClicked();
     void btnPauseClicked();
 
+    void sliderPositionMoved(int position);
     void sliderVolumeValueChanged(int value);
+    void durationChanged(qint64 duration);
+    void positionChanged(qint64 position);
 private:
     Ui::AudioPlayerWindow *ui;
 
     QMediaPlayer* mediaPlayer;
     QAudioOutput* audioOutput;
+
+    // duration of the media in milliseconds, or -1 if unknown
+    qint64 mediaDurationMillis;
+
+    void showPosition(const qint64 currentPositionMs, const qint64 durationMs);
+    static QString durationToMinutesSeconds(const qint64 durationMs);
 };
 
 #endif // AUDIOPLAYERWINDOW_H
