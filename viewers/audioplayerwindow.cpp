@@ -155,7 +155,14 @@ void AudioPlayerWindow::btnPauseClicked()
         return;
     }
 
-    mediaPlayer->pause();
+    if (mediaPlayer->playbackState() == QMediaPlayer::PlaybackState::PausedState)
+    {
+        mediaPlayer->play();
+    }
+    else
+    {
+        mediaPlayer->pause();
+    }
 }
 
 void AudioPlayerWindow::sliderPositionMoved(int position)
@@ -217,7 +224,7 @@ void AudioPlayerWindow::actionAutoPlayAudioTriggered(bool checked)
 
 void AudioPlayerWindow::actionSupportedFormatsTriggered()
 {
-    QString message = "Die Audiowiedergabe unterstützt folgende Formate:\n";
+    QString message = "Die Audiowiedergabe unterstützt folgende Dateiformate:\n";
     QMediaFormat mf;
     const QList<QMediaFormat::FileFormat> formats = mf.supportedFileFormats(QMediaFormat::ConversionMode::Decode);
     for (const QMediaFormat::FileFormat format: formats)
