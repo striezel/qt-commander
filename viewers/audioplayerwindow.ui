@@ -176,8 +176,15 @@
     </property>
     <addaction name="actionAutoPlayAudio"/>
    </widget>
+   <widget class="QMenu" name="menuInfo">
+    <property name="title">
+     <string>Info</string>
+    </property>
+    <addaction name="actionSupportedFormats"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSettings"/>
+   <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionClose">
@@ -197,6 +204,14 @@
    </property>
    <property name="text">
     <string>Audio automatisch abspielen</string>
+   </property>
+  </action>
+  <action name="actionSupportedFormats">
+   <property name="icon">
+    <iconset theme="dialog-information"/>
+   </property>
+   <property name="text">
+    <string>Unterstützte Formate ...</string>
    </property>
   </action>
  </widget>

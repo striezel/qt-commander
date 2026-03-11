@@ -46,6 +46,7 @@ private slots:
     void positionChanged(qint64 position);
 
     void actionAutoPlayAudioTriggered(bool checked = false);
+    void actionSupportedFormatsTriggered();
 private:
     Ui::AudioPlayerWindow *ui;
 

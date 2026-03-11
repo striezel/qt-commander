@@ -4,6 +4,8 @@
 
 #include <algorithm> // for std::clamp()
 #include <QMediaMetaData>
+#include <QMediaFormat>
+#include <QMessageBox>
 
 AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -30,6 +32,7 @@ AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
     connect(mediaPlayer, &QMediaPlayer::positionChanged, this, &AudioPlayerWindow::positionChanged);
 
     connect(ui->actionAutoPlayAudio, &QAction::triggered, this, &AudioPlayerWindow::actionAutoPlayAudioTriggered);
+    connect(ui->actionSupportedFormats, &QAction::triggered, this, &AudioPlayerWindow::actionSupportedFormatsTriggered);
 
     // set initial volume to whatever the slider shows currently
     sliderVolumeValueChanged(ui->sliderVolume->value());
@@ -210,6 +213,27 @@ void AudioPlayerWindow::positionChanged(qint64 position)
 void AudioPlayerWindow::actionAutoPlayAudioTriggered(bool checked)
 {
     emit autoPlayChanged(checked);
+}
+
+void AudioPlayerWindow::actionSupportedFormatsTriggered()
+{
+    QString message = "Die Audiowiedergabe unterstützt folgende Formate:\n";
+    QMediaFormat mf;
+    const QList<QMediaFormat::FileFormat> formats = mf.supportedFileFormats(QMediaFormat::ConversionMode::Decode);
+    for (const QMediaFormat::FileFormat format: formats)
+    {
+        message += "\n" + QMediaFormat::fileFormatName(format);
+    }
+
+    message += "\n\nDabei werden folgende Audiocodecs unterstützt:\n";
+    const QList<QMediaFormat::AudioCodec> codecs = mf.supportedAudioCodecs(QMediaFormat::ConversionMode::Decode);
+    for (const QMediaFormat::AudioCodec codec: codecs)
+    {
+        message += "\n" + QMediaFormat::audioCodecName(codec);
+    }
+
+    message += "\n\nDie unterstützten Formate und Codecs können je nach System variieren.";
+    QMessageBox::about(this, "Unterstützte Formate und Audiocodecs", message);
 }
 
 QString AudioPlayerWindow::durationToMinutesSeconds(const qint64 durationMs)
