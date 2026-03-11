@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Audiowiedergabe</string>
   </property>
+  <property name="windowIcon">
+   <iconset theme="audio-volume-high"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btnStart">
     <property name="geometry">
