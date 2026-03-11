@@ -33,6 +33,7 @@ AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
 
     connect(ui->actionAutoPlayAudio, &QAction::triggered, this, &AudioPlayerWindow::actionAutoPlayAudioTriggered);
     connect(ui->actionSupportedFormats, &QAction::triggered, this, &AudioPlayerWindow::actionSupportedFormatsTriggered);
+    connect(ui->actionShowMetadata, &QAction::triggered, this, &AudioPlayerWindow::actionShowMetadataTriggered);
 
     // set initial volume to whatever the slider shows currently
     sliderVolumeValueChanged(ui->sliderVolume->value());
@@ -241,6 +242,27 @@ void AudioPlayerWindow::actionSupportedFormatsTriggered()
 
     message += "\n\nDie unterstützten Formate und Codecs können je nach System variieren.";
     QMessageBox::about(this, "Unterstützte Formate und Audiocodecs", message);
+}
+
+void AudioPlayerWindow::actionShowMetadataTriggered()
+{
+    if (mediaPlayer == nullptr)
+    {
+        return;
+    }
+
+    QString message = "Medienmetadaten:\n";
+    const QMediaMetaData md = mediaPlayer->metaData();
+    const QList<QMediaMetaData::Key> keys = md.keys();
+    if (keys.isEmpty())
+    {
+        message += "\nKeine Metadaten vorhanden.";
+    }
+    for (const QMediaMetaData::Key key: keys)
+    {
+        message += "\n" + QMediaMetaData::metaDataKeyToString(key) + ": " + md.stringValue(key);
+    }
+    QMessageBox::about(this, "Metadaten", message);
 }
 
 QString AudioPlayerWindow::durationToMinutesSeconds(const qint64 durationMs)

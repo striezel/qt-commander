@@ -47,6 +47,7 @@ private slots:
 
     void actionAutoPlayAudioTriggered(bool checked = false);
     void actionSupportedFormatsTriggered();
+    void actionShowMetadataTriggered();
 private:
     Ui::AudioPlayerWindow *ui;
 

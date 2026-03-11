@@ -181,6 +181,7 @@
      <string>Info</string>
     </property>
     <addaction name="actionSupportedFormats"/>
+    <addaction name="actionShowMetadata"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSettings"/>
@@ -212,6 +213,11 @@
    </property>
    <property name="text">
     <string>Unterstützte Formate ...</string>
+   </property>
+  </action>
+  <action name="actionShowMetadata">
+   <property name="text">
+    <string>Metadaten anzeigen</string>
    </property>
   </action>
  </widget>
