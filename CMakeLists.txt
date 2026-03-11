@@ -34,11 +34,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         focustrackingtreewidget.h focustrackingtreewidget.cpp
         dirutils.h dirutils.cpp
         settings.h settings.cpp
-        textviewwindow.h textviewwindow.cpp textviewwindow.ui
-        imageviewwindow.h imageviewwindow.cpp imageviewwindow.ui
+        viewers/textviewwindow.h viewers/textviewwindow.cpp viewers/textviewwindow.ui
+        viewers/imageviewwindow.h viewers/imageviewwindow.cpp viewers/imageviewwindow.ui
         filetypedetection.h filetypedetection.cpp
-        movieviewwindow.h movieviewwindow.cpp movieviewwindow.ui
-        audioplayerwindow.h audioplayerwindow.cpp audioplayerwindow.ui
+        viewers/movieviewwindow.h viewers/movieviewwindow.cpp viewers/movieviewwindow.ui
+        viewers/audioplayerwindow.h viewers/audioplayerwindow.cpp viewers/audioplayerwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Projekt_Dateimanager_Dirk APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

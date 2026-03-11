@@ -4,12 +4,12 @@
 #include <QFileIconProvider>
 #include <QMessageBox>
 
-#include "audioplayerwindow.h"
+#include "viewers/audioplayerwindow.h"
 #include "createdirectorydialog.h"
 #include "dirutils.h"
-#include "imageviewwindow.h"
-#include "movieviewwindow.h"
-#include "textviewwindow.h"
+#include "viewers/imageviewwindow.h"
+#include "viewers/movieviewwindow.h"
+#include "viewers/textviewwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
