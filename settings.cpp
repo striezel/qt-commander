@@ -1,4 +1,5 @@
 #include "settings.h"
+#include <algorithm> // for std::clamp()
 #include <QCoreApplication>
 #include <QFontDatabase>
 #include <QSettings>
@@ -16,12 +17,17 @@ const bool Settings::defaultUseProvidedFileIcons{true};
 
 const bool Settings::defaultAutoStartVideos{true};
 
+const bool Settings::defaultAutoPlayAudio{false};
+const int Settings::defaultAudioVolume{50};
+
 Settings::Settings()
     : filters(defaultFilters)
     , sortFlags(defaultSortFlags)
     , useProvidedFileIcons(defaultUseProvidedFileIcons)
     , textViewerFont(defaultTextViewerFont())
     , autoStartVideos(defaultAutoStartVideos)
+    , autoPlayAudio(defaultAutoPlayAudio)
+    , audioVolume(defaultAudioVolume)
 {}
 
 QFont Settings::defaultTextViewerFont()
@@ -36,6 +42,8 @@ void Settings::resetToDefaults()
     useProvidedFileIcons = defaultUseProvidedFileIcons;
     textViewerFont = defaultTextViewerFont();
     autoStartVideos = defaultAutoStartVideos;
+    autoPlayAudio = defaultAutoPlayAudio;
+    audioVolume = defaultAudioVolume;
 }
 
 void Settings::save()
@@ -49,6 +57,8 @@ void Settings::save()
     settings.setValue("use-provided-file-icons", useProvidedFileIcons);
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("movie-viewer-auto-start", autoStartVideos);
+    settings.setValue("audio-player-auto-play", autoPlayAudio);
+    settings.setValue("audio-player-volume", audioVolume);
 }
 
 void Settings::load()
@@ -69,6 +79,10 @@ void Settings::load()
     setTextViewerFont(font);
 
     autoStartVideos = settings.value("movie-viewer-auto-start", defaultAutoStartVideos).toBool();
+
+    autoPlayAudio = settings.value("audio-player-auto-play", defaultAutoPlayAudio).toBool();
+    const int volume = settings.value("audio-player-volume", defaultAudioVolume).toInt();
+    setAudioVolume(volume);
 }
 
 QDir::Filters Settings::getFilters() const
@@ -150,4 +164,24 @@ bool Settings::getAutoStartVideos() const
 void Settings::setAutoStartVideos(const bool autoStart)
 {
     autoStartVideos = autoStart;
+}
+
+bool Settings::getAutoPlayAudio() const
+{
+    return autoPlayAudio;
+}
+
+void Settings::setAutoPlayAudio(const bool autoPlay)
+{
+    autoPlayAudio = autoPlay;
+}
+
+int Settings::getAudioVolume() const
+{
+    return audioVolume;
+}
+
+void Settings::setAudioVolume(const int volume)
+{
+    audioVolume = std::clamp(volume, 0, 100);
 }

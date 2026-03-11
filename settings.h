@@ -19,6 +19,9 @@ public:
 
     static const bool defaultAutoStartVideos;
 
+    static const bool defaultAutoPlayAudio;
+    static const int defaultAudioVolume;
+
     /// Resets all values to their defaults.
     void resetToDefaults();
 
@@ -47,6 +50,12 @@ public:
 
     bool getAutoStartVideos() const;
     void setAutoStartVideos(const bool autoStart);
+
+    bool getAutoPlayAudio() const;
+    void setAutoPlayAudio(const bool autoPlay);
+
+    int getAudioVolume() const;
+    void setAudioVolume(const int volume);
 private:
     /// current filters for shown files/directories - applies to both views
     QDir::Filters filters;
@@ -62,6 +71,12 @@ private:
 
     /// whether videos in movie viewer start automatically
     bool autoStartVideos;
+
+    /// whether files in audio player start playing automatically
+    bool autoPlayAudio;
+
+    /// volume of audio files in range [0;100]
+    int audioVolume;
 };
 
 #endif // SETTINGS_H

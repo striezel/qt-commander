@@ -65,6 +65,16 @@ void MainWindow::movieViewerAutoStartChanged(const bool autoStart)
     settings.setAutoStartVideos(autoStart);
 }
 
+void MainWindow::audioPlayerAutoPlayChanged(const bool autoPlay)
+{
+    settings.setAutoPlayAudio(autoPlay);
+}
+
+void MainWindow::audioPlayerVolumeChanged(const int volume)
+{
+    settings.setAudioVolume(volume);
+}
+
 void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, const bool selectFirst)
 {
     if ((treeWidget == nullptr) || path.isEmpty())
@@ -520,9 +530,6 @@ void MainWindow::btnViewClicked()
     const bool is_supported_movie = detection.isSupportedMovieFormat(mime);
     const bool is_audio = detection.isAudioFormat(mime);
 
-    qDebug() << "MIME type:" << mime.name();
-    qDebug() << "Is audio:" << is_audio;
-
     // Inform user of unsupported video format and that we will be using the
     // text viewer for that. Let the user chose whether to continue here.
     if (is_movie && !is_supported_movie)
@@ -550,7 +557,8 @@ void MainWindow::btnViewClicked()
             delete viewer;
             return;
         }
-        // viewer->setAutoStartVideos(settings.getAutoStartVideos());
+        viewer->setAutoPlay(settings.getAutoPlayAudio());
+        viewer->setVolume(settings.getAudioVolume());
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();
 

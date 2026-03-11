@@ -23,8 +23,18 @@ public:
     /// Returns true, if the audio file was successfully loaded.
     /// Returns false otherwise.
     bool loadAudioFile(const QString& path);
+
+    /// Sets whether files should start playing automatically when the viewer is shown.
+    void setAutoPlay(const bool autoPlay);
+
+    /// Sets the volume for audio playback. Must be in range [0;100].
+    void setVolume(const int volume);
+signals:
+    void autoPlayChanged(const bool autoPlay);
+    void audioVolumeChanged(const int volume);
 protected:
     void closeEvent(QCloseEvent* event) override;
+    void showEvent(QShowEvent* event) override;
 private slots:
     void btnStartClicked();
     void btnStopClicked();
@@ -34,6 +44,8 @@ private slots:
     void sliderVolumeValueChanged(int value);
     void durationChanged(qint64 duration);
     void positionChanged(qint64 position);
+
+    void actionAutoPlayAudioTriggered(bool checked = false);
 private:
     Ui::AudioPlayerWindow *ui;
 

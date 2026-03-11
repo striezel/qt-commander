@@ -1,6 +1,8 @@
 #include "audioplayerwindow.h"
 #include "ui_audioplayerwindow.h"
+#include "../mainwindow.h"
 
+#include <algorithm> // for std::clamp()
 #include <QMediaMetaData>
 
 AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
@@ -27,8 +29,17 @@ AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
     connect(mediaPlayer, &QMediaPlayer::durationChanged, this, &AudioPlayerWindow::durationChanged);
     connect(mediaPlayer, &QMediaPlayer::positionChanged, this, &AudioPlayerWindow::positionChanged);
 
+    connect(ui->actionAutoPlayAudio, &QAction::triggered, this, &AudioPlayerWindow::actionAutoPlayAudioTriggered);
+
     // set initial volume to whatever the slider shows currently
     sliderVolumeValueChanged(ui->sliderVolume->value());
+
+    if (parent != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
+        connect(this, &AudioPlayerWindow::autoPlayChanged, castedParent, &MainWindow::audioPlayerAutoPlayChanged);
+        connect(this, &AudioPlayerWindow::audioVolumeChanged, castedParent, &MainWindow::audioPlayerVolumeChanged);
+    }
 }
 
 AudioPlayerWindow::~AudioPlayerWindow()
@@ -38,6 +49,13 @@ AudioPlayerWindow::~AudioPlayerWindow()
 
     delete mediaPlayer;
     mediaPlayer = nullptr;
+
+    if (parent() != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
+        disconnect(this, &AudioPlayerWindow::autoPlayChanged, castedParent, &MainWindow::audioPlayerAutoPlayChanged);
+        disconnect(this, &AudioPlayerWindow::audioVolumeChanged, castedParent, &MainWindow::audioPlayerVolumeChanged);
+    }
 
     delete ui;
 }
@@ -80,6 +98,16 @@ bool AudioPlayerWindow::loadAudioFile(const QString &path)
     return true;
 }
 
+void AudioPlayerWindow::setAutoPlay(const bool autoPlay)
+{
+    ui->actionAutoPlayAudio->setChecked(autoPlay);
+}
+
+void AudioPlayerWindow::setVolume(const int volume)
+{
+    ui->sliderVolume->setValue(std::clamp(volume, 0, 100));
+}
+
 void AudioPlayerWindow::closeEvent(QCloseEvent *event)
 {
     // ensure deletion
@@ -87,6 +115,14 @@ void AudioPlayerWindow::closeEvent(QCloseEvent *event)
 
     // do the usual event handling inherited from base class
     this->QMainWindow::closeEvent(event);
+}
+
+void AudioPlayerWindow::showEvent(QShowEvent *event)
+{
+    if (ui->actionAutoPlayAudio->isChecked())
+    {
+        btnStartClicked();
+    }
 }
 
 void AudioPlayerWindow::btnStartClicked()
@@ -145,6 +181,7 @@ void AudioPlayerWindow::sliderVolumeValueChanged(int value)
     audioOutput->setVolume(linearVolume);
 
     ui->lblVolumeValue->setText(QString::number(value) + " %");
+    emit audioVolumeChanged(value);
 }
 
 void AudioPlayerWindow::durationChanged(qint64 durationMilliseconds)
@@ -168,6 +205,11 @@ void AudioPlayerWindow::positionChanged(qint64 position)
 {
     showPosition(position, mediaDurationMillis);
     ui->sliderPosition->setValue(position / 1000);
+}
+
+void AudioPlayerWindow::actionAutoPlayAudioTriggered(bool checked)
+{
+    emit autoPlayChanged(checked);
 }
 
 QString AudioPlayerWindow::durationToMinutesSeconds(const qint64 durationMs)
