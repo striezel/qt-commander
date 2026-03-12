@@ -13,6 +13,8 @@ FileInfoWindow::FileInfoWindow(QWidget *parent)
     , ui(new Ui::FileInfoWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->actionClose, &QAction::triggered, this, &FileInfoWindow::close);
 }
 
 FileInfoWindow::~FileInfoWindow()
