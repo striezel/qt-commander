@@ -86,6 +86,11 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     ui->lblOctal->hide();
     ui->lblOctalValue->hide();
 #endif
+
+    const QLocale loc = locale();
+    ui->lblBirthValue->setText(loc.toString(info.birthTime(), QLocale::LongFormat));
+    ui->lblModifiedValue->setText(loc.toString(info.lastModified(), QLocale::LongFormat));
+    ui->lblAccessedValue->setText(loc.toString(info.lastRead(), QLocale::LongFormat));
 }
 
 void FileInfoWindow::closeEvent(QCloseEvent *event)
