@@ -17,449 +17,613 @@
    <iconset theme="document-properties"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="gbPermissions">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>250</y>
-      <width>481</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Berechtigungen</string>
-    </property>
-    <widget class="QLabel" name="lblUser">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Besitzer:</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbUserRead">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>30</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Lesen</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbUserWrite">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>30</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Schreiben</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbUserExec">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>30</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Ausführen</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblGroup">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Gruppe:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblOther">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>110</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Andere:</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbGroupRead">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>70</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Lesen</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbGroupWrite">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>70</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Schreiben</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbGroupExec">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>70</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Ausführen</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbOtherRead">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>110</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Lesen</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbOtherWrite">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>110</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Schreiben</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="cbOtherExec">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>110</y>
-       <width>75</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Ausführen</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbFile">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>481</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Datei</string>
-    </property>
-    <widget class="QLabel" name="lblFileName">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>461</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>file.ext</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbOwnership">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>160</y>
-      <width>481</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Benutzer</string>
-    </property>
-    <widget class="QLabel" name="lblFileOwner">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Besitzer:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblOwnerValue">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>20</y>
-       <width>331</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>unbekannt</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblFileGroup">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>50</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Gruppe:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblGroupValue">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>50</y>
-       <width>331</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>unbekannt</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbDates">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>400</y>
-      <width>481</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Datum</string>
-    </property>
-    <widget class="QLabel" name="lblBirth">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Erstellt:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblBirthValue">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>30</y>
-       <width>331</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>unbekannt</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblModofied">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>60</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Geändert:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblModifiedValue">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>60</y>
-       <width>331</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>unbekannt</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblAccessed">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>90</y>
-       <width>101</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Letzter Zugriff:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblAccessedValue">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>90</y>
-       <width>331</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>unbekannt</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbStorage">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>481</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Speicher</string>
-    </property>
-    <widget class="QLabel" name="lblSize">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Größe:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblSizeValue">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>20</y>
-       <width>331</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>unbekannt</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblAvailable">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>50</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Frei:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblAvailableValue">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>50</y>
-       <width>331</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>unbekannt</string>
-     </property>
-    </widget>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="gbFile">
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>51</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Datei</string>
+      </property>
+      <widget class="QLabel" name="lblFileName">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>461</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>461</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>file.ext</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="gbStorage">
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>81</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Speicher</string>
+      </property>
+      <widget class="QLabel" name="lblSize">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Größe:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblSizeValue">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>331</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>unbekannt</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblAvailable">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Frei:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblAvailableValue">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>50</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>331</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>unbekannt</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QGroupBox" name="gbOwnership">
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Benutzer</string>
+      </property>
+      <widget class="QLabel" name="lblFileOwner">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Besitzer:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblOwnerValue">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>331</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>unbekannt</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblFileGroup">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Gruppe:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblGroupValue">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>50</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>331</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>unbekannt</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QGroupBox" name="gbPermissions">
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>141</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Berechtigungen</string>
+      </property>
+      <widget class="QLabel" name="lblUser">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Besitzer:</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbUserRead">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>30</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Lesen</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbUserWrite">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>30</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Schreiben</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbUserExec">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>30</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Ausführen</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblGroup">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>70</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Gruppe:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblOther">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>110</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Andere:</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbGroupRead">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>70</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Lesen</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbGroupWrite">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>70</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Schreiben</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbGroupExec">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>70</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Ausführen</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbOtherRead">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>110</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Lesen</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbOtherWrite">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>110</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Schreiben</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cbOtherExec">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>110</y>
+         <width>75</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Ausführen</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QGroupBox" name="gbDates">
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>121</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Datum</string>
+      </property>
+      <widget class="QLabel" name="lblBirth">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Erstellt:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblBirthValue">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>30</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>331</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>unbekannt</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblModofied">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>60</y>
+         <width>49</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>49</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Geändert:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblModifiedValue">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>60</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>331</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>unbekannt</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblAccessed">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>90</y>
+         <width>101</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>101</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Letzter Zugriff:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblAccessedValue">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>90</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>331</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>unbekannt</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
