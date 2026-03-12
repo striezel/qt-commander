@@ -68,7 +68,11 @@ AudioPlayerWindow::~AudioPlayerWindow()
 
 bool AudioPlayerWindow::loadAudioFile(const QString &path)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
     if (mediaPlayer->isPlaying())
+#else
+    if (mediaPlayer->playbackState() == QMediaPlayer::PlaybackState::PlayingState)
+#endif
     {
         mediaPlayer->stop();
     }
@@ -188,9 +192,18 @@ void AudioPlayerWindow::sliderVolumeValueChanged(int value)
     }
 
     // Convert from logarithmic scale to linear scale.
+    // QtAudio::convertVolume() was QAudio::convertVolume() before Qt 6.7, so
+    // we have to use different code depending on the Qt version used to
+    // compile this.
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
     const qreal linearVolume = QtAudio::convertVolume(
         value / 100.0, QtAudio::LogarithmicVolumeScale,
         QtAudio::LinearVolumeScale);
+#else
+    const qreal linearVolume = QAudio::convertVolume(
+        value / 100.0, QAudio::LogarithmicVolumeScale,
+        QAudio::LinearVolumeScale);
+#endif
     audioOutput->setVolume(linearVolume);
 
     ui->lblVolumeValue->setText(QString::number(value) + " %");

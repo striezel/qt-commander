@@ -2,7 +2,13 @@
 #include "ui_fileinfowindow.h"
 
 #include <QFileInfo>
-#include <QtVersionChecks>
+#if defined(__has_include)
+  #if __has_include(<QtVersionChecks>)
+    #include <QtVersionChecks>
+  #elif __has_include(<QtGlobal>)
+    #include <QtGlobal>
+  #endif
+#endif
 #if defined(_WIN32) && (QT_VERSION >= QT_VERSION_CHECK(6, 6, 0))
 #include <QNtfsPermissionCheckGuard>
 #endif
