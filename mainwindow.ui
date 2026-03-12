@@ -178,6 +178,8 @@
     <property name="title">
      <string>Datei</string>
     </property>
+    <addaction name="actionShowFileInfo"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuView">
@@ -398,6 +400,17 @@
    </property>
    <property name="text">
     <string>Vom System bereitgestellte Dateisymbole verwenden</string>
+   </property>
+  </action>
+  <action name="actionShowFileInfo">
+   <property name="icon">
+    <iconset theme="document-properties"/>
+   </property>
+   <property name="text">
+    <string>Dateiinformationen anzeigen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
    </property>
   </action>
  </widget>

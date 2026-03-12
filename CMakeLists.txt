@@ -39,6 +39,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         filetypedetection.h filetypedetection.cpp
         viewers/movieviewwindow.h viewers/movieviewwindow.cpp viewers/movieviewwindow.ui
         viewers/audioplayerwindow.h viewers/audioplayerwindow.cpp viewers/audioplayerwindow.ui
+        fileinfowindow.h fileinfowindow.cpp fileinfowindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Projekt_Dateimanager_Dirk APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

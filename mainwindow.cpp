@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "fileinfowindow.h"
 
 #include <QFileIconProvider>
 #include <QMessageBox>
@@ -622,6 +623,31 @@ void MainWindow::btnViewClicked()
     }
 }
 
+void MainWindow::actionShowFileInfoTriggered()
+{
+    QTreeWidget* treeWidget = latestTreeWidget();
+    const QList<QTreeWidgetItem*> selection = treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        QMessageBox::information(
+            this, "Keine aktive Auswahl vorhanden",
+            "Es wurde weder eine Datei noch ein Verzeichnis ausgewählt, dessen Eigenschaften angezeigt werden könnten.");
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+    const QString name = item->text(0);
+
+    const QString selectedFile = currentDirectory().absoluteFilePath(name);
+
+    FileInfoWindow* window = new FileInfoWindow(this);
+    window->loadInformation(selectedFile);
+    window->setWindowModality(Qt::WindowModality::WindowModal);
+    window->show();
+
+    // show() returns immediately, so the deletion of viewer is handled by the
+    // FileInfoWindow itself in its closeEvent();
+}
+
 void MainWindow::refreshCurrentView()
 {
     refreshView(latestTreeWidget(), currentDirectory(), true);
@@ -715,6 +741,7 @@ void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRe
 
 void MainWindow::connectMenuActions()
 {
+    connect(ui->actionShowFileInfo, &QAction::triggered, this, &MainWindow::actionShowFileInfoTriggered);
     connect(ui->actionExit, &QAction::triggered, this, &MainWindow::close);
 
     connect(ui->actionShowHiddenFiles, &QAction::triggered, this, &MainWindow::actionShowHiddenFilesTriggered);

@@ -41,6 +41,8 @@ private slots:
     void btnCopyClicked();
     void btnViewClicked();
 
+    void actionShowFileInfoTriggered();
+
     void actionShowHiddenFilesTriggered(bool checked = false);
     void actionShowSystemFilesTriggered(bool checked = false);
     void actionHideFilesTriggered(bool checked = false);
