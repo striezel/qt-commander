@@ -26,6 +26,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>121</width>
+      <height>24</height>
+     </size>
+    </property>
     <property name="text">
      <string>Start</string>
     </property>
@@ -41,6 +47,12 @@
       <width>121</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>121</width>
+      <height>24</height>
+     </size>
     </property>
     <property name="text">
      <string>Stop</string>
@@ -58,6 +70,12 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>121</width>
+      <height>24</height>
+     </size>
+    </property>
     <property name="text">
      <string>Pause</string>
     </property>
@@ -73,6 +91,12 @@
       <width>201</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>201</width>
+      <height>22</height>
+     </size>
     </property>
     <property name="maximum">
      <number>100</number>
@@ -99,6 +123,12 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>91</width>
+      <height>16</height>
+     </size>
+    </property>
     <property name="text">
      <string>Lautstärke:</string>
     </property>
@@ -111,6 +141,12 @@
       <width>61</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>61</width>
+      <height>20</height>
+     </size>
     </property>
     <property name="text">
      <string>50 %</string>
@@ -131,6 +167,12 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>251</width>
+      <height>22</height>
+     </size>
+    </property>
     <property name="maximum">
      <number>100</number>
     </property>
@@ -146,6 +188,12 @@
       <width>121</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>121</width>
+      <height>20</height>
+     </size>
     </property>
     <property name="text">
      <string>xx:xx / yy:yy</string>
