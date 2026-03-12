@@ -3,6 +3,7 @@
 #include "../mainwindow.h"
 
 #include <algorithm> // for std::clamp()
+#include <QAudio>
 #include <QMediaMetaData>
 #include <QMediaFormat>
 #include <QMessageBox>
