@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>501</width>
-    <height>463</height>
+    <height>556</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>160</y>
+      <y>250</y>
       <width>481</width>
       <height>141</height>
      </rect>
@@ -32,7 +32,7 @@
     <widget class="QLabel" name="lblUser">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>20</x>
        <y>30</y>
        <width>49</width>
        <height>16</height>
@@ -93,7 +93,7 @@
     <widget class="QLabel" name="lblGroup">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>20</x>
        <y>70</y>
        <width>49</width>
        <height>16</height>
@@ -106,7 +106,7 @@
     <widget class="QLabel" name="lblOther">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>20</x>
        <y>110</y>
        <width>49</width>
        <height>16</height>
@@ -243,7 +243,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
+      <y>160</y>
       <width>481</width>
       <height>80</height>
      </rect>
@@ -308,7 +308,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>310</y>
+      <y>400</y>
       <width>481</width>
       <height>121</height>
      </rect>
@@ -386,6 +386,71 @@
       <rect>
        <x>140</x>
        <y>90</y>
+       <width>331</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>unbekannt</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gbStorage">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>481</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Speicher</string>
+    </property>
+    <widget class="QLabel" name="lblSize">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>49</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Größe:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblSizeValue">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>20</y>
+       <width>331</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>unbekannt</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblAvailable">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>49</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Frei:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblAvailableValue">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>50</y>
        <width>331</width>
        <height>16</height>
       </rect>

@@ -6,6 +6,7 @@
 #if defined(_WIN32) && (QT_VERSION >= QT_VERSION_CHECK(6, 6, 0))
 #include <QNtfsPermissionCheckGuard>
 #endif
+#include <QStorageInfo>
 
 FileInfoWindow::FileInfoWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -32,6 +33,28 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     const QFileInfo info(filePath);
 
     ui->lblFileName->setText(info.fileName());
+
+    const QLocale loc = locale();
+    const qint64 file_size = info.size();
+    ui->lblSizeValue->setText(loc.formattedDataSize(file_size)
+                              + " (" + loc.toString(file_size)
+                              + (file_size != 1 ? " Bytes)" : " Byte)"));
+    const QStorageInfo storage(filePath);
+    if (!storage.isValid() || !storage.isReady())
+    {
+        ui->lblAvailableValue->setText("unbekannt");
+    }
+    else
+    {
+        const qint64 free = storage.bytesFree();
+        const qint64 total = storage.bytesTotal();
+        const qint64 percent = free * 100 / total;
+        ui->lblAvailableValue->setText(
+            loc.formattedDataSize(free) + " / "
+            + loc.formattedDataSize(total)
+            + " (" + QString::number(percent) + " %)"
+            );
+    }
 
     // On systems where owner id and group id are not supported or files do not
     // have owners or groups, the id will be -2, cast to uint, according to Qt
@@ -75,7 +98,6 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     ui->cbOtherWrite->setChecked(permissions.testFlag(QFileDevice::Permission::WriteOther));
     ui->cbOtherExec->setChecked(permissions.testFlag(QFileDevice::Permission::ExeOther));
 
-    const QLocale loc = locale();
     ui->lblBirthValue->setText(loc.toString(info.birthTime(), QLocale::LongFormat));
     ui->lblModifiedValue->setText(loc.toString(info.lastModified(), QLocale::LongFormat));
     ui->lblAccessedValue->setText(loc.toString(info.lastRead(), QLocale::LongFormat));
