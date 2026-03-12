@@ -75,18 +75,6 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     ui->cbOtherWrite->setChecked(permissions.testFlag(QFileDevice::Permission::WriteOther));
     ui->cbOtherExec->setChecked(permissions.testFlag(QFileDevice::Permission::ExeOther));
 
-    qDebug() << "permissions as int:" << permissions.toInt();
-    qDebug() << "0777 as int:" << 0777;
-    qDebug() << "permissions & 0777:" << (permissions.toInt() & 0777);
-    ui->lblOctalValue->setText("0" + QString::number(permissions.toInt() & 0777, 8));
-#if defined(_WIN32)
-    // Octal permission display does not seem to work properly on Windows, and
-    // I don't know why - yet. Therefore it's not shown on Windows.
-    // TODO: Fix this one.
-    ui->lblOctal->hide();
-    ui->lblOctalValue->hide();
-#endif
-
     const QLocale loc = locale();
     ui->lblBirthValue->setText(loc.toString(info.birthTime(), QLocale::LongFormat));
     ui->lblModifiedValue->setText(loc.toString(info.lastModified(), QLocale::LongFormat));

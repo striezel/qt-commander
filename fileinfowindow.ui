@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>501</width>
-    <height>493</height>
+    <height>463</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       <x>10</x>
       <y>160</y>
       <width>481</width>
-      <height>171</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="title">
@@ -212,32 +212,6 @@
       <string>Ausführen</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lblOctal">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>140</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Octal:</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lblOctalValue">
-     <property name="geometry">
-      <rect>
-       <x>240</x>
-       <y>140</y>
-       <width>49</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>0???</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QGroupBox" name="gbFile">
     <property name="geometry">
@@ -334,7 +308,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>340</y>
+      <y>310</y>
       <width>481</width>
       <height>121</height>
      </rect>
