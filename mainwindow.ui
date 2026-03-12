@@ -407,7 +407,7 @@
     <iconset theme="document-properties"/>
    </property>
    <property name="text">
-    <string>Dateiieigenschaften anzeigen</string>
+    <string>Dateieigenschaften anzeigen</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+I</string>
