@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dateimanager</string>
+   <string>Qt Commander</string>
   </property>
   <property name="windowIcon">
    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
