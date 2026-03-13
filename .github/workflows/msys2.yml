@@ -1,0 +1,75 @@
+name: MSYS2
+
+on: push
+
+jobs:
+  msys2_mingw64:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE.
+      - name: Git checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: mingw64
+          update: true
+          install: >-
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-make
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-pkg-config
+            mingw-w64-x86_64-qt6-base
+            mingw-w64-x86_64-qt6-multimedia
+      - name: Build
+        run: |
+          export MSYSTEM=MINGW64
+          export CXX=g++
+          export CC=gcc
+          cd "$GITHUB_WORKSPACE"
+          mkdir build
+          cd build
+          cmake ../
+          cmake --build . -j2
+      - name: windeployqt
+        run: |
+          export MSYSTEM=MINGW64
+          cd "$GITHUB_WORKSPACE"
+          cd build/
+
+          pwd
+          ls -lah
+
+          # prepare files for deployment
+          windeployqt .
+
+          # remove left-over build files
+          rm -rf CMakeFiles cmake_install.cmake qt-commander_autogen
+          rm -f .ninja_deps .ninja_log build.ninja CMakeCache.txt
+          ls -lah
+
+          # copy possibly missing DLL files
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Core.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Gui.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Multimedia.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Network.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6PrintSupport.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Widgets.dll ./
+
+          # zip it
+          cd ..
+          '/c/Program Files/7-Zip/7z.exe' a -r qt-commander-windeployqt-build.zip build
+      - name: Upload build
+        uses: actions/upload-artifact@v7
+        with:
+          name: colour-mixer-windows-msys2
+          if-no-files-found: error
+          archive: false
+          path: |
+            qt-commander*.zip
