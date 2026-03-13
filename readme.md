@@ -16,10 +16,20 @@ files.
 ### Prerequisites
 
 To build Qt Commander, you need:
+
 * a C++ compiler with support for C++17
 * CMake 3.16 or later
 * Qt framework, version 6, with modules for widgets, gui, print support and
   multimedia
+
+These can usually be installed via
+
+```
+sudo apt-get install cmake g++ qt6-base-dev qt6-multimedia-dev
+```
+
+on a Debian or Debian-based system like Ubuntu. Other distributions might use
+slightly different package names.
 
 ### Build process (Linux)
 
