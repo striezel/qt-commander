@@ -2,6 +2,7 @@
 #define MOUNTEDVOLUMESDIALOG_H
 
 #include <QDialog>
+#include <QKeyEvent>
 
 namespace Ui {
 class MountedVolumesDialog;
@@ -16,7 +17,8 @@ public:
     ~MountedVolumesDialog();
 
     void loadData();
-
+protected:
+    void keyPressEvent(QKeyEvent* event) override;
 private:
     Ui::MountedVolumesDialog *ui;
 };

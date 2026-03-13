@@ -81,3 +81,11 @@ void MountedVolumesDialog::loadData()
     ui->tableWidget->resizeColumnToContents(ColumnIdxFreeSize);
     ui->tableWidget->resizeColumnToContents(ColumnIdxTotalSize);
 }
+
+void MountedVolumesDialog::keyPressEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key::Key_Escape)
+    {
+        this->close();
+    }
+}
