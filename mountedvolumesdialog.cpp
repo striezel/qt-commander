@@ -72,14 +72,17 @@ void MountedVolumesDialog::loadData()
 
         QTableWidgetItem* item = new QTableWidgetItem();
         item->setText(info.displayName());
+        item->setFlags(item->flags() & ~ Qt::ItemFlag::ItemIsEditable);
         ui->tableWidget->setItem(row_idx, 0, item);
 
         item = new QTableWidgetItem();
         item->setText(info.rootPath());
+        item->setFlags(item->flags() & ~ Qt::ItemFlag::ItemIsEditable);
         ui->tableWidget->setItem(row_idx, 1, item);
 
         item = new QTableWidgetItem();
         item->setText(info.fileSystemType());
+        item->setFlags(item->flags() & ~ Qt::ItemFlag::ItemIsEditable);
         ui->tableWidget->setItem(row_idx, ColumnIdxFileSystem, item);
 
         const qint64 free = info.bytesFree();
@@ -88,10 +91,12 @@ void MountedVolumesDialog::loadData()
 
         item = new QTableWidgetItem();
         item->setText(loc.formattedDataSize(free) + " (" + QString::number(percent) + " %)");
+        item->setFlags(item->flags() & ~ Qt::ItemFlag::ItemIsEditable);
         ui->tableWidget->setItem(row_idx, ColumnIdxFreeSize, item);
 
         item = new QTableWidgetItem();
         item->setText(loc.formattedDataSize(total));
+        item->setFlags(item->flags() & ~ Qt::ItemFlag::ItemIsEditable);
         ui->tableWidget->setItem(row_idx, ColumnIdxTotalSize, item);
 
         ++row_idx;
