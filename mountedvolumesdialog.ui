@@ -10,69 +10,77 @@
     <height>367</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>311</width>
+    <height>267</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Einhängepunkte / Laufwerke</string>
   </property>
   <property name="windowIcon">
    <iconset theme="drive-harddisk"/>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>320</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Orientation::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>491</width>
-     <height>301</height>
-    </rect>
-   </property>
-   <property name="columnCount">
-    <number>5</number>
-   </property>
-   <attribute name="verticalHeaderVisible">
-    <bool>false</bool>
-   </attribute>
-   <column>
-    <property name="text">
-     <string>Gerät</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Wurzelpfad</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Dateisystem</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Freier Speicher</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Speicherkapazität</string>
-    </property>
-   </column>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="minimumSize">
+      <size>
+       <width>291</width>
+       <height>201</height>
+      </size>
+     </property>
+     <property name="columnCount">
+      <number>5</number>
+     </property>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Gerät</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Wurzelpfad</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Dateisystem</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Freier Speicher</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Speicherkapazität</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="minimumSize">
+      <size>
+       <width>171</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>
