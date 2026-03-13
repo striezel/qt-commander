@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "filetypedetection.h"
-#include "settings.h"
+#include "util/filetypedetection.h"
+#include "util/settings.h"
 
 #include <QMainWindow>
 #include <QActionGroup>

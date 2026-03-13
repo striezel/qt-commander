@@ -32,11 +32,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         createdirectorydialog.h createdirectorydialog.cpp createdirectorydialog.ui
         focustrackingtreewidget.h focustrackingtreewidget.cpp
-        dirutils.h dirutils.cpp
-        settings.h settings.cpp
+        util/dirutils.h util/dirutils.cpp
+        util/settings.h util/settings.cpp
         viewers/textviewwindow.h viewers/textviewwindow.cpp viewers/textviewwindow.ui
         viewers/imageviewwindow.h viewers/imageviewwindow.cpp viewers/imageviewwindow.ui
-        filetypedetection.h filetypedetection.cpp
+        util/filetypedetection.h util/filetypedetection.cpp
         viewers/movieviewwindow.h viewers/movieviewwindow.cpp viewers/movieviewwindow.ui
         viewers/audioplayerwindow.h viewers/audioplayerwindow.cpp viewers/audioplayerwindow.ui
         fileinfowindow.h fileinfowindow.cpp fileinfowindow.ui

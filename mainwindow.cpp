@@ -8,7 +8,7 @@
 
 #include "viewers/audioplayerwindow.h"
 #include "createdirectorydialog.h"
-#include "dirutils.h"
+#include "util/dirutils.h"
 #include "viewers/imageviewwindow.h"
 #include "viewers/movieviewwindow.h"
 #include "viewers/textviewwindow.h"
