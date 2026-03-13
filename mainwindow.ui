@@ -14,7 +14,7 @@
    <string>Qt Commander</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+   <iconset theme="system-file-manager"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
