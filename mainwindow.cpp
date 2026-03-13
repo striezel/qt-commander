@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "fileinfowindow.h"
+#include "mountedvolumesdialog.h"
 
 #include <QFileIconProvider>
 #include <QMessageBox>
@@ -768,6 +769,7 @@ void MainWindow::connectMenuActions()
     connect(ui->actionLoadSettings, &QAction::triggered, this, &MainWindow::actionLoadSettingsTriggered);
     connect(ui->actionRestoreDefaultSettings, &QAction::triggered, this, &MainWindow::actionRestoreDefaultSettingsTriggered);
 
+    connect(ui->actionShowMountpoints, &QAction::triggered, this, &MainWindow::actionShowMountpointsTriggered);
     connect(ui->actionAboutQtCommander, &QAction::triggered, this, &MainWindow::actionAboutQtCmdrTriggered);
     connect(ui->actionAboutQt, &QAction::triggered, this, &MainWindow::actionAboutQtTriggered);
 }
@@ -796,6 +798,12 @@ void MainWindow::actionRestoreDefaultSettingsTriggered()
     restored_settings.resetToDefaults();
 
     putSettingsIntoGui(restored_settings);
+}
+
+void MainWindow::actionShowMountpointsTriggered()
+{
+    MountedVolumesDialog dialog;
+    dialog.exec();
 }
 
 void MainWindow::actionAboutQtCmdrTriggered()

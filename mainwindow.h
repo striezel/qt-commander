@@ -62,6 +62,7 @@ private slots:
     void actionLoadSettingsTriggered();
     void actionRestoreDefaultSettingsTriggered();
 
+    void actionShowMountpointsTriggered();
     void actionAboutQtCmdrTriggered();
     void actionAboutQtTriggered();
 

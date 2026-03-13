@@ -219,6 +219,8 @@
     <property name="title">
      <string>Info</string>
     </property>
+    <addaction name="actionShowMountpoints"/>
+    <addaction name="separator"/>
     <addaction name="actionAboutQtCommander"/>
     <addaction name="separator"/>
     <addaction name="actionAboutQt"/>
@@ -411,6 +413,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionShowMountpoints">
+   <property name="icon">
+    <iconset theme="drive-harddisk"/>
+   </property>
+   <property name="text">
+    <string>Einhängepunkte anzeigen</string>
    </property>
   </action>
  </widget>
