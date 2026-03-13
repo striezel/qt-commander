@@ -1,0 +1,32 @@
+name: Ubuntu
+
+on: push
+
+jobs:
+  gcc:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+          - os: ubuntu-24.04
+    runs-on: ${{ matrix.os }}
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE.
+      - name: Git checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Install Debian packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ libgl-dev qt6-base-dev qt6-multimedia-dev
+      - name: Build with GCC on ${{ matrix.os }}
+        run: |
+          export CXX=g++
+          export CC=gcc
+          cd $GITHUB_WORKSPACE
+          mkdir build
+          cd build
+          cmake ../
+          make -j2
