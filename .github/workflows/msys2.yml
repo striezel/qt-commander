@@ -26,6 +26,7 @@ jobs:
             mingw-w64-x86_64-ninja
             mingw-w64-x86_64-pkg-config
             mingw-w64-x86_64-qt6-base
+            mingw-w64-x86_64-qt6-imageformats
             mingw-w64-x86_64-qt6-multimedia
       - name: Build
         run: |
@@ -61,6 +62,14 @@ jobs:
           "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Network.dll ./
           "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6PrintSupport.dll ./
           "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Widgets.dll ./
+
+          # copy possibly missing DLL files for image format plugins
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qjp2.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qjpeg.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qmng.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qtga.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qtiff.dll ./
+          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qwebp.dll ./
 
           # zip it
           cd ..
