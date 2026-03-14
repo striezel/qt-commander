@@ -90,11 +90,19 @@ void ImageViewWindow::resizeEvent(QResizeEvent *event)
 void ImageViewWindow::actionSupportedFileFormatsTriggered()
 {
     QString message = "Der Bildbetrachter unterstützt folgende MIME-Typen:\n";
-    for (const QByteArray& element: QImageReader::supportedMimeTypes())
+    const QList<QByteArray> supported_types = QImageReader::supportedMimeTypes();
+    for (const QByteArray& element: supported_types)
     {
         message = message + "\n" + element;
     }
     message += "\n\nDie Unterstützung kann je nach System und installierten Qt-Modulen variieren.";
+    if (!supported_types.contains("image/webp")
+        || !supported_types.contains("image/tiff")
+        || !supported_types.contains("image/x-tga"))
+    {
+        message += QString(" Durch Installation des Qt Image Formats Add-Ons kann")
+                   + " unter anderem die Unterstützung für WebP, TGA und TIFF erreicht werden.";
+    }
     QMessageBox::about(this, "Unterstützte Dateiformate", message);
 }
 
