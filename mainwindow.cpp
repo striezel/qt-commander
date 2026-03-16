@@ -29,6 +29,7 @@
 #include "viewers/audioplayerwindow.h"
 #include "createdirectorydialog.h"
 #include "util/dirutils.h"
+#include "util/GitInfos.hpp"
 #include "viewers/imageviewwindow.h"
 #include "viewers/movieviewwindow.h"
 #include "viewers/textviewwindow.h"
@@ -828,7 +829,10 @@ void MainWindow::actionShowMountpointsTriggered()
 
 void MainWindow::actionAboutQtCmdrTriggered()
 {
-    QString message = QCoreApplication::applicationName() + " " + QCoreApplication::applicationVersion();
+    qtcmdr::GitInfos info;
+    QString message = QCoreApplication::applicationName() + " " + QCoreApplication::applicationVersion()
+                      + "\n\nVersion control commit: " + QString::fromStdString(info.commit().substr(0, 7))
+                      + "\nVersion control date: " + QString::fromStdString(info.date());
     QMessageBox::about(this, QCoreApplication::applicationName(), message);
 }
 

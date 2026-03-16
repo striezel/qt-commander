@@ -2,6 +2,32 @@ cmake_minimum_required(VERSION 3.16)
 
 project(qt-commander VERSION 0.1 LANGUAGES CXX)
 
+# create git-related constants
+# -- get the current commit hash
+execute_process(
+  COMMAND git rev-parse HEAD
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_VARIABLE GIT_HASH
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+# -- get the commit date
+execute_process(
+  COMMAND git show -s --format=%ci
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_VARIABLE GIT_TIME
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+message("GIT_HASH is ${GIT_HASH}.")
+message("GIT_TIME is ${GIT_TIME}.")
+
+# replace git-related constants in GitInfos.cpp
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/util/GitInfos.template.cpp
+               ${CMAKE_CURRENT_SOURCE_DIR}/util/GitInfos.cpp
+               ESCAPE_QUOTES)
+# end of git-related stuff
+
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -24,6 +50,8 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        util/GitInfos.cpp
+        util/GitInfos.hpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
