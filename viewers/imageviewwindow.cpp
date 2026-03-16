@@ -103,6 +103,10 @@ void ImageViewWindow::actionSupportedFileFormatsTriggered()
         message += QString(" Durch Installation des Qt Image Formats Add-Ons kann")
                    + " unter anderem die Unterstützung für WebP, TGA und TIFF erreicht werden.";
     }
+    if (!supported_types.contains("image/svg+xml"))
+    {
+        message += " Durch Installation des Qt-SVG-Moduls kann die Unterstützung für SVG-Dateien hinzugefügt werden.";
+    }
     QMessageBox::about(this, "Unterstützte Dateiformate", message);
 }
 
