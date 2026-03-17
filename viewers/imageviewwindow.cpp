@@ -87,7 +87,7 @@ void ImageViewWindow::resizeEvent(QResizeEvent *event)
     this->QMainWindow::resizeEvent(event);
 }
 
-void ImageViewWindow::actionSupportedFileFormatsTriggered()
+QString ImageViewWindow::supportedFormatsMessage()
 {
     QString message = "Der Bildbetrachter unterstützt folgende MIME-Typen:\n";
     const QList<QByteArray> supported_types = QImageReader::supportedMimeTypes();
@@ -107,7 +107,12 @@ void ImageViewWindow::actionSupportedFileFormatsTriggered()
     {
         message += " Durch Installation des Qt-SVG-Moduls kann die Unterstützung für SVG-Dateien hinzugefügt werden.";
     }
-    QMessageBox::about(this, "Unterstützte Dateiformate", message);
+    return message;
+}
+
+void ImageViewWindow::actionSupportedFileFormatsTriggered()
+{
+    QMessageBox::about(this, "Unterstützte Dateiformate", supportedFormatsMessage());
 }
 
 void ImageViewWindow::rescaleToFit()

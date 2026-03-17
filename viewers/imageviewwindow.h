@@ -24,6 +24,7 @@
 #include <QMainWindow>
 #include <QCloseEvent>
 #include <QPixmap>
+#include <QString>
 
 namespace Ui {
 class ImageViewWindow;
@@ -42,6 +43,9 @@ public:
     /// Returns true, if image was successfully loaded.
     /// Returns false otherwise.
     bool loadImageFile(const QString& path);
+
+    /// Gets a message describing the supported image formats.
+    static QString supportedFormatsMessage();
 protected:
     void closeEvent(QCloseEvent* event) override;
     void showEvent(QShowEvent* event) override;

@@ -4,6 +4,7 @@
 #include <QCloseEvent>
 #include <QMainWindow>
 #include <QMovie>
+#include <QString>
 
 namespace Ui {
 class MovieViewWindow;
@@ -26,6 +27,8 @@ public:
     /// Sets whether movies should start automatically when the viewer is shown.
     void setAutoStartVideos(const bool autoStart);
 
+    /// Gets a message describing the supported file formats.
+    static QString supportedFormatsMessage();
 signals:
     void autoStartChanged(const bool autoStart);
 protected:

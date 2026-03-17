@@ -25,6 +25,7 @@
 #include <QCloseEvent>
 #include <QMainWindow>
 #include <QMediaPlayer>
+#include <QString>
 
 namespace Ui {
 class AudioPlayerWindow;
@@ -49,6 +50,9 @@ public:
 
     /// Sets the volume for audio playback. Must be in range [0;100].
     void setVolume(const int volume);
+
+    /// Gets a message describing the supported audio formats.
+    static QString supportedFormatsMessage();
 signals:
     void autoPlayChanged(const bool autoPlay);
     void audioVolumeChanged(const int volume);
