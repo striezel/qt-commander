@@ -19,8 +19,10 @@
 */
 
 #include "mountedvolumesdialog.h"
+#include "mainwindow.h"
 #include "ui_mountedvolumesdialog.h"
 
+#include <QPushButton>
 #include <QStorageInfo>
 
 MountedVolumesDialog::MountedVolumesDialog(QWidget *parent)
@@ -34,6 +36,17 @@ MountedVolumesDialog::MountedVolumesDialog(QWidget *parent)
 
 MountedVolumesDialog::~MountedVolumesDialog()
 {
+    MainWindow* castedParent = nullptr;
+    if (parent() != nullptr)
+    {
+        castedParent = dynamic_cast<MainWindow*>(parent());
+    }
+    if (castedParent != nullptr)
+    {
+        disconnect(this, &MountedVolumesDialog::leftTreeChange, castedParent, &MainWindow::changeLeftTree);
+        disconnect(this, &MountedVolumesDialog::rightTreeChange, castedParent, &MainWindow::changeRightTree);
+    }
+
     delete ui;
 }
 
@@ -42,10 +55,12 @@ void MountedVolumesDialog::loadData()
     const int ColumnIdxFileSystem = 2;
     const int ColumnIdxFreeSize = 3;
     const int ColumnIdxTotalSize = 4;
+    const int ColumnIdxLeft = 5;
+    const int ColumnIdxRight = 6;
 
     ui->tableWidget->clear();
 
-    ui->tableWidget->setColumnCount(5);
+    ui->tableWidget->setColumnCount(7);
     QTableWidgetItem* headerItem = new QTableWidgetItem("Gerät");
     ui->tableWidget->setHorizontalHeaderItem(0, headerItem);
     headerItem = new QTableWidgetItem("Wurzelpfad");
@@ -56,6 +71,12 @@ void MountedVolumesDialog::loadData()
     ui->tableWidget->setHorizontalHeaderItem(ColumnIdxFreeSize, headerItem);
     headerItem = new QTableWidgetItem("Speicherkapazität");
     ui->tableWidget->setHorizontalHeaderItem(ColumnIdxTotalSize, headerItem);
+    headerItem = new QTableWidgetItem("Linker Baum");
+    ui->tableWidget->setHorizontalHeaderItem(ColumnIdxLeft, headerItem);
+    headerItem = new QTableWidgetItem("Rechter Baum");
+    ui->tableWidget->setHorizontalHeaderItem(ColumnIdxRight, headerItem);
+
+    const QIcon jumpIcon = QIcon::hasThemeIcon("go-jump") ? QIcon::fromTheme("go-jump") : QIcon();
 
     const QList<QStorageInfo> volumes = QStorageInfo::mountedVolumes();
     int row_idx = 0;
@@ -99,12 +120,47 @@ void MountedVolumesDialog::loadData()
         item->setFlags(item->flags() & ~ Qt::ItemFlag::ItemIsEditable);
         ui->tableWidget->setItem(row_idx, ColumnIdxTotalSize, item);
 
+        QPushButton* btn = new QPushButton("Hierhin wechseln");
+        btn->setToolTip("Wechselt das angezeigte Verzeichnis des linken Baumes auf " + info.rootPath());
+        if (!jumpIcon.isNull())
+        {
+            btn->setIcon(jumpIcon);
+        }
+        connect(btn, &QPushButton::clicked, this, [info, this] {
+            emit leftTreeChange(info.rootPath());
+        });
+        ui->tableWidget->setCellWidget(row_idx, ColumnIdxLeft, btn);
+
+        btn = new QPushButton("Hierhin wechseln");
+        btn->setToolTip("Wechselt das angezeigte Verzeichnis des rechten Baumes auf " + info.rootPath());
+        if (!jumpIcon.isNull())
+        {
+            btn->setIcon(jumpIcon);
+        }
+        connect(btn, &QPushButton::clicked, this, [info, this] {
+            emit rightTreeChange(info.rootPath());
+        });
+        ui->tableWidget->setCellWidget(row_idx, ColumnIdxRight, btn);
+
         ++row_idx;
     }
 
     ui->tableWidget->resizeColumnToContents(ColumnIdxFileSystem);
     ui->tableWidget->resizeColumnToContents(ColumnIdxFreeSize);
     ui->tableWidget->resizeColumnToContents(ColumnIdxTotalSize);
+    ui->tableWidget->resizeColumnToContents(ColumnIdxLeft);
+    ui->tableWidget->resizeColumnToContents(ColumnIdxRight);
+
+    MainWindow* castedParent = nullptr;
+    if (parent() != nullptr)
+    {
+        castedParent = dynamic_cast<MainWindow*>(parent());
+    }
+    if (castedParent != nullptr)
+    {
+        connect(this, &MountedVolumesDialog::leftTreeChange, castedParent, &MainWindow::changeLeftTree);
+        connect(this, &MountedVolumesDialog::rightTreeChange, castedParent, &MainWindow::changeRightTree);
+    }
 }
 
 void MountedVolumesDialog::keyPressEvent(QKeyEvent* event)

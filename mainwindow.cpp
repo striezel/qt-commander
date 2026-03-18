@@ -98,6 +98,28 @@ void MainWindow::audioPlayerVolumeChanged(const int volume)
     settings.setAudioVolume(volume);
 }
 
+void MainWindow::changeLeftTree(const QString& newPath)
+{
+    QDir dir(newPath);
+    if (!dir.exists())
+    {
+        return;
+    }
+
+    fillTreeWidget(ui->treeWidgetLeft, dir.absolutePath());
+}
+
+void MainWindow::changeRightTree(const QString& newPath)
+{
+    QDir dir(newPath);
+    if (!dir.exists())
+    {
+        return;
+    }
+
+    fillTreeWidget(ui->treeWidgetRight, dir.absolutePath());
+}
+
 void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, const bool selectFirst)
 {
     if ((treeWidget == nullptr) || path.isEmpty())
@@ -823,7 +845,7 @@ void MainWindow::actionRestoreDefaultSettingsTriggered()
 
 void MainWindow::actionShowMountpointsTriggered()
 {
-    MountedVolumesDialog dialog;
+    MountedVolumesDialog dialog(this);
     dialog.exec();
 }
 

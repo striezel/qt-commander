@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>514</width>
+    <width>713</width>
     <height>367</height>
    </rect>
   </property>
@@ -32,7 +32,7 @@
       </size>
      </property>
      <property name="columnCount">
-      <number>5</number>
+      <number>7</number>
      </property>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
@@ -60,6 +60,16 @@
      <column>
       <property name="text">
        <string>Speicherkapazität</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Links</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Rechts</string>
       </property>
      </column>
     </widget>

@@ -37,6 +37,11 @@ public:
     ~MountedVolumesDialog();
 
     void loadData();
+
+signals:
+    void rightTreeChange(const QString& path);
+    void leftTreeChange(const QString& path);
+
 protected:
     void keyPressEvent(QKeyEvent* event) override;
 private:

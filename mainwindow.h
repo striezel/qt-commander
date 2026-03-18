@@ -49,6 +49,8 @@ public slots:
     void movieViewerAutoStartChanged(const bool autoStart);
     void audioPlayerAutoPlayChanged(const bool autoPlay);
     void audioPlayerVolumeChanged(const int volume);
+    void changeLeftTree(const QString& newPath);
+    void changeRightTree(const QString& newPath);
 
 private slots:
     void treeItemDoubleClicked(QTreeWidgetItem* item, int column);
