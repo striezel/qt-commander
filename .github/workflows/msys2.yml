@@ -59,12 +59,11 @@ jobs:
           ls -lah
 
           # copy possibly missing DLL files
-          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Core.dll ./
-          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Gui.dll ./
-          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Multimedia.dll ./
-          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Network.dll ./
-          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6PrintSupport.dll ./
-          "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh Qt6Widgets.dll ./
+          DLLS=$(find . -maxdepth 1 -type f -name '*.dll')
+          for dll in $DLLS
+          do
+            "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh "$dll" ./
+          done
 
           # copy possibly missing DLL files for image format plugins
           "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qjp2.dll ./
