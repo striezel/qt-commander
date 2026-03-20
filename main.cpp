@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QCoreApplication::setOrganizationName("Example Organization");
+    QCoreApplication::setOrganizationName("Dirk Stolle");
     QCoreApplication::setApplicationName("Qt Commander");
     QCoreApplication::setApplicationVersion("0.1");
 
