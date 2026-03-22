@@ -82,8 +82,10 @@ void ImageViewWindow::showEvent(QShowEvent *event)
 
 void ImageViewWindow::resizeEvent(QResizeEvent *event)
 {
-    qDebug() << "ImageViewWindow::resizeEvent";
-    rescaleToFit();
+    if (this->isVisible())
+    {
+        rescaleToFit();
+    }
     this->QMainWindow::resizeEvent(event);
 }
 
