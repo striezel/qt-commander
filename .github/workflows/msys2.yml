@@ -77,9 +77,12 @@ jobs:
           # copy license file
           cp "$GITHUB_WORKSPACE"/LICENSE ./
 
-          # zip it
+          VERSION=$(git describe --always)
           cd ..
-          '/c/Program Files/7-Zip/7z.exe' a -r qt-commander-windeployqt-build.zip build
+          mv build qt-commander-${VERSION}
+
+          # zip it
+          '/c/Program Files/7-Zip/7z.exe' a -r qt-commander-windeployqt-${VERSION}.zip qt-commander-${VERSION}
       - name: Upload build
         uses: actions/upload-artifact@v7
         with:
