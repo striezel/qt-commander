@@ -1,0 +1,7 @@
+# See https://wiki.debian.org/UpstreamMetadata for more info/fields.
+
+Bug-Database: https://github.com/striezel/qt-commander/issues
+# Bug-Submit: https://github.com/striezel/qt-commander/issues/new
+# Changelog: https://github.com/striezel/qt-commander/blob/main/changelog.md
+Repository-Browse: https://github.com/striezel/qt-commander
+Repository: https://github.com/striezel/qt-commander.git

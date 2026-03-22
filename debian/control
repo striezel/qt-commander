@@ -1,0 +1,28 @@
+Source: qt-commander
+Section: unknown
+Priority: optional
+Maintainer: Dirk Stolle <striezel-dev@web.de>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake,
+ qt6-base-dev,
+ qt6-multimedia-dev
+Standards-Version: 4.6.2
+Homepage: https://github.com/striezel/qt-commander
+Vcs-Git: https://github.com/striezel/qt-commander.git
+
+Package: qt-commander
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: Graphical file manager based on the Qt framework
+ The file manager consists of two directory views placed side by side, similar
+ to traditional text-based programs such as "Norton Commander" or graphical
+ equivalents such as "Total Commander." In this view, standard file operations
+ such as copying, moving, and deleting files and directories as well as the
+ creation of new directories are possible.
+ It includes viewers for text files, image files and even a player for audio
+ files.

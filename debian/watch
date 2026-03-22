@@ -1,0 +1,15 @@
+version=4
+
+# GitHub hosted projects.
+#opts="filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)%@PACKAGE@-$1%" \
+#    https://github.com/<user>/<project>/tags \
+#    (?:.*?/)v?@ANY_VERSION@@ARCHIVE_EXT@
+
+# GitLab hosted projects.
+#opts="filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)%@PACKAGE@-$1%" \
+#    https://gitlab.com/<user>/<project>/-/tags \
+#    archive/v?@ANY_VERSION@/<project>-v?\d\S*@ARCHIVE_EXT@
+
+# Direct Git.
+opts="mode=git" http://github.com/striezel/qt-commander.git \
+    refs/tags/v([\d\.]+)
