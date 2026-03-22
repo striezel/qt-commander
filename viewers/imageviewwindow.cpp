@@ -21,7 +21,6 @@
 #include "imageviewwindow.h"
 #include "ui_imageviewwindow.h"
 
-#include <QDebug>
 #include <QImageReader>
 #include <QMessageBox>
 
@@ -52,8 +51,6 @@ bool ImageViewWindow::loadImageFile(const QString &path)
     {
         return false;
     }
-    qDebug() << "new pixmap size: " << new_pixmap->size();
-    qDebug() << "label size:      " << ui->label->size();
 
     ui->label->setPixmap(*new_pixmap);
 
@@ -76,7 +73,6 @@ void ImageViewWindow::closeEvent(QCloseEvent *event)
 
 void ImageViewWindow::showEvent(QShowEvent *event)
 {
-    qDebug() << "ImageViewWindow::showEvent";
     rescaleToFit();
 }
 
@@ -126,8 +122,6 @@ void ImageViewWindow::rescaleToFit()
 
     const QSize img_size = loadedPixmap->size();
     const QSize lbl_size = ui->label->size();
-    qDebug() << "pixmap size: " << img_size;
-    qDebug() << "label size:  " << lbl_size;
     if (img_size.width() > lbl_size.width() || img_size.height() > lbl_size.height())
     {
         QPixmap rescaled = loadedPixmap->scaled(lbl_size, Qt::AspectRatioMode::KeepAspectRatio);
@@ -136,14 +130,11 @@ void ImageViewWindow::rescaleToFit()
             return;
         }
         const QSize re_size = rescaled.size();
-        qDebug() << "rescaled size:" << re_size;
         ui->label->setPixmap(rescaled);
         double percentage = img_size.height() > img_size.width()
                                 ? (re_size.height() * 100.0 / img_size.height())
                                 : (re_size.width() * 100.0 / img_size.width());
-        qDebug() << "percentage: " << percentage;
         percentage = std::round(percentage * 10.0) / 10.0;
-        qDebug() << "percentage rounded: " << percentage;
         ui->statusbar->showMessage("Bildgröße: " + QString::number(img_size.width())
                                    + " x " + QString::number(img_size.height())
                                    + " Pixel, skaliert auf " + QString::number(percentage) + " %");
