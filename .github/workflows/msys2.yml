@@ -74,6 +74,9 @@ jobs:
           "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qtiff.dll ./
           "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qwebp.dll ./
 
+          # copy license file
+          cp "$GITHUB_WORKSPACE"/LICENSE ./
+
           # zip it
           cd ..
           '/c/Program Files/7-Zip/7z.exe' a -r qt-commander-windeployqt-build.zip build
