@@ -855,6 +855,11 @@ void MainWindow::actionAboutQtCmdrTriggered()
     QString message = QCoreApplication::applicationName() + " " + QCoreApplication::applicationVersion()
                       + "\n\nVersion control commit: " + QString::fromStdString(info.commit().substr(0, 7))
                       + "\nVersion control date: " + QString::fromStdString(info.date());
+    message += QString("\n\nCopyright (C) 2026  Dirk Stolle\n")
+               + "License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>\n"
+               + "This is free software: you are free to change and redistribute it under the "
+               + "terms of the GNU General Public License version 3 or any later version.\n"
+               + "There is NO WARRANTY, to the extent permitted by law.";
     QMessageBox::about(this, QCoreApplication::applicationName(), message);
 }
 
