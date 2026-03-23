@@ -86,7 +86,7 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v7
         with:
-          name: colour-mixer-windows-msys2
+          name: qt-commander-windows-msys2
           if-no-files-found: error
           archive: false
           path: |
