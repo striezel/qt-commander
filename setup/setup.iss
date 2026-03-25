@@ -20,7 +20,8 @@ ArchitecturesAllowed=x64compatible
 ; meaning it should use the native 64-bit Program Files directory and
 ; the 64-bit view of the registry.
 ArchitecturesInstallIn64BitMode=x64compatible
-DisableProgramGroupPage=yes
+DefaultGroupName=Qt Commander
+DisableProgramGroupPage=no
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline dialog
@@ -71,6 +72,6 @@ Source: "..\{#BuildDir}\tls\*.dll"; DestDir: "{app}\tls"; Flags: ignoreversion
 Source: "..\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{autoprograms}\Qt Commander"; Filename: "{app}\qt-commander.exe"
+Name: "{group}\Qt Commander"; Filename: "{app}\qt-commander.exe"
 Name: "{autodesktop}\Qt Commander"; Filename: "{app}\qt-commander.exe"; Tasks: desktopicon
-Name: "{autoprograms}\Uninstall Qt Commander"; Filename: "{app}\unins000.exe"
+Name: "{group}\Uninstall Qt Commander"; Filename: "{app}\unins000.exe"
