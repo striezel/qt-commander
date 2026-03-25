@@ -91,3 +91,19 @@ jobs:
           archive: false
           path: |
             qt-commander*.zip
+      - name: Create installer
+        working-directory: ${{env.GITHUB_WORKSPACE}}
+        run: |
+          export MSYSTEM=MINGW64
+          cd "$GITHUB_WORKSPACE"
+
+          VERSION=$(git describe --always)
+          mv qt-commander-${VERSION} build
+          "C:\Program Files (x86)\Inno Setup 6\iscc.exe" "setup\setup.iss"
+          mv setup/Output/qt-commander-setup.exe qt-commander-setup_${VERSION}.exe
+      - name: Upload installer
+        uses: actions/upload-artifact@v7
+        with:
+          name: qt-commander-setup
+          archive: false
+          path: qt-commander-setup*.exe
