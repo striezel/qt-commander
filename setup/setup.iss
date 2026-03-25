@@ -1,5 +1,7 @@
 #define BuildDir "build"
 
+; Info: http://www.jrsoftware.org/ishelp/
+
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
@@ -21,6 +23,7 @@ ArchitecturesInstallIn64BitMode=x64compatible
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=commandline dialog
 OutputBaseFilename=qt-commander-setup
 SolidCompression=yes
 WizardStyle=modern
@@ -71,5 +74,3 @@ Source: "..\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
 Name: "{autoprograms}\Qt Commander"; Filename: "{app}\qt-commander.exe"
 Name: "{autodesktop}\Qt Commander"; Filename: "{app}\qt-commander.exe"; Tasks: desktopicon
 Name: "{autoprograms}\Uninstall Qt Commander"; Filename: "{app}\unins000.exe"
-
-
