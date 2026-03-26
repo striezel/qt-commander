@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Qt Commander
+Comment=View and organize files
+Comment[de]=Dateien betrachten und organisieren
+Comment[en_GB]=View and organise files
+Exec=qt-commander
+Icon=system-file-manager
+# Translators: these are keywords of the file manager
+Keywords=folders;filesystem;explorer;
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Utility;FileManager;FileTools;Qt;
