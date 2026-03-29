@@ -277,19 +277,8 @@ void AudioPlayerWindow::actionAutoPlayAudioTriggered(bool checked)
 
 QString AudioPlayerWindow::supportedFormatsMessage()
 {
-    QString message = "Die Audiowiedergabe unterstützt folgende Dateiformate:\n";
+    QString message = "Die Audiowiedergabe unterstützt folgende Audiocodecs:\n";
     QMediaFormat mf;
-    const QList<QMediaFormat::FileFormat> formats = mf.supportedFileFormats(QMediaFormat::ConversionMode::Decode);
-    for (const QMediaFormat::FileFormat format: formats)
-    {
-        message += "\n" + QMediaFormat::fileFormatName(format);
-    }
-    if (formats.empty())
-    {
-        message += "\nKeine (Das ist schlecht.)";
-    }
-
-    message += "\n\nDabei werden folgende Audiocodecs unterstützt:\n";
     const QList<QMediaFormat::AudioCodec> codecs = mf.supportedAudioCodecs(QMediaFormat::ConversionMode::Decode);
     for (const QMediaFormat::AudioCodec codec: codecs)
     {
@@ -300,7 +289,7 @@ QString AudioPlayerWindow::supportedFormatsMessage()
         message += "\nKeine (Das ist wirklich schlecht.)";
     }
 
-    message += "\n\nDie unterstützten Formate und Codecs können je nach System variieren.";
+    message += "\n\nDie unterstützten Codecs können je nach System variieren.";
     return message;
 }
 
