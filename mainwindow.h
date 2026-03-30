@@ -101,7 +101,7 @@ private:
 
     FileTypeDetection detection;
 
-    void fillTreeWidget(QTreeWidget* treeWidget, const QString& path, const bool selectFirst = false);
+    void fillTreeWidget(QTreeWidget* treeWidget, const QString& path, const bool selectFirst = false, const QString& selectedItemName = "");
 
     /// Checks whether the left tree widget is the latest tree widget to get
     /// the focus.

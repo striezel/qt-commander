@@ -120,7 +120,7 @@ void MainWindow::changeRightTree(const QString& newPath)
     fillTreeWidget(ui->treeWidgetRight, dir.absolutePath());
 }
 
-void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, const bool selectFirst)
+void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, const bool selectFirst, const QString& selectedItemName)
 {
     if ((treeWidget == nullptr) || path.isEmpty())
     {
@@ -211,6 +211,16 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
     {
         treeWidget->setCurrentItem(treeWidget->topLevelItem(0));
     }
+    if (!selectedItemName.isEmpty())
+    {
+        const QList<QTreeWidgetItem*> candidates = treeWidget->findItems(
+            selectedItemName, Qt::MatchFlag::MatchFixedString | Qt::MatchFlag::MatchCaseSensitive);
+        if (!candidates.isEmpty())
+        {
+            treeWidget->setCurrentItem(candidates.at(0));
+            treeWidget->scrollToItem(candidates.at(0), QTreeWidget::ScrollHint::PositionAtCenter);
+        }
+    }
 }
 
 bool MainWindow::leftTreeIsLatest() const
@@ -256,8 +266,16 @@ void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
     }
     if (info.isDir())
     {
+        QString selectedItemName;
+        // If we are moving to the parent directory, then set the directory we
+        // came from as selected item.
+        if (item->text(0) == "..")
+        {
+            const QString current_directory = (isLeftTree ? currentDirectoryLeft : currentDirectoryRight).path();
+            selectedItemName = QFileInfo(current_directory).fileName();
+        }
         const bool selectFirstRow = (column < 0);
-        fillTreeWidget(item->treeWidget(), new_path, selectFirstRow);
+        fillTreeWidget(item->treeWidget(), new_path, selectFirstRow, selectedItemName);
     }
 }
 
