@@ -28,6 +28,8 @@
 #include <QMediaFormat>
 #include <QMessageBox>
 
+#include "util/durationutils.h"
+
 AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::AudioPlayerWindow)
@@ -320,20 +322,6 @@ void AudioPlayerWindow::actionShowMetadataTriggered()
     QMessageBox::about(this, "Metadaten", message);
 }
 
-QString AudioPlayerWindow::durationToMinutesSeconds(const qint64 durationMs)
-{
-    if (durationMs < 0)
-    {
-        return "--:--";
-    }
-
-    qint64 seconds = durationMs / 1000; // rounded down
-    const qint64 minutes = seconds / 60;
-    seconds = seconds % 60;
-    return QString::number(minutes) + ":"
-           + (seconds < 10 ? "0" : "") + QString::number(seconds);
-}
-
 void AudioPlayerWindow::showPosition(const qint64 currentPositionMs, const qint64 durationMs)
 {
     if ((durationMs <= 0) || (currentPositionMs <= 0))
@@ -342,6 +330,6 @@ void AudioPlayerWindow::showPosition(const qint64 currentPositionMs, const qint6
         return;
     }
 
-    ui->lblPosition->setText(durationToMinutesSeconds(currentPositionMs) + " / "
-                             + durationToMinutesSeconds(durationMs));
+    ui->lblPosition->setText(DurationUtils::durationToMinutesSeconds(currentPositionMs) + " / "
+                             + DurationUtils::durationToMinutesSeconds(durationMs));
 }

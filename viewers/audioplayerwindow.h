@@ -83,7 +83,6 @@ private:
     qint64 mediaDurationMillis;
 
     void showPosition(const qint64 currentPositionMs, const qint64 durationMs);
-    static QString durationToMinutesSeconds(const qint64 durationMs);
 };
 
 #endif // AUDIOPLAYERWINDOW_H

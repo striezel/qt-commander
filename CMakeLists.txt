@@ -69,6 +69,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         viewers/audioplayerwindow.h viewers/audioplayerwindow.cpp viewers/audioplayerwindow.ui
         fileinfowindow.h fileinfowindow.cpp fileinfowindow.ui
         mountedvolumesdialog.h mountedvolumesdialog.cpp mountedvolumesdialog.ui
+        util/durationutils.h util/durationutils.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET qt-commander APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
