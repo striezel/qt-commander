@@ -93,6 +93,11 @@ void MainWindow::audioPlayerAutoPlayChanged(const bool autoPlay)
     settings.setAutoPlayAudio(autoPlay);
 }
 
+void MainWindow::audioPlayerLoopForeverChanged(const bool loopForever)
+{
+    settings.setLoopAudioForever(loopForever);
+}
+
 void MainWindow::audioPlayerVolumeChanged(const int volume)
 {
     settings.setAudioVolume(volume);
@@ -621,6 +626,7 @@ void MainWindow::btnViewClicked()
             return;
         }
         viewer->setAutoPlay(settings.getAutoPlayAudio());
+        viewer->setLoopForever(settings.getLoopAudioForever());
         viewer->setVolume(settings.getAudioVolume());
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();

@@ -40,6 +40,7 @@ public:
     static const bool defaultAutoStartVideos;
 
     static const bool defaultAutoPlayAudio;
+    static const bool defaultLoopAudioForever;
     static const int defaultAudioVolume;
 
     /// Resets all values to their defaults.
@@ -74,6 +75,9 @@ public:
     bool getAutoPlayAudio() const;
     void setAutoPlayAudio(const bool autoPlay);
 
+    bool getLoopAudioForever() const;
+    void setLoopAudioForever(const bool loopForever);
+
     int getAudioVolume() const;
     void setAudioVolume(const int volume);
 private:
@@ -94,6 +98,9 @@ private:
 
     /// whether files in audio player start playing automatically
     bool autoPlayAudio;
+
+    /// whether files in audio player should be repeated when they reach the end
+    bool loopAudioForever;
 
     /// volume of audio files in range [0;100]
     int audioVolume;

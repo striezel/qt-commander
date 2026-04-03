@@ -183,6 +183,7 @@
      <string>Einstellungen</string>
     </property>
     <addaction name="actionAutoPlayAudio"/>
+    <addaction name="actionLoopForever"/>
    </widget>
    <widget class="QMenu" name="menuInfo">
     <property name="title">
@@ -226,6 +227,17 @@
   <action name="actionShowMetadata">
    <property name="text">
     <string>Metadaten anzeigen</string>
+   </property>
+  </action>
+  <action name="actionLoopForever">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="media-playlist-repeat"/>
+   </property>
+   <property name="text">
+    <string>Datei in Endlosschleife abspielen</string>
    </property>
   </action>
  </widget>

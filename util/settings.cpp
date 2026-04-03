@@ -38,6 +38,7 @@ const bool Settings::defaultUseProvidedFileIcons{true};
 const bool Settings::defaultAutoStartVideos{true};
 
 const bool Settings::defaultAutoPlayAudio{false};
+const bool Settings::defaultLoopAudioForever{false};
 const int Settings::defaultAudioVolume{50};
 
 Settings::Settings()
@@ -47,6 +48,7 @@ Settings::Settings()
     , textViewerFont(defaultTextViewerFont())
     , autoStartVideos(defaultAutoStartVideos)
     , autoPlayAudio(defaultAutoPlayAudio)
+    , loopAudioForever(defaultLoopAudioForever)
     , audioVolume(defaultAudioVolume)
 {}
 
@@ -63,6 +65,7 @@ void Settings::resetToDefaults()
     textViewerFont = defaultTextViewerFont();
     autoStartVideos = defaultAutoStartVideos;
     autoPlayAudio = defaultAutoPlayAudio;
+    loopAudioForever = defaultLoopAudioForever;
     audioVolume = defaultAudioVolume;
 }
 
@@ -78,6 +81,7 @@ void Settings::save()
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("movie-viewer-auto-start", autoStartVideos);
     settings.setValue("audio-player-auto-play", autoPlayAudio);
+    settings.setValue("audio-player-loop-forever", loopAudioForever);
     settings.setValue("audio-player-volume", audioVolume);
 }
 
@@ -101,6 +105,7 @@ void Settings::load()
     autoStartVideos = settings.value("movie-viewer-auto-start", defaultAutoStartVideos).toBool();
 
     autoPlayAudio = settings.value("audio-player-auto-play", defaultAutoPlayAudio).toBool();
+    loopAudioForever = settings.value("aaudio-player-loop-forever", defaultLoopAudioForever).toBool();
     const int volume = settings.value("audio-player-volume", defaultAudioVolume).toInt();
     setAudioVolume(volume);
 }
@@ -194,6 +199,16 @@ bool Settings::getAutoPlayAudio() const
 void Settings::setAutoPlayAudio(const bool autoPlay)
 {
     autoPlayAudio = autoPlay;
+}
+
+bool Settings::getLoopAudioForever() const
+{
+    return loopAudioForever;
+}
+
+void Settings::setLoopAudioForever(const bool loopForever)
+{
+    loopAudioForever = loopForever;
 }
 
 int Settings::getAudioVolume() const

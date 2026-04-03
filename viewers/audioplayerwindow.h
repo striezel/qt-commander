@@ -48,6 +48,9 @@ public:
     /// Sets whether files should start playing automatically when the viewer is shown.
     void setAutoPlay(const bool autoPlay);
 
+    /// Sets whether files should playing in loop indefinitely.
+    void setLoopForever(const bool loopForever);
+
     /// Sets the volume for audio playback. Must be in range [0;100].
     void setVolume(const int volume);
 
@@ -55,6 +58,7 @@ public:
     static QString supportedFormatsMessage();
 signals:
     void autoPlayChanged(const bool autoPlay);
+    void loopForeverChanged(const bool loopForever);
     void audioVolumeChanged(const int volume);
 protected:
     void closeEvent(QCloseEvent* event) override;
@@ -71,6 +75,7 @@ private slots:
     void seekableChanged(bool seekable);
 
     void actionAutoPlayAudioTriggered(bool checked = false);
+    void actionLoopForeverTriggered(bool checked = false);
     void actionSupportedFormatsTriggered();
     void actionShowMetadataTriggered();
 private:

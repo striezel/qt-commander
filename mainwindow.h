@@ -48,6 +48,7 @@ public slots:
     void textViewerFontChanged(const QFont& new_font);
     void movieViewerAutoStartChanged(const bool autoStart);
     void audioPlayerAutoPlayChanged(const bool autoPlay);
+    void audioPlayerLoopForeverChanged(const bool loopForever);
     void audioPlayerVolumeChanged(const int volume);
     void changeLeftTree(const QString& newPath);
     void changeRightTree(const QString& newPath);

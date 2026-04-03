@@ -56,6 +56,7 @@ AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
     connect(mediaPlayer, &QMediaPlayer::seekableChanged, this, &AudioPlayerWindow::seekableChanged);
 
     connect(ui->actionAutoPlayAudio, &QAction::triggered, this, &AudioPlayerWindow::actionAutoPlayAudioTriggered);
+    connect(ui->actionLoopForever, &QAction::triggered, this, &AudioPlayerWindow::actionLoopForeverTriggered);
     connect(ui->actionSupportedFormats, &QAction::triggered, this, &AudioPlayerWindow::actionSupportedFormatsTriggered);
     connect(ui->actionShowMetadata, &QAction::triggered, this, &AudioPlayerWindow::actionShowMetadataTriggered);
 
@@ -66,6 +67,7 @@ AudioPlayerWindow::AudioPlayerWindow(QWidget *parent)
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
         connect(this, &AudioPlayerWindow::autoPlayChanged, castedParent, &MainWindow::audioPlayerAutoPlayChanged);
+        connect(this, &AudioPlayerWindow::loopForeverChanged, castedParent, &MainWindow::audioPlayerLoopForeverChanged);
         connect(this, &AudioPlayerWindow::audioVolumeChanged, castedParent, &MainWindow::audioPlayerVolumeChanged);
     }
 }
@@ -82,6 +84,7 @@ AudioPlayerWindow::~AudioPlayerWindow()
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
         disconnect(this, &AudioPlayerWindow::autoPlayChanged, castedParent, &MainWindow::audioPlayerAutoPlayChanged);
+        disconnect(this, &AudioPlayerWindow::loopForeverChanged, castedParent, &MainWindow::audioPlayerLoopForeverChanged);
         disconnect(this, &AudioPlayerWindow::audioVolumeChanged, castedParent, &MainWindow::audioPlayerVolumeChanged);
     }
 
@@ -135,6 +138,11 @@ void AudioPlayerWindow::setAutoPlay(const bool autoPlay)
     ui->actionAutoPlayAudio->setChecked(autoPlay);
 }
 
+void AudioPlayerWindow::setLoopForever(const bool loopForever)
+{
+    ui->actionLoopForever->setChecked(loopForever);
+}
+
 void AudioPlayerWindow::setVolume(const int volume)
 {
     ui->sliderVolume->setValue(std::clamp(volume, 0, 100));
@@ -154,6 +162,10 @@ void AudioPlayerWindow::showEvent(QShowEvent *event)
     if (ui->actionAutoPlayAudio->isChecked())
     {
         btnStartClicked();
+    }
+    if (ui->actionLoopForever->isChecked() && mediaPlayer != nullptr)
+    {
+        mediaPlayer->setLoops(QMediaPlayer::Loops::Infinite);
     }
 }
 
@@ -275,6 +287,20 @@ void AudioPlayerWindow::seekableChanged(bool seekable)
 void AudioPlayerWindow::actionAutoPlayAudioTriggered(bool checked)
 {
     emit autoPlayChanged(checked);
+}
+
+void AudioPlayerWindow::actionLoopForeverTriggered(bool checked)
+{
+    if (mediaPlayer == nullptr)
+    {
+        return;
+    }
+
+    mediaPlayer->setLoops(checked
+                              ? QMediaPlayer::Loops::Infinite
+                              : QMediaPlayer::Loops::Once);
+
+    emit loopForeverChanged(checked);
 }
 
 QString AudioPlayerWindow::supportedFormatsMessage()
