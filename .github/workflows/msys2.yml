@@ -74,8 +74,9 @@ jobs:
           "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qtiff.dll ./
           "$GITHUB_WORKSPACE"/ci/copy-dll-dependencies.sh imageformats/qwebp.dll ./
 
-          # copy license file
+          # copy license file + changelog
           cp "$GITHUB_WORKSPACE"/LICENSE ./
+          cp "$GITHUB_WORKSPACE"/changelog.md ./
 
           VERSION=$(git describe --always)
           cd ..

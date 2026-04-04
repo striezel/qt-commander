@@ -70,6 +70,8 @@ Source: "..\{#BuildDir}\styles\*.dll"; DestDir: "{app}\styles"; Flags: ignorever
 Source: "..\{#BuildDir}\tls\*.dll"; DestDir: "{app}\tls"; Flags: ignoreversion
 ; GPL 3 license text
 Source: "..\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
+; changelog
+Source: "..\changelog.md"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Qt Commander"; Filename: "{app}\qt-commander.exe"
