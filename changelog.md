@@ -15,7 +15,7 @@ improvements may be omitted.)_
   auto-selected in the directory list. This makes navigation a bit easier /
   smoother.
 
-* __[new feature]__
+* __[improvement]__
   Releases will now provide packages for Ubuntu 26.04, too.
 
 ## Version 0.1.1 (2026-03-28)
