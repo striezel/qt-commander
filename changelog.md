@@ -4,7 +4,7 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
-## Next Version (2026-04-??)
+## Version 0.1.2 (2026-04-06)
 
 * __[new feature]__
   Size values are now shown in a formatted, human-readable format by default
