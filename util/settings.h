@@ -35,6 +35,8 @@ public:
 
     static const bool defaultUseProvidedFileIcons;
 
+    static const bool defaultShowFormattedSize;
+
     static QFont defaultTextViewerFont();
 
     static const bool defaultAutoStartVideos;
@@ -66,6 +68,9 @@ public:
     bool getUseProvidedFileIcons() const;
     void setUseProvidedFileIcons(const bool useProvided);
 
+    bool getShowFormattedSize() const;
+    void setShowFormattedSize(const bool formatted);
+
     QFont getTextViewerFont() const;
     void setTextViewerFont(QFont font);
 
@@ -89,6 +94,9 @@ private:
 
     /// whether to use file icons provided by QFileIconProvider
     bool useProvidedFileIcons;
+
+    /// whether to show file size as human-readable, localized string
+    bool showFormattedSize;
 
     /// the font which is used by the text viewer
     QFont textViewerFont;

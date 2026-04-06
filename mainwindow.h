@@ -79,6 +79,8 @@ private slots:
 
     void actionUseProvidedIconsTriggered(bool checked = false);
 
+    void actionShowFormattedSizeTriggered(bool checked = false);
+
     void actionRefreshTriggered();
 
     void actionSaveSettingsTriggered();

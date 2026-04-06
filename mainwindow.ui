@@ -204,6 +204,8 @@
     <addaction name="separator"/>
     <addaction name="actionUseProvidedIcons"/>
     <addaction name="separator"/>
+    <addaction name="actionShowFormattedSize"/>
+    <addaction name="separator"/>
     <addaction name="actionRefresh"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
@@ -421,6 +423,17 @@
    </property>
    <property name="text">
     <string>Einhängepunkte anzeigen</string>
+   </property>
+  </action>
+  <action name="actionShowFormattedSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Größenangabe formatieren</string>
    </property>
   </action>
  </widget>

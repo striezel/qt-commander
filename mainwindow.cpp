@@ -154,6 +154,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
     const QIcon directory_icon = icon_provider.icon(QAbstractFileIconProvider::Folder);
     const QIcon file_icon = icon_provider.icon(QAbstractFileIconProvider::File);
     const bool useProvided = settings.getUseProvidedFileIcons();
+    const bool showFormatted = settings.getShowFormattedSize();
 
     const QLocale loc = locale();
 
@@ -162,8 +163,9 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
         QStringList data;
         data.append(info.fileName());
         const bool isDirectory = info.isDir();
-        data.append(!isDirectory ? QString::number(info.size()) : "Verzeichnis");
-        //data.append(info.lastModified().toString(Qt::DateFormat::TextDate));
+        data.append(!isDirectory
+                        ? (showFormatted ? loc.formattedDataSize(info.size()) : QString::number(info.size()))
+                        : "Verzeichnis");
         data.append(loc.toString(info.lastModified(), QLocale::NarrowFormat));
 
         QTreeWidgetItem* item = new QTreeWidgetItem(data);
@@ -795,7 +797,8 @@ void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRe
     // Check whether tree widgets need a refresh.
     const bool needs_refresh = (new_filters != this->settings.getFilters())
                                || (new_sort_flags != this->settings.getSortFlags()
-                               || (settings.getUseProvidedFileIcons() != this->settings.getUseProvidedFileIcons()));
+                               || (settings.getUseProvidedFileIcons() != this->settings.getUseProvidedFileIcons())
+                               || (settings.getShowFormattedSize() != this->settings.getShowFormattedSize()));
 
     // New values for filters and sort flags need to be set before a potential
     // refresh happens, because the refresh uses the currently set flags.
@@ -829,6 +832,7 @@ void MainWindow::connectMenuActions()
     connect(ui->actionSortDirectoriesFirst, &QAction::triggered, this, &MainWindow::actionSortSomethingFirstTriggered);
 
     connect(ui->actionUseProvidedIcons, &QAction::triggered, this, &MainWindow::actionUseProvidedIconsTriggered);
+    connect(ui->actionShowFormattedSize, &QAction::triggered, this, &MainWindow::actionShowFormattedSizeTriggered);
 
     connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
 
@@ -1039,5 +1043,11 @@ void MainWindow::actionSortSomethingFirstTriggered(bool checked)
 void MainWindow::actionUseProvidedIconsTriggered(bool checked)
 {
     settings.setUseProvidedFileIcons(checked);
+    refreshBothViews();
+}
+
+void MainWindow::actionShowFormattedSizeTriggered(bool checked)
+{
+    settings.setShowFormattedSize(checked);
     refreshBothViews();
 }

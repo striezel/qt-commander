@@ -35,6 +35,8 @@ const QDir::SortFlags Settings::defaultSortFlags{QDir::SortFlag::Name
 
 const bool Settings::defaultUseProvidedFileIcons{true};
 
+const bool Settings::defaultShowFormattedSize{true};
+
 const bool Settings::defaultAutoStartVideos{true};
 
 const bool Settings::defaultAutoPlayAudio{false};
@@ -45,6 +47,7 @@ Settings::Settings()
     : filters(defaultFilters)
     , sortFlags(defaultSortFlags)
     , useProvidedFileIcons(defaultUseProvidedFileIcons)
+    , showFormattedSize(defaultShowFormattedSize)
     , textViewerFont(defaultTextViewerFont())
     , autoStartVideos(defaultAutoStartVideos)
     , autoPlayAudio(defaultAutoPlayAudio)
@@ -62,6 +65,7 @@ void Settings::resetToDefaults()
     filters = defaultFilters;
     sortFlags = defaultSortFlags;
     useProvidedFileIcons = defaultUseProvidedFileIcons;
+    showFormattedSize = defaultShowFormattedSize;
     textViewerFont = defaultTextViewerFont();
     autoStartVideos = defaultAutoStartVideos;
     autoPlayAudio = defaultAutoPlayAudio;
@@ -78,6 +82,7 @@ void Settings::save()
     settings.setValue("filters", filters.toInt());
     settings.setValue("sort-flags", sortFlags.toInt());
     settings.setValue("use-provided-file-icons", useProvidedFileIcons);
+    settings.setValue("show-formatted-size", showFormattedSize);
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("movie-viewer-auto-start", autoStartVideos);
     settings.setValue("audio-player-auto-play", autoPlayAudio);
@@ -98,6 +103,7 @@ void Settings::load()
     setSortFlags(QDir::SortFlags::fromInt(sort_flags));
 
     useProvidedFileIcons = settings.value("use-provided-file-icons", defaultUseProvidedFileIcons).toBool();
+    showFormattedSize = settings.value("show-formatted-size", defaultShowFormattedSize).toBool();
 
     QFont font = settings.value("text-viewer-font", defaultTextViewerFont()).value<QFont>();
     setTextViewerFont(font);
@@ -161,6 +167,16 @@ bool Settings::getUseProvidedFileIcons() const
 void Settings::setUseProvidedFileIcons(const bool useProvided)
 {
     useProvidedFileIcons = useProvided;
+}
+
+bool Settings::getShowFormattedSize() const
+{
+    return showFormattedSize;
+}
+
+void Settings::setShowFormattedSize(const bool formatted)
+{
+    showFormattedSize = formatted;
 }
 
 QFont Settings::getTextViewerFont() const

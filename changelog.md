@@ -7,10 +7,19 @@ improvements may be omitted.)_
 ## Next Version (2026-04-??)
 
 * __[new feature]__
+  Size values are now shown in a formatted, human-readable format by default
+  instead of just showing the numeric value. For example, the size of a file of
+  1634 bytes will now show up as "1.60 KiB" (or a similar localized string)
+  instead of as "1634".
+
+  This feature can be enabled and disabled via the view menu, so users can
+  switch back to the plain numeric size, if desired.
+
+* __[new feature]__
   A new setting to loop audio files endlessly has been added to the audio
   player. It is disabled by default.
 
-* __[new feature]__
+* __[improvement]__
   When navigating to a parent directory, the previous directory is now
   auto-selected in the directory list. This makes navigation a bit easier /
   smoother.
