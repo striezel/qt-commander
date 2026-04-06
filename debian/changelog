@@ -1,3 +1,9 @@
+qt-commander (0.1.2-1) UNRELEASED; urgency=medium
+
+  * New release.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Mon, 6 Apr 2026 17:51:07 +0200
+
 qt-commander (0.1.1-1) UNRELEASED; urgency=medium
 
   * Initial release.
