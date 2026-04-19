@@ -40,6 +40,7 @@ public:
     static QFont defaultTextViewerFont();
 
     static const bool defaultAutoStartVideos;
+    static const bool defaultAutoPlayVideo;
     static const int defaultVideoVolume;
 
     static const bool defaultAutoPlayAudio;
@@ -78,6 +79,9 @@ public:
     bool getAutoStartVideos() const;
     void setAutoStartVideos(const bool autoStart);
 
+    bool getAutoPlayVideo() const;
+    void setAutoPlayVideo(const bool autoPlay);
+
     int getVideoVolume() const;
     void setVideoVolume(const int volume);
 
@@ -107,6 +111,9 @@ private:
 
     /// whether videos in movie viewer start automatically
     bool autoStartVideos;
+
+    /// whether files in video player start playing automatically
+    bool autoPlayVideo;
 
     /// volume of video files in range [0;100]
     int videoVolume;

@@ -38,6 +38,7 @@ const bool Settings::defaultUseProvidedFileIcons{true};
 const bool Settings::defaultShowFormattedSize{true};
 
 const bool Settings::defaultAutoStartVideos{true};
+const bool Settings::defaultAutoPlayVideo{true};
 const int Settings::defaultVideoVolume{75};
 
 const bool Settings::defaultAutoPlayAudio{false};
@@ -51,6 +52,7 @@ Settings::Settings()
     , showFormattedSize(defaultShowFormattedSize)
     , textViewerFont(defaultTextViewerFont())
     , autoStartVideos(defaultAutoStartVideos)
+    , autoPlayVideo(defaultAutoPlayVideo)
     , videoVolume(defaultVideoVolume)
     , autoPlayAudio(defaultAutoPlayAudio)
     , loopAudioForever(defaultLoopAudioForever)
@@ -70,6 +72,7 @@ void Settings::resetToDefaults()
     showFormattedSize = defaultShowFormattedSize;
     textViewerFont = defaultTextViewerFont();
     autoStartVideos = defaultAutoStartVideos;
+    autoPlayVideo = defaultAutoPlayVideo;
     videoVolume = defaultVideoVolume;
     autoPlayAudio = defaultAutoPlayAudio;
     loopAudioForever = defaultLoopAudioForever;
@@ -88,6 +91,7 @@ void Settings::save()
     settings.setValue("show-formatted-size", showFormattedSize);
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("movie-viewer-auto-start", autoStartVideos);
+    settings.setValue("video-player-auto-play", autoPlayVideo);
     settings.setValue("video-player-volume", videoVolume);
     settings.setValue("audio-player-auto-play", autoPlayAudio);
     settings.setValue("audio-player-loop-forever", loopAudioForever);
@@ -113,6 +117,7 @@ void Settings::load()
     setTextViewerFont(font);
 
     autoStartVideos = settings.value("movie-viewer-auto-start", defaultAutoStartVideos).toBool();
+    autoPlayVideo = settings.value("video-player-auto-play", defaultAutoPlayVideo).toBool();
     const int vid_volume = settings.value("video-player-volume", defaultVideoVolume).toInt();
     setVideoVolume(vid_volume);
 
@@ -211,6 +216,16 @@ bool Settings::getAutoStartVideos() const
 void Settings::setAutoStartVideos(const bool autoStart)
 {
     autoStartVideos = autoStart;
+}
+
+bool Settings::getAutoPlayVideo() const
+{
+    return autoPlayVideo;
+}
+
+void Settings::setAutoPlayVideo(const bool autoPlay)
+{
+    autoPlayVideo = autoPlay;
 }
 
 int Settings::getVideoVolume() const

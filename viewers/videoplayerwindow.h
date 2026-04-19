@@ -45,15 +45,20 @@ public:
     /// Returns false otherwise.
     bool loadVideoFile(const QString& path);
 
+    /// Sets whether files should start playing automatically when the viewer is shown.
+    void setAutoPlay(const bool autoPlay);
+
     /// Sets the volume for video playback. Must be in range [0;100].
     void setVolume(const int volume);
 
     /// Gets a message describing the supported video formats.
     static QString supportedFormatsMessage();
 signals:
+    void autoPlayChanged(const bool autoPlay);
     void videoVolumeChanged(const int volume);
 protected:
     void closeEvent(QCloseEvent* event) override;
+    void showEvent(QShowEvent* event) override;
 private slots:
     void btnStartClicked();
     void btnStopClicked();
@@ -67,6 +72,7 @@ private slots:
     void seekableChanged(bool seekable);
     void mediaErrorOccurred(QMediaPlayer::Error error, const QString& msg);
 
+    void actionAutoPlayVideoTriggered(bool checked = false);
     void actionSupportedFormatsTriggered();
     void actionShowMetadataTriggered();
 private:

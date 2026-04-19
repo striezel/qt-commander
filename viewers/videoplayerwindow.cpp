@@ -56,6 +56,7 @@ VideoPlayerWindow::VideoPlayerWindow(QWidget *parent)
     connect(mediaPlayer, &QMediaPlayer::seekableChanged, this, &VideoPlayerWindow::seekableChanged);
     connect(mediaPlayer, &QMediaPlayer::errorOccurred, this, &VideoPlayerWindow::mediaErrorOccurred);
 
+    connect(ui->actionAutoPlayVideo, &QAction::triggered, this, &VideoPlayerWindow::actionAutoPlayVideoTriggered);
     connect(ui->actionSupportedFormats, &QAction::triggered, this, &VideoPlayerWindow::actionSupportedFormatsTriggered);
     connect(ui->actionShowMetadata, &QAction::triggered, this, &VideoPlayerWindow::actionShowMetadataTriggered);
 
@@ -65,6 +66,7 @@ VideoPlayerWindow::VideoPlayerWindow(QWidget *parent)
     if (parent != nullptr)
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
+        connect(this, &VideoPlayerWindow::autoPlayChanged, castedParent, &MainWindow::videoPlayerAutoPlayChanged);
         connect(this, &VideoPlayerWindow::videoVolumeChanged, castedParent, &MainWindow::videoPlayerVolumeChanged);
     }
 }
@@ -81,6 +83,7 @@ VideoPlayerWindow::~VideoPlayerWindow()
     if (parent() != nullptr)
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
+        disconnect(this, &VideoPlayerWindow::autoPlayChanged, castedParent, &MainWindow::videoPlayerAutoPlayChanged);
         disconnect(this, &VideoPlayerWindow::videoVolumeChanged, castedParent, &MainWindow::videoPlayerVolumeChanged);
     }
 
@@ -126,6 +129,11 @@ bool VideoPlayerWindow::loadVideoFile(const QString &path)
     return true;
 }
 
+void VideoPlayerWindow::setAutoPlay(const bool autoPlay)
+{
+    ui->actionAutoPlayVideo->setChecked(autoPlay);
+}
+
 void VideoPlayerWindow::setVolume(const int volume)
 {
     ui->sliderVolume->setValue(std::clamp(volume, 0, 100));
@@ -138,6 +146,14 @@ void VideoPlayerWindow::closeEvent(QCloseEvent *event)
 
     // do the usual event handling inherited from base class
     this->QMainWindow::closeEvent(event);
+}
+
+void VideoPlayerWindow::showEvent(QShowEvent *event)
+{
+    if (ui->actionAutoPlayVideo->isChecked())
+    {
+        btnStartClicked();
+    }
 }
 
 void VideoPlayerWindow::btnStartClicked()
@@ -228,6 +244,11 @@ void VideoPlayerWindow::mediaErrorOccurred(QMediaPlayer::Error error, const QStr
         QMessageBox::warning(this, "Fehler bei Videowiedergabe", "Ein Fehler ist aufgetreten: " + msg);
     }
     ui->statusbar->showMessage("Ein Fehler ist aufgetreten: " + msg);
+}
+
+void VideoPlayerWindow::actionAutoPlayVideoTriggered(bool checked)
+{
+    emit autoPlayChanged(checked);
 }
 
 QString VideoPlayerWindow::supportedFormatsMessage()

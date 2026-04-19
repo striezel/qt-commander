@@ -165,7 +165,14 @@
     <addaction name="actionSupportedFormats"/>
     <addaction name="actionShowMetadata"/>
    </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <addaction name="actionAutoPlayVideo"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuSettings"/>
    <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -193,6 +200,17 @@
   <action name="actionShowMetadata">
    <property name="text">
     <string>Metadaten anzeigen</string>
+   </property>
+  </action>
+  <action name="actionAutoPlayVideo">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Videos automatisch abspielen</string>
    </property>
   </action>
  </widget>
