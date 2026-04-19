@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{4A5942D0-1C97-4FB2-AA4E-955032EEC89E}
 AppName=Qt Commander
-AppVersion=0.1.2
+AppVersion=0.1.3
 AppPublisher=Dirk Stolle
 AppPublisherURL=https://github.com/striezel/qt-commander
 AppSupportURL=https://github.com/striezel/qt-commander
