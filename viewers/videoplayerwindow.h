@@ -45,8 +45,13 @@ public:
     /// Returns false otherwise.
     bool loadVideoFile(const QString& path);
 
+    /// Sets the volume for video playback. Must be in range [0;100].
+    void setVolume(const int volume);
+
     /// Gets a message describing the supported video formats.
     static QString supportedFormatsMessage();
+signals:
+    void videoVolumeChanged(const int volume);
 protected:
     void closeEvent(QCloseEvent* event) override;
 private slots:

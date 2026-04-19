@@ -89,6 +89,11 @@ void MainWindow::movieViewerAutoStartChanged(const bool autoStart)
     settings.setAutoStartVideos(autoStart);
 }
 
+void MainWindow::videoPlayerVolumeChanged(const int volume)
+{
+    settings.setVideoVolume(volume);
+}
+
 void MainWindow::audioPlayerAutoPlayChanged(const bool autoPlay)
 {
     settings.setAutoPlayAudio(autoPlay);
@@ -651,7 +656,7 @@ void MainWindow::btnViewClicked()
             return;
         }
         //viewer->setAutoPlay(settings.getAutoPlayAudio());
-        //viewer->setVolume(settings.getAudioVolume());
+        viewer->setVolume(settings.getVideoVolume());
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();
 

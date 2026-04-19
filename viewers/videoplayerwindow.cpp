@@ -20,7 +20,9 @@
 
 #include "videoplayerwindow.h"
 #include "ui_videoplayerwindow.h"
+#include "../mainwindow.h"
 
+#include <algorithm> // for std::clamp()
 #include <QMediaFormat>
 #include <QMediaMetaData>
 #include <QMessageBox>
@@ -59,6 +61,12 @@ VideoPlayerWindow::VideoPlayerWindow(QWidget *parent)
 
     // set initial volume to whatever the slider shows currently
     sliderVolumeValueChanged(ui->sliderVolume->value());
+
+    if (parent != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
+        connect(this, &VideoPlayerWindow::videoVolumeChanged, castedParent, &MainWindow::videoPlayerVolumeChanged);
+    }
 }
 
 VideoPlayerWindow::~VideoPlayerWindow()
@@ -69,6 +77,12 @@ VideoPlayerWindow::~VideoPlayerWindow()
     mediaPlayer = nullptr;
     delete audioOutput;
     audioOutput = nullptr;
+
+    if (parent() != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
+        disconnect(this, &VideoPlayerWindow::videoVolumeChanged, castedParent, &MainWindow::videoPlayerVolumeChanged);
+    }
 
     delete ui;
 }
@@ -110,6 +124,11 @@ bool VideoPlayerWindow::loadVideoFile(const QString &path)
     showPosition(0, mediaDurationMillis);
 
     return true;
+}
+
+void VideoPlayerWindow::setVolume(const int volume)
+{
+    ui->sliderVolume->setValue(std::clamp(volume, 0, 100));
 }
 
 void VideoPlayerWindow::closeEvent(QCloseEvent *event)
@@ -303,5 +322,5 @@ void VideoPlayerWindow::sliderVolumeValueChanged(int value)
     audioOutput->setVolume(linearVolume);
 
     ui->lblVolumeValue->setText(QString::number(value) + " %");
-    // TODO: emit audioVolumeChanged(value);
+    emit videoVolumeChanged(value);
 }
