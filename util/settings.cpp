@@ -111,7 +111,7 @@ void Settings::load()
     autoStartVideos = settings.value("movie-viewer-auto-start", defaultAutoStartVideos).toBool();
 
     autoPlayAudio = settings.value("audio-player-auto-play", defaultAutoPlayAudio).toBool();
-    loopAudioForever = settings.value("aaudio-player-loop-forever", defaultLoopAudioForever).toBool();
+    loopAudioForever = settings.value("audio-player-loop-forever", defaultLoopAudioForever).toBool();
     const int volume = settings.value("audio-player-volume", defaultAudioVolume).toInt();
     setAudioVolume(volume);
 }
