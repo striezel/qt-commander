@@ -19,36 +19,36 @@
 */
 
 #include "mainwindow.h"
-#include "movieviewwindow.h"
-#include "ui_movieviewwindow.h"
+#include "animationviewwindow.h"
+#include "ui_animationviewwindow.h"
 
 #include <QMessageBox>
 
-MovieViewWindow::MovieViewWindow(QWidget *parent)
+AnimationViewWindow::AnimationViewWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MovieViewWindow)
+    , ui(new Ui::AnimationViewWindow)
     , movie(nullptr)
 {
     ui->setupUi(this);
 
-    connect(ui->actionExit, &QAction::triggered, this, &MovieViewWindow::close);
+    connect(ui->actionExit, &QAction::triggered, this, &AnimationViewWindow::close);
     connect(ui->actionAutoStartVideos, &QAction::triggered,
-            this, &MovieViewWindow::actionAutoStartVideosTriggered);
+            this, &AnimationViewWindow::actionAutoStartVideosTriggered);
     connect(ui->actionSupportedFileTypes, &QAction::triggered,
-            this, &MovieViewWindow::actionSupportedFileTypesTriggered);
+            this, &AnimationViewWindow::actionSupportedFileTypesTriggered);
 
-    connect(ui->btnStart, &QPushButton::clicked, this, &MovieViewWindow::btnStartClicked);
-    connect(ui->btnStop, &QPushButton::clicked, this, &MovieViewWindow::btnStopClicked);
-    connect(ui->btnPause, &QPushButton::clicked, this, &MovieViewWindow::btnPauseClicked);
+    connect(ui->btnStart, &QPushButton::clicked, this, &AnimationViewWindow::btnStartClicked);
+    connect(ui->btnStop, &QPushButton::clicked, this, &AnimationViewWindow::btnStopClicked);
+    connect(ui->btnPause, &QPushButton::clicked, this, &AnimationViewWindow::btnPauseClicked);
 
     if (parent != nullptr)
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
-        connect(this, &MovieViewWindow::autoStartChanged, castedParent, &MainWindow::movieViewerAutoStartChanged);
+        connect(this, &AnimationViewWindow::autoStartChanged, castedParent, &MainWindow::movieViewerAutoStartChanged);
     }
 }
 
-MovieViewWindow::~MovieViewWindow()
+AnimationViewWindow::~AnimationViewWindow()
 {
     if (movie != nullptr)
     {
@@ -60,13 +60,13 @@ MovieViewWindow::~MovieViewWindow()
     if (parent() != nullptr)
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
-        disconnect(this, &MovieViewWindow::autoStartChanged, castedParent, &MainWindow::movieViewerAutoStartChanged);
+        disconnect(this, &AnimationViewWindow::autoStartChanged, castedParent, &MainWindow::movieViewerAutoStartChanged);
     }
 
     delete ui;
 }
 
-bool MovieViewWindow::loadMovieFile(const QString &path)
+bool AnimationViewWindow::loadMovieFile(const QString &path)
 {
     QMovie* new_movie = new QMovie(path);
     if (!new_movie->isValid())
@@ -76,7 +76,7 @@ bool MovieViewWindow::loadMovieFile(const QString &path)
 
     ui->label->setMovie(new_movie);
 
-    setWindowTitle("Videobetrachter - " + path);
+    setWindowTitle("Animationsbetrachter - " + path);
     if (movie != nullptr)
     {
         if (movie->state() == QMovie::MovieState::Running)
@@ -91,12 +91,12 @@ bool MovieViewWindow::loadMovieFile(const QString &path)
     return true;
 }
 
-void MovieViewWindow::setAutoStartVideos(const bool autoStart)
+void AnimationViewWindow::setAutoStartVideos(const bool autoStart)
 {
     ui->actionAutoStartVideos->setChecked(autoStart);
 }
 
-void MovieViewWindow::closeEvent(QCloseEvent *event)
+void AnimationViewWindow::closeEvent(QCloseEvent *event)
 {
     // ensure deletion
     this->deleteLater();
@@ -105,7 +105,7 @@ void MovieViewWindow::closeEvent(QCloseEvent *event)
     this->QMainWindow::closeEvent(event);
 }
 
-void MovieViewWindow::showEvent(QShowEvent *event)
+void AnimationViewWindow::showEvent(QShowEvent *event)
 {
     if (ui->actionAutoStartVideos->isChecked())
     {
@@ -113,7 +113,7 @@ void MovieViewWindow::showEvent(QShowEvent *event)
     }
 }
 
-void MovieViewWindow::btnStartClicked()
+void AnimationViewWindow::btnStartClicked()
 {
     if (movie == nullptr)
     {
@@ -123,7 +123,7 @@ void MovieViewWindow::btnStartClicked()
     movie->start();
 }
 
-void MovieViewWindow::btnStopClicked()
+void AnimationViewWindow::btnStopClicked()
 {
     if (movie == nullptr)
     {
@@ -133,7 +133,7 @@ void MovieViewWindow::btnStopClicked()
     movie->stop();
 }
 
-void MovieViewWindow::btnPauseClicked()
+void AnimationViewWindow::btnPauseClicked()
 {
     if (movie == nullptr)
     {
@@ -143,14 +143,14 @@ void MovieViewWindow::btnPauseClicked()
     movie->setPaused(movie->state() != QMovie::MovieState::Paused);
 }
 
-void MovieViewWindow::actionAutoStartVideosTriggered(bool checked)
+void AnimationViewWindow::actionAutoStartVideosTriggered(bool checked)
 {
     emit autoStartChanged(checked);
 }
 
-QString MovieViewWindow::supportedFormatsMessage()
+QString AnimationViewWindow::supportedFormatsMessage()
 {
-    QString message = "Der Videobetrachter unterstützt folgende Dateitypen:\n";
+    QString message = "Der Animationsbetrachter unterstützt folgende Dateitypen:\n";
     const QList<QByteArray> formats = QMovie::supportedFormats();
     for (const QByteArray& element: formats)
     {
@@ -164,7 +164,7 @@ QString MovieViewWindow::supportedFormatsMessage()
     return message;
 }
 
-void MovieViewWindow::actionSupportedFileTypesTriggered()
+void AnimationViewWindow::actionSupportedFileTypesTriggered()
 {
     QMessageBox::about(this, "Unterstützte Dateiformate", supportedFormatsMessage());
 }

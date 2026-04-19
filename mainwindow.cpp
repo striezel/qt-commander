@@ -31,7 +31,7 @@
 #include "util/dirutils.h"
 #include "util/GitInfos.hpp"
 #include "viewers/imageviewwindow.h"
-#include "viewers/movieviewwindow.h"
+#include "viewers/animationviewwindow.h"
 #include "viewers/textviewwindow.h"
 #include "viewers/videoplayerwindow.h"
 
@@ -661,7 +661,7 @@ void MainWindow::btnViewClicked()
     else if (is_supported_movie)
     {
         // load as movie
-        MovieViewWindow* viewer = new MovieViewWindow(this);
+        AnimationViewWindow* viewer = new AnimationViewWindow(this);
         if (!viewer->loadMovieFile(selectedFile))
         {
             QMessageBox::critical(
@@ -675,7 +675,7 @@ void MainWindow::btnViewClicked()
         viewer->show();
 
         // show() returns immediately, so the deletion of viewer is handled by the
-        // MovieViewWindow itself in its closeEvent();
+        // AnimationViewWindow itself in its closeEvent();
     }
     else if (is_supported_image)
     {

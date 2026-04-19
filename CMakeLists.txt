@@ -65,7 +65,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         viewers/textviewwindow.h viewers/textviewwindow.cpp viewers/textviewwindow.ui
         viewers/imageviewwindow.h viewers/imageviewwindow.cpp viewers/imageviewwindow.ui
         util/filetypedetection.h util/filetypedetection.cpp
-        viewers/movieviewwindow.h viewers/movieviewwindow.cpp viewers/movieviewwindow.ui
+        viewers/animationviewwindow.h viewers/animationviewwindow.cpp viewers/animationviewwindow.ui
         viewers/audioplayerwindow.h viewers/audioplayerwindow.cpp viewers/audioplayerwindow.ui
         viewers/videoplayerwindow.h viewers/videoplayerwindow.cpp viewers/videoplayerwindow.ui
         fileinfowindow.h fileinfowindow.cpp fileinfowindow.ui

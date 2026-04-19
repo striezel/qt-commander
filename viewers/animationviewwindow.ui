@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MovieViewWindow</class>
- <widget class="QMainWindow" name="MovieViewWindow">
+ <class>AnimationViewWindow</class>
+ <widget class="QMainWindow" name="AnimationViewWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Videobetrachter</string>
+   <string>Animationsbetrachter</string>
   </property>
   <property name="windowIcon">
    <iconset theme="media-playback-start"/>
@@ -21,7 +21,7 @@
     <item row="0" column="0" colspan="3">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Hier könnte ein Video angezeigt werden.</string>
+       <string>Hier könnte eine Animation angezeigt werden.</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>

@@ -1,5 +1,5 @@
-#ifndef MOVIEVIEWWINDOW_H
-#define MOVIEVIEWWINDOW_H
+#ifndef ANIMATIONVIEWWINDOW_H
+#define ANIMATIONVIEWWINDOW_H
 
 #include <QCloseEvent>
 #include <QMainWindow>
@@ -7,16 +7,16 @@
 #include <QString>
 
 namespace Ui {
-class MovieViewWindow;
+class AnimationViewWindow;
 }
 
-class MovieViewWindow : public QMainWindow
+class AnimationViewWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MovieViewWindow(QWidget *parent = nullptr);
-    ~MovieViewWindow();
+    explicit AnimationViewWindow(QWidget *parent = nullptr);
+    ~AnimationViewWindow();
 
     /// Loads the file specified by path as movie file.
     ///
@@ -43,9 +43,9 @@ private slots:
     void actionSupportedFileTypesTriggered();
 
 private:
-    Ui::MovieViewWindow *ui;
+    Ui::AnimationViewWindow *ui;
 
     QMovie* movie;
 };
 
-#endif // MOVIEVIEWWINDOW_H
+#endif // ANIMATIONVIEWWINDOW_H
