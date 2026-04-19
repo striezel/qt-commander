@@ -63,8 +63,7 @@
        <string>Start</string>
       </property>
       <property name="icon">
-       <iconset theme="media-playback-start">
-        <normaloff>.</normaloff>.</iconset>
+       <iconset theme="media-playback-start"/>
       </property>
      </widget>
     </item>
@@ -80,8 +79,7 @@
        <string>Stop</string>
       </property>
       <property name="icon">
-       <iconset theme="media-playback-stop">
-        <normaloff>.</normaloff>.</iconset>
+       <iconset theme="media-playback-stop"/>
       </property>
      </widget>
     </item>
@@ -97,8 +95,7 @@
        <string>Pause</string>
       </property>
       <property name="icon">
-       <iconset theme="media-playback-pause">
-        <normaloff>.</normaloff>.</iconset>
+       <iconset theme="media-playback-pause"/>
       </property>
      </widget>
     </item>
@@ -178,8 +175,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionClose">
    <property name="icon">
-    <iconset theme="window-close">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="window-close"/>
    </property>
    <property name="text">
     <string>Schließen</string>
@@ -190,8 +186,7 @@
   </action>
   <action name="actionSupportedFormats">
    <property name="icon">
-    <iconset theme="dialog-information">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="dialog-information"/>
    </property>
    <property name="text">
     <string>Unterstützte Formate</string>
