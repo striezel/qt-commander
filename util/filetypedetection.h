@@ -44,6 +44,12 @@ public:
     /// be loaded by the movie viewer.
     bool isSupportedMovieFormat(const QMimeType& mimeType) const;
 
+    /// Checks whether the given MIME type is a supported video format which can
+    /// be loaded by the video player. Detection may not be 100 % correct,
+    /// because videos can be in a container format and the actual codecs may
+    /// be different.
+    bool isSupportedVideoFormat(const QMimeType& mimeType) const;
+
     /// Checks whether the given MIME type is a video format.
     ///
     /// Note that this does not necessarily imply that the format is supported
@@ -53,6 +59,8 @@ public:
     /// Checks whether the given MIME type is an audio format.
     bool isAudioFormat(const QMimeType& mimeType) const;
 
+    /// Checks whether the given MIME type is a video format.
+    bool isVideoFormat(const QMimeType& mimeType) const;
 private:
     QMimeDatabase mimeDb;
 };

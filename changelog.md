@@ -4,6 +4,12 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-04-??)
+
+* __[new feature]__
+  A video player is added to view video files. Supported video formats may vary
+  depending on the system's multimedia capabilities.
+
 ## Version 0.1.2 (2026-04-06)
 
 * __[new feature]__

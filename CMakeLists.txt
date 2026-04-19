@@ -41,7 +41,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS PrintSupport)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Multimedia)
-# find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS MultimediaWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS MultimediaWidgets)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
@@ -67,6 +67,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         util/filetypedetection.h util/filetypedetection.cpp
         viewers/movieviewwindow.h viewers/movieviewwindow.cpp viewers/movieviewwindow.ui
         viewers/audioplayerwindow.h viewers/audioplayerwindow.cpp viewers/audioplayerwindow.ui
+        viewers/videoplayerwindow.h viewers/videoplayerwindow.cpp viewers/videoplayerwindow.ui
         fileinfowindow.h fileinfowindow.cpp fileinfowindow.ui
         mountedvolumesdialog.h mountedvolumesdialog.cpp mountedvolumesdialog.ui
         util/durationutils.h util/durationutils.cpp
@@ -94,7 +95,7 @@ target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::PrintSupport)
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Multimedia)
-# target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
+target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
