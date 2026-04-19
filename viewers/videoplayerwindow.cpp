@@ -57,6 +57,7 @@ VideoPlayerWindow::VideoPlayerWindow(QWidget *parent)
     connect(mediaPlayer, &QMediaPlayer::errorOccurred, this, &VideoPlayerWindow::mediaErrorOccurred);
 
     connect(ui->actionAutoPlayVideo, &QAction::triggered, this, &VideoPlayerWindow::actionAutoPlayVideoTriggered);
+    connect(ui->actionLoopForever, &QAction::triggered, this, &VideoPlayerWindow::actionLoopForeverTriggered);
     connect(ui->actionSupportedFormats, &QAction::triggered, this, &VideoPlayerWindow::actionSupportedFormatsTriggered);
     connect(ui->actionShowMetadata, &QAction::triggered, this, &VideoPlayerWindow::actionShowMetadataTriggered);
 
@@ -67,6 +68,7 @@ VideoPlayerWindow::VideoPlayerWindow(QWidget *parent)
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
         connect(this, &VideoPlayerWindow::autoPlayChanged, castedParent, &MainWindow::videoPlayerAutoPlayChanged);
+        connect(this, &VideoPlayerWindow::loopForeverChanged, castedParent, &MainWindow::videoPlayerLoopForeverChanged);
         connect(this, &VideoPlayerWindow::videoVolumeChanged, castedParent, &MainWindow::videoPlayerVolumeChanged);
     }
 }
@@ -84,6 +86,7 @@ VideoPlayerWindow::~VideoPlayerWindow()
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
         disconnect(this, &VideoPlayerWindow::autoPlayChanged, castedParent, &MainWindow::videoPlayerAutoPlayChanged);
+        disconnect(this, &VideoPlayerWindow::loopForeverChanged, castedParent, &MainWindow::videoPlayerLoopForeverChanged);
         disconnect(this, &VideoPlayerWindow::videoVolumeChanged, castedParent, &MainWindow::videoPlayerVolumeChanged);
     }
 
@@ -134,6 +137,11 @@ void VideoPlayerWindow::setAutoPlay(const bool autoPlay)
     ui->actionAutoPlayVideo->setChecked(autoPlay);
 }
 
+void VideoPlayerWindow::setLoopForever(const bool loopForever)
+{
+    ui->actionLoopForever->setChecked(loopForever);
+}
+
 void VideoPlayerWindow::setVolume(const int volume)
 {
     ui->sliderVolume->setValue(std::clamp(volume, 0, 100));
@@ -153,6 +161,10 @@ void VideoPlayerWindow::showEvent(QShowEvent *event)
     if (ui->actionAutoPlayVideo->isChecked())
     {
         btnStartClicked();
+    }
+    if (ui->actionLoopForever->isChecked() && mediaPlayer != nullptr)
+    {
+        mediaPlayer->setLoops(QMediaPlayer::Loops::Infinite);
     }
 }
 
@@ -249,6 +261,20 @@ void VideoPlayerWindow::mediaErrorOccurred(QMediaPlayer::Error error, const QStr
 void VideoPlayerWindow::actionAutoPlayVideoTriggered(bool checked)
 {
     emit autoPlayChanged(checked);
+}
+
+void VideoPlayerWindow::actionLoopForeverTriggered(bool checked)
+{
+    if (mediaPlayer == nullptr)
+    {
+        return;
+    }
+
+    mediaPlayer->setLoops(checked
+                              ? QMediaPlayer::Loops::Infinite
+                              : QMediaPlayer::Loops::Once);
+
+    emit loopForeverChanged(checked);
 }
 
 QString VideoPlayerWindow::supportedFormatsMessage()

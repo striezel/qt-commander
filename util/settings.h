@@ -41,6 +41,7 @@ public:
 
     static const bool defaultAutoStartVideos;
     static const bool defaultAutoPlayVideo;
+    static const bool defaultLoopVideoForever;
     static const int defaultVideoVolume;
 
     static const bool defaultAutoPlayAudio;
@@ -82,6 +83,9 @@ public:
     bool getAutoPlayVideo() const;
     void setAutoPlayVideo(const bool autoPlay);
 
+    bool getLoopVideoForever() const;
+    void setLoopVideoForever(const bool loopForever);
+
     int getVideoVolume() const;
     void setVideoVolume(const int volume);
 
@@ -114,6 +118,9 @@ private:
 
     /// whether files in video player start playing automatically
     bool autoPlayVideo;
+
+    /// whether files in video player should be repeated when they reach the end
+    bool loopVideoForever;
 
     /// volume of video files in range [0;100]
     int videoVolume;

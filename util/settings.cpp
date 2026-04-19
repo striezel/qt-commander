@@ -39,6 +39,7 @@ const bool Settings::defaultShowFormattedSize{true};
 
 const bool Settings::defaultAutoStartVideos{true};
 const bool Settings::defaultAutoPlayVideo{true};
+const bool Settings::defaultLoopVideoForever{false};
 const int Settings::defaultVideoVolume{75};
 
 const bool Settings::defaultAutoPlayAudio{false};
@@ -53,6 +54,7 @@ Settings::Settings()
     , textViewerFont(defaultTextViewerFont())
     , autoStartVideos(defaultAutoStartVideos)
     , autoPlayVideo(defaultAutoPlayVideo)
+    , loopVideoForever(defaultLoopVideoForever)
     , videoVolume(defaultVideoVolume)
     , autoPlayAudio(defaultAutoPlayAudio)
     , loopAudioForever(defaultLoopAudioForever)
@@ -73,6 +75,7 @@ void Settings::resetToDefaults()
     textViewerFont = defaultTextViewerFont();
     autoStartVideos = defaultAutoStartVideos;
     autoPlayVideo = defaultAutoPlayVideo;
+    loopVideoForever = defaultLoopVideoForever;
     videoVolume = defaultVideoVolume;
     autoPlayAudio = defaultAutoPlayAudio;
     loopAudioForever = defaultLoopAudioForever;
@@ -92,6 +95,7 @@ void Settings::save()
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("movie-viewer-auto-start", autoStartVideos);
     settings.setValue("video-player-auto-play", autoPlayVideo);
+    settings.setValue("video-player-loop-forever", loopVideoForever);
     settings.setValue("video-player-volume", videoVolume);
     settings.setValue("audio-player-auto-play", autoPlayAudio);
     settings.setValue("audio-player-loop-forever", loopAudioForever);
@@ -118,6 +122,7 @@ void Settings::load()
 
     autoStartVideos = settings.value("movie-viewer-auto-start", defaultAutoStartVideos).toBool();
     autoPlayVideo = settings.value("video-player-auto-play", defaultAutoPlayVideo).toBool();
+    loopVideoForever = settings.value("video-player-loop-forever", defaultLoopVideoForever).toBool();
     const int vid_volume = settings.value("video-player-volume", defaultVideoVolume).toInt();
     setVideoVolume(vid_volume);
 
@@ -226,6 +231,16 @@ bool Settings::getAutoPlayVideo() const
 void Settings::setAutoPlayVideo(const bool autoPlay)
 {
     autoPlayVideo = autoPlay;
+}
+
+bool Settings::getLoopVideoForever() const
+{
+    return loopVideoForever;
+}
+
+void Settings::setLoopVideoForever(const bool loopForever)
+{
+    loopVideoForever = loopForever;
 }
 
 int Settings::getVideoVolume() const

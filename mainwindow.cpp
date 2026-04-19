@@ -94,6 +94,11 @@ void MainWindow::videoPlayerAutoPlayChanged(const bool autoPlay)
     settings.setAutoPlayVideo(autoPlay);
 }
 
+void MainWindow::videoPlayerLoopForeverChanged(const bool loopForever)
+{
+    settings.setLoopVideoForever(loopForever);
+}
+
 void MainWindow::videoPlayerVolumeChanged(const int volume)
 {
     settings.setVideoVolume(volume);
@@ -661,6 +666,7 @@ void MainWindow::btnViewClicked()
             return;
         }
         viewer->setAutoPlay(settings.getAutoPlayVideo());
+        viewer->setLoopForever(settings.getLoopVideoForever());
         viewer->setVolume(settings.getVideoVolume());
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();

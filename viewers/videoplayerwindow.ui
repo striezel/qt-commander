@@ -167,6 +167,7 @@
      <string>Einstellungen</string>
     </property>
     <addaction name="actionAutoPlayVideo"/>
+    <addaction name="actionLoopForever"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSettings"/>
@@ -206,6 +207,17 @@
    </property>
    <property name="text">
     <string>Videos automatisch abspielen</string>
+   </property>
+  </action>
+  <action name="actionLoopForever">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="media-playlist-repeat"/>
+   </property>
+   <property name="text">
+    <string>Datei in Endlosschleife abspielen</string>
    </property>
   </action>
  </widget>
