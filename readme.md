@@ -8,8 +8,8 @@ equivalents such as "Total Commander." In this view, standard file operations
 such as copying, moving, and deleting files and directories as well as the
 creation of new directories are possible.
 
-It includes viewers for text files, image files and even a player for audio
-files.
+It includes viewers for text files, image files and even players for audio and
+video files.
 
 ## Building from source
 
