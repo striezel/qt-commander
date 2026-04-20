@@ -84,11 +84,6 @@ void MainWindow::textViewerFontChanged(const QFont &new_font)
     settings.setTextViewerFont(new_font);
 }
 
-void MainWindow::movieViewerAutoStartChanged(const bool autoStart)
-{
-    settings.setAutoStartVideos(autoStart);
-}
-
 void MainWindow::videoPlayerAutoPlayChanged(const bool autoPlay)
 {
     settings.setAutoPlayVideo(autoPlay);
@@ -686,7 +681,6 @@ void MainWindow::btnViewClicked()
             delete viewer;
             return;
         }
-        viewer->setAutoStartVideos(settings.getAutoStartVideos());
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();
 

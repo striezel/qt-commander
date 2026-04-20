@@ -39,7 +39,6 @@ public:
 
     static QFont defaultTextViewerFont();
 
-    static const bool defaultAutoStartVideos;
     static const bool defaultAutoPlayVideo;
     static const bool defaultLoopVideoForever;
     static const int defaultVideoVolume;
@@ -77,9 +76,6 @@ public:
     QFont getTextViewerFont() const;
     void setTextViewerFont(QFont font);
 
-    bool getAutoStartVideos() const;
-    void setAutoStartVideos(const bool autoStart);
-
     bool getAutoPlayVideo() const;
     void setAutoPlayVideo(const bool autoPlay);
 
@@ -112,9 +108,6 @@ private:
 
     /// the font which is used by the text viewer
     QFont textViewerFont;
-
-    /// whether videos in movie viewer start automatically
-    bool autoStartVideos;
 
     /// whether files in video player start playing automatically
     bool autoPlayVideo;

@@ -32,20 +32,8 @@ AnimationViewWindow::AnimationViewWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->actionExit, &QAction::triggered, this, &AnimationViewWindow::close);
-    connect(ui->actionAutoStartVideos, &QAction::triggered,
-            this, &AnimationViewWindow::actionAutoStartVideosTriggered);
     connect(ui->actionSupportedFileTypes, &QAction::triggered,
             this, &AnimationViewWindow::actionSupportedFileTypesTriggered);
-
-    connect(ui->btnStart, &QPushButton::clicked, this, &AnimationViewWindow::btnStartClicked);
-    connect(ui->btnStop, &QPushButton::clicked, this, &AnimationViewWindow::btnStopClicked);
-    connect(ui->btnPause, &QPushButton::clicked, this, &AnimationViewWindow::btnPauseClicked);
-
-    if (parent != nullptr)
-    {
-        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
-        connect(this, &AnimationViewWindow::autoStartChanged, castedParent, &MainWindow::movieViewerAutoStartChanged);
-    }
 }
 
 AnimationViewWindow::~AnimationViewWindow()
@@ -55,12 +43,6 @@ AnimationViewWindow::~AnimationViewWindow()
         movie->stop();
         delete movie;
         movie = nullptr;
-    }
-
-    if (parent() != nullptr)
-    {
-        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
-        disconnect(this, &AnimationViewWindow::autoStartChanged, castedParent, &MainWindow::movieViewerAutoStartChanged);
     }
 
     delete ui;
@@ -91,11 +73,6 @@ bool AnimationViewWindow::loadMovieFile(const QString &path)
     return true;
 }
 
-void AnimationViewWindow::setAutoStartVideos(const bool autoStart)
-{
-    ui->actionAutoStartVideos->setChecked(autoStart);
-}
-
 void AnimationViewWindow::closeEvent(QCloseEvent *event)
 {
     // ensure deletion
@@ -107,13 +84,11 @@ void AnimationViewWindow::closeEvent(QCloseEvent *event)
 
 void AnimationViewWindow::showEvent(QShowEvent *event)
 {
-    if (ui->actionAutoStartVideos->isChecked())
-    {
-        btnStartClicked();
-    }
+    // automatically start animation
+    startAnimation();
 }
 
-void AnimationViewWindow::btnStartClicked()
+void AnimationViewWindow::startAnimation()
 {
     if (movie == nullptr)
     {
@@ -121,31 +96,6 @@ void AnimationViewWindow::btnStartClicked()
     }
 
     movie->start();
-}
-
-void AnimationViewWindow::btnStopClicked()
-{
-    if (movie == nullptr)
-    {
-        return;
-    }
-
-    movie->stop();
-}
-
-void AnimationViewWindow::btnPauseClicked()
-{
-    if (movie == nullptr)
-    {
-        return;
-    }
-
-    movie->setPaused(movie->state() != QMovie::MovieState::Paused);
-}
-
-void AnimationViewWindow::actionAutoStartVideosTriggered(bool checked)
-{
-    emit autoStartChanged(checked);
 }
 
 QString AnimationViewWindow::supportedFormatsMessage()
