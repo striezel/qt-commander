@@ -110,7 +110,12 @@ QString AnimationViewWindow::supportedFormatsMessage()
     {
         message += "\nKeine. Das ist schlecht.";
     }
-    message += "\n\nUnterstützung kann je nach System unterschiedlich ausfallen.";
+    message += "\n\nUnterstützung kann je nach System und installierten Qt-Modulen unterschiedlich ausfallen.";
+    if (!formats.contains("mng") || !formats.contains("webp"))
+    {
+        message += QString(" Durch Installation des Qt Image Formats Add-Ons kann")
+        + " unter anderem die Unterstützung für MNG und WebP erreicht werden.";
+    }
     return message;
 }
 
