@@ -227,8 +227,15 @@
     <addaction name="separator"/>
     <addaction name="actionAboutQt"/>
    </widget>
+   <widget class="QMenu" name="menuOperations">
+    <property name="title">
+     <string>Operationen</string>
+    </property>
+    <addaction name="actionCalculateChecksum"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
+   <addaction name="menuOperations"/>
    <addaction name="menuSettings"/>
    <addaction name="menuInfo"/>
   </widget>
@@ -434,6 +441,11 @@
    </property>
    <property name="text">
     <string>Größenangabe formatieren</string>
+   </property>
+  </action>
+  <action name="actionCalculateChecksum">
+   <property name="text">
+    <string>Prüfsumme berechnen ...</string>
    </property>
   </action>
  </widget>

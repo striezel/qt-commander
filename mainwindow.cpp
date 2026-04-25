@@ -27,6 +27,7 @@
 #include <QMessageBox>
 
 #include "viewers/audioplayerwindow.h"
+#include "checksumdialog.h"
 #include "createdirectorydialog.h"
 #include "util/dirutils.h"
 #include "util/GitInfos.hpp"
@@ -868,6 +869,8 @@ void MainWindow::connectMenuActions()
 
     connect(ui->actionRefresh, &QAction::triggered, this, &MainWindow::actionRefreshTriggered);
 
+    connect(ui->actionCalculateChecksum, &QAction::triggered, this, &MainWindow::actionCalculateChecksumTriggered);
+
     connect(ui->actionSaveSettings, &QAction::triggered, this, &MainWindow::actionSaveSettingsTriggered);
     connect(ui->actionLoadSettings, &QAction::triggered, this, &MainWindow::actionLoadSettingsTriggered);
     connect(ui->actionRestoreDefaultSettings, &QAction::triggered, this, &MainWindow::actionRestoreDefaultSettingsTriggered);
@@ -880,6 +883,36 @@ void MainWindow::connectMenuActions()
 void MainWindow::actionRefreshTriggered()
 {
     refreshCurrentView();
+}
+
+void MainWindow::actionCalculateChecksumTriggered()
+{
+    QTreeWidget* treeWidget = latestTreeWidget();
+    const QList<QTreeWidgetItem*> selection = treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        QMessageBox::information(
+            this, "Keine aktive Auswahl vorhanden",
+            "Es wurde keine Datei ausgewählt. Zum Berechnen der Prüfsumme muss jedoch eine Datei ausgewählt sein.");
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+    const QString name = item->text(0);
+
+    const QString selectedFile = currentDirectory().absoluteFilePath(name);
+    const QFileInfo info(selectedFile);
+
+    if (!info.isFile())
+    {
+        QMessageBox::information(
+            this, "Keine Datei ausgewählt",
+            QString("Es wurde keine Datei zum Berechnen ausgewählt.\n\n")
+                + "Prüfsummen können nur von Dateien berechnet werden, nicht jedoch von Verzeichnissen.");
+        return;
+    }
+
+    CheckSumDialog dialog(selectedFile, this);
+    dialog.exec();
 }
 
 void MainWindow::actionSaveSettingsTriggered()

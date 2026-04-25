@@ -71,6 +71,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         fileinfowindow.h fileinfowindow.cpp fileinfowindow.ui
         mountedvolumesdialog.h mountedvolumesdialog.cpp mountedvolumesdialog.ui
         util/durationutils.h util/durationutils.cpp
+        checksumdialog.h checksumdialog.cpp checksumdialog.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET qt-commander APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

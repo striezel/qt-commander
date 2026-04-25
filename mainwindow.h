@@ -85,6 +85,8 @@ private slots:
 
     void actionRefreshTriggered();
 
+    void actionCalculateChecksumTriggered();
+
     void actionSaveSettingsTriggered();
     void actionLoadSettingsTriggered();
     void actionRestoreDefaultSettingsTriggered();
