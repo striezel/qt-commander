@@ -913,6 +913,17 @@ void MainWindow::actionCalculateChecksumTriggered()
 
     CheckSumDialog dialog(selectedFile, this);
     dialog.exec();
+    if (dialog.hasCreatedNewFiles())
+    {
+        if (DirUtils::isSameDir(currentDirectory(), otherDirectory()))
+        {
+            refreshBothViews();
+        }
+        else
+        {
+            refreshCurrentView();
+        }
+    }
 }
 
 void MainWindow::actionSaveSettingsTriggered()

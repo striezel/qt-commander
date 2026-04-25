@@ -24,11 +24,13 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QMessageBox>
+#include <QTextStream>
 
 CheckSumDialog::CheckSumDialog(const QString& fileName, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::CheckSumDialog)
     , fileName(fileName)
+    , createdNewFiles(false)
 {
     ui->setupUi(this);
 
@@ -52,6 +54,11 @@ CheckSumDialog::CheckSumDialog(const QString& fileName, QWidget *parent)
 CheckSumDialog::~CheckSumDialog()
 {
     delete ui;
+}
+
+bool CheckSumDialog::hasCreatedNewFiles() const
+{
+    return createdNewFiles;
 }
 
 void CheckSumDialog::rbAlgorithmToggled(bool checked)
@@ -90,6 +97,28 @@ void CheckSumDialog::btnCalculateClicked()
     QByteArray real_hash = the_hash.result();
     const QFileInfo info(fileName);
     ui->plainTextEdit->setPlainText(real_hash.toHex() + QStringLiteral(" *") + info.fileName());
+
+    if (!ui->cbGenerateChecksumFile->isChecked())
+    {
+        return;
+    }
+
+    const QString checksumFileName = info.path() + "/" + info.baseName()
+                                     + getAlgorithmExtension(algorithm);
+    QFile checksumFile(checksumFileName);
+    if (!checksumFile.open(QIODeviceBase::OpenModeFlag::WriteOnly
+                           | QIODeviceBase::OpenModeFlag::NewOnly
+                           | QIODeviceBase::OpenModeFlag::Text))
+    {
+        QMessageBox::critical(this, "Fehler beim Erstellen der Prüfsummendatei",
+                              "Die Prüfsummendatei " + checksumFileName + " konnte nicht erstellt und zum Schreiben geöffnet werden."
+                                  + " Möglicherweise existiert sie bereits oder es fehlen die Berechtigungen zum Erstellen der Datei.");
+        return;
+    }
+    QTextStream stream(&checksumFile);
+    stream << ui->plainTextEdit->toPlainText() << "\n";
+    checksumFile.close();
+    createdNewFiles = true;
 }
 
 QCryptographicHash::Algorithm CheckSumDialog::getSelectedAlgorithm() const
@@ -118,4 +147,30 @@ QCryptographicHash::Algorithm CheckSumDialog::getSelectedAlgorithm() const
     // Usually, we should not get to this place, because one radio button should
     // always be selected. However, as a precaution, let's default to SHA-256.
     return QCryptographicHash::Algorithm::Sha256;
+}
+
+QString CheckSumDialog::getAlgorithmExtension(const QCryptographicHash::Algorithm algorithm) const
+{
+    switch (algorithm)
+    {
+    case QCryptographicHash::Algorithm::Md5:
+        return ".md5";
+    case QCryptographicHash::Algorithm::Sha1:
+        return ".sha1";
+    case QCryptographicHash::Algorithm::Sha224:
+        return ".sha224";
+    case QCryptographicHash::Algorithm::Sha256:
+        return ".sha256";
+    case QCryptographicHash::Algorithm::Sha384:
+        return ".sha384";
+    case QCryptographicHash::Algorithm::Sha512:
+        return ".sha512";
+    case QCryptographicHash::Algorithm::Sha3_224:
+    case QCryptographicHash::Algorithm::Sha3_256:
+    case QCryptographicHash::Algorithm::Sha3_384:
+    case QCryptographicHash::Algorithm::Sha3_512:
+        return ".sha3";
+    default:
+        return ".checksum";
+    }
 }

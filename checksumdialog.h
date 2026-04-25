@@ -36,6 +36,9 @@ class CheckSumDialog : public QDialog
 public:
     explicit CheckSumDialog(const QString& fileName, QWidget *parent = nullptr);
     ~CheckSumDialog();
+
+    /// Whether the user created new files during the dialog execution.
+    bool hasCreatedNewFiles() const;
 private slots:
     void rbAlgorithmToggled(bool checked);
     void btnCalculateClicked();
@@ -43,8 +46,10 @@ private:
     Ui::CheckSumDialog *ui;
 
     QString fileName;
+    bool createdNewFiles;
 
     QCryptographicHash::Algorithm getSelectedAlgorithm() const;
+    QString getAlgorithmExtension(const QCryptographicHash::Algorithm algorithm) const;
 };
 
 #endif // CHECKSUMDIALOG_H

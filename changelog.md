@@ -4,6 +4,12 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-04-??)
+
+* __[new feature]__
+  The program can now calculate common checksums (MD5, SHA-1, SHA-2, SHA-3) of
+  files and create the corresponding checksum files.
+
 ## Version 0.1.3 (2026-04-19)
 
 * __[new feature]__
