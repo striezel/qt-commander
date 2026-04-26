@@ -106,13 +106,26 @@ void CheckSumDialog::btnCalculateClicked()
     const QString checksumFileName = info.path() + "/" + info.baseName()
                                      + getAlgorithmExtension(algorithm);
     QFile checksumFile(checksumFileName);
-    if (!checksumFile.open(QIODeviceBase::OpenModeFlag::WriteOnly
-                           | QIODeviceBase::OpenModeFlag::NewOnly
-                           | QIODeviceBase::OpenModeFlag::Text))
+    QIODeviceBase::OpenMode flags = QIODeviceBase::OpenModeFlag::WriteOnly
+                                    | QIODeviceBase::OpenModeFlag::NewOnly
+                                    | QIODeviceBase::OpenModeFlag::Text;
+    if (checksumFile.exists())
+    {
+        if (QMessageBox::question(this, "Prüfsummendatei existiert bereits",
+                "Die Datei " + checksumFileName + " existiert bereits. Soll sie überschrieben werden?")
+            == QMessageBox::StandardButton::NoButton)
+        {
+            return;
+        }
+        flags = QIODeviceBase::OpenModeFlag::WriteOnly
+                | QIODeviceBase::OpenModeFlag::Truncate
+                | QIODeviceBase::OpenModeFlag::Text;
+    }
+    if (!checksumFile.open(flags))
     {
         QMessageBox::critical(this, "Fehler beim Erstellen der Prüfsummendatei",
                               "Die Prüfsummendatei " + checksumFileName + " konnte nicht erstellt und zum Schreiben geöffnet werden."
-                                  + " Möglicherweise existiert sie bereits oder es fehlen die Berechtigungen zum Erstellen der Datei.");
+                                  + " Möglicherweise fehlen die Berechtigungen zum Erstellen der Datei.");
         return;
     }
     QTextStream stream(&checksumFile);
