@@ -103,7 +103,7 @@ void CheckSumDialog::btnCalculateClicked()
         return;
     }
 
-    const QString checksumFileName = info.path() + "/" + info.baseName()
+    const QString checksumFileName = info.path() + "/" + info.fileName()
                                      + getAlgorithmExtension(algorithm);
     QFile checksumFile(checksumFileName);
     QIODeviceBase::OpenMode flags = QIODeviceBase::OpenModeFlag::WriteOnly
