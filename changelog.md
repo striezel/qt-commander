@@ -10,6 +10,10 @@ improvements may be omitted.)_
   The program can now calculate common checksums (MD5, SHA-1, SHA-2, SHA-3) of
   files and create the corresponding checksum files.
 
+* __[fix]__
+  Adjust width of labels in file information window so that text does not get
+  cut off.
+
 ## Version 0.1.3 (2026-04-19)
 
 * __[new feature]__
