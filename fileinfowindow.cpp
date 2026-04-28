@@ -126,7 +126,18 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     ui->cbOtherWrite->setChecked(permissions.testFlag(QFileDevice::Permission::WriteOther));
     ui->cbOtherExec->setChecked(permissions.testFlag(QFileDevice::Permission::ExeOther));
 
-    ui->lblBirthValue->setText(loc.toString(info.birthTime(), QLocale::LongFormat));
+    // Some filesystems do not provide a birth time, so we have to distinguish
+    // between cases where it is available (i. e. valid) and when it is not
+    // available (i. e. the returned QDateTime is invalid).
+    const QDateTime birthTime = info.birthTime();
+    if (birthTime.isValid())
+    {
+        ui->lblBirthValue->setText(loc.toString(birthTime, QLocale::LongFormat));
+    }
+    else
+    {
+        ui->lblBirthValue->setText("Datum nicht verfügbar");
+    }
     ui->lblModifiedValue->setText(loc.toString(info.lastModified(), QLocale::LongFormat));
     ui->lblAccessedValue->setText(loc.toString(info.lastRead(), QLocale::LongFormat));
 }
