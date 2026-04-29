@@ -610,26 +610,9 @@ void MainWindow::btnViewClicked()
     const QMimeType mime = detection.getType(info);
     const bool is_supported_image = detection.isSupportedImageFormat(mime);
     const bool is_supported_movie = detection.isSupportedMovieFormat(mime);
-    const bool is_audio = detection.isAudioFormat(mime);
-    const bool is_video = detection.isVideoFormat(mime);
-    const bool is_pdf = detection.isPdf(mime);
-
-    /*
-    // Inform user of unsupported video format and that we will be using the
-    // text viewer for that. Let the user chose whether to continue here.
-    if (is_movie && !is_supported_movie)
-    {
-        const int answer = QMessageBox::warning(
-            this, "Format wird nicht unterstützt", "Wiedergabe für das Videoformat '"
-                + mime.name() + "' wird nicht unterstützt. Stattdessen wird der"
-                + " Textbetrachter verwendet. Soll die Datei als Text angezeigt werden?",
-            QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
-        if (answer != QMessageBox::Yes)
-        {
-            return;
-        }
-    }
-    */
+    const bool is_audio = FileTypeDetection::isAudioFormat(mime);
+    const bool is_video = FileTypeDetection::isVideoFormat(mime);
+    const bool is_pdf = FileTypeDetection::isPdf(mime);
 
     if (is_pdf)
     {

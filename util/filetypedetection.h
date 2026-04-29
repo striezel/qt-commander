@@ -50,20 +50,14 @@ public:
     /// be different.
     bool isSupportedVideoFormat(const QMimeType& mimeType) const;
 
-    /// Checks whether the given MIME type is a video format.
-    ///
-    /// Note that this does not necessarily imply that the format is supported
-    /// by the movie viewer. Use isSupportedMovieFormat() to check for support.
-    bool isMovieFormat(const QMimeType& mimeType) const;
-
     /// Checks whether the given MIME type is an audio format.
-    bool isAudioFormat(const QMimeType& mimeType) const;
+    static bool isAudioFormat(const QMimeType& mimeType);
 
     /// Checks whether the given MIME type is a video format.
-    bool isVideoFormat(const QMimeType& mimeType) const;
+    static bool isVideoFormat(const QMimeType& mimeType);
 
     /// Checks whether the given MIME type is PDF.
-    bool isPdf(const QMimeType& mimeType) const;
+    static bool isPdf(const QMimeType& mimeType);
 private:
     QMimeDatabase mimeDb;
 };

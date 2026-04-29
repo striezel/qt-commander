@@ -113,22 +113,17 @@ bool FileTypeDetection::isSupportedVideoFormat(const QMimeType &mimeType) const
     return supportedVideoCodecs.contains(codec);
 }
 
-bool FileTypeDetection::isMovieFormat(const QMimeType &mimeType) const
-{
-    return mimeType.name().startsWith("video/");
-}
-
-bool FileTypeDetection::isAudioFormat(const QMimeType &mimeType) const
+bool FileTypeDetection::isAudioFormat(const QMimeType &mimeType)
 {
     return mimeType.name().startsWith("audio/");
 }
 
-bool FileTypeDetection::isVideoFormat(const QMimeType &mimeType) const
+bool FileTypeDetection::isVideoFormat(const QMimeType &mimeType)
 {
     return mimeType.name().startsWith("video/");
 }
 
-bool FileTypeDetection::isPdf(const QMimeType &mimeType) const
+bool FileTypeDetection::isPdf(const QMimeType &mimeType)
 {
     return mimeType.name() == QStringLiteral("application/pdf");
 }
