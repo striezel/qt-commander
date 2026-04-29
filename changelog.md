@@ -7,6 +7,9 @@ improvements may be omitted.)_
 ## Next Version (2026-04-??)
 
 * __[new feature]__
+  A PDF viewer is added to view PDF files.
+
+* __[new feature]__
   The program can now calculate common checksums (MD5, SHA-1, SHA-2, SHA-3) of
   files and create the corresponding checksum files.
 

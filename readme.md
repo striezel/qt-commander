@@ -8,8 +8,8 @@ equivalents such as "Total Commander." In this view, standard file operations
 such as copying, moving, and deleting files and directories as well as the
 creation of new directories are possible.
 
-It includes viewers for text files, image files and even players for audio and
-video files.
+It includes viewers for text files, PDF, image files and even players for audio
+and video files.
 
 ## Building from source
 
@@ -20,12 +20,12 @@ To build Qt Commander, you need:
 * a C++ compiler with support for C++17
 * CMake 3.16 or later
 * Qt framework, version 6, with modules for widgets, gui, print support and
-  multimedia
+  multimedia and PDF
 
 These can usually be installed via
 
 ```
-sudo apt-get install cmake g++ qt6-base-dev qt6-multimedia-dev
+sudo apt-get install cmake g++ qt6-base-dev qt6-multimedia-dev qt6-pdf-dev
 ```
 
 on a Debian or Debian-based system like Ubuntu. Other distributions might use

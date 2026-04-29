@@ -49,7 +49,7 @@ jobs:
           export DEBIAN_FRONTEND=noninteractive
           apt-get update && apt-get upgrade -y
           apt-get install -y --no-install-recommends build-essential bzip2 ca-certificates debhelper devscripts fakeroot g++ git lsb-release tar wget
-          apt-get install -y --no-install-recommends cmake g++ libgl-dev pkg-config qt6-base-dev qt6-multimedia-dev
+          apt-get install -y --no-install-recommends cmake g++ libgl-dev pkg-config qt6-base-dev qt6-multimedia-dev qt6-pdf-dev
       # Checks-out the repository under $GITHUB_WORKSPACE.
       - name: Git checkout
         uses: actions/checkout@v6

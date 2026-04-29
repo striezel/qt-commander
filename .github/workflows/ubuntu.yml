@@ -23,13 +23,13 @@ jobs:
       - name: Install Debian packages
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake g++ libgl-dev qt6-base-dev qt6-multimedia-dev
+          sudo apt-get install -y cmake g++ libgl-dev qt6-base-dev qt6-multimedia-dev qt6-pdf-dev
         if: matrix.image == ''
       - name: Install Debian packages (container)
         run: |
           export DEBIAN_FRONTEND=noninteractive
           apt-get update && apt-get upgrade -y
-          apt-get install -y cmake g++ git libgl-dev qt6-base-dev qt6-multimedia-dev
+          apt-get install -y cmake g++ git libgl-dev qt6-base-dev qt6-multimedia-dev qt6-pdf-dev
         if: matrix.image != ''
       - name: Build with GCC on ${{ matrix.os }}
         run: |

@@ -3,7 +3,7 @@ name: MSYS2
 on: push
 
 jobs:
-  msys2_mingw64:
+  msys2_ucrt64:
     runs-on: windows-2022
     defaults:
       run:
@@ -17,23 +17,24 @@ jobs:
           persist-credentials: false
       - uses: msys2/setup-msys2@v2
         with:
-          msystem: mingw64
+          msystem: ucrt64
           update: true
           install: >-
             git
-            mingw-w64-x86_64-cmake
-            mingw-w64-x86_64-gcc
-            mingw-w64-x86_64-make
-            mingw-w64-x86_64-ninja
-            mingw-w64-x86_64-pkg-config
-            mingw-w64-x86_64-qt6-base
-            mingw-w64-x86_64-qt6-imageformats
-            mingw-w64-x86_64-qt6-multimedia
-            mingw-w64-x86_64-qt6-multimedia-wmf
-            mingw-w64-x86_64-qt6-svg
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-make
+            mingw-w64-ucrt-x86_64-ninja
+            mingw-w64-ucrt-x86_64-pkg-config
+            mingw-w64-ucrt-x86_64-qt6-base
+            mingw-w64-ucrt-x86_64-qt6-imageformats
+            mingw-w64-ucrt-x86_64-qt6-multimedia
+            mingw-w64-ucrt-x86_64-qt6-multimedia-wmf
+            mingw-w64-ucrt-x86_64-qt6-pdf
+            mingw-w64-ucrt-x86_64-qt6-svg
       - name: Build
         run: |
-          export MSYSTEM=MINGW64
+          export MSYSTEM=UCRT64
           export CXX=g++
           export CC=gcc
           cd "$GITHUB_WORKSPACE"
@@ -43,7 +44,7 @@ jobs:
           cmake --build . -j2
       - name: windeployqt
         run: |
-          export MSYSTEM=MINGW64
+          export MSYSTEM=UCRT64
           cd "$GITHUB_WORKSPACE"
           cd build/
 
@@ -95,7 +96,7 @@ jobs:
       - name: Create installer
         working-directory: ${{env.GITHUB_WORKSPACE}}
         run: |
-          export MSYSTEM=MINGW64
+          export MSYSTEM=UCRT64
           cd "$GITHUB_WORKSPACE"
 
           VERSION=$(git describe --always)
