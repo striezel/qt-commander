@@ -61,6 +61,9 @@ public:
 
     /// Checks whether the given MIME type is a video format.
     bool isVideoFormat(const QMimeType& mimeType) const;
+
+    /// Checks whether the given MIME type is PDF.
+    bool isPdf(const QMimeType& mimeType) const;
 private:
     QMimeDatabase mimeDb;
 };

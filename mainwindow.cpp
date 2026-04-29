@@ -33,6 +33,7 @@
 #include "util/GitInfos.hpp"
 #include "viewers/imageviewwindow.h"
 #include "viewers/animationviewwindow.h"
+#include "viewers/pdfviewwindow.h"
 #include "viewers/textviewwindow.h"
 #include "viewers/videoplayerwindow.h"
 
@@ -611,6 +612,7 @@ void MainWindow::btnViewClicked()
     const bool is_supported_movie = detection.isSupportedMovieFormat(mime);
     const bool is_audio = detection.isAudioFormat(mime);
     const bool is_video = detection.isVideoFormat(mime);
+    const bool is_pdf = detection.isPdf(mime);
 
     /*
     // Inform user of unsupported video format and that we will be using the
@@ -629,7 +631,25 @@ void MainWindow::btnViewClicked()
     }
     */
 
-    if (is_audio)
+    if (is_pdf)
+    {
+        PdfViewWindow* viewer = new PdfViewWindow(this);
+        if (!viewer->loadPdfFile(selectedFile))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Öffnen der Datei",
+                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+            delete viewer;
+            return;
+        }
+
+        viewer->setWindowModality(Qt::WindowModality::WindowModal);
+        viewer->show();
+
+        // show() returns immediately, so the deletion of viewer is handled by the
+        // PdfViewWindow itself in its closeEvent();
+    }
+    else if (is_audio)
     {
         // load as audio file
         AudioPlayerWindow* viewer = new AudioPlayerWindow(this);

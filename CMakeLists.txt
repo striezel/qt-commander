@@ -42,6 +42,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS PrintSupport)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Multimedia)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS MultimediaWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS PdfWidgets)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
@@ -72,6 +73,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         mountedvolumesdialog.h mountedvolumesdialog.cpp mountedvolumesdialog.ui
         util/durationutils.h util/durationutils.cpp
         checksumdialog.h checksumdialog.cpp checksumdialog.ui
+        viewers/pdfviewwindow.h viewers/pdfviewwindow.cpp viewers/pdfviewwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET qt-commander APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -97,6 +99,7 @@ target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::PrintSupport)
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Multimedia)
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
+target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::PdfWidgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

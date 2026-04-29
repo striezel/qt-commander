@@ -127,3 +127,8 @@ bool FileTypeDetection::isVideoFormat(const QMimeType &mimeType) const
 {
     return mimeType.name().startsWith("video/");
 }
+
+bool FileTypeDetection::isPdf(const QMimeType &mimeType) const
+{
+    return mimeType.name() == QStringLiteral("application/pdf");
+}
