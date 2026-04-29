@@ -126,7 +126,7 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     ui->cbOtherWrite->setChecked(permissions.testFlag(QFileDevice::Permission::WriteOther));
     ui->cbOtherExec->setChecked(permissions.testFlag(QFileDevice::Permission::ExeOther));
 
-    // Some filesystems do not provide a birth time, so we have to distinguish
+    // Some file systems do not provide a birth time, so we have to distinguish
     // between cases where it is available (i. e. valid) and when it is not
     // available (i. e. the returned QDateTime is invalid).
     const QDateTime birthTime = info.birthTime();

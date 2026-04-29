@@ -21,7 +21,11 @@
 #include "pdfviewwindow.h"
 #include "ui_pdfviewwindow.h"
 
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
 #include <QPdfPageNavigator>
+#else
+#include <QPdfPageNavigation>
+#endif
 
 PdfViewWindow::PdfViewWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -33,9 +37,13 @@ PdfViewWindow::PdfViewWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->actionClose, &QAction::triggered, this, &PdfViewWindow::close);
-
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     QPdfPageNavigator* nav = ui->pdfView->pageNavigator();
     connect(nav, &QPdfPageNavigator::currentPageChanged, this, &PdfViewWindow::currentPageChanged);
+#else
+    QPdfPageNavigation* nav = ui->pdfView->pageNavigation();
+    connect(nav, &QPdfPageNavigation::currentPageChanged, this, &PdfViewWindow::currentPageChanged);
+#endif
     connect(ui->actionPreviousPage, &QAction::triggered, this, &PdfViewWindow::actionPreviousPageTriggered);
     connect(ui->actionNextPage, &QAction::triggered, this, &PdfViewWindow::actionNextPageTriggered);
     connect(ui->actionZoomOut, &QAction::triggered, this, &PdfViewWindow::actionZoomOutTriggered);
@@ -57,9 +65,17 @@ PdfViewWindow::~PdfViewWindow()
 
 bool PdfViewWindow::loadPdfFile(const QString &path)
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     const QPdfDocument::Error error = document->load(path);
+#else
+    const QPdfDocument::DocumentError error = document->load(path);
+#endif
     updatePrevNextStatus();
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     if (error == QPdfDocument::Error::None)
+#else
+    if (error == QPdfDocument::DocumentError::NoError)
+#endif
     {
         setWindowTitle("PDF-Betrachter - " + path);
         const int pageCount = document->pageCount();
@@ -70,7 +86,11 @@ bool PdfViewWindow::loadPdfFile(const QString &path)
         pageSpinBox->setMaximum(pageCount);
         pageSpinBox->setSuffix(" / " + QString::number(pageCount));
     }
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     return error == QPdfDocument::Error::None;
+#else
+    return error == QPdfDocument::DocumentError::NoError;
+#endif
 }
 
 void PdfViewWindow::closeEvent(QCloseEvent *event)
@@ -84,15 +104,23 @@ void PdfViewWindow::closeEvent(QCloseEvent *event)
 
 void PdfViewWindow::actionPreviousPageTriggered()
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     QPdfPageNavigator* nav = ui->pdfView->pageNavigator();
     nav->jump(nav->currentPage() - 1, {}, nav->currentZoom());
+#else
+    ui->pdfView->pageNavigation()->goToPreviousPage();
+#endif
     updatePrevNextStatus();
 }
 
 void PdfViewWindow::actionNextPageTriggered()
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     QPdfPageNavigator* nav = ui->pdfView->pageNavigator();
     nav->jump(nav->currentPage() + 1, {}, nav->currentZoom());
+#else
+    ui->pdfView->pageNavigation()->goToNextPage();
+#endif
     updatePrevNextStatus();
 }
 
@@ -121,8 +149,13 @@ void PdfViewWindow::pageSpinBoxValueChanged(int value)
         return;
     }
 
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     QPdfPageNavigator* nav = ui->pdfView->pageNavigator();
     nav->jump(value - 1, {}, nav->currentZoom());
+#else
+    QPdfPageNavigation* nav = ui->pdfView->pageNavigation();
+    nav->setCurrentPage(value - 1);
+#endif
 }
 
 QSpinBox *PdfViewWindow::createPageSpinBox()
@@ -138,7 +171,11 @@ QSpinBox *PdfViewWindow::createPageSpinBox()
 
 void PdfViewWindow::updatePrevNextStatus()
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     QPdfPageNavigator* nav = ui->pdfView->pageNavigator();
+#else
+    QPdfPageNavigation* nav = ui->pdfView->pageNavigation();
+#endif
     // The value from currentPage() is zero-based, so first page is 0 and not 1.
     ui->actionPreviousPage->setEnabled(nav->currentPage() > 0);
     // The value from currentPage() is zero-based, so the last page is
