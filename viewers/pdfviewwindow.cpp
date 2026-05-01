@@ -58,9 +58,9 @@ PdfViewWindow::PdfViewWindow(QWidget *parent)
 
 PdfViewWindow::~PdfViewWindow()
 {
-    delete ui;
-
     document->close();
+
+    delete ui;
 }
 
 bool PdfViewWindow::loadPdfFile(const QString &path)
