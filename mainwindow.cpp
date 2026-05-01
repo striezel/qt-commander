@@ -271,13 +271,16 @@ const QDir& MainWindow::otherDirectory() const
 void MainWindow::treeItemDoubleClicked(QTreeWidgetItem *item, int column)
 {
     if (item == nullptr)
+    {
         return;
+    }
 
     const bool isLeftTree = item->treeWidget() == ui->treeWidgetLeft;
 
-    const QString new_path = isLeftTree
-        ? currentDirectoryLeft.filePath(item->text(0))
-        : currentDirectoryRight.filePath(item->text(0));
+    const QString new_path = QDir::cleanPath(
+        isLeftTree
+            ? currentDirectoryLeft.filePath(item->text(0))
+            : currentDirectoryRight.filePath(item->text(0)));
     const QFileInfo info(new_path);
     if (!info.exists())
     {

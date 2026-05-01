@@ -17,6 +17,10 @@ improvements may be omitted.)_
   Adjust width of labels in file information window so that text does not get
   cut off.
 
+* __[fix]__
+  Fix a bug where user could get "stuck" in directory with insufficient file
+  permissions to view the directory.
+
 ## Version 0.1.3 (2026-04-19)
 
 * __[new feature]__
