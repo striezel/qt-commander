@@ -128,13 +128,21 @@ void PdfViewWindow::actionNextPageTriggered()
 
 void PdfViewWindow::actionZoomOutTriggered()
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     ui->pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
+#else
+    ui->pdfView->setZoomMode(QPdfView::ZoomMode::CustomZoom);
+#endif
     ui->pdfView->setZoomFactor(ui->pdfView->zoomFactor() / 1.5);
 }
 
 void PdfViewWindow::actionZoomInTriggered()
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     ui->pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
+#else
+    ui->pdfView->setZoomMode(QPdfView::ZoomMode::CustomZoom);
+#endif
     ui->pdfView->setZoomFactor(ui->pdfView->zoomFactor() * 1.5);
 }
 
@@ -145,7 +153,11 @@ void PdfViewWindow::actionZoomToFitTriggered()
 
 void PdfViewWindow::actionZoomOriginalSizeTriggered()
 {
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
     ui->pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
+#else
+    ui->pdfView->setZoomMode(QPdfView::ZoomMode::CustomZoom);
+#endif
     ui->pdfView->setZoomFactor(1.0);
 }
 
