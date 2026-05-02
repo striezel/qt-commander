@@ -48,6 +48,7 @@ PdfViewWindow::PdfViewWindow(QWidget *parent)
     connect(ui->actionNextPage, &QAction::triggered, this, &PdfViewWindow::actionNextPageTriggered);
     connect(ui->actionZoomOut, &QAction::triggered, this, &PdfViewWindow::actionZoomOutTriggered);
     connect(ui->actionZoomIn, &QAction::triggered, this, &PdfViewWindow::actionZoomInTriggered);
+    connect(ui->actionZoomToFit, &QAction::triggered, this, &PdfViewWindow::actionZoomToFitTriggered);
 
     ui->toolBar->insertWidget(ui->actionNextPage, pageSpinBox);
     connect(pageSpinBox, &QSpinBox::valueChanged, this, &PdfViewWindow::pageSpinBoxValueChanged);
@@ -126,12 +127,19 @@ void PdfViewWindow::actionNextPageTriggered()
 
 void PdfViewWindow::actionZoomOutTriggered()
 {
+    ui->pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
     ui->pdfView->setZoomFactor(ui->pdfView->zoomFactor() / 1.5);
 }
 
 void PdfViewWindow::actionZoomInTriggered()
 {
+    ui->pdfView->setZoomMode(QPdfView::ZoomMode::Custom);
     ui->pdfView->setZoomFactor(ui->pdfView->zoomFactor() * 1.5);
+}
+
+void PdfViewWindow::actionZoomToFitTriggered()
+{
+    ui->pdfView->setZoomMode(QPdfView::ZoomMode::FitToWidth);
 }
 
 void PdfViewWindow::currentPageChanged(int page)
