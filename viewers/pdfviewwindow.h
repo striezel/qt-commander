@@ -52,6 +52,7 @@ private slots:
     void actionZoomOutTriggered();
     void actionZoomInTriggered();
     void actionZoomToFitTriggered();
+    void actionZoomOriginalSizeTriggered();
 
     void currentPageChanged(int page);
     void pageSpinBoxValueChanged(int value);

@@ -81,6 +81,7 @@
    <addaction name="separator"/>
    <addaction name="actionZoomOut"/>
    <addaction name="actionZoomIn"/>
+   <addaction name="actionZoomOriginalSize"/>
    <addaction name="actionZoomToFit"/>
   </widget>
   <action name="actionPreviousPage">
@@ -144,6 +145,17 @@
    </property>
    <property name="text">
     <string>Auf Fensterbreite zoomen</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionZoomOriginalSize">
+   <property name="icon">
+    <iconset theme="zoom-original"/>
+   </property>
+   <property name="text">
+    <string>Auf Originalgröße zoomen</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
