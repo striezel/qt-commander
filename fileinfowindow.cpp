@@ -76,7 +76,9 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     {
         const qint64 free = storage.bytesFree();
         const qint64 total = storage.bytesTotal();
-        const qint64 percent = free * 100 / total;
+        // The value of total can be zero on virtual file systems (like /proc on
+        // Linux systems), so a division by zero has to be avoided here.
+        const qint64 percent = total != 0 ? free * 100 / total : 0;
         ui->lblAvailableValue->setText(
             loc.formattedDataSize(free) + " / "
             + loc.formattedDataSize(total)
