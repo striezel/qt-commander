@@ -1,3 +1,18 @@
+qt-commander (0.1.4-1) UNRELEASED; urgency=medium
+
+  * A PDF viewer is added to view PDF files.
+
+  * The program can now calculate common checksums (MD5, SHA-1, SHA-2, SHA-3) of
+    files and create the corresponding checksum files.
+
+  * Adjust width of labels in file information window so that text does not get
+    cut off.
+
+  * Fix a bug where user could get "stuck" in directory with insufficient file
+    permissions to view the directory.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Sun, 3 May 2026 23:31:27 +0200
+
 qt-commander (0.1.3-1) UNRELEASED; urgency=medium
 
   * A video player is added to view video files. Supported video formats may
