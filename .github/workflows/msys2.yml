@@ -109,3 +109,57 @@ jobs:
           name: qt-commander-setup
           archive: false
           path: qt-commander-setup*.exe
+
+
+#name: Release preparation
+
+#on: push
+
+#jobs:
+  release_prep:
+    needs: [msys2_ucrt64]
+    runs-on: ubuntu-24.04
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE.
+      - name: Git checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Download all artifacts
+        uses: actions/download-artifact@v8
+        with:
+          merge-multiple: true
+          skip-decompress: true
+      - name: List files
+        run: |
+          cd $GITHUB_WORKSPACE
+          pwd
+          ls -lah
+          pwd
+          ls -R
+          pwd
+          tree || echo "Looks like tree is not installed."
+          DIRS=$(find "$(pwd)" -type d -name 'qt-commander*')
+          for artifact_dir in $DIRS
+          do
+            cd "$artifact_dir"
+            mv qt-commander* ../
+            cd ..
+            rmdir "$artifact_dir" || echo "Deletion of directory failed."
+          done
+          pwd
+          ls -lah
+          sha256sum qt-commander*.*
+      - name: Generate release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            qt-commander*.*
+          fail_on_unmatched_files: true
+          body: changelog.md
+          draft: true
+          prerelease: true
+          overwrite_files: false
+          append_body: true
+          name: 'Qt Commander vX.Y (2026-05-04) pre-release'
+          tag_name: 'prerelease-test'
