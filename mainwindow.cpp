@@ -178,7 +178,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
         const bool isDirectory = info.isDir();
         data.append(!isDirectory
                         ? (showFormatted ? loc.formattedDataSize(info.size()) : QString::number(info.size()))
-                        : "Verzeichnis");
+                        : QStringLiteral("Verzeichnis"));
         data.append(loc.toString(info.lastModified(), QLocale::NarrowFormat));
 
         QTreeWidgetItem* item = new QTreeWidgetItem(data);
