@@ -1,3 +1,10 @@
+qt-commander (0.1.5-1) UNRELEASED; urgency=medium
+
+  * Avoid division by zero when showing file information of a file on a virtual
+    file system (like /proc on Linux).
+
+ -- Dirk Stolle <striezel-dev@web.de>  Mon, 4 May 2026 14:13:12 +0200
+
 qt-commander (0.1.4-1) UNRELEASED; urgency=medium
 
   * A PDF viewer is added to view PDF files.

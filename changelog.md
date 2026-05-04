@@ -4,7 +4,7 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
-## Next Version (2026-05-??)
+## Version 0.1.5 (2026-05-04)
 
 * __[fix]__
   Avoid division by zero when showing file information of a file on a virtual
