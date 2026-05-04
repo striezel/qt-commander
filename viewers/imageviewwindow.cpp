@@ -73,6 +73,8 @@ void ImageViewWindow::closeEvent(QCloseEvent *event)
 
 void ImageViewWindow::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event);
+
     rescaleToFit();
 }
 

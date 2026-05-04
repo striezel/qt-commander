@@ -84,6 +84,8 @@ void AnimationViewWindow::closeEvent(QCloseEvent *event)
 
 void AnimationViewWindow::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event);
+
     // automatically start animation
     startAnimation();
 }

@@ -158,6 +158,8 @@ void VideoPlayerWindow::closeEvent(QCloseEvent *event)
 
 void VideoPlayerWindow::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event);
+
     if (ui->actionAutoPlayVideo->isChecked())
     {
         btnStartClicked();

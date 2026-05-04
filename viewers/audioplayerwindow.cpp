@@ -159,6 +159,8 @@ void AudioPlayerWindow::closeEvent(QCloseEvent *event)
 
 void AudioPlayerWindow::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event);
+
     if (ui->actionAutoPlayAudio->isChecked())
     {
         btnStartClicked();

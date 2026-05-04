@@ -113,6 +113,8 @@ void TextViewWindow::closeEvent(QCloseEvent *event)
 
 void TextViewWindow::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event);
+
     scrollToTop();
 }
 
