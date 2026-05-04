@@ -73,7 +73,7 @@ bool TextViewWindow::loadTextFile(const QString &path)
     QTextStream stream(&file);
     QString line;
     // The read loop checks for stream.atEnd() at the end and not at the start
-    // of the loop, because for some files on virutal file systems like /proc on
+    // of the loop, because for some files on virtual file systems like /proc on
     // Linux stream.atEnd() is true, even if there is data to read. So we try at
     // least one read operation before leaving the loop. Not ideal but gets the
     // job done in most cases. With the check at the top of the loop the text
