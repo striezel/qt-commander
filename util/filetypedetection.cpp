@@ -24,10 +24,6 @@
 #include <QMediaFormat>
 #include <QMovie>
 
-FileTypeDetection::FileTypeDetection()
-{
-}
-
 QMimeType FileTypeDetection::getType(const QFileInfo &info) const
 {
     return mimeDb.mimeTypeForFile(info);

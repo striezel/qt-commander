@@ -27,7 +27,7 @@
 class FileTypeDetection
 {
 public:
-    FileTypeDetection();
+    FileTypeDetection() = default;
 
     /// Gets the MIME type of a file.
     QMimeType getType(const QFileInfo& info) const;
