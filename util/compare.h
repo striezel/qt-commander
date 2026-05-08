@@ -45,7 +45,7 @@ public:
     /// Enumeration to indicate the content comparison result between two files.
     enum class Content
     {
-        /// Files have the same conent.
+        /// Files have the same content.
         Identical,
 
         /// Files have different content.
@@ -61,7 +61,7 @@ public:
 
     enum class Result
     {
-        /// Files have the same conent.
+        /// Files have the same content.
         Identical = static_cast<std::underlying_type_t<Content>>(Content::Identical),
 
         /// Files have different content.
@@ -97,9 +97,9 @@ public:
     ///   emitted several times
     /// - maximumChanged() reports the maximum progress value at the start of
     ///   the comparison
-    /// - compareFinished() reports the comparision result after the comparison
+    /// - compareFinished() reports the comparison result after the comparison
     ///   has completed
-    /// - compareCancelled() reports a partial comparision result after the
+    /// - compareCancelled() reports a partial comparison result after the
     ///   comparison has been cancelled
     void compareDirectories(const QString &left, const QString &right);
 
