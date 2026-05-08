@@ -105,7 +105,8 @@ QList<Compare::Info> Compare::compareDirectories(const QString &left, const QStr
     // TODO: emit signal: progress reset to zero
     // TODO: emit signal: set maximum to leftList.size() + rightList.size()
 
-    QList<Compare::Info> result(std::max(leftList.size(), rightList.size()));
+    QList<Compare::Info> result;
+    result.reserve(std::max(leftList.size(), rightList.size()));
 
     while ((leftCurrent != leftList.cend()) || (rightCurrent != rightList.cend()))
     {
