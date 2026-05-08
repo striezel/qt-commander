@@ -19,7 +19,8 @@
 */
 
 #include "compare.h"
-#include <algorithm> // for std::equal(), std::max()
+#include <algorithm> // for std::max() + std::min()
+#include <cstring> // std::memcmp()
 #include <fstream>
 #include <limits>
 #include <QDir>
@@ -61,17 +62,38 @@ Compare::Content Compare::contents(const QFileInfo &left, const QFileInfo &right
     }
 
     // Check for same size.
-    if (streamLeft.tellg() != streamRight.tellg()) {
+    const std::ifstream::pos_type size = streamLeft.tellg();
+    if (size != streamRight.tellg())
+    {
         return Content::Different;
     }
 
     streamLeft.seekg(0, std::ifstream::beg);
     streamRight.seekg(0, std::ifstream::beg);
 
-    return std::equal(std::istreambuf_iterator<char>(streamLeft.rdbuf()),
-                      std::istreambuf_iterator<char>(),
-                      std::istreambuf_iterator<char>(streamRight.rdbuf()))
-        ? Content::Identical : Content::Different;
+    constexpr std::size_t bufferSize = 4096;
+    char bufferLeft[bufferSize];
+    char bufferRight[bufferSize];
+
+    std::ifstream::pos_type remaining = size;
+
+    while ((remaining > 0) && !streamLeft.eof() && !streamRight.eof())
+    {
+        const auto to_read = std::min(remaining, static_cast<std::ifstream::pos_type>(bufferSize));
+        streamLeft.read(bufferLeft, to_read);
+        streamRight.read(bufferRight, to_read);
+        if (!streamLeft.good() || !streamRight.good())
+        {
+            return Content::Unknown;
+        }
+        remaining -= to_read;
+        if (std::memcmp(bufferLeft, bufferRight, to_read) != 0)
+        {
+            return Content::Different;
+        }
+    };
+
+    return Content::Identical;
 }
 
 void Compare::compareDirectories(const QString &left, const QString &right)
