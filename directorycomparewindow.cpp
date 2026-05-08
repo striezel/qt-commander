@@ -424,7 +424,7 @@ void DirectoryCompareWindow::addInfoEntry(const Compare::Info &info, const QLoca
     {
         addLeftSideOnlyEntry(info, loc);
     }
-    else if (info.result == Compare::Result::LeftSideOnly)
+    else if (info.result == Compare::Result::RightSideOnly)
     {
         addRightSideOnlyEntry(info, loc);
     }
