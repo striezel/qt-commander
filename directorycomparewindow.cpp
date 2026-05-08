@@ -205,6 +205,31 @@ void DirectoryCompareWindow::addLeftSideOnlyEntry(const QFileInfo &info, const Q
     ui->treeWidget->addTopLevelItem(item);
 }
 
+void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, const QLocale &loc)
+{
+    QStringList data;
+    data.append(info.name);
+    data.append("Nur links: " + info.name);
+    data.append(loc.toString(info.leftDate, QLocale::NarrowFormat));
+    data.append("keins");
+    if (info.isDirectory)
+    {
+        data << "Verzeichnis" << "keine";
+    }
+    else
+    {
+        data.append(loc.formattedDataSize(info.leftSize));
+        data.append("keine");
+    }
+    QTreeWidgetItem* item = new QTreeWidgetItem(data);
+    const QFileIconProvider icon_provider;
+    item->setIcon(0, info.isDirectory
+                         ? icon_provider.icon(QAbstractFileIconProvider::Folder)
+                         : icon_provider.icon(QAbstractFileIconProvider::File));
+    item->setIcon(1, QIcon::fromTheme("go-previous"));
+    ui->treeWidget->addTopLevelItem(item);
+}
+
 void DirectoryCompareWindow::addRightSideOnlyEntry(const QFileInfo &info, const QLocale& loc)
 {
     QStringList data;
@@ -230,6 +255,31 @@ void DirectoryCompareWindow::addRightSideOnlyEntry(const QFileInfo &info, const 
     ui->treeWidget->addTopLevelItem(item);
 }
 
+void DirectoryCompareWindow::addRightSideOnlyEntry(const Compare::Info &info, const QLocale &loc)
+{
+    QStringList data;
+    data.append(info.name);
+    data.append("Nur rechts: " + info.name);
+    data.append("keins");
+    data.append(loc.toString(info.rightDate, QLocale::NarrowFormat));
+    if (info.isDirectory)
+    {
+        data << "keine" << "Verzeichnis";
+    }
+    else
+    {
+        data.append("keine");
+        data.append(loc.formattedDataSize(info.rightSize));
+    }
+    QTreeWidgetItem* item = new QTreeWidgetItem(data);
+    const QFileIconProvider icon_provider;
+    item->setIcon(0, info.isDirectory
+                         ? icon_provider.icon(QAbstractFileIconProvider::Folder)
+                         : icon_provider.icon(QAbstractFileIconProvider::File));
+    item->setIcon(1, QIcon::fromTheme("go-next"));
+    ui->treeWidget->addTopLevelItem(item);
+}
+
 void DirectoryCompareWindow::addDirectoryExistsEntry(const QFileInfo &left, const QFileInfo &right, const QLocale &loc)
 {
     QStringList data;
@@ -237,6 +287,26 @@ void DirectoryCompareWindow::addDirectoryExistsEntry(const QFileInfo &left, cons
     data.append("Existiert in beiden Verzeichnissen");
     data.append(loc.toString(left.lastModified(), QLocale::NarrowFormat));
     data.append(loc.toString(right.lastModified(), QLocale::NarrowFormat));
+    data << "Verzeichnis" << "Verzeichnis";
+
+    QTreeWidgetItem* item = new QTreeWidgetItem(data);
+
+    const QFileIconProvider icon_provider;
+    item->setIcon(0, icon_provider.icon(QAbstractFileIconProvider::Folder));
+
+    // Subdirectories are not checked yet, so status is ... questionable / unknown.
+    item->setIcon(1, QIcon::fromTheme("dialog-question"));
+
+    ui->treeWidget->addTopLevelItem(item);
+}
+
+void DirectoryCompareWindow::addDirectoryExistsEntry(const Compare::Info &info, const QLocale &loc)
+{
+    QStringList data;
+    data.append(info.name);
+    data.append("Existiert in beiden Verzeichnissen");
+    data.append(loc.toString(info.leftDate, QLocale::NarrowFormat));
+    data.append(loc.toString(info.rightDate, QLocale::NarrowFormat));
     data << "Verzeichnis" << "Verzeichnis";
 
     QTreeWidgetItem* item = new QTreeWidgetItem(data);
@@ -295,4 +365,75 @@ void DirectoryCompareWindow::addFileEntry(const QFileInfo &left, const QFileInfo
     item->setIcon(0, icon);
 
     ui->treeWidget->addTopLevelItem(item);
+}
+
+void DirectoryCompareWindow::addFileEntry(const Compare::Info &info, const QLocale &loc)
+{
+    QStringList data;
+    data.append(info.name);
+    switch(info.result)
+    {
+    case Compare::Result::Identical:
+        data.append("Dateien sind identisch.");
+        break;
+    case Compare::Result::Different:
+        data.append("Dateien sind unterschiedlich.");
+        break;
+    case Compare::Result::Unknown:
+        data.append("Dateien konnten nicht verglichen werden.");
+        break;
+    default:
+        // Should not happen, but intercept it anyway.
+        data.append("Fehler: Wert " + QString::number(static_cast<int>(info.result)));
+        break;
+    }
+    data.append(loc.toString(info.leftDate, QLocale::NarrowFormat));
+    data.append(loc.toString(info.rightDate, QLocale::NarrowFormat));
+    data.append(loc.formattedDataSize(info.leftSize));
+    data.append(loc.formattedDataSize(info.rightSize));
+
+    QTreeWidgetItem* item = new QTreeWidgetItem(data);
+    QIcon icon;
+    switch(info.result)
+    {
+    case Compare::Result::Identical:
+        icon = QIcon::fromTheme("document-new");
+        break;
+    case Compare::Result::Different:
+        icon = QIcon::fromTheme("edit-copy");
+        break;
+    case Compare::Result::Unknown:
+        icon = QIcon::fromTheme("dialog-question");
+        break;
+    }
+    if (!icon.isNull())
+    {
+        item->setIcon(1, icon);
+    }
+
+    const QFileIconProvider icon_provider;
+    icon = icon_provider.icon(QAbstractFileIconProvider::File);
+    item->setIcon(0, icon);
+
+    ui->treeWidget->addTopLevelItem(item);
+}
+
+void DirectoryCompareWindow::addInfoEntry(const Compare::Info &info, const QLocale &loc)
+{
+    if (info.result == Compare::Result::LeftSideOnly)
+    {
+        addLeftSideOnlyEntry(info, loc);
+    }
+    else if (info.result == Compare::Result::LeftSideOnly)
+    {
+        addRightSideOnlyEntry(info, loc);
+    }
+    else if (info.isDirectory)
+    {
+        addDirectoryExistsEntry(info, loc);
+    }
+    else
+    {
+        addFileEntry(info, loc);
+    }
 }

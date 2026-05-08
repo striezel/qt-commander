@@ -61,6 +61,12 @@ private:
     void addRightSideOnlyEntry(const QFileInfo& info, const QLocale& loc);
     void addDirectoryExistsEntry(const QFileInfo& left, const QFileInfo& right, const QLocale& loc);
     void addFileEntry(const QFileInfo& left, const QFileInfo& right, const QLocale& loc, const Compare::Content content);
+
+    void addInfoEntry(const Compare::Info& info, const QLocale& loc);
+    void addLeftSideOnlyEntry(const Compare::Info& info, const QLocale& loc);
+    void addRightSideOnlyEntry(const Compare::Info& info, const QLocale& loc);
+    void addDirectoryExistsEntry(const Compare::Info& info, const QLocale& loc);
+    void addFileEntry(const Compare::Info& info, const QLocale& loc);
 };
 
 #endif // DIRECTORYCOMPAREWINDOW_H
