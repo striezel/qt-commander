@@ -4,6 +4,16 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-05-??)
+
+* __[new feature]__
+  The program can now compare the contents of the two directories.
+
+  However, there are some limitations: Subdirectories are not compared (yet).
+  The comparison only checks their existence, not their contents. Furthermore,
+  a comparison can take relatively long (several seconds) when the two
+  directories contains many similar or big files.
+
 ## Version 0.1.5 (2026-05-04)
 
 * __[fix]__
