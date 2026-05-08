@@ -21,7 +21,6 @@
 #include "directorycomparewindow.h"
 #include "ui_directorycomparewindow.h"
 
-#include <QtConcurrent/QtConcurrentTask>
 #include <QDir>
 #include <QFileIconProvider>
 #include <QStringList>
@@ -36,7 +35,10 @@ DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QS
 {
     ui->setupUi(this);
 
-    connect(ui->actionClose, &QAction::triggered, this, &DirectoryCompareWindow::close);
+    ui->lineEditLeft->setText(leftPath);
+    ui->lineEditRight->setText(rightPath);
+
+    connect(ui->actionClose, &QAction::triggered, this, &DirectoryCompareWindow::threadHandlingClose);
 }
 
 DirectoryCompareWindow::~DirectoryCompareWindow()
@@ -46,6 +48,9 @@ DirectoryCompareWindow::~DirectoryCompareWindow()
 
 void DirectoryCompareWindow::closeEvent(QCloseEvent *event)
 {
+    thread.quit();
+    thread.wait(250);
+
     // do the usual event handling inherited from base class
     this->QMainWindow::closeEvent(event);
 
@@ -55,116 +60,58 @@ void DirectoryCompareWindow::closeEvent(QCloseEvent *event)
 
 void DirectoryCompareWindow::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event);
+
     if (initialShowDone)
     {
         return;
     }
 
     initialShowDone = true;
-    moveToThread(&thread);
-    connect(&thread, &QThread::started, this, &DirectoryCompareWindow::startCompare);
-    thread.start();
-}
 
-void DirectoryCompareWindow::startCompare()
-{
+    Compare* compare = new Compare;
+    compare->moveToThread(&thread);
+
+    connect(&thread, &QThread::finished, compare, &QObject::deleteLater);
+    connect(this, &DirectoryCompareWindow::compareDirectories, compare, &Compare::compareDirectories);
+    connect(compare, &Compare::progressChanged, this, &DirectoryCompareWindow::progressChanged);
+    connect(compare, &Compare::maximumChanged, this, &DirectoryCompareWindow::progressMaximumChanged);
+    connect(compare, &Compare::compareFinished, this, &DirectoryCompareWindow::compareFinished);
+
+    thread.start();
+
     compareDirectories(leftPath, rightPath);
 }
 
-void DirectoryCompareWindow::compareDirectories(const QString &left, const QString &right)
+void DirectoryCompareWindow::progressChanged(int currentProgress)
 {
-    const QDir::Filters compareFilter = QDir::Filter::AllEntries
-                                        | QDir::Filter::NoDotAndDotDot
-                                        | QDir::Filter::Hidden
-                                        | QDir::Filter::System;
-    const QDir::SortFlags compareSort = QDir::SortFlag::Name
-                                        | QDir::SortFlag::DirsFirst
-                                        | QDir::SortFlag::IgnoreCase;
-
-    QDir leftDir(left);
-    QDir rightDir(right);
-    if (!leftDir.exists() || !rightDir.exists())
+    if (currentProgress < 0)
     {
         return;
     }
 
-    ui->lineEditLeft->setText(left);
-    ui->lineEditRight->setText(right);
+    ui->progressBar->setValue(currentProgress);
+}
 
-    leftDir.setFilter(compareFilter);
-    leftDir.setSorting(compareSort);
+void DirectoryCompareWindow::progressMaximumChanged(int maximum)
+{
+    if (maximum <= 0)
+    {
+        maximum = 1;
+    }
 
-    rightDir.setFilter(compareFilter);
-    rightDir.setSorting(compareSort);
+    ui->progressBar->setMaximum(maximum);
+}
+
+void DirectoryCompareWindow::compareFinished(const QList<Compare::Info>& list)
+{
+    statusBar()->showMessage("It finished now! ;)");
 
     const QLocale loc = locale();
-
-    const QFileInfoList leftList = leftDir.entryInfoList();
-    const QFileInfoList rightList = rightDir.entryInfoList();
-
-    auto leftCurrent = leftList.cbegin();
-    auto rightCurrent = rightList.cbegin();
-
     ui->treeWidget->clear();
-    ui->progressBar->setValue(0);
-    ui->progressBar->setMaximum(leftList.size() + rightList.size());
-
-    while ((leftCurrent != leftList.cend()) || (rightCurrent != rightList.cend()))
+    for (const Compare::Info& info : list)
     {
-        const bool leftFinished = leftCurrent == leftList.cend();
-        const bool rightFinished = rightCurrent == rightList.cend();
-
-        if (leftFinished)
-        {
-            // Entry only exists on right side.
-            addRightSideOnlyEntry(*rightCurrent, loc);
-            ++rightCurrent;
-            ui->progressBar->setValue(ui->progressBar->value() + 1);
-        }
-        else if (rightFinished)
-        {
-            // Entry only exists on left side.
-            addLeftSideOnlyEntry(*leftCurrent, loc);
-            ++leftCurrent;
-            ui->progressBar->setValue(ui->progressBar->value() + 1);
-        }
-        else
-        {
-            // Both sides still have elements.
-            const auto order = Compare::order(*leftCurrent, *rightCurrent);
-            switch (order) {
-            case Compare::Order::LeftIsFirst:
-                addLeftSideOnlyEntry(*leftCurrent, loc);
-                ++leftCurrent;
-                ui->progressBar->setValue(ui->progressBar->value() + 1);
-                continue;
-                break;
-            case Compare::Order::RightIsFirst:
-                addRightSideOnlyEntry(*rightCurrent, loc);
-                ++rightCurrent;
-                ui->progressBar->setValue(ui->progressBar->value() + 1);
-                continue;
-                break;
-            default:
-                break;
-            }
-
-            // File name and type (file or directory) is the same on both sides.
-            if (leftCurrent->isDir())
-            {
-                addDirectoryExistsEntry(*leftCurrent, *rightCurrent, loc);
-                ++leftCurrent;
-                ++rightCurrent;
-                ui->progressBar->setValue(ui->progressBar->value() + 2);
-                continue;
-            }
-
-            const auto content = Compare::contents(*leftCurrent, *rightCurrent);
-            addFileEntry(*leftCurrent, *rightCurrent, loc, content);
-            ++leftCurrent;
-            ++rightCurrent;
-            ui->progressBar->setValue(ui->progressBar->value() + 2);
-        }
+        addInfoEntry(info, loc);
     }
 
     // Adjust width of columns with modification date.
@@ -176,33 +123,17 @@ void DirectoryCompareWindow::compareDirectories(const QString &left, const QStri
 
     ui->treeWidget->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
     ui->treeWidget->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
-
-    thread.exit();
 }
 
-void DirectoryCompareWindow::addLeftSideOnlyEntry(const QFileInfo &info, const QLocale& loc)
+void DirectoryCompareWindow::threadHandlingClose()
 {
-    QStringList data;
-    data.append(info.fileName());
-    data.append("Nur links: " + info.absolutePath());
-    data.append(loc.toString(info.lastModified(), QLocale::NarrowFormat));
-    data.append("keins");
-    if (info.isDir())
+    thread.quit();
+    if (!thread.wait(250))
     {
-        data << "Verzeichnis" << "keine";
+        thread.terminate();
+        thread.wait();
     }
-    else
-    {
-        data.append(loc.formattedDataSize(info.size()));
-        data.append("keine");
-    }
-    QTreeWidgetItem* item = new QTreeWidgetItem(data);
-    const QFileIconProvider icon_provider;
-    item->setIcon(0, info.isDir()
-                         ? icon_provider.icon(QAbstractFileIconProvider::Folder)
-                         : icon_provider.icon(QAbstractFileIconProvider::File));
-    item->setIcon(1, QIcon::fromTheme("go-previous"));
-    ui->treeWidget->addTopLevelItem(item);
+    (void) this->close();
 }
 
 void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, const QLocale &loc)
@@ -227,31 +158,6 @@ void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, con
                          ? icon_provider.icon(QAbstractFileIconProvider::Folder)
                          : icon_provider.icon(QAbstractFileIconProvider::File));
     item->setIcon(1, QIcon::fromTheme("go-previous"));
-    ui->treeWidget->addTopLevelItem(item);
-}
-
-void DirectoryCompareWindow::addRightSideOnlyEntry(const QFileInfo &info, const QLocale& loc)
-{
-    QStringList data;
-    data.append(info.fileName());
-    data.append("Nur rechts: " + info.absolutePath());
-    data.append("keins");
-    data.append(loc.toString(info.lastModified(), QLocale::NarrowFormat));
-    if (info.isDir())
-    {
-        data << "keine" << "Verzeichnis";
-    }
-    else
-    {
-        data.append("keine");
-        data.append(loc.formattedDataSize(info.size()));
-    }
-    QTreeWidgetItem* item = new QTreeWidgetItem(data);
-    const QFileIconProvider icon_provider;
-    item->setIcon(0, info.isDir()
-                         ? icon_provider.icon(QAbstractFileIconProvider::Folder)
-                         : icon_provider.icon(QAbstractFileIconProvider::File));
-    item->setIcon(1, QIcon::fromTheme("go-next"));
     ui->treeWidget->addTopLevelItem(item);
 }
 
@@ -280,26 +186,6 @@ void DirectoryCompareWindow::addRightSideOnlyEntry(const Compare::Info &info, co
     ui->treeWidget->addTopLevelItem(item);
 }
 
-void DirectoryCompareWindow::addDirectoryExistsEntry(const QFileInfo &left, const QFileInfo &right, const QLocale &loc)
-{
-    QStringList data;
-    data.append(left.fileName());
-    data.append("Existiert in beiden Verzeichnissen");
-    data.append(loc.toString(left.lastModified(), QLocale::NarrowFormat));
-    data.append(loc.toString(right.lastModified(), QLocale::NarrowFormat));
-    data << "Verzeichnis" << "Verzeichnis";
-
-    QTreeWidgetItem* item = new QTreeWidgetItem(data);
-
-    const QFileIconProvider icon_provider;
-    item->setIcon(0, icon_provider.icon(QAbstractFileIconProvider::Folder));
-
-    // Subdirectories are not checked yet, so status is ... questionable / unknown.
-    item->setIcon(1, QIcon::fromTheme("dialog-question"));
-
-    ui->treeWidget->addTopLevelItem(item);
-}
-
 void DirectoryCompareWindow::addDirectoryExistsEntry(const Compare::Info &info, const QLocale &loc)
 {
     QStringList data;
@@ -316,53 +202,6 @@ void DirectoryCompareWindow::addDirectoryExistsEntry(const Compare::Info &info, 
 
     // Subdirectories are not checked yet, so status is ... questionable / unknown.
     item->setIcon(1, QIcon::fromTheme("dialog-question"));
-
-    ui->treeWidget->addTopLevelItem(item);
-}
-
-void DirectoryCompareWindow::addFileEntry(const QFileInfo &left, const QFileInfo &right, const QLocale &loc, const Compare::Content content)
-{
-    QStringList data;
-    data.append(left.fileName());
-    switch(content)
-    {
-    case Compare::Content::Identical:
-        data.append("Dateien sind identisch.");
-        break;
-    case Compare::Content::Different:
-        data.append("Dateien sind unterschiedlich.");
-        break;
-    case Compare::Content::Unknown:
-        data.append("Dateien konnten nicht verglichen werden.");
-        break;
-    }
-    data.append(loc.toString(left.lastModified(), QLocale::NarrowFormat));
-    data.append(loc.toString(right.lastModified(), QLocale::NarrowFormat));
-    data.append(loc.formattedDataSize(left.size()));
-    data.append(loc.formattedDataSize(right.size()));
-
-    QTreeWidgetItem* item = new QTreeWidgetItem(data);
-    QIcon icon;
-    switch(content)
-    {
-    case Compare::Content::Identical:
-        icon = QIcon::fromTheme("document-new");
-        break;
-    case Compare::Content::Different:
-        icon = QIcon::fromTheme("edit-copy");
-        break;
-    case Compare::Content::Unknown:
-        icon = QIcon::fromTheme("dialog-question");
-        break;
-    }
-    if (!icon.isNull())
-    {
-        item->setIcon(1, icon);
-    }
-
-    const QFileIconProvider icon_provider;
-    icon = icon_provider.icon(QAbstractFileIconProvider::File);
-    item->setIcon(0, icon);
 
     ui->treeWidget->addTopLevelItem(item);
 }

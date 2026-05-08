@@ -21,6 +21,7 @@
 #include "compare.h"
 #include <algorithm> // for std::equal(), std::max()
 #include <fstream>
+#include <limits>
 #include <QDir>
 
 Compare::Order Compare::order(const QFileInfo &left, const QFileInfo &right)
@@ -73,7 +74,7 @@ Compare::Content Compare::contents(const QFileInfo &left, const QFileInfo &right
         ? Content::Identical : Content::Different;
 }
 
-QList<Compare::Info> Compare::compareDirectories(const QString &left, const QString &right)
+void Compare::compareDirectories(const QString &left, const QString &right)
 {
     const QDir::Filters compareFilter = QDir::Filter::AllEntries
                                         | QDir::Filter::NoDotAndDotDot
@@ -87,7 +88,8 @@ QList<Compare::Info> Compare::compareDirectories(const QString &left, const QStr
     QDir rightDir(right);
     if (!leftDir.exists() || !rightDir.exists())
     {
-        return {};
+        emit compareFinished({});
+        return;
     }
 
     leftDir.setFilter(compareFilter);
@@ -102,8 +104,20 @@ QList<Compare::Info> Compare::compareDirectories(const QString &left, const QStr
     auto leftCurrent = leftList.cbegin();
     auto rightCurrent = rightList.cbegin();
 
-    // TODO: emit signal: progress reset to zero
-    // TODO: emit signal: set maximum to leftList.size() + rightList.size()
+    // progress reset to zero
+    int progress = 0;
+    emit progressChanged(0);
+    // set maximum to leftList.size() + rightList.size()
+    const qsizetype maximum_qst = leftList.size() + rightList.size();
+    if (maximum_qst > std::numeric_limits<int>::max())
+    {
+        emit maximumChanged(std::numeric_limits<int>::max());
+    }
+    else
+    {
+        emit maximumChanged(maximum_qst);
+    }
+
 
     QList<Compare::Info> result;
     result.reserve(std::max(leftList.size(), rightList.size()));
@@ -118,14 +132,22 @@ QList<Compare::Info> Compare::compareDirectories(const QString &left, const QStr
             // Entry only exists on right side.
             result.append(rightSideOnly(*rightCurrent));
             ++rightCurrent;
-            // TODO: emit signal: progress increased by one
+            // progress increased by one
+            if (progress < std::numeric_limits<int>::max())
+            {
+              emit progressChanged(++progress);
+            }
         }
         else if (rightFinished)
         {
             // Entry only exists on left side.
             result.append(leftSideOnly(*leftCurrent));
             ++leftCurrent;
-            // TODO: emit signal: progress increased by one
+            // progress increased by one
+            if (progress < std::numeric_limits<int>::max())
+            {
+                emit progressChanged(++progress);
+            }
         }
         else
         {
@@ -135,13 +157,21 @@ QList<Compare::Info> Compare::compareDirectories(const QString &left, const QStr
             case Compare::Order::LeftIsFirst:
                 result.append(leftSideOnly(*leftCurrent));
                 ++leftCurrent;
-                // TODO: emit signal: progress increased by one
+                // progress increased by one
+                if (progress < std::numeric_limits<int>::max())
+                {
+                    emit progressChanged(++progress);
+                }
                 continue;
                 break;
             case Compare::Order::RightIsFirst:
                 result.append(rightSideOnly(*rightCurrent));
                 ++rightCurrent;
-                // TODO: emit signal: progress increased by one
+                // progress increased by one
+                if (progress < std::numeric_limits<int>::max())
+                {
+                    emit progressChanged(++progress);
+                }
                 continue;
                 break;
             default:
@@ -154,18 +184,28 @@ QList<Compare::Info> Compare::compareDirectories(const QString &left, const QStr
                 result.append(directoryExists(*leftCurrent, *rightCurrent));
                 ++leftCurrent;
                 ++rightCurrent;
-                // TODO: emit signal: progress increased by two
+                // progress increased by two
+                if (progress < std::numeric_limits<int>::max() - 1)
+                {
+                    progress += 2;
+                    emit progressChanged(progress);
+                }
                 continue;
             }
 
             result.append(fileEntry(*leftCurrent, *rightCurrent));
             ++leftCurrent;
             ++rightCurrent;
-            // TODO: emit signal: progress increased by two
+            // progress increased by two
+            if (progress < std::numeric_limits<int>::max() - 1)
+            {
+                progress += 2;
+                emit progressChanged(progress);
+            }
         }
     }
 
-    return result;
+    emit compareFinished(result);
 }
 
 Compare::Info Compare::leftSideOnly(const QFileInfo &info)

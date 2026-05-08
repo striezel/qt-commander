@@ -24,13 +24,13 @@
 #include <type_traits> // for std::underlying_type_t (C++14)
 #include <QFileInfo>
 #include <QList>
+#include <QObject>
 #include <QString>
 
-class Compare
+class Compare: public QObject
 {
+    Q_OBJECT
 public:
-    Compare() = delete;
-
     /// Enumeration to indicate relative sort order of left and right tree
     /// entries.
     enum class Order
@@ -79,7 +79,12 @@ public:
         qint64 rightSize;
     };
 
-    static QList<Info> compareDirectories(const QString &left, const QString &right);
+    void compareDirectories(const QString &left, const QString &right);
+
+signals:
+    void progressChanged(int currentProgress);
+    void maximumChanged(int maximum);
+    void compareFinished(const QList<Info>& list);
 
 private:
     static Info leftSideOnly(const QFileInfo& info);

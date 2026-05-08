@@ -41,12 +41,20 @@ public:
     explicit DirectoryCompareWindow(const QString& pathLeft, const QString& pathRight, QWidget *parent = nullptr);
     ~DirectoryCompareWindow();
 
+signals:
+    void compareDirectories(const QString& left, const QString& right);
+
 protected:
     void closeEvent(QCloseEvent* event) override;
     void showEvent(QShowEvent* event) override;
 
 private slots:
-    void startCompare();
+    void progressChanged(int currentProgress);
+    void progressMaximumChanged(int maximum);
+    void compareFinished(const QList<Compare::Info>& list);
+
+    void threadHandlingClose();
+
 private:
     Ui::DirectoryCompareWindow *ui;
 
@@ -54,13 +62,6 @@ private:
     QString leftPath;
     QString rightPath;
     QThread thread;
-
-    void compareDirectories(const QString& left, const QString& right);
-
-    void addLeftSideOnlyEntry(const QFileInfo& info, const QLocale& loc);
-    void addRightSideOnlyEntry(const QFileInfo& info, const QLocale& loc);
-    void addDirectoryExistsEntry(const QFileInfo& left, const QFileInfo& right, const QLocale& loc);
-    void addFileEntry(const QFileInfo& left, const QFileInfo& right, const QLocale& loc, const Compare::Content content);
 
     void addInfoEntry(const Compare::Info& info, const QLocale& loc);
     void addLeftSideOnlyEntry(const Compare::Info& info, const QLocale& loc);
