@@ -264,6 +264,12 @@ void DirectoryCompareWindow::addFileEntry(const Compare::Info &info, const QLoca
     case Compare::Result::Unknown:
         icon = QIcon::fromTheme("dialog-question");
         break;
+    default:
+        // Silence compiler warning about unhandled enumeration values
+        // LeftSideOnly and RightSideOnly. Those are handled in
+        // addLeftSideOnlyEntry() and addRightSideOnlyEntry() before the control
+        // flow even gets to this method.
+        break;
     }
     if (!icon.isNull())
     {
