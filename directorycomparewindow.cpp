@@ -32,6 +32,7 @@ DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QS
     , initialShowDone(false)
     , leftPath(pathLeft)
     , rightPath(pathRight)
+    , compare(nullptr)
 {
     ui->setupUi(this);
 
@@ -39,6 +40,7 @@ DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QS
     ui->lineEditRight->setText(rightPath);
 
     connect(ui->actionClose, &QAction::triggered, this, &DirectoryCompareWindow::threadHandlingClose);
+    connect(ui->btnCancel, &QPushButton::clicked, this, &DirectoryCompareWindow::btnCancelClicked);
 }
 
 DirectoryCompareWindow::~DirectoryCompareWindow()
@@ -69,7 +71,7 @@ void DirectoryCompareWindow::showEvent(QShowEvent *event)
 
     initialShowDone = true;
 
-    Compare* compare = new Compare;
+    compare = new Compare;
     compare->moveToThread(&thread);
 
     connect(&thread, &QThread::finished, compare, &QObject::deleteLater);
@@ -77,6 +79,7 @@ void DirectoryCompareWindow::showEvent(QShowEvent *event)
     connect(compare, &Compare::progressChanged, this, &DirectoryCompareWindow::progressChanged);
     connect(compare, &Compare::maximumChanged, this, &DirectoryCompareWindow::progressMaximumChanged);
     connect(compare, &Compare::compareFinished, this, &DirectoryCompareWindow::compareFinished);
+    connect(compare, &Compare::compareCancelled, this, &DirectoryCompareWindow::compareCancelled);
 
     thread.start();
 
@@ -105,8 +108,12 @@ void DirectoryCompareWindow::progressMaximumChanged(int maximum)
 
 void DirectoryCompareWindow::compareFinished(const QList<Compare::Info>& list)
 {
-    statusBar()->showMessage("It finished now! ;)");
+    statusBar()->showMessage("Vergleich ist abgeschlossen.");
+    addResult(list);
+}
 
+void DirectoryCompareWindow::addResult(const QList<Compare::Info>& list)
+{
     const QLocale loc = locale();
     ui->treeWidget->clear();
     for (const Compare::Info& info : list)
@@ -123,6 +130,14 @@ void DirectoryCompareWindow::compareFinished(const QList<Compare::Info>& list)
 
     ui->treeWidget->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
     ui->treeWidget->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
+
+    ui->btnCancel->setEnabled(false);
+}
+
+void DirectoryCompareWindow::compareCancelled(const QList<Compare::Info> &list)
+{
+    statusBar()->showMessage("Vergleich wurde abgebrochen.");
+    addResult(list);
 }
 
 void DirectoryCompareWindow::threadHandlingClose()
@@ -134,6 +149,15 @@ void DirectoryCompareWindow::threadHandlingClose()
         thread.wait();
     }
     (void) this->close();
+}
+
+void DirectoryCompareWindow::btnCancelClicked()
+{
+    if (compare != nullptr)
+    {
+        compare->requestCancellation();
+    }
+    ui->btnCancel->setEnabled(false);
 }
 
 void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, const QLocale &loc)

@@ -148,6 +148,12 @@
       <height>61</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>61</height>
+     </size>
+    </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Hinweis:&lt;/span&gt; Unterverzeichnisse werden (noch) nicht durchsucht. Der Vergleich prüft daher nur die Existenz der Unterverzeichnisse, nicht aber deren Inhalte.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
@@ -158,9 +164,9 @@
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>100</x>
       <y>470</y>
-      <width>651</width>
+      <width>551</width>
       <height>23</height>
      </rect>
     </property>
@@ -183,14 +189,42 @@
    <widget class="QLabel" name="lblProgress">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>470</y>
-      <width>71</width>
-      <height>16</height>
+      <width>81</width>
+      <height>23</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>81</width>
+      <height>23</height>
+     </size>
     </property>
     <property name="text">
      <string>Fortschritt:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnCancel">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>470</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>121</width>
+      <height>24</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>Abbrechen</string>
+    </property>
+    <property name="icon">
+     <iconset theme="process-stop"/>
     </property>
    </widget>
   </widget>

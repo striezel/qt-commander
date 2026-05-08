@@ -81,16 +81,21 @@ public:
 
     void compareDirectories(const QString &left, const QString &right);
 
+    void requestCancellation();
+
 signals:
     void progressChanged(int currentProgress);
     void maximumChanged(int maximum);
     void compareFinished(const QList<Info>& list);
+    void compareCancelled(const QList<Info>& list);
 
 private:
     static Info leftSideOnly(const QFileInfo& info);
     static Info rightSideOnly(const QFileInfo& info);
     static Info directoryExists(const QFileInfo& left, const QFileInfo &right);
     static Info fileEntry(const QFileInfo& left, const QFileInfo &right);
+
+    bool cancellationRequested = false;
 };
 
 #endif // COMPARE_H

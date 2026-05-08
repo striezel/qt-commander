@@ -52,8 +52,11 @@ private slots:
     void progressChanged(int currentProgress);
     void progressMaximumChanged(int maximum);
     void compareFinished(const QList<Compare::Info>& list);
+    void compareCancelled(const QList<Compare::Info>& list);
 
     void threadHandlingClose();
+
+    void btnCancelClicked();
 
 private:
     Ui::DirectoryCompareWindow *ui;
@@ -63,6 +66,9 @@ private:
     QString rightPath;
     QThread thread;
 
+    Compare* compare;
+
+    void addResult(const QList<Compare::Info>& list);
     void addInfoEntry(const Compare::Info& info, const QLocale& loc);
     void addLeftSideOnlyEntry(const Compare::Info& info, const QLocale& loc);
     void addRightSideOnlyEntry(const Compare::Info& info, const QLocale& loc);

@@ -124,6 +124,12 @@ void Compare::compareDirectories(const QString &left, const QString &right)
 
     while ((leftCurrent != leftList.cend()) || (rightCurrent != rightList.cend()))
     {
+        if (cancellationRequested)
+        {
+            emit compareCancelled(result);
+            return;
+        }
+
         const bool leftFinished = leftCurrent == leftList.cend();
         const bool rightFinished = rightCurrent == rightList.cend();
 
@@ -206,6 +212,11 @@ void Compare::compareDirectories(const QString &left, const QString &right)
     }
 
     emit compareFinished(result);
+}
+
+void Compare::requestCancellation()
+{
+    cancellationRequested = true;
 }
 
 Compare::Info Compare::leftSideOnly(const QFileInfo &info)
