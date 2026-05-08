@@ -22,7 +22,6 @@
 #include "ui_directorycomparewindow.h"
 
 #include <QDir>
-#include <QFileIconProvider>
 #include <QStringList>
 #include <QTreeWidgetItem>
 
@@ -177,7 +176,6 @@ void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, con
         data.append("keine");
     }
     QTreeWidgetItem* item = new QTreeWidgetItem(data);
-    const QFileIconProvider icon_provider;
     item->setIcon(0, info.isDirectory
                          ? icon_provider.icon(QAbstractFileIconProvider::Folder)
                          : icon_provider.icon(QAbstractFileIconProvider::File));
@@ -202,7 +200,6 @@ void DirectoryCompareWindow::addRightSideOnlyEntry(const Compare::Info &info, co
         data.append(loc.formattedDataSize(info.rightSize));
     }
     QTreeWidgetItem* item = new QTreeWidgetItem(data);
-    const QFileIconProvider icon_provider;
     item->setIcon(0, info.isDirectory
                          ? icon_provider.icon(QAbstractFileIconProvider::Folder)
                          : icon_provider.icon(QAbstractFileIconProvider::File));
@@ -221,7 +218,6 @@ void DirectoryCompareWindow::addDirectoryExistsEntry(const Compare::Info &info, 
 
     QTreeWidgetItem* item = new QTreeWidgetItem(data);
 
-    const QFileIconProvider icon_provider;
     item->setIcon(0, icon_provider.icon(QAbstractFileIconProvider::Folder));
 
     // Subdirectories are not checked yet, so status is ... questionable / unknown.
@@ -274,7 +270,6 @@ void DirectoryCompareWindow::addFileEntry(const Compare::Info &info, const QLoca
         item->setIcon(1, icon);
     }
 
-    const QFileIconProvider icon_provider;
     icon = icon_provider.icon(QAbstractFileIconProvider::File);
     item->setIcon(0, icon);
 

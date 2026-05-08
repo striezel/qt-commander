@@ -26,6 +26,7 @@
 #include <QFileInfo>
 #include <QString>
 #include <QThread>
+#include <QFileIconProvider>
 
 #include "util/compare.h"
 
@@ -67,6 +68,8 @@ private:
     QThread thread;
 
     Compare* compare;
+
+    const QFileIconProvider icon_provider;
 
     void addResult(const QList<Compare::Info>& list);
     void addInfoEntry(const Compare::Info& info, const QLocale& loc);
