@@ -21,6 +21,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+#include <QCryptographicHash>
 #include <QDir>
 #include <QFont>
 
@@ -93,6 +94,9 @@ public:
 
     int getAudioVolume() const;
     void setAudioVolume(const int volume);
+
+    QCryptographicHash::Algorithm getSelectedHashAlgorithm() const;
+    void setSelectedHashAlgorithm(const QCryptographicHash::Algorithm algo);
 private:
     /// current filters for shown files/directories - applies to both views
     QDir::Filters filters;
@@ -126,6 +130,9 @@ private:
 
     /// volume of audio files in range [0;100]
     int audioVolume;
+
+    /// the (pre-)selected hash algorithm for the current session (not loaded/saved)
+    QCryptographicHash::Algorithm selectedHashAlgorithm;
 };
 
 #endif // SETTINGS_H

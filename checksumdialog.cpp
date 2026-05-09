@@ -20,6 +20,7 @@
 
 #include "checksumdialog.h"
 #include "ui_checksumdialog.h"
+#include "mainwindow.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -57,16 +58,93 @@ CheckSumDialog::CheckSumDialog(const QString& fileName, QWidget *parent)
     connect(ui->rbAlgorithmBlake2s160, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
     connect(ui->rbAlgorithmBlake2s224, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
     connect(ui->rbAlgorithmBlake2s256, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+
+    if (parent != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
+        connect(this, &CheckSumDialog::hashAlgorithmChanged, castedParent, &MainWindow::selectedHashAlgorithmChanged);
+    }
 }
 
 CheckSumDialog::~CheckSumDialog()
 {
+    if (parent() != nullptr)
+    {
+        MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
+        disconnect(this, &CheckSumDialog::hashAlgorithmChanged, castedParent, &MainWindow::selectedHashAlgorithmChanged);
+    }
+
     delete ui;
 }
 
 bool CheckSumDialog::hasCreatedNewFiles() const
 {
     return createdNewFiles;
+}
+
+void CheckSumDialog::setPreSelectedAlgorithm(const QCryptographicHash::Algorithm algorithm)
+{
+    switch (algorithm)
+    {
+    case QCryptographicHash::Algorithm::Md5:
+        ui->rbAlgorithmMd5->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha1:
+        ui->rbAlgorithmSha1->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha224:
+        ui->rbAlgorithmSha224->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha256:
+        ui->rbAlgorithmSha256->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha384:
+        ui->rbAlgorithmSha384->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha512:
+        ui->rbAlgorithmSha512->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha3_224:
+        ui->rbAlgorithmSha3_224->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha3_256:
+        ui->rbAlgorithmSha3_256->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha3_384:
+        ui->rbAlgorithmSha3_384->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Sha3_512:
+        ui->rbAlgorithmSha3_512->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Blake2b_160:
+        ui->rbAlgorithmBlake2b160->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Blake2b_256:
+        ui->rbAlgorithmBlake2b256->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Blake2b_384:
+        ui->rbAlgorithmBlake2b384->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Blake2b_512:
+        ui->rbAlgorithmBlake2b512->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Blake2s_128:
+        ui->rbAlgorithmBlake2s128->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Blake2s_160:
+        ui->rbAlgorithmBlake2s160->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Blake2s_224:
+        ui->rbAlgorithmBlake2s224->setChecked(true);
+        break;
+    case QCryptographicHash::Algorithm::Blake2s_256:
+        ui->rbAlgorithmBlake2s256->setChecked(true);
+        break;
+    default:
+        // Algorithm is not implemented in GUI, fall back to SHA-256.
+        ui->rbAlgorithmSha256->setChecked(true);
+        break;
+    }
 }
 
 void CheckSumDialog::rbAlgorithmToggled(bool checked)
@@ -81,6 +159,7 @@ void CheckSumDialog::rbAlgorithmToggled(bool checked)
 void CheckSumDialog::btnCalculateClicked()
 {
     const QCryptographicHash::Algorithm algorithm = getSelectedAlgorithm();
+    emit hashAlgorithmChanged(algorithm);
     QCryptographicHash the_hash(algorithm);
     QFile file(fileName);
     if (!file.open(QIODeviceBase::OpenModeFlag::ReadOnly))

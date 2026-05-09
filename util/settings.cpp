@@ -57,6 +57,7 @@ Settings::Settings()
     , autoPlayAudio(defaultAutoPlayAudio)
     , loopAudioForever(defaultLoopAudioForever)
     , audioVolume(defaultAudioVolume)
+    , selectedHashAlgorithm(QCryptographicHash::Algorithm::Sha256)
 {}
 
 QFont Settings::defaultTextViewerFont()
@@ -77,6 +78,9 @@ void Settings::resetToDefaults()
     autoPlayAudio = defaultAutoPlayAudio;
     loopAudioForever = defaultLoopAudioForever;
     audioVolume = defaultAudioVolume;
+
+    // selectedHashAlgorithm is valid for the current session only, so it's not
+    // reset here.
 }
 
 void Settings::save()
@@ -96,6 +100,9 @@ void Settings::save()
     settings.setValue("audio-player-auto-play", autoPlayAudio);
     settings.setValue("audio-player-loop-forever", loopAudioForever);
     settings.setValue("audio-player-volume", audioVolume);
+
+    // selectedHashAlgorithm is valid for the current session only, so it's not
+    // saved here.
 }
 
 void Settings::load()
@@ -125,6 +132,9 @@ void Settings::load()
     loopAudioForever = settings.value("audio-player-loop-forever", defaultLoopAudioForever).toBool();
     const int volume = settings.value("audio-player-volume", defaultAudioVolume).toInt();
     setAudioVolume(volume);
+
+    // selectedHashAlgorithm is valid for the current session only, so it's not
+    // loaded here.
 }
 
 QDir::Filters Settings::getFilters() const
@@ -266,4 +276,42 @@ int Settings::getAudioVolume() const
 void Settings::setAudioVolume(const int volume)
 {
     audioVolume = std::clamp(volume, 0, 100);
+}
+
+QCryptographicHash::Algorithm Settings::getSelectedHashAlgorithm() const
+{
+    return selectedHashAlgorithm;
+}
+
+void Settings::setSelectedHashAlgorithm(const QCryptographicHash::Algorithm algo)
+{
+    switch (algo)
+    {
+    case QCryptographicHash::Algorithm::Md5:
+    case QCryptographicHash::Algorithm::Sha1:
+    case QCryptographicHash::Algorithm::Sha224:
+    case QCryptographicHash::Algorithm::Sha256:
+    case QCryptographicHash::Algorithm::Sha384:
+    case QCryptographicHash::Algorithm::Sha512:
+    case QCryptographicHash::Algorithm::Sha3_224:
+    case QCryptographicHash::Algorithm::Sha3_256:
+    case QCryptographicHash::Algorithm::Sha3_384:
+    case QCryptographicHash::Algorithm::Sha3_512:
+    case QCryptographicHash::Algorithm::Blake2b_160:
+    case QCryptographicHash::Algorithm::Blake2b_256:
+    case QCryptographicHash::Algorithm::Blake2b_384:
+    case QCryptographicHash::Algorithm::Blake2b_512:
+    case QCryptographicHash::Algorithm::Blake2s_128:
+    case QCryptographicHash::Algorithm::Blake2s_160:
+    case QCryptographicHash::Algorithm::Blake2s_224:
+    case QCryptographicHash::Algorithm::Blake2s_256:
+        selectedHashAlgorithm = algo;
+        break;
+    default:
+        // Some other algorithms like MD4 or Keccak are currently not used in
+        // the checksum dialog, so those are not allowed. Fall back to SHA-256
+        // in that case.
+        selectedHashAlgorithm = QCryptographicHash::Algorithm::Sha256;
+        break;
+    }
 }

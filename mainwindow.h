@@ -52,6 +52,7 @@ public slots:
     void audioPlayerAutoPlayChanged(const bool autoPlay);
     void audioPlayerLoopForeverChanged(const bool loopForever);
     void audioPlayerVolumeChanged(const int volume);
+    void selectedHashAlgorithmChanged(const QCryptographicHash::Algorithm algorithm);
     void changeLeftTree(const QString& newPath);
     void changeRightTree(const QString& newPath);
 

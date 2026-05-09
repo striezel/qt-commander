@@ -117,6 +117,11 @@ void MainWindow::audioPlayerVolumeChanged(const int volume)
     settings.setAudioVolume(volume);
 }
 
+void MainWindow::selectedHashAlgorithmChanged(const QCryptographicHash::Algorithm algorithm)
+{
+    settings.setSelectedHashAlgorithm(algorithm);
+}
+
 void MainWindow::changeLeftTree(const QString& newPath)
 {
     QDir dir(newPath);
@@ -920,6 +925,7 @@ void MainWindow::actionCalculateChecksumTriggered()
     }
 
     CheckSumDialog dialog(selectedFile, this);
+    dialog.setPreSelectedAlgorithm(settings.getSelectedHashAlgorithm());
     dialog.exec();
     if (dialog.hasCreatedNewFiles())
     {
