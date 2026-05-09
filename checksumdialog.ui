@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>639</width>
     <height>377</height>
    </rect>
   </property>
@@ -88,7 +88,7 @@
        <rect>
         <x>10</x>
         <y>80</y>
-        <width>121</width>
+        <width>131</width>
         <height>20</height>
        </rect>
       </property>
@@ -128,7 +128,7 @@
      <widget class="QRadioButton" name="rbAlgorithmSha1">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>180</x>
         <y>20</y>
         <width>89</width>
         <height>20</height>
@@ -141,9 +141,9 @@
      <widget class="QRadioButton" name="rbAlgorithmSha3_224">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>180</x>
         <y>50</y>
-        <width>89</width>
+        <width>101</width>
         <height>20</height>
        </rect>
       </property>
@@ -154,9 +154,9 @@
      <widget class="QRadioButton" name="rbAlgorithmSha3_256">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>180</x>
         <y>80</y>
-        <width>89</width>
+        <width>101</width>
         <height>20</height>
        </rect>
       </property>
@@ -167,9 +167,9 @@
      <widget class="QRadioButton" name="rbAlgorithmSha3_384">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>180</x>
         <y>110</y>
-        <width>89</width>
+        <width>101</width>
         <height>20</height>
        </rect>
       </property>
@@ -180,14 +180,118 @@
      <widget class="QRadioButton" name="rbAlgorithmSha3_512">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>180</x>
         <y>140</y>
-        <width>89</width>
+        <width>101</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
        <string>SHA3-512</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbAlgorithmBlake2b160">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>50</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BLAKE2b-160</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbAlgorithmBlake2b256">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>80</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BLAKE2b-256</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbAlgorithmBlake2b384">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>110</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BLAKE2b-384</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbAlgorithmBlake2b512">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>140</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BLAKE2b-512</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbAlgorithmBlake2s128">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>50</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BLAKE2s-128</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbAlgorithmBlake2s160">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>80</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BLAKE2s-160</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbAlgorithmBlake2s224">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>110</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BLAKE2s-224</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbAlgorithmBlake2s256">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>140</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BLAKE2s-256</string>
       </property>
      </widget>
     </widget>

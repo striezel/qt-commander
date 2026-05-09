@@ -14,6 +14,11 @@ improvements may be omitted.)_
   a comparison can take relatively long (several seconds) when the two
   directories contains many similar or big files.
 
+* __[new feature]__
+  The checksum calculation can now also calculate BLAKE2 checksums (BLAKE2b-160,
+  BLAKE2b-256, BLAKE2b-384, BLAKE2b-512, BLAKE2s-128, BLAKE2s-160, BLAKE2s-224,
+  and BLAKE2s-256).
+
 ## Version 0.1.5 (2026-05-04)
 
 * __[fix]__

@@ -49,6 +49,14 @@ CheckSumDialog::CheckSumDialog(const QString& fileName, QWidget *parent)
     connect(ui->rbAlgorithmSha3_256, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
     connect(ui->rbAlgorithmSha3_384, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
     connect(ui->rbAlgorithmSha3_512, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+    connect(ui->rbAlgorithmBlake2b160, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+    connect(ui->rbAlgorithmBlake2b256, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+    connect(ui->rbAlgorithmBlake2b384, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+    connect(ui->rbAlgorithmBlake2b512, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+    connect(ui->rbAlgorithmBlake2s128, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+    connect(ui->rbAlgorithmBlake2s160, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+    connect(ui->rbAlgorithmBlake2s224, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
+    connect(ui->rbAlgorithmBlake2s256, &QRadioButton::toggled, this, &CheckSumDialog::rbAlgorithmToggled);
 }
 
 CheckSumDialog::~CheckSumDialog()
@@ -94,7 +102,7 @@ void CheckSumDialog::btnCalculateClicked()
         return;
     }
 
-    QByteArray real_hash = the_hash.result();
+    const QByteArray real_hash = the_hash.result();
     const QFileInfo info(fileName);
     ui->plainTextEdit->setPlainText(real_hash.toHex() + QStringLiteral(" *") + info.fileName());
 
@@ -156,6 +164,22 @@ QCryptographicHash::Algorithm CheckSumDialog::getSelectedAlgorithm() const
         return QCryptographicHash::Algorithm::Sha3_384;
     if (ui->rbAlgorithmSha3_512->isChecked())
         return QCryptographicHash::Algorithm::Sha3_512;
+    if (ui->rbAlgorithmBlake2b160->isChecked())
+        return QCryptographicHash::Algorithm::Blake2b_160;
+    if (ui->rbAlgorithmBlake2b256->isChecked())
+        return QCryptographicHash::Algorithm::Blake2b_256;
+    if (ui->rbAlgorithmBlake2b384->isChecked())
+        return QCryptographicHash::Algorithm::Blake2b_384;
+    if (ui->rbAlgorithmBlake2b512->isChecked())
+        return QCryptographicHash::Algorithm::Blake2b_512;
+    if (ui->rbAlgorithmBlake2s128->isChecked())
+        return QCryptographicHash::Algorithm::Blake2s_128;
+    if (ui->rbAlgorithmBlake2s160->isChecked())
+        return QCryptographicHash::Algorithm::Blake2s_160;
+    if (ui->rbAlgorithmBlake2s224->isChecked())
+        return QCryptographicHash::Algorithm::Blake2s_224;
+    if (ui->rbAlgorithmBlake2s256->isChecked())
+        return QCryptographicHash::Algorithm::Blake2s_256;
 
     // Usually, we should not get to this place, because one radio button should
     // always be selected. However, as a precaution, let's default to SHA-256.
@@ -183,6 +207,15 @@ QString CheckSumDialog::getAlgorithmExtension(const QCryptographicHash::Algorith
     case QCryptographicHash::Algorithm::Sha3_384:
     case QCryptographicHash::Algorithm::Sha3_512:
         return ".sha3";
+    case QCryptographicHash::Algorithm::Blake2b_160:
+    case QCryptographicHash::Algorithm::Blake2b_256:
+    case QCryptographicHash::Algorithm::Blake2b_384:
+    case QCryptographicHash::Algorithm::Blake2b_512:
+    case QCryptographicHash::Algorithm::Blake2s_128:
+    case QCryptographicHash::Algorithm::Blake2s_160:
+    case QCryptographicHash::Algorithm::Blake2s_224:
+    case QCryptographicHash::Algorithm::Blake2s_256:
+        return ".b2sum";
     default:
         return ".checksum";
     }
