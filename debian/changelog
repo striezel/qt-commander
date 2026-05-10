@@ -1,3 +1,21 @@
+qt-commander (0.1.6-1) UNRELEASED; urgency=medium
+
+  * The program can now compare the contents of the two directories.
+
+    However, there are some limitations: Subdirectories are not compared (yet).
+    The comparison only checks their existence, not their contents. Furthermore,
+    a comparison can take relatively long (several seconds) when the two
+    directories contain many similar or big files.
+
+  * The checksum calculation can now also calculate BLAKE2 checksums
+    (BLAKE2b-160, BLAKE2b-256, BLAKE2b-384, BLAKE2b-512, BLAKE2s-128,
+     BLAKE2s-160, BLAKE2s-224, and BLAKE2s-256).
+
+  * The checksum dialog will now remember the last used hash algorithm for the
+    current session and preselect that whenever the checksum dialog is opened.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Sun, 10 May 2026 21:41:20 +0200
+
 qt-commander (0.1.5-1) UNRELEASED; urgency=medium
 
   * Avoid division by zero when showing file information of a file on a virtual

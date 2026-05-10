@@ -4,7 +4,7 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
-## Next Version (2026-05-??)
+## Version 0.1.6 (2026-05-10)
 
 * __[new feature]__
   The program can now compare the contents of the two directories.
@@ -12,7 +12,7 @@ improvements may be omitted.)_
   However, there are some limitations: Subdirectories are not compared (yet).
   The comparison only checks their existence, not their contents. Furthermore,
   a comparison can take relatively long (several seconds) when the two
-  directories contains many similar or big files.
+  directories contain many similar or big files.
 
 * __[new feature]__
   The checksum calculation can now also calculate BLAKE2 checksums (BLAKE2b-160,
