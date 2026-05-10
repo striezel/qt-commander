@@ -21,7 +21,7 @@ improvements may be omitted.)_
 
 * __[improvement]__
   The checksum dialog will now remember the last used hash algorithm for the
-  current session and pre-select that whenever the checksum dialog is opened.
+  current session and preselect that whenever the checksum dialog is opened.
 
 ## Version 0.1.5 (2026-05-04)
 
