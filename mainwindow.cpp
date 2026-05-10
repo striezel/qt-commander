@@ -609,10 +609,18 @@ void MainWindow::btnViewClicked()
 
     if (!info.isFile())
     {
-        QMessageBox::information(
-            this, "Keine Datei ausgewählt",
-            QString("Es wurde keine Datei zum Anzeigen ausgewählt.\n\n")
+#if defined(__linux__)
+        const QString title = QStringLiteral("Keine passende Datei ausgewählt");
+        const QString message =
+            QStringLiteral("Es wurde keine passende Datei zum Anzeigen ausgewählt.\n\n")
+            + QStringLiteral("Zum Betrachten können nur Dateien ausgewählt werden, nicht jedoch Verzeichnisse.")
+            + QStringLiteral(" Spezielle Dateien wie Blockgeräte, FIFOs oder Sockets werden ebenfalls nicht unterstützt.");
+#else
+        const QString title = QStringLiteral("Keine Datei ausgewählt");
+        const QString message = QString("Es wurde keine Datei zum Anzeigen ausgewählt.\n\n")
             + "Zum Betrachten können nur Dateien ausgewählt werden, nicht jedoch Verzeichnisse.");
+#endif
+        QMessageBox::information(this, title, message);
         return;
     }
 
@@ -917,10 +925,18 @@ void MainWindow::actionCalculateChecksumTriggered()
 
     if (!info.isFile())
     {
-        QMessageBox::information(
-            this, "Keine Datei ausgewählt",
-            QString("Es wurde keine Datei zum Berechnen ausgewählt.\n\n")
-                + "Prüfsummen können nur von Dateien berechnet werden, nicht jedoch von Verzeichnissen.");
+#if defined(__linux__)
+        const QString title = QStringLiteral("Keine passende Datei ausgewählt");
+        const QString message =
+            QStringLiteral("Es wurde keine Datei zum Berechnen ausgewählt.\n\n")
+            + QStringLiteral("Prüfsummen können nur von Dateien berechnet werden, nicht jedoch von Verzeichnissen.")
+            + QStringLiteral(" Spezielle Dateien wie Blockgeräte, FIFOs oder Sockets werden ebenfalls nicht unterstützt.");
+#else
+        const QString title = QStringLiteral("Keine Datei ausgewählt");
+        const QString message = QString("Es wurde keine Datei zum Berechnen ausgewählt.\n\n")
+            + "Prüfsummen können nur von Dateien berechnet werden, nicht jedoch von Verzeichnissen.");
+#endif
+        QMessageBox::information(this, title, message);
         return;
     }
 
