@@ -191,7 +191,15 @@
     </property>
     <addaction name="actionClose"/>
    </widget>
+   <widget class="QMenu" name="menuFileOperations">
+    <property name="title">
+     <string>Dateioperation</string>
+    </property>
+    <addaction name="actionCopyToLeft"/>
+    <addaction name="actionCopyToRight"/>
+   </widget>
    <addaction name="menuComparison"/>
+   <addaction name="menuFileOperations"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionClose">
@@ -200,6 +208,22 @@
    </property>
    <property name="text">
     <string>Beenden</string>
+   </property>
+  </action>
+  <action name="actionCopyToLeft">
+   <property name="icon">
+    <iconset theme="go-previous"/>
+   </property>
+   <property name="text">
+    <string>Nach links kopieren</string>
+   </property>
+  </action>
+  <action name="actionCopyToRight">
+   <property name="icon">
+    <iconset theme="go-next"/>
+   </property>
+   <property name="text">
+    <string>Nach rechts kopieren</string>
    </property>
   </action>
  </widget>

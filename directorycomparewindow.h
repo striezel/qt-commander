@@ -59,6 +59,10 @@ private slots:
 
     void btnCancelClicked();
 
+    void treeWidgetSelectionChanged();
+    void actionCopyToLeftTriggered();
+    void actionCopyToRightTriggered();
+
 private:
     Ui::DirectoryCompareWindow *ui;
 

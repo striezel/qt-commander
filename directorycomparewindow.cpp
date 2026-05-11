@@ -22,6 +22,7 @@
 #include "ui_directorycomparewindow.h"
 
 #include <QDir>
+#include <QMessageBox>
 #include <QStringList>
 #include <QTreeWidgetItem>
 
@@ -40,6 +41,10 @@ DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QS
 
     connect(ui->actionClose, &QAction::triggered, this, &DirectoryCompareWindow::threadHandlingClose);
     connect(ui->btnCancel, &QPushButton::clicked, this, &DirectoryCompareWindow::btnCancelClicked);
+
+    connect(ui->actionCopyToLeft, &QAction::triggered, this, &DirectoryCompareWindow::actionCopyToLeftTriggered);
+    connect(ui->actionCopyToRight, &QAction::triggered, this, &DirectoryCompareWindow::actionCopyToRightTriggered);
+    connect(ui->treeWidget, &QTreeWidget::itemSelectionChanged, this, &DirectoryCompareWindow::treeWidgetSelectionChanged);
 }
 
 DirectoryCompareWindow::~DirectoryCompareWindow()
@@ -159,6 +164,145 @@ void DirectoryCompareWindow::btnCancelClicked()
     ui->btnCancel->setEnabled(false);
 }
 
+void DirectoryCompareWindow::treeWidgetSelectionChanged()
+{
+    const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        ui->actionCopyToLeft->setEnabled(false);
+        ui->actionCopyToRight->setEnabled(false);
+        return;
+    }
+
+    const QTreeWidgetItem* item = selection.at(0);
+    const Compare::Result selectedResult =
+        item->data(1, Qt::UserRole).value<Compare::Info>().result;
+    ui->actionCopyToLeft->setEnabled(selectedResult == Compare::Result::RightSideOnly);
+    ui->actionCopyToRight->setEnabled(selectedResult == Compare::Result::LeftSideOnly);
+}
+
+void DirectoryCompareWindow::actionCopyToLeftTriggered()
+{
+    const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        QMessageBox::warning(this, "Keine Auswahl vorhanden",
+                             "Es wurde keine Datei zum Kopieren ausgewählt.");
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+    Compare::Info info = item->data(1, Qt::UserRole).value<Compare::Info>();
+    if (info.result == Compare::Result::Identical)
+    {
+        QMessageBox::warning(
+            this, "Kopieren nicht notwendig",
+            "Die Datei ist in beiden Verzeichnissen identisch. Ein Kopieren ist daher nicht notwendig.");
+        return;
+    }
+    if (info.result == Compare::Result::LeftSideOnly)
+    {
+        QMessageBox::warning(
+            this, "Kopieren nicht möglich",
+            QStringLiteral("Die Datei ist nur auf der linken Seite vorhanden. ")
+                + "Ein Kopieren von rechts nach links ist daher nicht möglich.");
+        return;
+    }
+    if (info.isDirectory)
+    {
+        QMessageBox::warning(
+            this, "Kopieren von Verzeichnissen",
+            QStringLiteral("Der ausgewählte Eintrag ist ein Verzeichnis. ")
+                + "Ein Kopieren von Verzeichnissen ist in dieser Ansicht aber nicht möglich.");
+        return;
+    }
+
+    const QString name = info.name;
+    const QString source = QDir(rightPath).absoluteFilePath(name);
+    const QString destination = QDir(leftPath).absoluteFilePath(name);
+
+    if (!QFile::copy(source, destination))
+    {
+        QMessageBox::critical(
+            this, "Kopieren fehlgeschlagen",
+            QStringLiteral("Die Datei ") + name + " konnte nicht nach "
+                + destination + " kopiert werden");
+        return;
+    }
+
+    // Adjust widget item.
+    item->setIcon(1, QIcon::fromTheme("document-new"));
+    item->setText(1, "Dateien sind identisch.");
+    info.result = Compare::Result::Identical;
+    const QFileInfo fileInfo = QFileInfo(destination);
+    info.leftDate = fileInfo.lastModified();
+    info.leftSize = fileInfo.size();
+    const QLocale loc = locale();
+    item->setText(2, loc.toString(info.leftDate, QLocale::NarrowFormat));
+    item->setText(4, loc.formattedDataSize(info.leftSize));
+    item->setData(1, Qt::UserRole, QVariant::fromValue(info));
+}
+
+void DirectoryCompareWindow::actionCopyToRightTriggered()
+{
+    const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        QMessageBox::warning(this, "Keine Auswahl vorhanden",
+                             "Es wurde keine Datei zum Kopieren ausgewählt.");
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+    Compare::Info info = item->data(1, Qt::UserRole).value<Compare::Info>();
+    if (info.result == Compare::Result::Identical)
+    {
+        QMessageBox::warning(
+            this, "Kopieren nicht notwendig",
+            "Die Datei ist in beiden Verzeichnissen identisch. Ein Kopieren ist daher nicht notwendig.");
+        return;
+    }
+    if (info.result == Compare::Result::RightSideOnly)
+    {
+        QMessageBox::warning(
+            this, "Kopieren nicht möglich",
+            QStringLiteral("Die Datei ist nur auf der rechten Seite vorhanden. ")
+                + "Ein Kopieren von links nach rechts ist daher nicht möglich.");
+        return;
+    }
+    if (info.isDirectory)
+    {
+        QMessageBox::warning(
+            this, "Kopieren von Verzeichnissen",
+            QStringLiteral("Der ausgewählte Eintrag ist ein Verzeichnis. ")
+                + "Ein Kopieren von Verzeichnissen ist in dieser Ansicht aber nicht möglich.");
+        return;
+    }
+
+    const QString name = info.name;
+    const QString source = QDir(leftPath).absoluteFilePath(name);
+    const QString destination = QDir(rightPath).absoluteFilePath(name);
+
+    if (!QFile::copy(source, destination))
+    {
+        QMessageBox::critical(
+            this, "Kopieren fehlgeschlagen",
+            QStringLiteral("Die Datei ") + name + " konnte nicht nach "
+                + destination + " kopiert werden");
+        return;
+    }
+
+    // Adjust widget item.
+    item->setIcon(1, QIcon::fromTheme("document-new"));
+    item->setText(1, "Dateien sind identisch.");
+    info.result = Compare::Result::Identical;
+    const QFileInfo fileInfo = QFileInfo(destination);
+    info.rightDate = fileInfo.lastModified();
+    info.rightSize = fileInfo.size();
+    const QLocale loc = locale();
+    item->setText(3, loc.toString(info.rightDate, QLocale::NarrowFormat));
+    item->setText(5, loc.formattedDataSize(info.rightSize));
+    item->setData(1, Qt::UserRole, QVariant::fromValue(info));
+}
+
 void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, const QLocale &loc)
 {
     QStringList data;
@@ -180,6 +324,7 @@ void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, con
                          ? icon_provider.icon(QAbstractFileIconProvider::Folder)
                          : icon_provider.icon(QAbstractFileIconProvider::File));
     item->setIcon(1, QIcon::fromTheme("go-previous"));
+    item->setData(1, Qt::UserRole, QVariant::fromValue(info));
     ui->treeWidget->addTopLevelItem(item);
 }
 
@@ -204,6 +349,7 @@ void DirectoryCompareWindow::addRightSideOnlyEntry(const Compare::Info &info, co
                          ? icon_provider.icon(QAbstractFileIconProvider::Folder)
                          : icon_provider.icon(QAbstractFileIconProvider::File));
     item->setIcon(1, QIcon::fromTheme("go-next"));
+    item->setData(1, Qt::UserRole, QVariant::fromValue(info));
     ui->treeWidget->addTopLevelItem(item);
 }
 
@@ -222,7 +368,7 @@ void DirectoryCompareWindow::addDirectoryExistsEntry(const Compare::Info &info, 
 
     // Subdirectories are not checked yet, so status is ... questionable / unknown.
     item->setIcon(1, QIcon::fromTheme("dialog-question"));
-
+    item->setData(1, Qt::UserRole, QVariant::fromValue(info));
     ui->treeWidget->addTopLevelItem(item);
 }
 
@@ -275,6 +421,7 @@ void DirectoryCompareWindow::addFileEntry(const Compare::Info &info, const QLoca
     {
         item->setIcon(1, icon);
     }
+    item->setData(1, Qt::UserRole, QVariant::fromValue(info));
 
     icon = icon_provider.icon(QAbstractFileIconProvider::File);
     item->setIcon(0, icon);

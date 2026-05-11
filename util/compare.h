@@ -25,6 +25,7 @@
 #include <QFileInfo>
 #include <QList>
 #include <QObject>
+#include <QMetaType>
 #include <QString>
 
 class Compare: public QObject
@@ -123,5 +124,7 @@ private:
 
     bool cancellationRequested = false;
 };
+
+Q_DECLARE_METATYPE(Compare::Info)
 
 #endif // COMPARE_H
