@@ -177,8 +177,12 @@ void DirectoryCompareWindow::treeWidgetSelectionChanged()
     const QTreeWidgetItem* item = selection.at(0);
     const Compare::Result selectedResult =
         item->data(colIdxResult, Qt::UserRole).value<Compare::Info>().result;
-    ui->actionCopyToLeft->setEnabled(selectedResult == Compare::Result::RightSideOnly);
-    ui->actionCopyToRight->setEnabled(selectedResult == Compare::Result::LeftSideOnly);
+    ui->actionCopyToLeft->setEnabled(
+        (selectedResult == Compare::Result::RightSideOnly)
+        || (selectedResult == Compare::Result::Different));
+    ui->actionCopyToRight->setEnabled(
+        (selectedResult == Compare::Result::LeftSideOnly)
+        || (selectedResult == Compare::Result::Different));
 }
 
 void DirectoryCompareWindow::actionCopyToLeftTriggered()
@@ -219,6 +223,25 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
     const QString name = info.name;
     const QString source = QDir(rightPath).absoluteFilePath(name);
     const QString destination = QDir(leftPath).absoluteFilePath(name);
+
+    if (QFile::exists(destination))
+    {
+        const QMessageBox::StandardButton button = QMessageBox::question(
+            this, "Ziel wird überschrieben",
+            "Durch diese Aktion wird die Datei auf der linken Seite gelöscht / überschrieben. Soll die Aktion dennoch ausgeführt werden?");
+        if (button != QMessageBox::StandardButton::Yes)
+        {
+            return;
+        }
+
+        if (!QFile::remove(destination))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Überschreiben",
+                "Die vorhandene Datei auf der linken Seite konnte nicht entfernt / überschrieben werden.");
+            return;
+        }
+    }
 
     if (!QFile::copy(source, destination))
     {
@@ -280,6 +303,25 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
     const QString name = info.name;
     const QString source = QDir(leftPath).absoluteFilePath(name);
     const QString destination = QDir(rightPath).absoluteFilePath(name);
+
+    if (QFile::exists(destination))
+    {
+        const QMessageBox::StandardButton button = QMessageBox::question(
+            this, "Ziel wird überschrieben",
+            "Durch diese Aktion wird die Datei auf der rechten Seite gelöscht / überschrieben. Soll die Aktion dennoch ausgeführt werden?");
+        if (button != QMessageBox::StandardButton::Yes)
+        {
+            return;
+        }
+
+        if (!QFile::remove(destination))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Überschreiben",
+                "Die vorhandene Datei auf der rechten Seite konnte nicht entfernt / überschrieben werden.");
+            return;
+        }
+    }
 
     if (!QFile::copy(source, destination))
     {
