@@ -271,6 +271,14 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
             return;
         }
         leftSideChanged = true;
+
+        info.result = Compare::Result::RightSideOnly;
+        info.leftDate = QDateTime();
+        info.leftSize = -1;
+        item->setIcon(colIdxResult, QIcon::fromTheme("go-next"));
+        item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
+        item->setText(colIdxLeftDate, "keins");
+        item->setText(colIdxLeftSize, "keine");
     }
 
     if (!QFile::copy(source, destination))
@@ -279,6 +287,10 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
             this, "Kopieren fehlgeschlagen",
             QStringLiteral("Die Datei ") + name + " konnte nicht nach "
                 + destination + " kopiert werden");
+
+        // update enabled flag of copy to left/right actions
+        treeWidgetSelectionChanged();
+
         return;
     }
     leftSideChanged = true;
@@ -294,6 +306,8 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
     item->setText(colIdxLeftDate, loc.toString(info.leftDate, QLocale::NarrowFormat));
     item->setText(colIdxLeftSize, loc.formattedDataSize(info.leftSize));
     item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
+
+    treeWidgetSelectionChanged();
 }
 
 void DirectoryCompareWindow::actionCopyToRightTriggered()
@@ -353,6 +367,14 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
             return;
         }
         rightSideChanged = true;
+
+        info.result = Compare::Result::LeftSideOnly;
+        info.rightDate = QDateTime();
+        info.rightSize = -1;
+        item->setIcon(colIdxResult, QIcon::fromTheme("go-previous"));
+        item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
+        item->setText(colIdxRightDate, "keins");
+        item->setText(colIdxRightSize, "keine");
     }
 
     if (!QFile::copy(source, destination))
@@ -361,6 +383,10 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
             this, "Kopieren fehlgeschlagen",
             QStringLiteral("Die Datei ") + name + " konnte nicht nach "
                 + destination + " kopiert werden");
+
+        // update enabled flag of copy to left/right actions
+        treeWidgetSelectionChanged();
+
         return;
     }
     rightSideChanged = true;
@@ -376,6 +402,8 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
     item->setText(colIdxRightDate, loc.toString(info.rightDate, QLocale::NarrowFormat));
     item->setText(colIdxRightSize, loc.formattedDataSize(info.rightSize));
     item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
+
+    treeWidgetSelectionChanged();
 }
 
 void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, const QLocale &loc)
