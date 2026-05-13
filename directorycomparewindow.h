@@ -65,6 +65,9 @@ private slots:
     void btnCancelClicked();
 
     void treeWidgetSelectionChanged();
+
+    void actionGoToNextDifferenceTriggered();
+    void actionGoToPrevDifferenceTriggered();
     void actionCopyToLeftTriggered();
     void actionCopyToRightTriggered();
 

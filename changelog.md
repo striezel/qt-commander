@@ -10,6 +10,10 @@ improvements may be omitted.)_
   Improve handling of file names in directory comparison for file systems with
   case-sensitive file names on non-Windows systems.
 
+* __[new feature]__
+  The directory comparison can now be used to copy missing / different files
+  from one side / directory to the other side / directory.
+
 ## Version 0.1.6 (2026-05-10)
 
 * __[new feature]__

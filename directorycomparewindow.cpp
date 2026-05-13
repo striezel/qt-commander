@@ -45,6 +45,8 @@ DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QS
     connect(ui->actionClose, &QAction::triggered, this, &DirectoryCompareWindow::threadHandlingClose);
     connect(ui->btnCancel, &QPushButton::clicked, this, &DirectoryCompareWindow::btnCancelClicked);
 
+    connect(ui->actionGoToNextDifference, &QAction::triggered, this, &DirectoryCompareWindow::actionGoToNextDifferenceTriggered);
+    connect(ui->actionGoToPrevDifference, &QAction::triggered, this, &DirectoryCompareWindow::actionGoToPrevDifferenceTriggered);
     connect(ui->actionCopyToLeft, &QAction::triggered, this, &DirectoryCompareWindow::actionCopyToLeftTriggered);
     connect(ui->actionCopyToRight, &QAction::triggered, this, &DirectoryCompareWindow::actionCopyToRightTriggered);
     connect(ui->treeWidget, &QTreeWidget::itemSelectionChanged, this, &DirectoryCompareWindow::treeWidgetSelectionChanged);
@@ -212,6 +214,104 @@ void DirectoryCompareWindow::treeWidgetSelectionChanged()
     ui->actionCopyToRight->setEnabled(
         (selectedResult == Compare::Result::LeftSideOnly)
         || (selectedResult == Compare::Result::Different));
+}
+
+void DirectoryCompareWindow::actionGoToNextDifferenceTriggered()
+{
+    if (ui->treeWidget->topLevelItemCount() == 0)
+    {
+        return;
+    }
+
+    const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
+    QTreeWidgetItem* item = nullptr;
+    if (selection.isEmpty())
+    {
+        item = ui->treeWidget->topLevelItem(0);
+        const Compare::Info info = item->data(colIdxResult, Qt::UserRole).value<Compare::Info>();
+        if ((info.result == Compare::Result::Different)
+            || (info.result == Compare::Result::LeftSideOnly)
+            || (info.result == Compare::Result::RightSideOnly))
+        {
+            item->setSelected(true);
+            ui->treeWidget->scrollToItem(item);
+            return;
+        }
+    }
+    else
+    {
+        item = selection.at(0);
+    }
+
+    int currentIndex = ui->treeWidget->indexOfTopLevelItem(item);
+    while (currentIndex < ui->treeWidget->topLevelItemCount() - 1)
+    {
+        currentIndex += 1;
+        item = ui->treeWidget->topLevelItem(currentIndex);
+        const Compare::Info info = item->data(colIdxResult, Qt::UserRole).value<Compare::Info>();
+        if ((info.result == Compare::Result::Different)
+            || (info.result == Compare::Result::LeftSideOnly)
+            || (info.result == Compare::Result::RightSideOnly))
+        {
+            ui->treeWidget->clearSelection();
+            item->setSelected(true);
+            ui->treeWidget->scrollToItem(item);
+            return;
+        }
+    }
+
+    QMessageBox::information(
+        this, "Keine weiteren Unterschiede vorhanden",
+        "Es gibt keine weiteren Einträge mit unterschiedlichen Dateien.");
+}
+
+void DirectoryCompareWindow::actionGoToPrevDifferenceTriggered()
+{
+    if (ui->treeWidget->topLevelItemCount() == 0)
+    {
+        return;
+    }
+
+    const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
+    QTreeWidgetItem* item = nullptr;
+    if (selection.isEmpty())
+    {
+        item = ui->treeWidget->topLevelItem(ui->treeWidget->topLevelItemCount() - 1);
+        const Compare::Info info = item->data(colIdxResult, Qt::UserRole).value<Compare::Info>();
+        if ((info.result == Compare::Result::Different)
+            || (info.result == Compare::Result::LeftSideOnly)
+            || (info.result == Compare::Result::RightSideOnly))
+        {
+            item->setSelected(true);
+            ui->treeWidget->scrollToItem(item);
+            return;
+        }
+    }
+    else
+    {
+        item = selection.at(0);
+    }
+
+    int currentIndex = ui->treeWidget->indexOfTopLevelItem(item);
+    while (currentIndex > 0)
+    {
+        currentIndex -= 1;
+        item = ui->treeWidget->topLevelItem(currentIndex);
+        const Compare::Info info = item->data(colIdxResult, Qt::UserRole).value<Compare::Info>();
+        if ((info.result == Compare::Result::Different)
+            || (info.result == Compare::Result::LeftSideOnly)
+            || (info.result == Compare::Result::RightSideOnly))
+        {
+            ui->treeWidget->clearSelection();
+            item->setSelected(true);
+            ui->treeWidget->scrollToItem(item);
+            return;
+        }
+    }
+
+    QMessageBox::information(
+        this, "Keine vorherigen Unterschiede vorhanden",
+        "Es gibt keine vorherigen Einträge mit unterschiedlichen Dateien.");
 }
 
 void DirectoryCompareWindow::actionCopyToLeftTriggered()

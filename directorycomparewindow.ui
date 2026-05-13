@@ -195,6 +195,9 @@
     <property name="title">
      <string>Dateioperation</string>
     </property>
+    <addaction name="actionGoToNextDifference"/>
+    <addaction name="actionGoToPrevDifference"/>
+    <addaction name="separator"/>
     <addaction name="actionCopyToLeft"/>
     <addaction name="actionCopyToRight"/>
    </widget>
@@ -224,6 +227,22 @@
    </property>
    <property name="text">
     <string>Nach rechts kopieren</string>
+   </property>
+  </action>
+  <action name="actionGoToNextDifference">
+   <property name="icon">
+    <iconset theme="go-down"/>
+   </property>
+   <property name="text">
+    <string>Zum nächsten Unterschied</string>
+   </property>
+  </action>
+  <action name="actionGoToPrevDifference">
+   <property name="icon">
+    <iconset theme="go-up"/>
+   </property>
+   <property name="text">
+    <string>Zum vorherigen Unterschied</string>
    </property>
   </action>
  </widget>
