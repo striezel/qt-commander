@@ -200,6 +200,8 @@
     <addaction name="separator"/>
     <addaction name="actionCopyToLeft"/>
     <addaction name="actionCopyToRight"/>
+    <addaction name="separator"/>
+    <addaction name="actionDelete"/>
    </widget>
    <addaction name="menuComparison"/>
    <addaction name="menuFileOperations"/>
@@ -255,6 +257,17 @@
    </property>
    <property name="shortcut">
     <string>Alt+Up</string>
+   </property>
+  </action>
+  <action name="actionDelete">
+   <property name="icon">
+    <iconset theme="edit-delete"/>
+   </property>
+   <property name="text">
+    <string>Löschen</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
    </property>
   </action>
  </widget>

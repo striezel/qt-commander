@@ -70,6 +70,7 @@ private slots:
     void actionGoToPrevDifferenceTriggered();
     void actionCopyToLeftTriggered();
     void actionCopyToRightTriggered();
+    void actionDeleteTriggered();
 
 private:
     // constants for column indices in tree widget

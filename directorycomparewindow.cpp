@@ -49,6 +49,7 @@ DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QS
     connect(ui->actionGoToPrevDifference, &QAction::triggered, this, &DirectoryCompareWindow::actionGoToPrevDifferenceTriggered);
     connect(ui->actionCopyToLeft, &QAction::triggered, this, &DirectoryCompareWindow::actionCopyToLeftTriggered);
     connect(ui->actionCopyToRight, &QAction::triggered, this, &DirectoryCompareWindow::actionCopyToRightTriggered);
+    connect(ui->actionDelete, &QAction::triggered, this, &DirectoryCompareWindow::actionDeleteTriggered);
     connect(ui->treeWidget, &QTreeWidget::itemSelectionChanged, this, &DirectoryCompareWindow::treeWidgetSelectionChanged);
 }
 
@@ -202,18 +203,19 @@ void DirectoryCompareWindow::treeWidgetSelectionChanged()
     {
         ui->actionCopyToLeft->setEnabled(false);
         ui->actionCopyToRight->setEnabled(false);
+        ui->actionDelete->setEnabled(false);
         return;
     }
 
     const QTreeWidgetItem* item = selection.at(0);
-    const Compare::Result selectedResult =
-        item->data(colIdxResult, Qt::UserRole).value<Compare::Info>().result;
+    const Compare::Info info = item->data(colIdxResult, Qt::UserRole).value<Compare::Info>();
     ui->actionCopyToLeft->setEnabled(
-        (selectedResult == Compare::Result::RightSideOnly)
-        || (selectedResult == Compare::Result::Different));
+        (info.result == Compare::Result::RightSideOnly)
+        || (info.result == Compare::Result::Different));
     ui->actionCopyToRight->setEnabled(
-        (selectedResult == Compare::Result::LeftSideOnly)
-        || (selectedResult == Compare::Result::Different));
+        (info.result == Compare::Result::LeftSideOnly)
+        || (info.result == Compare::Result::Different));
+    ui->actionDelete->setEnabled(!info.isDirectory);
 }
 
 void DirectoryCompareWindow::actionGoToNextDifferenceTriggered()
@@ -504,6 +506,95 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
     item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
 
     treeWidgetSelectionChanged();
+}
+
+void DirectoryCompareWindow::actionDeleteTriggered()
+{
+    const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
+    if (selection.isEmpty())
+    {
+        QMessageBox::warning(this, "Keine Auswahl vorhanden",
+                             "Es wurde keine Datei zum Löschen ausgewählt.");
+        return;
+    }
+    QTreeWidgetItem* item = selection.at(0);
+    Compare::Info info = item->data(colIdxResult, Qt::UserRole).value<Compare::Info>();
+
+    if (info.isDirectory)
+    {
+        QMessageBox::warning(
+            this, "Löschen von Verzeichnissen",
+            QStringLiteral("Der ausgewählte Eintrag ist ein Verzeichnis. ")
+                + "Ein Löschen von Verzeichnissen ist in dieser Ansicht aber nicht möglich.");
+        return;
+    }
+
+    {
+        QString message;
+        switch (info.result) {
+        case Compare::Result::LeftSideOnly:
+            message = "Durch diese Aktion wird die Datei " + info.name
+                      + " auf der linken Seite gelöscht. Soll die Aktion wirklich ausgeführt werden?";
+            break;
+        case Compare::Result::RightSideOnly:
+            message = "Durch diese Aktion wird die Datei " + info.name
+                      + " auf der rechten Seite gelöscht. Soll die Aktion wirklich ausgeführt werden?";
+            break;
+        default:
+            message = "Durch diese Aktion wird die Datei " + info.name
+                      + " in beiden Verzeichnissen gelöscht. Soll die Aktion wirklich ausgeführt werden?";
+            break;
+        }
+        const QMessageBox::StandardButton button = QMessageBox::question(
+            this, "Wirklich löschen?", message);
+        if (button != QMessageBox::StandardButton::Yes)
+        {
+            return;
+        }
+    }
+    const QString leftFile = QDir(leftPath).absoluteFilePath(info.name);
+    if (QFile::exists(leftFile))
+    {
+        if (!QFile::remove(leftFile))
+        {
+            QMessageBox::critical(
+                this, "Fehler beim Löschen",
+                "Die Datei " + leftFile + " konnte nicht entfernt werden.");
+            return;
+        }
+        leftSideChanged = true;
+
+        if (info.result == Compare::Result::LeftSideOnly)
+        {
+            // Deleting a tree widget item safely removes it from its tree
+            // widget, so this is safe to do here.
+            delete item;
+            item = nullptr;
+            return;
+        }
+
+        info.result = Compare::Result::RightSideOnly;
+        info.leftDate = QDateTime();
+        info.leftSize = -1;
+        item->setIcon(colIdxResult, QIcon::fromTheme("go-next"));
+        item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
+        item->setText(colIdxLeftDate, "keins");
+        item->setText(colIdxLeftSize, "keine");
+    }
+
+    // Path on right side must exist, because this entry's result was not equal
+    // to Compare::Result::LeftSideOnly when we started.
+    const QString rightFile = QDir(rightPath).absoluteFilePath(info.name);
+    if (!QFile::remove(rightFile))
+    {
+        QMessageBox::critical(
+            this, "Fehler beim Löschen",
+            "Die Datei " + rightFile + " konnte nicht entfernt werden.");
+        return;
+    }
+    rightSideChanged = true;
+    delete item;
+    item = nullptr;
 }
 
 void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, const QLocale &loc)

@@ -12,7 +12,8 @@ improvements may be omitted.)_
 
 * __[new feature]__
   The directory comparison can now be used to copy missing / different files
-  from one side / directory to the other side / directory.
+  from one side / directory to the other side / directory. It also allows the
+  deletion of files.
 
 ## Version 0.1.6 (2026-05-10)
 
