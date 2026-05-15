@@ -1,3 +1,14 @@
+qt-commander (0.1.7-1) UNRELEASED; urgency=medium
+
+  * Improve handling of file names in directory comparison for file systems with
+    case-sensitive file names on non-Windows systems.
+
+  * The directory comparison can now be used to copy missing / different files
+    from one side / directory to the other side / directory. It also allows the
+    deletion of files.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Fri, 15 May 2026 22:44:44 +0200
+
 qt-commander (0.1.6-1) UNRELEASED; urgency=medium
 
   * The program can now compare the contents of the two directories.
