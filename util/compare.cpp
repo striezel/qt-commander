@@ -98,18 +98,18 @@ Compare::Content Compare::contents(const QFileInfo &left, const QFileInfo &right
 
 void Compare::compareDirectories(const QString &left, const QString &right)
 {
-    const QDir::Filters compareFilter = QDir::Filter::AllEntries
-                                        | QDir::Filter::NoDotAndDotDot
-                                        | QDir::Filter::Hidden
-                                        | QDir::Filter::System;
-    const QDir::SortFlags compareSort = QDir::SortFlag::Name
-                                        | QDir::SortFlag::DirsFirst
+    constexpr QDir::Filters compareFilter = QDir::Filter::AllEntries
+                                            | QDir::Filter::NoDotAndDotDot
+                                            | QDir::Filter::Hidden
+                                            | QDir::Filter::System;
+    constexpr QDir::SortFlags compareSort = QDir::SortFlag::Name
+                                            | QDir::SortFlag::DirsFirst
 #if defined(_WIN32)
-    // Not always right these days, but assumethat Windows FS is case-insensitive.
-                                        | QDir::SortFlag::IgnoreCase
+    // Not always right these days, but assume that Windows FS is case-insensitive.
+                                            | QDir::SortFlag::IgnoreCase
 #endif
         ;
-    const Qt::CaseSensitivity compareCaseSensitivity =
+    constexpr Qt::CaseSensitivity compareCaseSensitivity =
 #if defined(_WIN32)
         Qt::CaseSensitivity::CaseInsensitive
 #else
@@ -192,7 +192,8 @@ void Compare::compareDirectories(const QString &left, const QString &right)
         {
             // Both sides still have elements.
             const auto order = Compare::order(*leftCurrent, *rightCurrent, compareCaseSensitivity);
-            switch (order) {
+            switch (order)
+            {
             case Compare::Order::LeftIsFirst:
                 result.append(leftSideOnly(*leftCurrent));
                 ++leftCurrent;

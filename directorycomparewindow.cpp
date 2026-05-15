@@ -531,7 +531,8 @@ void DirectoryCompareWindow::actionDeleteTriggered()
 
     {
         QString message;
-        switch (info.result) {
+        switch (info.result)
+        {
         case Compare::Result::LeftSideOnly:
             message = "Durch diese Aktion wird die Datei " + info.name
                       + " auf der linken Seite gelöscht. Soll die Aktion wirklich ausgeführt werden?";
