@@ -45,6 +45,8 @@ const bool Settings::defaultAutoPlayAudio{false};
 const bool Settings::defaultLoopAudioForever{false};
 const int Settings::defaultAudioVolume{50};
 
+const QCryptographicHash::Algorithm Settings::defaultHashAlgorithm{QCryptographicHash::Algorithm::Sha256};
+
 Settings::Settings()
     : filters(defaultFilters)
     , sortFlags(defaultSortFlags)
@@ -57,7 +59,7 @@ Settings::Settings()
     , autoPlayAudio(defaultAutoPlayAudio)
     , loopAudioForever(defaultLoopAudioForever)
     , audioVolume(defaultAudioVolume)
-    , selectedHashAlgorithm(QCryptographicHash::Algorithm::Sha256)
+    , selectedHashAlgorithm(defaultHashAlgorithm)
 {}
 
 QFont Settings::defaultTextViewerFont()
@@ -78,9 +80,7 @@ void Settings::resetToDefaults()
     autoPlayAudio = defaultAutoPlayAudio;
     loopAudioForever = defaultLoopAudioForever;
     audioVolume = defaultAudioVolume;
-
-    // selectedHashAlgorithm is valid for the current session only, so it's not
-    // reset here.
+    selectedHashAlgorithm = defaultHashAlgorithm;
 }
 
 void Settings::save()
@@ -100,9 +100,7 @@ void Settings::save()
     settings.setValue("audio-player-auto-play", autoPlayAudio);
     settings.setValue("audio-player-loop-forever", loopAudioForever);
     settings.setValue("audio-player-volume", audioVolume);
-
-    // selectedHashAlgorithm is valid for the current session only, so it's not
-    // saved here.
+    settings.setValue("selected-hash-algorithm", selectedHashAlgorithm);
 }
 
 void Settings::load()
@@ -133,8 +131,8 @@ void Settings::load()
     const int volume = settings.value("audio-player-volume", defaultAudioVolume).toInt();
     setAudioVolume(volume);
 
-    // selectedHashAlgorithm is valid for the current session only, so it's not
-    // loaded here.
+    const int algo_int = settings.value("selected-hash-algorithm", defaultHashAlgorithm).toInt();
+    setSelectedHashAlgorithm(static_cast<QCryptographicHash::Algorithm>(algo_int));
 }
 
 QDir::Filters Settings::getFilters() const

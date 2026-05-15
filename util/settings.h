@@ -48,6 +48,8 @@ public:
     static const bool defaultLoopAudioForever;
     static const int defaultAudioVolume;
 
+    static const QCryptographicHash::Algorithm defaultHashAlgorithm;
+
     /// Resets all values to their defaults.
     void resetToDefaults();
 
