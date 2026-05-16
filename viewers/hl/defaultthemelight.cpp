@@ -18,28 +18,33 @@
  -------------------------------------------------------------------------------
 */
 
-#ifndef CPPHIGHLIGHTER_H
-#define CPPHIGHLIGHTER_H
+#include "defaultthemelight.h"
 
-#include <QSyntaxHighlighter>
-#include <QTextDocument>
-#include "highlighterrule.h"
-#include "theme.h"
-
-class CppHighlighter: public QSyntaxHighlighter
+QTextCharFormat DefaultThemeLight::keyword() const
 {
-public:
-    explicit CppHighlighter(const Theme& theme, QTextDocument* parent = nullptr);
+    QTextCharFormat keywordFormat;
+    keywordFormat.setFontWeight(QFont::Weight::Bold);
+    keywordFormat.setForeground(QColor(0xFA, 0x85, 0x32));
+    return keywordFormat;
+}
 
-protected:
-    void highlightBlock(const QString &text) override;
-private:
-    QList<HighlighterRule> rules;
+QTextCharFormat DefaultThemeLight::preprocessor() const
+{
+    QTextCharFormat preprocessorFormat;
+    preprocessorFormat.setForeground(QColor(0xF0, 0x71, 0x71));
+    return preprocessorFormat;
+}
 
-    const QTextCharFormat commentFormat;
+QTextCharFormat DefaultThemeLight::stringLiteral() const
+{
+    QTextCharFormat stringLiteralFormat;
+    stringLiteralFormat.setForeground(QColor(0x86, 0xB3, 0x00));
+    return stringLiteralFormat;
+}
 
-    static constexpr int NotInMultiLineCommentState = 0;
-    static constexpr int IsInMultiLineCommentState = 1;
-};
-
-#endif // CPPHIGHLIGHTER_H
+QTextCharFormat DefaultThemeLight::comment() const
+{
+    QTextCharFormat commentFormat;
+    commentFormat.setForeground(QColor(0xAD, 0xAE, 0xB1));
+    return commentFormat;
+}

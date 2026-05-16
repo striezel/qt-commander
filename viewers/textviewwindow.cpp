@@ -29,6 +29,7 @@
 #include <QPrinter>
 #include <QScrollBar>
 #include <QTextStream>
+#include "hl/defaultthemelight.h"
 
 TextViewWindow::TextViewWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -157,7 +158,8 @@ void TextViewWindow::actionLanguageCppTriggered()
         hl->setDocument(nullptr);
         delete hl;
     }
-    hl = new CppHighlighter(ui->plainTextEdit->document());
+    const DefaultThemeLight theme;
+    hl = new CppHighlighter(theme, ui->plainTextEdit->document());
 }
 
 void TextViewWindow::actionLanguageNoneTriggered()

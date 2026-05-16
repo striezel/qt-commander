@@ -82,6 +82,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         util/compare.h util/compare.cpp
         viewers/hl/cpphighlighter.h viewers/hl/cpphighlighter.cpp
         viewers/hl/highlighterrule.h viewers/hl/highlighterrule.cpp
+        viewers/hl/theme.h
+        viewers/hl/defaultthemelight.h viewers/hl/defaultthemelight.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET qt-commander APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

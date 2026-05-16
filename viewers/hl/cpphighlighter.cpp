@@ -22,15 +22,12 @@
 #include <array>
 #include <string>
 
-CppHighlighter::CppHighlighter(QTextDocument* parent)
+CppHighlighter::CppHighlighter(const Theme& theme, QTextDocument* parent)
     : QSyntaxHighlighter(parent)
     , rules(QList<HighlighterRule>())
+    , commentFormat(theme.comment())
 {
-    QTextCharFormat keywordFormat;
-    keywordFormat.setFontWeight(QFont::Weight::Bold);
-    // Colour for keywords is #FA8532.
-    keywordFormat.setForeground(QColor(0xFA, 0x85, 0x32));
-
+    const QTextCharFormat keywordFormat = theme.keyword();
     const std::array<std::string, 81> keywords = {
         "alignas",
         "alignof",
@@ -124,7 +121,7 @@ CppHighlighter::CppHighlighter(QTextDocument* parent)
         rules.append(rule);
     }
 
-    const std::array<std::string, 12> preProcessor = {
+    const std::array<std::string, 12> preprocessor = {
         "define",
         "error",
         "if",
@@ -139,31 +136,25 @@ CppHighlighter::CppHighlighter(QTextDocument* parent)
         "warning",
     };
 
-    QTextCharFormat preProcessorFormat;
-    preProcessorFormat.setForeground(QColor(0xF0, 0x71, 0x71));
+    const QTextCharFormat preprocessorFormat = theme.preprocessor();
 
-    for (const std::string& directive : preProcessor)
+    for (const std::string& directive : preprocessor)
     {
         rule.pattern = QRegularExpression(QString::fromStdString("#[ \\t]*" + directive + "\\b"));
-        rule.format = preProcessorFormat;
+        rule.format = preprocessorFormat;
         rules.append(rule);
     }
 
-    QTextCharFormat stringLiteralFormat;
+    const QTextCharFormat stringLiteralFormat = theme.stringLiteral();
     // char literal
     rule.pattern = QRegularExpression(QStringLiteral("'.'"), QRegularExpression::InvertedGreedinessOption);
     rule.format = stringLiteralFormat;
     rules.append(rule);
 
     // string literal
-    stringLiteralFormat.setForeground(QColor(0x86, 0xB3, 0x00));
     rule.pattern = QRegularExpression(QStringLiteral("\".*[^\\\\]\""), QRegularExpression::InvertedGreedinessOption);
     rule.format = stringLiteralFormat;
     rules.append(rule);
-
-    QTextCharFormat commentFormat;
-    // comment colour is #adaeb1.
-    commentFormat.setForeground(QColor(0xAD, 0xAE, 0xB1));
 
     // single-line comments
     rule.pattern = QRegularExpression(QStringLiteral("//[^\n]*"));
@@ -198,9 +189,6 @@ void CppHighlighter::highlightBlock(const QString &text)
     {
         startIndex = text.indexOf(QStringLiteral("/*"));
     }
-
-    QTextCharFormat commentFormat;
-    commentFormat.setForeground(QColor(0xAD, 0xAE, 0xB1));
 
     while (startIndex >= 0)
     {

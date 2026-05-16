@@ -18,28 +18,25 @@
  -------------------------------------------------------------------------------
 */
 
-#ifndef CPPHIGHLIGHTER_H
-#define CPPHIGHLIGHTER_H
+#ifndef THEME_H
+#define THEME_H
 
-#include <QSyntaxHighlighter>
-#include <QTextDocument>
-#include "highlighterrule.h"
-#include "theme.h"
+#include <QTextCharFormat>
 
-class CppHighlighter: public QSyntaxHighlighter
+class Theme
 {
 public:
-    explicit CppHighlighter(const Theme& theme, QTextDocument* parent = nullptr);
+    /// Gets the text format for keywords.
+    virtual QTextCharFormat keyword() const = 0;
 
-protected:
-    void highlightBlock(const QString &text) override;
-private:
-    QList<HighlighterRule> rules;
+    /// Gets the text format for preprocessor tokens.
+    virtual QTextCharFormat preprocessor() const = 0;
 
-    const QTextCharFormat commentFormat;
+    /// Gets the text format for string literals.
+    virtual QTextCharFormat stringLiteral() const = 0;
 
-    static constexpr int NotInMultiLineCommentState = 0;
-    static constexpr int IsInMultiLineCommentState = 1;
+    /// Gets the text format for comments.
+    virtual QTextCharFormat comment() const = 0;
 };
 
-#endif // CPPHIGHLIGHTER_H
+#endif // THEME_H

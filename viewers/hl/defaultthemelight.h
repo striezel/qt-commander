@@ -18,28 +18,18 @@
  -------------------------------------------------------------------------------
 */
 
-#ifndef CPPHIGHLIGHTER_H
-#define CPPHIGHLIGHTER_H
+#ifndef DEFAULTTHEMELIGHT_H
+#define DEFAULTTHEMELIGHT_H
 
-#include <QSyntaxHighlighter>
-#include <QTextDocument>
-#include "highlighterrule.h"
 #include "theme.h"
 
-class CppHighlighter: public QSyntaxHighlighter
+class DefaultThemeLight: public Theme
 {
 public:
-    explicit CppHighlighter(const Theme& theme, QTextDocument* parent = nullptr);
-
-protected:
-    void highlightBlock(const QString &text) override;
-private:
-    QList<HighlighterRule> rules;
-
-    const QTextCharFormat commentFormat;
-
-    static constexpr int NotInMultiLineCommentState = 0;
-    static constexpr int IsInMultiLineCommentState = 1;
+    virtual QTextCharFormat keyword() const override;
+    virtual QTextCharFormat preprocessor() const override;
+    virtual QTextCharFormat stringLiteral() const override;
+    virtual QTextCharFormat comment() const override;
 };
 
-#endif // CPPHIGHLIGHTER_H
+#endif // DEFAULTTHEMELIGHT_H
