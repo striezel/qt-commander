@@ -24,7 +24,7 @@
 #include <QSyntaxHighlighter>
 #include <QTextDocument>
 #include "highlighterrule.h"
-#include "theme.h"
+#include "themes/theme.h"
 
 class CppHighlighter: public QSyntaxHighlighter
 {

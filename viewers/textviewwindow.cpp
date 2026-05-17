@@ -29,8 +29,8 @@
 #include <QPrinter>
 #include <QScrollBar>
 #include <QTextStream>
-#include "hl/defaultthemedark.h"
-#include "hl/defaultthemelight.h"
+#include "hl/themes/defaultthemedark.h"
+#include "hl/themes/defaultthemelight.h"
 
 TextViewWindow::TextViewWindow(QWidget *parent)
     : QMainWindow(parent)
