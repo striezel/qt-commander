@@ -37,6 +37,9 @@ public:
 
     /// Gets the text format for comments.
     virtual QTextCharFormat comment() const = 0;
+
+    /// Gets the text format for numeric constants.
+    virtual QTextCharFormat constants() const = 0;
 };
 
 #endif // THEME_H

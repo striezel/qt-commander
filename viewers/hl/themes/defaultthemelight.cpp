@@ -48,3 +48,10 @@ QTextCharFormat DefaultThemeLight::comment() const
     commentFormat.setForeground(QColor(0xAD, 0xAE, 0xB1));
     return commentFormat;
 }
+
+QTextCharFormat DefaultThemeLight::constants() const
+{
+    QTextCharFormat constantsFormat;
+    constantsFormat.setForeground(QColor(0xA3, 0x74, 0xCC));
+    return constantsFormat;
+}
