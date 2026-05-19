@@ -30,6 +30,7 @@
 #include <QScrollBar>
 #include <QTextStream>
 #include "hl/cpphighlighter.h"
+#include "hl/csharphighlighter.h"
 #include "hl/shellhighlighter.h"
 #include "hl/themes/defaultthemedark.h"
 #include "hl/themes/defaultthemelight.h"
@@ -48,6 +49,7 @@ TextViewWindow::TextViewWindow(QWidget *parent)
 
     connect(ui->actionChangeFont, &QAction::triggered, this, &TextViewWindow::actionChangeFontTriggered);
     connect(ui->actionLanguageCpp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
+    connect(ui->actionLanguageCSharp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageShell, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageNone, &QAction::triggered, this, &TextViewWindow::actionLanguageNoneTriggered);
 
@@ -225,6 +227,10 @@ QSyntaxHighlighter *TextViewWindow::getSelectedHighlighter(const Theme &theme) c
     {
         return new CppHighlighter(theme, ui->plainTextEdit->document());
     }
+    else if (ui->actionLanguageCSharp->isChecked())
+    {
+        return new CSharpHighlighter(theme, ui->plainTextEdit->document());
+    }
     else if (ui->actionLanguageShell->isChecked())
     {
         return new ShellHighlighter(theme, ui->plainTextEdit->document());
@@ -251,6 +257,7 @@ void TextViewWindow::createActionGroups()
     actionGroupLanguages = new QActionGroup(this);
     actionGroupLanguages->addAction(ui->actionLanguageNone);
     actionGroupLanguages->addAction(ui->actionLanguageCpp);
+    actionGroupLanguages->addAction(ui->actionLanguageCSharp);
     actionGroupLanguages->addAction(ui->actionLanguageShell);
 
     actionGroupStyles = new QActionGroup(this);

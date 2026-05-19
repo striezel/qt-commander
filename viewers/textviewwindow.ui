@@ -64,6 +64,7 @@
      <addaction name="actionLanguageNone"/>
      <addaction name="separator"/>
      <addaction name="actionLanguageCpp"/>
+     <addaction name="actionLanguageCSharp"/>
      <addaction name="actionLanguageShell"/>
     </widget>
     <addaction name="menuLanguage"/>
@@ -145,6 +146,14 @@
    </property>
    <property name="text">
     <string>Shell</string>
+   </property>
+  </action>
+  <action name="actionLanguageCSharp">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>C#</string>
    </property>
   </action>
  </widget>
