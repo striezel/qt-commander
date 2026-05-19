@@ -39,6 +39,7 @@ public:
     static const bool defaultShowFormattedSize;
 
     static QFont defaultTextViewerFont();
+    static const bool defaultTextViewerAutoSelectLanguage;
 
     static const bool defaultAutoPlayVideo;
     static const bool defaultLoopVideoForever;
@@ -79,6 +80,9 @@ public:
     QFont getTextViewerFont() const;
     void setTextViewerFont(QFont font);
 
+    bool getTextViewerAutoSelectLanguage() const;
+    void setTextViewerAutoSelectLanguage(const bool autoSelect);
+
     bool getAutoPlayVideo() const;
     void setAutoPlayVideo(const bool autoPlay);
 
@@ -114,6 +118,10 @@ private:
 
     /// the font which is used by the text viewer
     QFont textViewerFont;
+
+    /// whether the text viewer automatically selects the proper language for
+    /// syntax highlighting
+    bool textViewerAutoSelect;
 
     /// whether files in video player start playing automatically
     bool autoPlayVideo;

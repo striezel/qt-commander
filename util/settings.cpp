@@ -37,6 +37,8 @@ const bool Settings::defaultUseProvidedFileIcons{true};
 
 const bool Settings::defaultShowFormattedSize{true};
 
+const bool Settings::defaultTextViewerAutoSelectLanguage{false};
+
 const bool Settings::defaultAutoPlayVideo{true};
 const bool Settings::defaultLoopVideoForever{false};
 const int Settings::defaultVideoVolume{75};
@@ -53,6 +55,7 @@ Settings::Settings()
     , useProvidedFileIcons(defaultUseProvidedFileIcons)
     , showFormattedSize(defaultShowFormattedSize)
     , textViewerFont(defaultTextViewerFont())
+    , textViewerAutoSelect(defaultTextViewerAutoSelectLanguage)
     , autoPlayVideo(defaultAutoPlayVideo)
     , loopVideoForever(defaultLoopVideoForever)
     , videoVolume(defaultVideoVolume)
@@ -74,6 +77,7 @@ void Settings::resetToDefaults()
     useProvidedFileIcons = defaultUseProvidedFileIcons;
     showFormattedSize = defaultShowFormattedSize;
     textViewerFont = defaultTextViewerFont();
+    textViewerAutoSelect = defaultTextViewerAutoSelectLanguage;
     autoPlayVideo = defaultAutoPlayVideo;
     loopVideoForever = defaultLoopVideoForever;
     videoVolume = defaultVideoVolume;
@@ -94,6 +98,7 @@ void Settings::save()
     settings.setValue("use-provided-file-icons", useProvidedFileIcons);
     settings.setValue("show-formatted-size", showFormattedSize);
     settings.setValue("text-viewer-font", textViewerFont);
+    settings.setValue("text-viewer-auto-select", textViewerAutoSelect);
     settings.setValue("video-player-auto-play", autoPlayVideo);
     settings.setValue("video-player-loop-forever", loopVideoForever);
     settings.setValue("video-player-volume", videoVolume);
@@ -120,6 +125,7 @@ void Settings::load()
 
     QFont font = settings.value("text-viewer-font", defaultTextViewerFont()).value<QFont>();
     setTextViewerFont(font);
+    textViewerAutoSelect = settings.value("text-viewer-auto-select", defaultTextViewerAutoSelectLanguage).toBool();
 
     autoPlayVideo = settings.value("video-player-auto-play", defaultAutoPlayVideo).toBool();
     loopVideoForever = settings.value("video-player-loop-forever", defaultLoopVideoForever).toBool();
@@ -214,6 +220,16 @@ void Settings::setTextViewerFont(QFont font)
         font = defaultTextViewerFont();
     }
     textViewerFont = font;
+}
+
+bool Settings::getTextViewerAutoSelectLanguage() const
+{
+    return textViewerAutoSelect;
+}
+
+void Settings::setTextViewerAutoSelectLanguage(const bool autoSelect)
+{
+    textViewerAutoSelect = autoSelect;
 }
 
 bool Settings::getAutoPlayVideo() const

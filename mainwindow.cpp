@@ -87,6 +87,11 @@ void MainWindow::textViewerFontChanged(const QFont &new_font)
     settings.setTextViewerFont(new_font);
 }
 
+void MainWindow::textViewerAutoSelectChanged(const bool autoSelect)
+{
+    settings.setTextViewerAutoSelectLanguage(autoSelect);
+}
+
 void MainWindow::videoPlayerAutoPlayChanged(const bool autoPlay)
 {
     settings.setAutoPlayVideo(autoPlay);
@@ -738,6 +743,7 @@ void MainWindow::btnViewClicked()
             return;
         }
         viewer->setFont(settings.getTextViewerFont());
+        viewer->setAutoSelectLanguage(settings.getTextViewerAutoSelectLanguage());
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();
 

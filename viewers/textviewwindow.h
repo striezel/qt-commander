@@ -51,8 +51,13 @@ public:
     /// Sets the font for the text widget.
     void setFont(const QFont& font);
 
+    /// Sets whether to automatically selects the proper language to use for
+    /// syntax highlighting.
+    void setAutoSelectLanguage(const bool autoSelect);
+
 signals:
     void textViewerFontChanged(const QFont& new_font);
+    void textViewerAutoSelectChanged(const bool autoSelect);
 
 protected:
     void closeEvent(QCloseEvent* event) override;
@@ -63,6 +68,7 @@ private slots:
     void actionPrintTriggered();
     void actionChangeFontTriggered();
 
+    void actionAutoSelectLanguageTriggered(bool checked = false);
     void actionLanguageChangeTriggered();
     void actionLanguageNoneTriggered();
 
@@ -70,6 +76,8 @@ private slots:
 
 private:
     Ui::TextViewWindow *ui;
+
+    QString documentPath;
 
     QActionGroup* actionGroupLanguages;
     QActionGroup* actionGroupStyles;
@@ -87,6 +95,8 @@ private:
     Theme* getSelectedTheme() const;
 
     QSyntaxHighlighter* getSelectedHighlighter(const Theme& theme) const;
+
+    void autoSelectHighlighting();
 
     void updateWithNewTheme();
 

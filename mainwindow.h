@@ -46,6 +46,7 @@ public:
 
 public slots:
     void textViewerFontChanged(const QFont& new_font);
+    void textViewerAutoSelectChanged(const bool autoSelect);
     void videoPlayerAutoPlayChanged(const bool autoPlay);
     void videoPlayerLoopForeverChanged(const bool loopForever);
     void videoPlayerVolumeChanged(const int volume);

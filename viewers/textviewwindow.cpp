@@ -38,6 +38,7 @@
 TextViewWindow::TextViewWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::TextViewWindow)
+    , documentPath(QStringLiteral(""))
     , actionGroupLanguages(nullptr)
     , actionGroupStyles(nullptr)
     , hl(nullptr)
@@ -48,6 +49,8 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     connect(ui->actionExit, &QAction::triggered, this, &TextViewWindow::close);
 
     connect(ui->actionChangeFont, &QAction::triggered, this, &TextViewWindow::actionChangeFontTriggered);
+
+    connect(ui->actionAutoSelectLanguage, &QAction::triggered, this, &TextViewWindow::actionAutoSelectLanguageTriggered);
     connect(ui->actionLanguageCpp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageCSharp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageShell, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
@@ -64,6 +67,7 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
         connect(this, &TextViewWindow::textViewerFontChanged, castedParent, &MainWindow::textViewerFontChanged);
+        connect(this, &TextViewWindow::textViewerAutoSelectChanged, castedParent, &MainWindow::textViewerAutoSelectChanged);
     }
 }
 
@@ -73,6 +77,7 @@ TextViewWindow::~TextViewWindow()
     {
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
         disconnect(this, &TextViewWindow::textViewerFontChanged, castedParent, &MainWindow::textViewerFontChanged);
+        disconnect(this, &TextViewWindow::textViewerAutoSelectChanged, castedParent, &MainWindow::textViewerAutoSelectChanged);
     }
 
     delete ui;
@@ -110,6 +115,7 @@ bool TextViewWindow::loadTextFile(const QString &path)
     file.close();
 
     this->setWindowTitle("Textbetrachter - " + path);
+    documentPath = path;
 
     return true;
 }
@@ -117,6 +123,16 @@ bool TextViewWindow::loadTextFile(const QString &path)
 void TextViewWindow::setFont(const QFont &font)
 {
     ui->plainTextEdit->setFont(font);
+}
+
+void TextViewWindow::setAutoSelectLanguage(const bool autoSelect)
+{
+    ui->actionAutoSelectLanguage->setChecked(autoSelect);
+
+    if (autoSelect)
+    {
+        autoSelectHighlighting();
+    }
 }
 
 void TextViewWindow::closeEvent(QCloseEvent *event)
@@ -159,6 +175,16 @@ void TextViewWindow::actionChangeFontTriggered()
 
     ui->plainTextEdit->setFont(new_font);
     emit textViewerFontChanged(new_font);
+}
+
+void TextViewWindow::actionAutoSelectLanguageTriggered(bool checked)
+{
+    emit textViewerAutoSelectChanged(checked);
+
+    if (checked)
+    {
+        autoSelectHighlighting();
+    }
 }
 
 void TextViewWindow::actionLanguageChangeTriggered()
@@ -238,6 +264,30 @@ QSyntaxHighlighter *TextViewWindow::getSelectedHighlighter(const Theme &theme) c
 
     // no selection
     return nullptr;
+}
+
+void TextViewWindow::autoSelectHighlighting()
+{
+    const QString suffix = QFileInfo(documentPath).suffix().toLower();
+
+    if ((suffix == "cpp") || (suffix == "cxx") || (suffix == "h")
+        || (suffix == "hpp")  || (suffix == "hxx"))
+    {
+        ui->actionLanguageCpp->setChecked(true);
+    }
+    else if (suffix == "cs")
+    {
+        ui->actionLanguageCSharp->setChecked(true);
+    }
+    else if (suffix == "sh")
+    {
+        ui->actionLanguageShell->setChecked(true);
+    }
+    else
+    {
+        ui->actionLanguageNone->setChecked(true);
+    }
+    actionLanguageChangeTriggered();
 }
 
 void TextViewWindow::updateWithNewTheme()
