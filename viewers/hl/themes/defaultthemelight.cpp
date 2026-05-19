@@ -55,3 +55,10 @@ QTextCharFormat DefaultThemeLight::constants() const
     constantsFormat.setForeground(QColor(0xA3, 0x74, 0xCC));
     return constantsFormat;
 }
+
+QTextCharFormat DefaultThemeLight::operators() const
+{
+    QTextCharFormat operatorFormat;
+    operatorFormat.setForeground(QColor(0xF2, 0xA1, 0x91));
+    return operatorFormat;
+}

@@ -145,6 +145,19 @@ CppHighlighter::CppHighlighter(const Theme& theme, QTextDocument* parent)
         rules.append(rule);
     }
 
+    // operators
+    const std::array<std::string, 15> operators = {
+        "+", "-", "*", "/", "%", "^", "&", "|",
+        "~", "!", "=", "<", ">", "[", "]"
+    };
+
+    rule.format = theme.operators();
+    for (const std::string& op : operators)
+    {
+        rule.pattern = QRegularExpression(QString::fromStdString("\\" + op));
+        rules.append(rule);
+    }
+
     // numeric literals: matches hexadecimal, binary and decimal notation
     rule.pattern = QRegularExpression(QStringLiteral("\\b(0x[0-9a-fA-F]+|0b[01]+|\\-?[0-9]+(\\.[0-9]+)?([eE][0-9]+)?)\\b"));
     rule.format = theme.constants();

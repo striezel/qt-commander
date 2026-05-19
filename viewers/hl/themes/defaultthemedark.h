@@ -31,6 +31,7 @@ public:
     virtual QTextCharFormat stringLiteral() const override;
     virtual QTextCharFormat comment() const override;
     virtual QTextCharFormat constants() const override;
+    virtual QTextCharFormat operators() const override;
 };
 
 #endif // DEFAULTTHEMEDARK_H
