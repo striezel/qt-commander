@@ -29,6 +29,8 @@
 #include <QPrinter>
 #include <QScrollBar>
 #include <QTextStream>
+#include "hl/cpphighlighter.h"
+#include "hl/shellhighlighter.h"
 #include "hl/themes/defaultthemedark.h"
 #include "hl/themes/defaultthemelight.h"
 
@@ -45,7 +47,8 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     connect(ui->actionExit, &QAction::triggered, this, &TextViewWindow::close);
 
     connect(ui->actionChangeFont, &QAction::triggered, this, &TextViewWindow::actionChangeFontTriggered);
-    connect(ui->actionLanguageCpp, &QAction::triggered, this, &TextViewWindow::actionLanguageCppTriggered);
+    connect(ui->actionLanguageCpp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
+    connect(ui->actionLanguageShell, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageNone, &QAction::triggered, this, &TextViewWindow::actionLanguageNoneTriggered);
 
     connect(ui->actionStyleAyuDark, &QAction::triggered, this, &TextViewWindow::actionStyleChangeTriggered);
@@ -156,11 +159,11 @@ void TextViewWindow::actionChangeFontTriggered()
     emit textViewerFontChanged(new_font);
 }
 
-void TextViewWindow::actionLanguageCppTriggered()
+void TextViewWindow::actionLanguageChangeTriggered()
 {
     removeHighlighter();
     const Theme* theme = getSelectedTheme();
-    hl = new CppHighlighter(*theme, ui->plainTextEdit->document());
+    hl = getSelectedHighlighter(*theme);
 }
 
 void TextViewWindow::actionLanguageNoneTriggered()
@@ -216,6 +219,21 @@ Theme* TextViewWindow::getSelectedTheme() const
     return new DefaultThemeLight();
 }
 
+QSyntaxHighlighter *TextViewWindow::getSelectedHighlighter(const Theme &theme) const
+{
+    if (ui->actionLanguageCpp->isChecked())
+    {
+        return new CppHighlighter(theme, ui->plainTextEdit->document());
+    }
+    else if (ui->actionLanguageShell->isChecked())
+    {
+        return new ShellHighlighter(theme, ui->plainTextEdit->document());
+    }
+
+    // no selection
+    return nullptr;
+}
+
 void TextViewWindow::updateWithNewTheme()
 {
     if (ui->actionLanguageNone->isChecked())
@@ -233,6 +251,7 @@ void TextViewWindow::createActionGroups()
     actionGroupLanguages = new QActionGroup(this);
     actionGroupLanguages->addAction(ui->actionLanguageNone);
     actionGroupLanguages->addAction(ui->actionLanguageCpp);
+    actionGroupLanguages->addAction(ui->actionLanguageShell);
 
     actionGroupStyles = new QActionGroup(this);
     actionGroupStyles->addAction(ui->actionStyleAyuDark);

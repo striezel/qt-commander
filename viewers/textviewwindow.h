@@ -26,7 +26,8 @@
 #include <QCloseEvent>
 #include <QFont>
 #include <QString>
-#include "hl/cpphighlighter.h"
+#include <QSyntaxHighlighter>
+#include "hl/themes/theme.h"
 
 namespace Ui {
 class TextViewWindow;
@@ -62,7 +63,7 @@ private slots:
     void actionPrintTriggered();
     void actionChangeFontTriggered();
 
-    void actionLanguageCppTriggered();
+    void actionLanguageChangeTriggered();
     void actionLanguageNoneTriggered();
 
     void actionStyleChangeTriggered(bool checked = false);
@@ -72,7 +73,7 @@ private:
 
     QActionGroup* actionGroupLanguages;
     QActionGroup* actionGroupStyles;
-    CppHighlighter* hl;
+    QSyntaxHighlighter* hl;
 
     /// Scrolls the text widget back to the top.
     void scrollToTop();
@@ -84,6 +85,8 @@ private:
     void removeHighlighter();
 
     Theme* getSelectedTheme() const;
+
+    QSyntaxHighlighter* getSelectedHighlighter(const Theme& theme) const;
 
     void updateWithNewTheme();
 
