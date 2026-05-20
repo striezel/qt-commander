@@ -32,6 +32,7 @@ public:
     virtual QTextCharFormat comment() const override;
     virtual QTextCharFormat constants() const override;
     virtual QTextCharFormat operators() const override;
+    virtual QTextCharFormat special() const override;
 };
 
 #endif // DEFAULTTHEMEDARK_H

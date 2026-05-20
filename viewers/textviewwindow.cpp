@@ -31,6 +31,7 @@
 #include <QTextStream>
 #include "hl/cpphighlighter.h"
 #include "hl/csharphighlighter.h"
+#include "hl/rusthighlighter.h"
 #include "hl/shellhighlighter.h"
 #include "hl/themes/defaultthemedark.h"
 #include "hl/themes/defaultthemelight.h"
@@ -54,6 +55,7 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     connect(ui->actionLanguageCpp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageCSharp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageShell, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
+    connect(ui->actionLanguageRust, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageNone, &QAction::triggered, this, &TextViewWindow::actionLanguageNoneTriggered);
 
     connect(ui->actionStyleAyuDark, &QAction::triggered, this, &TextViewWindow::actionStyleChangeTriggered);
@@ -257,6 +259,10 @@ QSyntaxHighlighter *TextViewWindow::getSelectedHighlighter(const Theme &theme) c
     {
         return new CSharpHighlighter(theme, ui->plainTextEdit->document());
     }
+    else if (ui->actionLanguageRust->isChecked())
+    {
+        return new RustHighlighter(theme, ui->plainTextEdit->document());
+    }
     else if (ui->actionLanguageShell->isChecked())
     {
         return new ShellHighlighter(theme, ui->plainTextEdit->document());
@@ -279,6 +285,10 @@ void TextViewWindow::autoSelectHighlighting()
     {
         ui->actionLanguageCSharp->setChecked(true);
     }
+    else if (suffix == "rs")
+    {
+        ui->actionLanguageRust->setChecked(true);
+    }
     else if (suffix == "sh")
     {
         ui->actionLanguageShell->setChecked(true);
@@ -299,7 +309,7 @@ void TextViewWindow::updateWithNewTheme()
 
     removeHighlighter();
     const Theme* theme = getSelectedTheme();
-    hl = new CppHighlighter(*theme, ui->plainTextEdit->document());
+    hl = getSelectedHighlighter(*theme);
 }
 
 void TextViewWindow::createActionGroups()
@@ -308,6 +318,7 @@ void TextViewWindow::createActionGroups()
     actionGroupLanguages->addAction(ui->actionLanguageNone);
     actionGroupLanguages->addAction(ui->actionLanguageCpp);
     actionGroupLanguages->addAction(ui->actionLanguageCSharp);
+    actionGroupLanguages->addAction(ui->actionLanguageRust);
     actionGroupLanguages->addAction(ui->actionLanguageShell);
 
     actionGroupStyles = new QActionGroup(this);

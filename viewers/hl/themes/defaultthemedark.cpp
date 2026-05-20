@@ -62,3 +62,10 @@ QTextCharFormat DefaultThemeDark::operators() const
     operatorFormat.setForeground(QColor(0xF2, 0x96, 0x68));
     return operatorFormat;
 }
+
+QTextCharFormat DefaultThemeDark::special() const
+{
+    QTextCharFormat specialFormat;
+    specialFormat.setForeground(QColor(0xE6, 0xC0, 0x8A));
+    return specialFormat;
+}

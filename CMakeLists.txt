@@ -83,6 +83,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         viewers/hl/highlighterrule.h viewers/hl/highlighterrule.cpp
         viewers/hl/cpphighlighter.h viewers/hl/cpphighlighter.cpp
         viewers/hl/csharphighlighter.h viewers/hl/csharphighlighter.cpp
+        viewers/hl/rusthighlighter.h viewers/hl/rusthighlighter.cpp
         viewers/hl/shellhighlighter.h viewers/hl/shellhighlighter.cpp
         viewers/hl/themes/theme.h
         viewers/hl/themes/defaultthemelight.h viewers/hl/themes/defaultthemelight.cpp

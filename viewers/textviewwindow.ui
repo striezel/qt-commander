@@ -66,6 +66,7 @@
      <addaction name="actionLanguageNone"/>
      <addaction name="actionLanguageCpp"/>
      <addaction name="actionLanguageCSharp"/>
+     <addaction name="actionLanguageRust"/>
      <addaction name="actionLanguageShell"/>
     </widget>
     <addaction name="menuLanguage"/>
@@ -163,6 +164,14 @@
    </property>
    <property name="text">
     <string>Automatisch auswählen</string>
+   </property>
+  </action>
+  <action name="actionLanguageRust">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Rust</string>
    </property>
   </action>
  </widget>

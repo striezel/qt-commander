@@ -43,6 +43,9 @@ public:
 
     /// Gets the text format for operators.
     virtual QTextCharFormat operators() const = 0;
+
+    /// Gets the text format for special expressions like macros.
+    virtual QTextCharFormat special() const = 0;
 };
 
 #endif // THEME_H

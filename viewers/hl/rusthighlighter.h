@@ -18,21 +18,27 @@
  -------------------------------------------------------------------------------
 */
 
-#ifndef DEFAULTTHEMELIGHT_H
-#define DEFAULTTHEMELIGHT_H
+#ifndef RUSTHIGHLIGHTER_H
+#define RUSTHIGHLIGHTER_H
 
-#include "theme.h"
+#include <QSyntaxHighlighter>
+#include <QTextDocument>
+#include "highlighterrule.h"
+#include "themes/theme.h"
 
-class DefaultThemeLight: public Theme
+class RustHighlighter: public QSyntaxHighlighter
 {
 public:
-    virtual QTextCharFormat keyword() const override;
-    virtual QTextCharFormat preprocessor() const override;
-    virtual QTextCharFormat stringLiteral() const override;
-    virtual QTextCharFormat comment() const override;
-    virtual QTextCharFormat constants() const override;
-    virtual QTextCharFormat operators() const override;
-    virtual QTextCharFormat special() const override;
+    RustHighlighter(const Theme& theme, QTextDocument* parent = nullptr);
+protected:
+    void highlightBlock(const QString &text) override;
+private:
+    QList<HighlighterRule> rules;
+
+    const QTextCharFormat commentFormat;
+
+    static constexpr int NotInMultiLineCommentState = 0;
+    static constexpr int IsInMultiLineCommentState = 1;
 };
 
-#endif // DEFAULTTHEMELIGHT_H
+#endif // RUSTHIGHLIGHTER_H
