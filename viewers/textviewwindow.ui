@@ -66,6 +66,7 @@
      <addaction name="actionLanguageNone"/>
      <addaction name="actionLanguageCpp"/>
      <addaction name="actionLanguageCSharp"/>
+     <addaction name="actionLanguagePython"/>
      <addaction name="actionLanguageRust"/>
      <addaction name="actionLanguageShell"/>
     </widget>
@@ -172,6 +173,14 @@
    </property>
    <property name="text">
     <string>Rust</string>
+   </property>
+  </action>
+  <action name="actionLanguagePython">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Python</string>
    </property>
   </action>
  </widget>

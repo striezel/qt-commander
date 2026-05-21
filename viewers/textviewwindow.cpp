@@ -31,6 +31,7 @@
 #include <QTextStream>
 #include "hl/cpphighlighter.h"
 #include "hl/csharphighlighter.h"
+#include "hl/pythonhighlighter.h"
 #include "hl/rusthighlighter.h"
 #include "hl/shellhighlighter.h"
 #include "hl/themes/defaultthemedark.h"
@@ -54,8 +55,9 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     connect(ui->actionAutoSelectLanguage, &QAction::triggered, this, &TextViewWindow::actionAutoSelectLanguageTriggered);
     connect(ui->actionLanguageCpp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageCSharp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
-    connect(ui->actionLanguageShell, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
+    connect(ui->actionLanguagePython, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageRust, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
+    connect(ui->actionLanguageShell, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageNone, &QAction::triggered, this, &TextViewWindow::actionLanguageNoneTriggered);
 
     connect(ui->actionStyleAyuDark, &QAction::triggered, this, &TextViewWindow::actionStyleChangeTriggered);
@@ -274,6 +276,10 @@ QSyntaxHighlighter *TextViewWindow::getSelectedHighlighter(const Theme &theme) c
     {
         return new CSharpHighlighter(theme, ui->plainTextEdit->document());
     }
+    else if (ui->actionLanguagePython->isChecked())
+    {
+        return new PythonHighlighter(theme, ui->plainTextEdit->document());
+    }
     else if (ui->actionLanguageRust->isChecked())
     {
         return new RustHighlighter(theme, ui->plainTextEdit->document());
@@ -299,6 +305,10 @@ void TextViewWindow::autoSelectHighlighting()
     else if (suffix == "cs")
     {
         ui->actionLanguageCSharp->setChecked(true);
+    }
+    else if (suffix == "py")
+    {
+        ui->actionLanguagePython->setChecked(true);
     }
     else if (suffix == "rs")
     {
@@ -333,6 +343,7 @@ void TextViewWindow::createActionGroups()
     actionGroupLanguages->addAction(ui->actionLanguageNone);
     actionGroupLanguages->addAction(ui->actionLanguageCpp);
     actionGroupLanguages->addAction(ui->actionLanguageCSharp);
+    actionGroupLanguages->addAction(ui->actionLanguagePython);
     actionGroupLanguages->addAction(ui->actionLanguageRust);
     actionGroupLanguages->addAction(ui->actionLanguageShell);
 
