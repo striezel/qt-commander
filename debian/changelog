@@ -1,3 +1,10 @@
+qt-commander (0.1.8-1) UNRELEASED; urgency=medium
+
+  * The text viewer can now provide basic syntax highlighting for a few common
+    programming languages.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Thu, 21 May 2026 21:36:03 +0200
+
 qt-commander (0.1.7-1) UNRELEASED; urgency=medium
 
   * Improve handling of file names in directory comparison for file systems with
