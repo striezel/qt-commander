@@ -55,9 +55,13 @@ public:
     /// syntax highlighting.
     void setAutoSelectLanguage(const bool autoSelect);
 
+    /// Sets the theme used for syntax highlighting.
+    void setHightlighterTheme(const ThemeId theme);
+
 signals:
     void textViewerFontChanged(const QFont& new_font);
     void textViewerAutoSelectChanged(const bool autoSelect);
+    void highlightingThemeChanged(const ThemeId theme);
 
 protected:
     void closeEvent(QCloseEvent* event) override;

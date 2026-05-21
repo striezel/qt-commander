@@ -24,6 +24,7 @@
 #include <QCryptographicHash>
 #include <QDir>
 #include <QFont>
+#include "../viewers/hl/themes/themeid.h"
 
 class Settings
 {
@@ -40,6 +41,7 @@ public:
 
     static QFont defaultTextViewerFont();
     static const bool defaultTextViewerAutoSelectLanguage;
+    static const ThemeId defaultTextViewerHightlightingTheme;
 
     static const bool defaultAutoPlayVideo;
     static const bool defaultLoopVideoForever;
@@ -83,6 +85,9 @@ public:
     bool getTextViewerAutoSelectLanguage() const;
     void setTextViewerAutoSelectLanguage(const bool autoSelect);
 
+    ThemeId getTextViewerHightlightingTheme() const;
+    void setTextViewerHighlightingTheme(const ThemeId theme);
+
     bool getAutoPlayVideo() const;
     void setAutoPlayVideo(const bool autoPlay);
 
@@ -122,6 +127,9 @@ private:
     /// whether the text viewer automatically selects the proper language for
     /// syntax highlighting
     bool textViewerAutoSelect;
+
+    /// the theme used for syntax highlighting
+    ThemeId textViewerHighlightingTheme;
 
     /// whether files in video player start playing automatically
     bool autoPlayVideo;

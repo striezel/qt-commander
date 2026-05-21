@@ -38,6 +38,7 @@ const bool Settings::defaultUseProvidedFileIcons{true};
 const bool Settings::defaultShowFormattedSize{true};
 
 const bool Settings::defaultTextViewerAutoSelectLanguage{false};
+const ThemeId Settings::defaultTextViewerHightlightingTheme{ThemeId::DefaultLight};
 
 const bool Settings::defaultAutoPlayVideo{true};
 const bool Settings::defaultLoopVideoForever{false};
@@ -56,6 +57,7 @@ Settings::Settings()
     , showFormattedSize(defaultShowFormattedSize)
     , textViewerFont(defaultTextViewerFont())
     , textViewerAutoSelect(defaultTextViewerAutoSelectLanguage)
+    , textViewerHighlightingTheme(defaultTextViewerHightlightingTheme)
     , autoPlayVideo(defaultAutoPlayVideo)
     , loopVideoForever(defaultLoopVideoForever)
     , videoVolume(defaultVideoVolume)
@@ -78,6 +80,7 @@ void Settings::resetToDefaults()
     showFormattedSize = defaultShowFormattedSize;
     textViewerFont = defaultTextViewerFont();
     textViewerAutoSelect = defaultTextViewerAutoSelectLanguage;
+    textViewerHighlightingTheme = defaultTextViewerHightlightingTheme;
     autoPlayVideo = defaultAutoPlayVideo;
     loopVideoForever = defaultLoopVideoForever;
     videoVolume = defaultVideoVolume;
@@ -99,6 +102,7 @@ void Settings::save()
     settings.setValue("show-formatted-size", showFormattedSize);
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("text-viewer-auto-select", textViewerAutoSelect);
+    settings.setValue("text-viewer-highlighting-theme", static_cast<int>(textViewerHighlightingTheme));
     settings.setValue("video-player-auto-play", autoPlayVideo);
     settings.setValue("video-player-loop-forever", loopVideoForever);
     settings.setValue("video-player-volume", videoVolume);
@@ -126,6 +130,8 @@ void Settings::load()
     QFont font = settings.value("text-viewer-font", defaultTextViewerFont()).value<QFont>();
     setTextViewerFont(font);
     textViewerAutoSelect = settings.value("text-viewer-auto-select", defaultTextViewerAutoSelectLanguage).toBool();
+    const int theme = settings.value("text-viewer-highlighting-theme", static_cast<int>(defaultTextViewerHightlightingTheme)).toInt();
+    textViewerHighlightingTheme = static_cast<ThemeId>(theme);
 
     autoPlayVideo = settings.value("video-player-auto-play", defaultAutoPlayVideo).toBool();
     loopVideoForever = settings.value("video-player-loop-forever", defaultLoopVideoForever).toBool();
@@ -230,6 +236,16 @@ bool Settings::getTextViewerAutoSelectLanguage() const
 void Settings::setTextViewerAutoSelectLanguage(const bool autoSelect)
 {
     textViewerAutoSelect = autoSelect;
+}
+
+ThemeId Settings::getTextViewerHightlightingTheme() const
+{
+    return textViewerHighlightingTheme;
+}
+
+void Settings::setTextViewerHighlightingTheme(const ThemeId theme)
+{
+    textViewerHighlightingTheme = theme;
 }
 
 bool Settings::getAutoPlayVideo() const

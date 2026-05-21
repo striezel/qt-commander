@@ -22,6 +22,7 @@
 #define THEME_H
 
 #include <QTextCharFormat>
+#include "themeid.h"
 
 class Theme
 {
@@ -46,6 +47,9 @@ public:
 
     /// Gets the text format for special expressions like macros.
     virtual QTextCharFormat special() const = 0;
+
+    /// enumeration value to identify the theme
+    virtual ThemeId id() const = 0;
 };
 
 #endif // THEME_H

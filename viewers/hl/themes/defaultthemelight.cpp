@@ -69,3 +69,8 @@ QTextCharFormat DefaultThemeLight::special() const
     specialFormat.setForeground(QColor(0xE5, 0x96, 0x45));
     return specialFormat;
 }
+
+ThemeId DefaultThemeLight::id() const
+{
+    return ThemeId::DefaultLight;
+}

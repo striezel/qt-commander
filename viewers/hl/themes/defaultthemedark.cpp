@@ -69,3 +69,8 @@ QTextCharFormat DefaultThemeDark::special() const
     specialFormat.setForeground(QColor(0xE6, 0xC0, 0x8A));
     return specialFormat;
 }
+
+ThemeId DefaultThemeDark::id() const
+{
+    return ThemeId::DefaultDark;
+}

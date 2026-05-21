@@ -18,23 +18,17 @@
  -------------------------------------------------------------------------------
 */
 
-#ifndef DEFAULTTHEMELIGHT_H
-#define DEFAULTTHEMELIGHT_H
+#ifndef THEMEID_H
+#define THEMEID_H
 
-#include "theme.h"
-
-class DefaultThemeLight: public Theme
+/// enumeration value for available syntax highlighter themes
+enum class ThemeId
 {
-public:
-    virtual QTextCharFormat keyword() const override;
-    virtual QTextCharFormat preprocessor() const override;
-    virtual QTextCharFormat stringLiteral() const override;
-    virtual QTextCharFormat comment() const override;
-    virtual QTextCharFormat constants() const override;
-    virtual QTextCharFormat operators() const override;
-    virtual QTextCharFormat special() const override;
+    /// the default "light" theme
+    DefaultLight,
 
-    virtual ThemeId id() const override;
+    /// the default "dark" theme
+    DefaultDark
 };
 
-#endif // DEFAULTTHEMELIGHT_H
+#endif // THEMEID_H

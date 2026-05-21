@@ -33,6 +33,8 @@ public:
     virtual QTextCharFormat constants() const override;
     virtual QTextCharFormat operators() const override;
     virtual QTextCharFormat special() const override;
+
+    virtual ThemeId id() const override;
 };
 
 #endif // DEFAULTTHEMEDARK_H

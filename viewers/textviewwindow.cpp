@@ -70,6 +70,7 @@ TextViewWindow::TextViewWindow(QWidget *parent)
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent);
         connect(this, &TextViewWindow::textViewerFontChanged, castedParent, &MainWindow::textViewerFontChanged);
         connect(this, &TextViewWindow::textViewerAutoSelectChanged, castedParent, &MainWindow::textViewerAutoSelectChanged);
+        connect(this, &TextViewWindow::highlightingThemeChanged, castedParent, &MainWindow::textViewerHightlightingThemeChanged);
     }
 }
 
@@ -80,6 +81,7 @@ TextViewWindow::~TextViewWindow()
         MainWindow* castedParent = dynamic_cast<MainWindow*>(parent());
         disconnect(this, &TextViewWindow::textViewerFontChanged, castedParent, &MainWindow::textViewerFontChanged);
         disconnect(this, &TextViewWindow::textViewerAutoSelectChanged, castedParent, &MainWindow::textViewerAutoSelectChanged);
+        disconnect(this, &TextViewWindow::highlightingThemeChanged, castedParent, &MainWindow::textViewerHightlightingThemeChanged);
     }
 
     delete ui;
@@ -134,6 +136,18 @@ void TextViewWindow::setAutoSelectLanguage(const bool autoSelect)
     if (autoSelect)
     {
         autoSelectHighlighting();
+    }
+}
+
+void TextViewWindow::setHightlighterTheme(const ThemeId theme)
+{
+    if (theme == ThemeId::DefaultDark)
+    {
+        ui->actionStyleAyuDark->setChecked(true);
+    }
+    else
+    {
+        ui->actionStyleAyuLight->setChecked(true);
     }
 }
 
@@ -209,6 +223,7 @@ void TextViewWindow::actionStyleChangeTriggered(bool checked)
     }
 
     updateWithNewTheme();
+    emit highlightingThemeChanged(getSelectedTheme()->id());
 }
 
 void TextViewWindow::scrollToTop()

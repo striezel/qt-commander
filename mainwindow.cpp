@@ -92,6 +92,11 @@ void MainWindow::textViewerAutoSelectChanged(const bool autoSelect)
     settings.setTextViewerAutoSelectLanguage(autoSelect);
 }
 
+void MainWindow::textViewerHightlightingThemeChanged(const ThemeId theme)
+{
+    settings.setTextViewerHighlightingTheme(theme);
+}
+
 void MainWindow::videoPlayerAutoPlayChanged(const bool autoPlay)
 {
     settings.setAutoPlayVideo(autoPlay);
@@ -743,6 +748,7 @@ void MainWindow::btnViewClicked()
             return;
         }
         viewer->setFont(settings.getTextViewerFont());
+        viewer->setHightlighterTheme(settings.getTextViewerHightlightingTheme());
         viewer->setAutoSelectLanguage(settings.getTextViewerAutoSelectLanguage());
         viewer->setWindowModality(Qt::WindowModality::WindowModal);
         viewer->show();
