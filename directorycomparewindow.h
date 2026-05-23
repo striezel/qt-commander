@@ -80,6 +80,12 @@ private:
     static constexpr int colIdxLeftSize = 4;
     static constexpr int colIdxRightSize = 5;
 
+    static const QString iconNameIdentical;
+    static const QString iconNameDifferent;
+    static const QString iconNameUnknown;
+    static const QString iconNameLeftSideOnly;
+    static const QString iconNameRightSideOnly;
+
     Ui::DirectoryCompareWindow *ui;
 
     bool initialShowDone;

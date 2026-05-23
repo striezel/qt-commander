@@ -27,6 +27,12 @@
 #include <QStringList>
 #include <QTreeWidgetItem>
 
+const QString DirectoryCompareWindow::iconNameIdentical{"document-new"};
+const QString DirectoryCompareWindow::iconNameDifferent{"edit-copy"};
+const QString DirectoryCompareWindow::iconNameUnknown{"dialog-question"};
+const QString DirectoryCompareWindow::iconNameLeftSideOnly{"go-previous"};
+const QString DirectoryCompareWindow::iconNameRightSideOnly{"go-next"};
+
 DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QString& pathRight, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::DirectoryCompareWindow)
@@ -377,7 +383,7 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
         info.result = Compare::Result::RightSideOnly;
         info.leftDate = QDateTime();
         info.leftSize = -1;
-        item->setIcon(colIdxResult, QIcon::fromTheme("go-next"));
+        item->setIcon(colIdxResult, QIcon::fromTheme(iconNameRightSideOnly));
         item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
         item->setText(colIdxLeftDate, "keins");
         item->setText(colIdxLeftSize, "keine");
@@ -398,7 +404,7 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
     leftSideChanged = true;
 
     // Adjust widget item.
-    item->setIcon(colIdxResult, QIcon::fromTheme("document-new"));
+    item->setIcon(colIdxResult, QIcon::fromTheme(iconNameIdentical));
     item->setText(colIdxResult, "Dateien sind identisch.");
     info.result = Compare::Result::Identical;
     const QFileInfo fileInfo = QFileInfo(destination);
@@ -473,7 +479,7 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
         info.result = Compare::Result::LeftSideOnly;
         info.rightDate = QDateTime();
         info.rightSize = -1;
-        item->setIcon(colIdxResult, QIcon::fromTheme("go-previous"));
+        item->setIcon(colIdxResult, QIcon::fromTheme(iconNameLeftSideOnly));
         item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
         item->setText(colIdxRightDate, "keins");
         item->setText(colIdxRightSize, "keine");
@@ -494,7 +500,7 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
     rightSideChanged = true;
 
     // Adjust widget item.
-    item->setIcon(colIdxResult, QIcon::fromTheme("document-new"));
+    item->setIcon(colIdxResult, QIcon::fromTheme(iconNameIdentical));
     item->setText(colIdxResult, "Dateien sind identisch.");
     info.result = Compare::Result::Identical;
     const QFileInfo fileInfo = QFileInfo(destination);
@@ -577,7 +583,7 @@ void DirectoryCompareWindow::actionDeleteTriggered()
         info.result = Compare::Result::RightSideOnly;
         info.leftDate = QDateTime();
         info.leftSize = -1;
-        item->setIcon(colIdxResult, QIcon::fromTheme("go-next"));
+        item->setIcon(colIdxResult, QIcon::fromTheme(iconNameRightSideOnly));
         item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
         item->setText(colIdxLeftDate, "keins");
         item->setText(colIdxLeftSize, "keine");
@@ -618,7 +624,7 @@ void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, con
     item->setIcon(0, info.isDirectory
                          ? icon_provider.icon(QAbstractFileIconProvider::Folder)
                          : icon_provider.icon(QAbstractFileIconProvider::File));
-    item->setIcon(colIdxResult, QIcon::fromTheme("go-previous"));
+    item->setIcon(colIdxResult, QIcon::fromTheme(iconNameLeftSideOnly));
     item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
     ui->treeWidget->addTopLevelItem(item);
 }
@@ -643,7 +649,7 @@ void DirectoryCompareWindow::addRightSideOnlyEntry(const Compare::Info &info, co
     item->setIcon(0, info.isDirectory
                          ? icon_provider.icon(QAbstractFileIconProvider::Folder)
                          : icon_provider.icon(QAbstractFileIconProvider::File));
-    item->setIcon(colIdxResult, QIcon::fromTheme("go-next"));
+    item->setIcon(colIdxResult, QIcon::fromTheme(iconNameRightSideOnly));
     item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
     ui->treeWidget->addTopLevelItem(item);
 }
@@ -662,7 +668,7 @@ void DirectoryCompareWindow::addDirectoryExistsEntry(const Compare::Info &info, 
     item->setIcon(0, icon_provider.icon(QAbstractFileIconProvider::Folder));
 
     // Subdirectories are not checked yet, so status is ... questionable / unknown.
-    item->setIcon(colIdxResult, QIcon::fromTheme("dialog-question"));
+    item->setIcon(colIdxResult, QIcon::fromTheme(iconNameUnknown));
     item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
     ui->treeWidget->addTopLevelItem(item);
 }
@@ -697,13 +703,13 @@ void DirectoryCompareWindow::addFileEntry(const Compare::Info &info, const QLoca
     switch(info.result)
     {
     case Compare::Result::Identical:
-        icon = QIcon::fromTheme("document-new");
+        icon = QIcon::fromTheme(iconNameIdentical);
         break;
     case Compare::Result::Different:
-        icon = QIcon::fromTheme("edit-copy");
+        icon = QIcon::fromTheme(iconNameDifferent);
         break;
     case Compare::Result::Unknown:
-        icon = QIcon::fromTheme("dialog-question");
+        icon = QIcon::fromTheme(iconNameUnknown);
         break;
     default:
         // Silence compiler warning about unhandled enumeration values
