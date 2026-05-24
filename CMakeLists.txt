@@ -79,6 +79,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         checksumdialog.h checksumdialog.cpp checksumdialog.ui
         viewers/pdfviewwindow.h viewers/pdfviewwindow.cpp viewers/pdfviewwindow.ui
         directorycomparewindow.h directorycomparewindow.cpp directorycomparewindow.ui
+        settingsdialog.h settingsdialog.cpp settingsdialog.ui
         util/compare.h util/compare.cpp
         viewers/hl/highlighterrule.h viewers/hl/highlighterrule.cpp
         viewers/hl/cpphighlighter.h viewers/hl/cpphighlighter.cpp

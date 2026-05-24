@@ -212,6 +212,7 @@
     <property name="title">
      <string>Einstellungen</string>
     </property>
+    <addaction name="actionEditSettings"/>
     <addaction name="actionSaveSettings"/>
     <addaction name="actionLoadSettings"/>
     <addaction name="separator"/>
@@ -452,6 +453,14 @@
   <action name="actionCompareDirectories">
    <property name="text">
     <string>Verzeichnisse vergleichen</string>
+   </property>
+  </action>
+  <action name="actionEditSettings">
+   <property name="icon">
+    <iconset theme="document-properties"/>
+   </property>
+   <property name="text">
+    <string>Einstellungen bearbeiten ...</string>
    </property>
   </action>
  </widget>

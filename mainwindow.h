@@ -91,6 +91,7 @@ private slots:
     void actionCalculateChecksumTriggered();
     void actionCompareDirectoriesTriggered();
 
+    void actionEditSettingsTriggered();
     void actionSaveSettingsTriggered();
     void actionLoadSettingsTriggered();
     void actionRestoreDefaultSettingsTriggered();

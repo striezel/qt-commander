@@ -23,6 +23,7 @@
 #include "fileinfowindow.h"
 #include "mountedvolumesdialog.h"
 #include "directorycomparewindow.h"
+#include "settingsdialog.h"
 
 #include <QFileIconProvider>
 #include <QMessageBox>
@@ -904,6 +905,7 @@ void MainWindow::connectMenuActions()
     connect(ui->actionCalculateChecksum, &QAction::triggered, this, &MainWindow::actionCalculateChecksumTriggered);
     connect(ui->actionCompareDirectories, &QAction::triggered, this, &MainWindow::actionCompareDirectoriesTriggered);
 
+    connect(ui->actionEditSettings, &QAction::triggered, this, &MainWindow::actionEditSettingsTriggered);
     connect(ui->actionSaveSettings, &QAction::triggered, this, &MainWindow::actionSaveSettingsTriggered);
     connect(ui->actionLoadSettings, &QAction::triggered, this, &MainWindow::actionLoadSettingsTriggered);
     connect(ui->actionRestoreDefaultSettings, &QAction::triggered, this, &MainWindow::actionRestoreDefaultSettingsTriggered);
@@ -984,6 +986,12 @@ void MainWindow::actionCompareDirectoriesTriggered()
         currentDirectoryLeft.absolutePath(), currentDirectoryRight.absolutePath(),
         this);
     window->show();
+}
+
+void MainWindow::actionEditSettingsTriggered()
+{
+    SettingsDialog dialog(settings, this);
+    dialog.exec();
 }
 
 void MainWindow::actionSaveSettingsTriggered()
