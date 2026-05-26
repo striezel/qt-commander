@@ -36,6 +36,8 @@ public:
     explicit SettingsDialog(const Settings& currentSettings, QWidget *parent = nullptr);
     ~SettingsDialog();
 
+    Settings selectedSettings() const;
+
 private slots:
     void cbSortSomethingFirstToggled(bool checked);
     void btnChangeTextViewerFontClicked();

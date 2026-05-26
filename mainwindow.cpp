@@ -991,7 +991,12 @@ void MainWindow::actionCompareDirectoriesTriggered()
 void MainWindow::actionEditSettingsTriggered()
 {
     SettingsDialog dialog(settings, this);
-    dialog.exec();
+    if (dialog.exec() != QDialog::Accepted)
+    {
+        return;
+    }
+
+    putSettingsIntoGui(dialog.selectedSettings());
 }
 
 void MainWindow::actionSaveSettingsTriggered()

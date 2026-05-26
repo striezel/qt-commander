@@ -46,6 +46,77 @@ SettingsDialog::~SettingsDialog()
     delete ui;
 }
 
+Settings SettingsDialog::selectedSettings() const
+{
+    Settings settings;
+
+    QDir::Filters filters = QDir::Dirs | QDir::Drives | QDir::NoDot;
+    if (ui->cbShowHiddenFiles->isChecked())
+    {
+        filters.setFlag(QDir::Filter::Hidden);
+    }
+    if (ui->cbShowSystemFiles->isChecked())
+    {
+        filters.setFlag(QDir::Filter::System);
+    }
+    if (!ui->cbHideFiles->isChecked())
+    {
+        filters.setFlag(QDir::Filter::Files);
+    }
+    settings.setFilters(filters);
+
+    QDir::SortFlags sortFlags = QDir::SortFlag::Name;
+    if (ui->rbSortByDate->isChecked())
+    {
+        sortFlags.setFlag(QDir::SortFlag::Time);
+    }
+    if (ui->rbSortBySize->isChecked())
+    {
+        sortFlags.setFlag(QDir::SortFlag::Size);
+    }
+    if (ui->rbSortByType->isChecked())
+    {
+        sortFlags.setFlag(QDir::SortFlag::Type);
+    }
+    if (ui->cbReverseSort->isChecked())
+    {
+        sortFlags.setFlag(QDir::SortFlag::Reversed);
+    }
+    if (ui->cbSortIgnoreCase->isChecked())
+    {
+        sortFlags.setFlag(QDir::SortFlag::IgnoreCase);
+    }
+    if (ui->cbSortDirectoriesFirst->isChecked())
+    {
+        sortFlags.setFlag(QDir::SortFlag::DirsFirst);
+    }
+    if (ui->cbSortFilesFirst->isChecked())
+    {
+        sortFlags.setFlag(QDir::SortFlag::DirsLast);
+    }
+    settings.setSortFlags(sortFlags);
+
+    settings.setUseProvidedFileIcons(ui->cbUseProvidedIcons->isChecked());
+    settings.setShowFormattedSize(ui->cbShowFormattedSize->isChecked());
+
+    settings.setTextViewerFont(selectedTextViewerFont);
+    settings.setTextViewerAutoSelectLanguage(ui->cbTextViewerAutoSelectLanguage->isChecked());
+    const ThemeId hl_theme =  ui->rbDefaultDarkStyle->isChecked() ? ThemeId::DefaultDark : ThemeId::DefaultLight;
+    settings.setTextViewerHighlightingTheme(hl_theme);
+
+    settings.setAutoPlayVideo(ui->cbAutoPlayVideo->isChecked());
+    settings.setLoopVideoForever(ui->cbLoopVideoForever->isChecked());
+    settings.setVideoVolume(ui->sliderVideoVolume->value());
+
+    settings.setAutoPlayAudio(ui->cbAutoPlayAudio->isChecked());
+    settings.setLoopAudioForever(ui->cbLoopAudioForever->isChecked());
+    settings.setAudioVolume(ui->sliderAudioVolume->value());
+
+    settings.setSelectedHashAlgorithm(initialSettings.getSelectedHashAlgorithm());
+
+    return settings;
+}
+
 void SettingsDialog::cbSortSomethingFirstToggled(bool checked)
 {
     if (!checked)
