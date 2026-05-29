@@ -99,6 +99,8 @@ Settings SettingsDialog::selectedSettings() const
     settings.setUseProvidedFileIcons(ui->cbUseProvidedIcons->isChecked());
     settings.setShowFormattedSize(ui->cbShowFormattedSize->isChecked());
 
+    settings.setDeleteMovesToTrash(ui->rbDeleteMovesToTrash->isChecked());
+
     settings.setTextViewerFont(selectedTextViewerFont);
     settings.setTextViewerAutoSelectLanguage(ui->cbTextViewerAutoSelectLanguage->isChecked());
     const ThemeId hl_theme =  ui->rbDefaultDarkStyle->isChecked() ? ThemeId::DefaultDark : ThemeId::DefaultLight;
@@ -182,6 +184,15 @@ void SettingsDialog::putSettingsIntoGui(const Settings &settings)
 
     ui->cbUseProvidedIcons->setChecked(settings.getUseProvidedFileIcons());
     ui->cbShowFormattedSize->setChecked(settings.getShowFormattedSize());
+
+    if (settings.getDeleteMovesToTrash())
+    {
+        ui->rbDeleteMovesToTrash->setChecked(true);
+    }
+    else
+    {
+        ui->rbDeleteMeansDelete->setChecked(true);
+    }
 
     // text viewer
     ui->lblTextViewerFontValue->setText(fontToString(settings.getTextViewerFont()));

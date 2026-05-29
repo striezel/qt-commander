@@ -4,6 +4,12 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-05-??)
+
+* __[new feature]__
+  A new configuration option allows to change the delete operation for files / directories from
+  actual deletion to move to trash.
+
 ## Version 0.1.8 (2026-05-21)
 
 * __[new feature]__

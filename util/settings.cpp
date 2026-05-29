@@ -37,6 +37,8 @@ const bool Settings::defaultUseProvidedFileIcons{true};
 
 const bool Settings::defaultShowFormattedSize{true};
 
+const bool Settings::defaultDeleteOnlyMovesToTrash{false};
+
 const bool Settings::defaultTextViewerAutoSelectLanguage{false};
 const ThemeId Settings::defaultTextViewerHightlightingTheme{ThemeId::DefaultLight};
 
@@ -55,6 +57,7 @@ Settings::Settings()
     , sortFlags(defaultSortFlags)
     , useProvidedFileIcons(defaultUseProvidedFileIcons)
     , showFormattedSize(defaultShowFormattedSize)
+    , deleteOnlyMovesToTrash(defaultDeleteOnlyMovesToTrash)
     , textViewerFont(defaultTextViewerFont())
     , textViewerAutoSelect(defaultTextViewerAutoSelectLanguage)
     , textViewerHighlightingTheme(defaultTextViewerHightlightingTheme)
@@ -78,6 +81,7 @@ void Settings::resetToDefaults()
     sortFlags = defaultSortFlags;
     useProvidedFileIcons = defaultUseProvidedFileIcons;
     showFormattedSize = defaultShowFormattedSize;
+    deleteOnlyMovesToTrash = defaultDeleteOnlyMovesToTrash;
     textViewerFont = defaultTextViewerFont();
     textViewerAutoSelect = defaultTextViewerAutoSelectLanguage;
     textViewerHighlightingTheme = defaultTextViewerHightlightingTheme;
@@ -100,6 +104,7 @@ void Settings::save()
     settings.setValue("sort-flags", sortFlags.toInt());
     settings.setValue("use-provided-file-icons", useProvidedFileIcons);
     settings.setValue("show-formatted-size", showFormattedSize);
+    settings.setValue("delete-only-moves-to-trash", deleteOnlyMovesToTrash);
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("text-viewer-auto-select", textViewerAutoSelect);
     settings.setValue("text-viewer-highlighting-theme", static_cast<int>(textViewerHighlightingTheme));
@@ -126,6 +131,7 @@ void Settings::load()
 
     useProvidedFileIcons = settings.value("use-provided-file-icons", defaultUseProvidedFileIcons).toBool();
     showFormattedSize = settings.value("show-formatted-size", defaultShowFormattedSize).toBool();
+    deleteOnlyMovesToTrash = settings.value("delete-only-moves-to-trash", defaultDeleteOnlyMovesToTrash).toBool();
 
     QFont font = settings.value("text-viewer-font", defaultTextViewerFont()).value<QFont>();
     setTextViewerFont(font);
@@ -208,6 +214,16 @@ bool Settings::getShowFormattedSize() const
 void Settings::setShowFormattedSize(const bool formatted)
 {
     showFormattedSize = formatted;
+}
+
+bool Settings::getDeleteMovesToTrash() const
+{
+    return deleteOnlyMovesToTrash;
+}
+
+void Settings::setDeleteMovesToTrash(const bool moveToTrash)
+{
+    deleteOnlyMovesToTrash = moveToTrash;
 }
 
 QFont Settings::getTextViewerFont() const

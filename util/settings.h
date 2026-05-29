@@ -39,6 +39,8 @@ public:
 
     static const bool defaultShowFormattedSize;
 
+    static const bool defaultDeleteOnlyMovesToTrash;
+
     static QFont defaultTextViewerFont();
     static const bool defaultTextViewerAutoSelectLanguage;
     static const ThemeId defaultTextViewerHightlightingTheme;
@@ -78,6 +80,9 @@ public:
 
     bool getShowFormattedSize() const;
     void setShowFormattedSize(const bool formatted);
+
+    bool getDeleteMovesToTrash() const;
+    void setDeleteMovesToTrash(const bool moveToTrash);
 
     QFont getTextViewerFont() const;
     void setTextViewerFont(QFont font);
@@ -120,6 +125,9 @@ private:
 
     /// whether to show file size as human-readable, localized string
     bool showFormattedSize;
+
+    /// whether delete only moves files to trash (or actually deletes)
+    bool deleteOnlyMovesToTrash;
 
     /// the font which is used by the text viewer
     QFont textViewerFont;

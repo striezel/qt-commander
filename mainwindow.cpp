@@ -360,8 +360,14 @@ void MainWindow::btnRemoveClicked()
     }
 
     // Ask user whether the file / directory shall really be deleted.
-    const int answer = QMessageBox::question(
-        this, "Wirklich löschen?", "Soll \"" + name + "\" wirklich gelöscht werden?");
+
+    const QString title = settings.getDeleteMovesToTrash()
+                              ? "Wirklich in den Papierkorb verschieben?"
+                              : "Wirklich löschen?";
+    const QString text = settings.getDeleteMovesToTrash()
+                             ?  "Soll \"" + name + "\" wirklich in den Papierkorb verschoben werden?"
+                             :  "Soll \"" + name + "\" wirklich gelöscht werden?";
+    const int answer = QMessageBox::question(this, title, text);
     if (answer != QMessageBox::Yes)
     {
         return;
@@ -371,28 +377,49 @@ void MainWindow::btnRemoveClicked()
                         : currentDirectoryRight;
     const QFileInfo info(baseDir.absoluteFilePath(name));
     bool success = false;
-    if (info.isFile())
+    if (!settings.getDeleteMovesToTrash())
     {
-        success = baseDir.remove(name);
-    }
-    else
-    {
-        success = baseDir.rmdir(name);
-    }
-    if (!success)
-    {
-        QString message = "\"" + name + "\" konnte nicht gelöscht werden.";
         if (info.isFile())
         {
-            message = "Die Datei " + message;
+            success = baseDir.remove(name);
         }
         else
         {
-            message = "Das Verzeichnis " + message
-                      + "\n\nMöglicherweise ist das Verzeichnis nicht leer.";
+            success = baseDir.rmdir(name);
         }
-        QMessageBox::critical(this, "Fehler beim Löschen", message);
-        return;
+        if (!success)
+        {
+            QString message = "\"" + name + "\" konnte nicht gelöscht werden.";
+            if (info.isFile())
+            {
+                message = "Die Datei " + message;
+            }
+            else
+            {
+                message = "Das Verzeichnis " + message
+                          + "\n\nMöglicherweise ist das Verzeichnis nicht leer.";
+            }
+            QMessageBox::critical(this, "Fehler beim Löschen", message);
+            return;
+        }
+    }
+    else
+    {
+        success = QFile::moveToTrash(info.absoluteFilePath());
+        if (!success)
+        {
+            QString message = "\"" + name + "\" konnte nicht in den Papierkorb verschoben werden.";
+            if (info.isFile())
+            {
+                message = "Die Datei " + message;
+            }
+            else
+            {
+                message = "Das Verzeichnis " + message;
+            }
+            QMessageBox::critical(this, "Fehler beim Verschieben in den Papierkorb", message);
+            return;
+        }
     }
 
     // Delete item from tree view.
@@ -426,7 +453,14 @@ void MainWindow::btnRemoveClicked()
         fillTreeWidget(otherTreeWidget(), baseDir.absolutePath());
     }
 
-    statusBar()->showMessage("'" + name + "' wurde gelöscht.", 5000);
+    if (settings.getDeleteMovesToTrash())
+    {
+        statusBar()->showMessage("'" + name + "' wurde in den Papierkorb verschoben.", 5000);
+    }
+    else
+    {
+        statusBar()->showMessage("'" + name + "' wurde gelöscht.", 5000);
+    }
 }
 
 void MainWindow::btnCreateDirectoryClicked()

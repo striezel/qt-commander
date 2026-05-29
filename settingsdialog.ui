@@ -279,6 +279,56 @@
      </widget>
     </widget>
    </widget>
+   <widget class="QWidget" name="tabDeleteOperation">
+    <attribute name="icon">
+     <iconset theme="edit-delete"/>
+    </attribute>
+    <attribute name="title">
+     <string>Löschoperation</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBoxDeleteOperation">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>501</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Art der Löschoperation</string>
+     </property>
+     <widget class="QRadioButton" name="rbDeleteMeansDelete">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>481</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Löschen löscht Datei direkt</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbDeleteMovesToTrash">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>481</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Löschen verschiebt Datei in den Papierkorb</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
    <widget class="QWidget" name="tabTextViewer">
     <attribute name="icon">
      <iconset theme="accessories-text-editor"/>
