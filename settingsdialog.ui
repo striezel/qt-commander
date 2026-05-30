@@ -25,6 +25,12 @@
      <height>32</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>341</width>
+     <height>32</height>
+    </size>
+   </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
@@ -40,6 +46,12 @@
      <width>531</width>
      <height>471</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>531</width>
+     <height>471</height>
+    </size>
    </property>
    <property name="currentIndex">
     <number>0</number>
@@ -72,6 +84,12 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>221</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="text">
        <string>Nach Name sortieren</string>
       </property>
@@ -88,6 +106,12 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>221</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="text">
        <string>Nach Änderungsdatum sortieren</string>
       </property>
@@ -100,6 +124,12 @@
         <width>221</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>221</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Nach Größe sortieren</string>
@@ -114,6 +144,12 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>211</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="text">
        <string>Nach Dateityp (Endung) sortieren</string>
       </property>
@@ -127,6 +163,12 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>171</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="text">
        <string>Sortierung umkehren</string>
       </property>
@@ -139,6 +181,12 @@
         <width>221</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>221</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Groß-/Kleinschreibung ignorieren</string>
@@ -166,6 +214,12 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>221</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="text">
        <string>Verzeichnisse zuerst, dann Dateien</string>
       </property>
@@ -181,6 +235,12 @@
         <width>241</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>241</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Dateien zuerst, dann Verzeichnisse</string>
@@ -208,6 +268,12 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="text">
        <string>Vom System bereitgestellte Dateisymbole verwenden</string>
       </property>
@@ -220,6 +286,12 @@
         <width>481</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Größenangabe formatieren</string>
@@ -235,6 +307,12 @@
        <height>111</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>501</width>
+       <height>111</height>
+      </size>
+     </property>
      <property name="title">
       <string>Bestimmte Dateien ein-/ausblenden</string>
      </property>
@@ -246,6 +324,12 @@
         <width>341</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>341</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Versteckte Dateien und Verzeichnisse anzeigen</string>
@@ -260,6 +344,12 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>341</width>
+        <height>20</height>
+       </size>
+      </property>
       <property name="text">
        <string>Systemdateien und -verzeichnisse anzeigen</string>
       </property>
@@ -272,6 +362,12 @@
         <width>341</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>341</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Dateien ausblenden (zeigt nur Verzeichnisse)</string>
@@ -295,6 +391,12 @@
        <height>81</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>501</width>
+       <height>81</height>
+      </size>
+     </property>
      <property name="title">
       <string>Art der Löschoperation</string>
      </property>
@@ -306,6 +408,12 @@
         <width>481</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Löschen löscht Datei direkt</string>
@@ -322,6 +430,12 @@
         <width>481</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>481</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Löschen verschiebt Datei in den Papierkorb</string>
@@ -345,6 +459,12 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>501</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="text">
       <string>Automatisch passende Sprache für Syntaxhervorhebung wählen</string>
      </property>
@@ -358,6 +478,12 @@
        <height>91</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>501</width>
+       <height>91</height>
+      </size>
+     </property>
      <property name="title">
       <string>Stil für Syntaxhervorhebung</string>
      </property>
@@ -369,6 +495,12 @@
         <width>141</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>141</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Ayu Dark</string>
@@ -382,6 +514,12 @@
         <width>89</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>89</width>
+        <height>20</height>
+       </size>
       </property>
       <property name="text">
        <string>Ayu Light</string>
@@ -397,6 +535,12 @@
        <height>91</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>501</width>
+       <height>91</height>
+      </size>
+     </property>
      <property name="title">
       <string>Schriftart</string>
      </property>
@@ -408,6 +552,12 @@
         <width>81</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>81</width>
+        <height>16</height>
+       </size>
       </property>
       <property name="text">
        <string>Schriftart:</string>
@@ -422,6 +572,12 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>361</width>
+        <height>16</height>
+       </size>
+      </property>
       <property name="text">
        <string>Font Description Placeholder</string>
       </property>
@@ -434,6 +590,12 @@
         <width>151</width>
         <height>24</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>151</width>
+        <height>24</height>
+       </size>
       </property>
       <property name="text">
        <string>Schriftart ändern ...</string>
@@ -457,6 +619,12 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>261</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="text">
       <string>Audio automatisch abspielen</string>
      </property>
@@ -469,6 +637,12 @@
        <width>251</width>
        <height>20</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>251</width>
+       <height>20</height>
+      </size>
      </property>
      <property name="text">
       <string>In Endlosschleife abspielen</string>
@@ -483,6 +657,12 @@
        <height>16</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>71</width>
+       <height>16</height>
+      </size>
+     </property>
      <property name="text">
       <string>Lautstärke:</string>
      </property>
@@ -495,6 +675,12 @@
        <width>261</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>261</width>
+       <height>22</height>
+      </size>
      </property>
      <property name="maximum">
       <number>100</number>
@@ -521,6 +707,12 @@
        <height>16</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>61</width>
+       <height>16</height>
+      </size>
+     </property>
      <property name="text">
       <string>50 %</string>
      </property>
@@ -542,6 +734,12 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>231</width>
+       <height>20</height>
+      </size>
+     </property>
      <property name="text">
       <string>Video automatisch abspielen</string>
      </property>
@@ -554,6 +752,12 @@
        <width>241</width>
        <height>20</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>241</width>
+       <height>20</height>
+      </size>
      </property>
      <property name="text">
       <string>In Endlosschleife abspielen</string>
@@ -568,6 +772,12 @@
        <height>16</height>
       </rect>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>71</width>
+       <height>16</height>
+      </size>
+     </property>
      <property name="text">
       <string>Lautstärke:</string>
      </property>
@@ -580,6 +790,12 @@
        <width>261</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>261</width>
+       <height>22</height>
+      </size>
      </property>
      <property name="maximum">
       <number>100</number>
@@ -605,6 +821,12 @@
        <width>61</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>61</width>
+       <height>16</height>
+      </size>
      </property>
      <property name="text">
       <string>75 %</string>
