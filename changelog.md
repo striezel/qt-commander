@@ -10,6 +10,10 @@ improvements may be omitted.)_
   A new configuration option allows to change the delete operation for files / directories from
   actual deletion to move to trash.
 
+* __[improvement]__
+  All settings can now be edited in a new dialog. This dialog also includes the
+  settings used by the various file viewers.
+
 ## Version 0.1.8 (2026-05-21)
 
 * __[new feature]__
