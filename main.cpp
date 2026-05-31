@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
     QCoreApplication::setOrganizationName("Dirk Stolle");
     QCoreApplication::setApplicationName("Qt Commander");
-    QCoreApplication::setApplicationVersion("0.1.8");
+    QCoreApplication::setApplicationVersion("0.1.9");
 
     MainWindow w;
     w.show();

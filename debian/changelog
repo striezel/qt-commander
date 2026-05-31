@@ -1,3 +1,13 @@
+qt-commander (0.1.9-1) UNRELEASED; urgency=medium
+
+  * A new configuration option allows to change the delete operation for files /
+    directories from actual deletion to move to trash.
+
+  * All settings can now be edited in a new dialog. This dialog also includes
+    the settings used by the various file viewers.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Sun, 31 May 2026 23:31:27 +0200
+
 qt-commander (0.1.8-1) UNRELEASED; urgency=medium
 
   * The text viewer can now provide basic syntax highlighting for a few common
