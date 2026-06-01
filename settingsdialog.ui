@@ -617,7 +617,7 @@
         </size>
        </property>
        <property name="text">
-        <string>In Endlosschleife abspielen</string>
+        <string>Audio in Endlosschleife abspielen</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblAudioVolume">
@@ -732,7 +732,7 @@
         </size>
        </property>
        <property name="text">
-        <string>In Endlosschleife abspielen</string>
+        <string>Video in Endlosschleife abspielen</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblVideoVolume">
