@@ -26,7 +26,7 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabView">
       <attribute name="icon">
@@ -577,7 +577,7 @@
      </widget>
      <widget class="QWidget" name="tabAudioPlayer">
       <attribute name="icon">
-       <iconset theme="applications-multimedia"/>
+       <iconset theme="audio-volume-medium"/>
       </attribute>
       <attribute name="title">
        <string>Audiowiedergabe</string>
