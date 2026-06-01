@@ -652,6 +652,12 @@ void MainWindow::btnViewClicked()
     const QString selectedFile = currentDirectory().absoluteFilePath(name);
     const QFileInfo info(selectedFile);
 
+    if (info.isDir())
+    {
+        // Change to directory.
+        treeItemDoubleClicked(item, -1);
+        return;
+    }
     if (!info.isFile())
     {
 #if defined(__linux__)

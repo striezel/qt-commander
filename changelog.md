@@ -4,6 +4,12 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-06-??)
+
+* __[improvement]__
+  When the view button is clicked while a directory is selected, it will now trigger a change to
+  that directory instead of showing a warning that only files can be viewed.
+
 ## Version 0.1.9 (2026-05-31)
 
 * __[new feature]__
