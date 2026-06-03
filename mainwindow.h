@@ -41,7 +41,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, const QStringList& positionalArgs = {});
     ~MainWindow();
 
 public slots:
@@ -112,6 +112,15 @@ private:
     QActionGroup whatFirstGroup;
 
     FileTypeDetection detection;
+
+    /// Returns the path of the initial directory by looking at the positional
+    /// command-line arguments given in positionalArgs. More specifically, the
+    /// entry at the given index is considered, if that is a valid index.
+    /// Returns the home directory, if the given directory does not exist.
+    ///
+    /// @param positionalArgs  positional command-line arguments from QCommandLineParser
+    /// @param index the index to look at; use 0 for left and 1 for right side
+    QString initialDirectory(const QStringList& positionalArgs, const qsizetype index) const;
 
     void fillTreeWidget(QTreeWidget* treeWidget, const QString& path, const bool selectFirst = false, const QString& selectedItemName = "");
 

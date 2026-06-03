@@ -6,6 +6,13 @@ improvements may be omitted.)_
 
 ## Next Version (2026-06-??)
 
+* __[new feature]__
+  The initial directories which are shown can now be set via the command-line.
+  For example, `qt-commander /tmp` will show the directory `/tmp` on the left
+  side (and the home directory on the right side). When two directory paths
+  are given, the first one is opened on the left side and the second one on the
+  right side.
+
 * __[improvement]__
   When the view button is clicked while a directory is selected, it will now trigger a change to
   that directory instead of showing a warning that only files can be viewed.

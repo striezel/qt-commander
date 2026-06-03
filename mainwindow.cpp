@@ -39,7 +39,7 @@
 #include "viewers/textviewwindow.h"
 #include "viewers/videoplayerwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget *parent, const QStringList& positionalArgs)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , currentDirectoryLeft(QDir::home())
@@ -50,15 +50,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // load any previously saved settings - if any
+    // load previously saved settings - if any
     settings.load();
     putSettingsIntoGui(settings, true);
 
     ui->treeWidgetLeft->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
     ui->treeWidgetRight->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
 
-    fillTreeWidget(ui->treeWidgetLeft, QDir::homePath());
-    fillTreeWidget(ui->treeWidgetRight, QDir::homePath());
+    fillTreeWidget(ui->treeWidgetLeft, initialDirectory(positionalArgs, 0));
+    fillTreeWidget(ui->treeWidgetRight, initialDirectory(positionalArgs, 1));
 
     connect(ui->treeWidgetLeft, &QTreeWidget::itemDoubleClicked,
             this, &MainWindow::treeItemDoubleClicked);
@@ -81,6 +81,27 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+QString MainWindow::initialDirectory(const QStringList &positionalArgs, const qsizetype index) const
+{
+    if (positionalArgs.size() > index)
+    {
+        const QFileInfo info (positionalArgs.at(index));
+        if (info.isDir())
+        {
+            // Use given directory as initial directory.
+            return info.absoluteFilePath();
+        }
+        else if (info.exists())
+        {
+            // Use parent directory of file as initial directory.
+            return info.absolutePath();
+        }
+    }
+
+    // Default: Use the home directory.
+    return QDir::homePath();
 }
 
 void MainWindow::textViewerFontChanged(const QFont &new_font)

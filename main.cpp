@@ -21,6 +21,7 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QCommandLineParser>
 
 int main(int argc, char *argv[])
 {
@@ -30,7 +31,22 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Qt Commander");
     QCoreApplication::setApplicationVersion("0.1.9");
 
-    MainWindow w;
+    QCommandLineParser parser;
+    parser.setApplicationDescription("A file manager with two directory views placed side by side.");
+    parser.addVersionOption();
+    parser.addHelpOption();
+    parser.addPositionalArgument(
+        "left_dir",
+        QCoreApplication::translate("main", "The directory to open on the left side of the application."),
+        "[left_dir]");
+    parser.addPositionalArgument(
+        "right_dir",
+        QCoreApplication::translate("main", "The directory to open on the right side of the application."),
+        "[right_dir]");
+    parser.process(a);
+    const QStringList pos_args = parser.positionalArguments();
+
+    MainWindow w(nullptr, pos_args);
     w.show();
     return a.exec();
 }
