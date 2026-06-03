@@ -270,7 +270,7 @@ void DirectoryCompareWindow::actionGoToNextDifferenceTriggered()
 
     QMessageBox::information(
         this, "Keine weiteren Unterschiede vorhanden",
-        "Es gibt keine weiteren Einträge mit unterschiedlichen Dateien.");
+        "Es gibt keine nachfolgenden Einträge mit unterschiedlichen Dateien.");
 }
 
 void DirectoryCompareWindow::actionGoToPrevDifferenceTriggered()
