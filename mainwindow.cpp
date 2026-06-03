@@ -1108,7 +1108,6 @@ void MainWindow::actionAboutQtTriggered()
 
 void MainWindow::actionShowHiddenFilesTriggered(bool checked)
 {
-    qDebug() << "Old filter setting: " << settings.getFilters();
     if (checked)
     {
         settings.setFilters(settings.getFilters() | QDir::Filter::Hidden);
@@ -1117,13 +1116,11 @@ void MainWindow::actionShowHiddenFilesTriggered(bool checked)
     {
         settings.setFilters(settings.getFilters() ^ QDir::Filter::Hidden);
     }
-    qDebug() << "New filter setting: " << settings.getFilters();
     refreshBothViews();
 }
 
 void MainWindow::actionShowSystemFilesTriggered(bool checked)
 {
-    qDebug() << "Old filter setting: " << settings.getFilters();
     if (checked)
     {
         settings.setFilters(settings.getFilters() | QDir::Filter::System);
@@ -1132,13 +1129,11 @@ void MainWindow::actionShowSystemFilesTriggered(bool checked)
     {
         settings.setFilters(settings.getFilters() ^ QDir::Filter::System);
     }
-    qDebug() << "New filter setting: " << settings.getFilters();
     refreshBothViews();
 }
 
 void MainWindow::actionHideFilesTriggered(bool checked)
 {
-    qDebug() << "Old filter setting: " << settings.getFilters();
     if (checked)
     {
         settings.setFilters(settings.getFilters() ^ QDir::Filter::Files);
@@ -1147,7 +1142,6 @@ void MainWindow::actionHideFilesTriggered(bool checked)
     {
         settings.setFilters(settings.getFilters() | QDir::Filter::Files);
     }
-    qDebug() << "New filter setting: " << settings.getFilters();
     refreshBothViews();
 }
 
@@ -1157,8 +1151,6 @@ void MainWindow::actionSortBySomethingTriggered(bool checked)
     {
         return;
     }
-
-    qDebug() << "Old sort setting: " << settings.getSortFlags();
 
     QDir::SortFlag sortByFlag = QDir::SortFlag::Name;
     if (sender() == ui->actionSortByName)
@@ -1182,13 +1174,11 @@ void MainWindow::actionSortBySomethingTriggered(bool checked)
 
     // Set new sort flag.
     settings.setSortFlags(settings.getSortFlags() | sortByFlag);
-    qDebug() << "New sort setting: " << settings.getSortFlags();
     refreshBothViews();
 }
 
 void MainWindow::actionReverseSortTriggered(bool checked)
 {
-    qDebug() << "Old sort setting: " << settings.getSortFlags();
     if (checked)
     {
         settings.setSortFlags(settings.getSortFlags() | QDir::SortFlag::Reversed);
@@ -1197,13 +1187,11 @@ void MainWindow::actionReverseSortTriggered(bool checked)
     {
         settings.setSortFlags(settings.getSortFlags() ^ QDir::SortFlag::Reversed);
     }
-    qDebug() << "New sort setting: " << settings.getSortFlags();
     refreshBothViews();
 }
 
 void MainWindow::actionSortIgnoreCaseTriggered(bool checked)
 {
-    qDebug() << "Old sort setting: " << settings.getSortFlags();
     if (checked)
     {
         settings.setSortFlags(settings.getSortFlags() | QDir::SortFlag::IgnoreCase);
@@ -1212,13 +1200,11 @@ void MainWindow::actionSortIgnoreCaseTriggered(bool checked)
     {
         settings.setSortFlags(settings.getSortFlags() ^ QDir::SortFlag::IgnoreCase);
     }
-    qDebug() << "New sort setting: " << settings.getSortFlags();
     refreshBothViews();
 }
 
 void MainWindow::actionSortSomethingFirstTriggered(bool checked)
 {
-    qDebug() << "Old sort setting: " << settings.getSortFlags();
     QDir::SortFlag sortFirstFlag = QDir::SortFlag::DirsFirst;
     if (sender() == ui->actionSortFilesFirst)
     {
@@ -1246,7 +1232,6 @@ void MainWindow::actionSortSomethingFirstTriggered(bool checked)
             settings.setSortFlags(settings.getSortFlags() ^ sortFirstFlag);
         }
     }
-    qDebug() << "New sort setting: " << settings.getSortFlags();
     refreshBothViews();
 }
 
