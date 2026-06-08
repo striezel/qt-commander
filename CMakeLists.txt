@@ -84,6 +84,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         viewers/hl/highlighterrule.h viewers/hl/highlighterrule.cpp
         viewers/hl/cpphighlighter.h viewers/hl/cpphighlighter.cpp
         viewers/hl/csharphighlighter.h viewers/hl/csharphighlighter.cpp
+        viewers/hl/javahighlighter.h viewers/hl/javahighlighter.cpp
         viewers/hl/pythonhighlighter.h viewers/hl/pythonhighlighter.cpp
         viewers/hl/rusthighlighter.h viewers/hl/rusthighlighter.cpp
         viewers/hl/shellhighlighter.h viewers/hl/shellhighlighter.cpp
