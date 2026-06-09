@@ -88,6 +88,8 @@ TextViewWindow::~TextViewWindow()
         disconnect(this, &TextViewWindow::highlightingThemeChanged, castedParent, &MainWindow::textViewerHightlightingThemeChanged);
     }
 
+    removeHighlighter();
+
     delete ui;
 }
 
@@ -210,7 +212,7 @@ void TextViewWindow::actionAutoSelectLanguageTriggered(bool checked)
 void TextViewWindow::actionLanguageChangeTriggered()
 {
     removeHighlighter();
-    const Theme* theme = getSelectedTheme();
+    const std::unique_ptr<Theme> theme = getSelectedTheme();
     hl = getSelectedHighlighter(*theme);
 }
 
@@ -257,15 +259,15 @@ void TextViewWindow::removeHighlighter()
     }
 }
 
-Theme* TextViewWindow::getSelectedTheme() const
+std::unique_ptr<Theme> TextViewWindow::getSelectedTheme() const
 {
     if (ui->actionStyleAyuDark->isChecked())
     {
-        return new DefaultThemeDark();
+        return std::unique_ptr<DefaultThemeDark>(new DefaultThemeDark());
     }
 
     // Otherwise the light theme is checked.
-    return new DefaultThemeLight();
+    return std::unique_ptr<DefaultThemeLight>(new DefaultThemeLight());
 }
 
 QSyntaxHighlighter *TextViewWindow::getSelectedHighlighter(const Theme &theme) const
@@ -343,7 +345,7 @@ void TextViewWindow::updateWithNewTheme()
     }
 
     removeHighlighter();
-    const Theme* theme = getSelectedTheme();
+    const std::unique_ptr<Theme> theme = getSelectedTheme();
     hl = getSelectedHighlighter(*theme);
 }
 

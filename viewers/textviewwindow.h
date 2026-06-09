@@ -27,6 +27,7 @@
 #include <QFont>
 #include <QString>
 #include <QSyntaxHighlighter>
+#include <memory>
 #include "hl/themes/theme.h"
 
 namespace Ui {
@@ -96,7 +97,7 @@ private:
     /// Remove existing syntax highlighting.
     void removeHighlighter();
 
-    Theme* getSelectedTheme() const;
+    std::unique_ptr<Theme> getSelectedTheme() const;
 
     QSyntaxHighlighter* getSelectedHighlighter(const Theme& theme) const;
 

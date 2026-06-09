@@ -27,6 +27,8 @@
 class Theme
 {
 public:
+    virtual ~Theme() = default;
+
     /// Gets the text format for keywords.
     virtual QTextCharFormat keyword() const = 0;
 
