@@ -35,6 +35,7 @@
 #include "hl/pythonhighlighter.h"
 #include "hl/rusthighlighter.h"
 #include "hl/shellhighlighter.h"
+#include "hl/sqlhighlighter.h"
 #include "hl/themes/defaultthemedark.h"
 #include "hl/themes/defaultthemelight.h"
 
@@ -60,6 +61,7 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     connect(ui->actionLanguagePython, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageRust, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageShell, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
+    connect(ui->actionLanguageSQL, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageNone, &QAction::triggered, this, &TextViewWindow::actionLanguageNoneTriggered);
 
     connect(ui->actionStyleAyuDark, &QAction::triggered, this, &TextViewWindow::actionStyleChangeTriggered);
@@ -296,6 +298,10 @@ QSyntaxHighlighter *TextViewWindow::getSelectedHighlighter(const Theme &theme) c
     {
         return new ShellHighlighter(theme, ui->plainTextEdit->document());
     }
+    else if (ui->actionLanguageSQL->isChecked())
+    {
+        return new SqlHighlighter(theme, ui->plainTextEdit->document());
+    }
 
     // no selection
     return nullptr;
@@ -330,6 +336,10 @@ void TextViewWindow::autoSelectHighlighting()
     {
         ui->actionLanguageShell->setChecked(true);
     }
+    else if (suffix == "sql")
+    {
+        ui->actionLanguageSQL->setChecked(true);
+    }
     else
     {
         ui->actionLanguageNone->setChecked(true);
@@ -359,6 +369,7 @@ void TextViewWindow::createActionGroups()
     actionGroupLanguages->addAction(ui->actionLanguagePython);
     actionGroupLanguages->addAction(ui->actionLanguageRust);
     actionGroupLanguages->addAction(ui->actionLanguageShell);
+    actionGroupLanguages->addAction(ui->actionLanguageSQL);
 
     actionGroupStyles = new QActionGroup(this);
     actionGroupStyles->addAction(ui->actionStyleAyuDark);

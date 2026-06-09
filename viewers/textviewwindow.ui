@@ -70,6 +70,7 @@
      <addaction name="actionLanguagePython"/>
      <addaction name="actionLanguageRust"/>
      <addaction name="actionLanguageShell"/>
+     <addaction name="actionLanguageSQL"/>
     </widget>
     <addaction name="menuLanguage"/>
     <addaction name="menuStyle"/>
@@ -190,6 +191,14 @@
    </property>
    <property name="text">
     <string>Java</string>
+   </property>
+  </action>
+  <action name="actionLanguageSQL">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>SQL</string>
    </property>
   </action>
  </widget>
