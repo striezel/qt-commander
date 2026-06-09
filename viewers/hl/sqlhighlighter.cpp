@@ -422,9 +422,35 @@ SqlHighlighter::SqlHighlighter(const Theme& theme, QTextDocument* parent)
 
     HighlighterRule rule;
 
+    constexpr unsigned int words_per_regex = 15;
+    unsigned int word_count = 0;
+    QString words;
+
     for (const std::string& keyword : keywords)
     {
-        rule.pattern = QRegularExpression(QString::fromStdString("\\b" + keyword + "\\b"), QRegularExpression::CaseInsensitiveOption);
+        if (words.isEmpty())
+        {
+            words = QString::fromStdString(keyword);
+        }
+        else
+        {
+            words += "|" + keyword;
+        }
+        ++word_count;
+        if (word_count >= words_per_regex)
+        {
+            rule.pattern = QRegularExpression("\\b(" + words + ")\\b", QRegularExpression::CaseInsensitiveOption);
+            rule.format = keywordFormat;
+            rules.append(rule);
+
+            words.clear();
+            word_count = 0;
+        }
+    }
+
+    if (word_count > 0)
+    {
+        rule.pattern = QRegularExpression("\\b(" + words + ")\\b", QRegularExpression::CaseInsensitiveOption);
         rule.format = keywordFormat;
         rules.append(rule);
     }
