@@ -63,24 +63,18 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(qt-commander
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        createdirectorydialog.h createdirectorydialog.cpp createdirectorydialog.ui
-        focustrackingtreewidget.h focustrackingtreewidget.cpp
-        util/dirutils.h util/dirutils.cpp
-        util/settings.h util/settings.cpp
-        viewers/textviewwindow.h viewers/textviewwindow.cpp viewers/textviewwindow.ui
-        viewers/imageviewwindow.h viewers/imageviewwindow.cpp viewers/imageviewwindow.ui
-        util/filetypedetection.h util/filetypedetection.cpp
-        viewers/animationviewwindow.h viewers/animationviewwindow.cpp viewers/animationviewwindow.ui
-        viewers/audioplayerwindow.h viewers/audioplayerwindow.cpp viewers/audioplayerwindow.ui
-        viewers/videoplayerwindow.h viewers/videoplayerwindow.cpp viewers/videoplayerwindow.ui
-        fileinfowindow.h fileinfowindow.cpp fileinfowindow.ui
-        mountedvolumesdialog.h mountedvolumesdialog.cpp mountedvolumesdialog.ui
-        util/durationutils.h util/durationutils.cpp
         checksumdialog.h checksumdialog.cpp checksumdialog.ui
-        viewers/pdfviewwindow.h viewers/pdfviewwindow.cpp viewers/pdfviewwindow.ui
+        createdirectorydialog.h createdirectorydialog.cpp createdirectorydialog.ui
         directorycomparewindow.h directorycomparewindow.cpp directorycomparewindow.ui
+        fileinfowindow.h fileinfowindow.cpp fileinfowindow.ui
+        focustrackingtreewidget.h focustrackingtreewidget.cpp
+        mountedvolumesdialog.h mountedvolumesdialog.cpp mountedvolumesdialog.ui
         settingsdialog.h settingsdialog.cpp settingsdialog.ui
         util/compare.h util/compare.cpp
+        util/dirutils.h util/dirutils.cpp
+        util/durationutils.h util/durationutils.cpp
+        util/filetypedetection.h util/filetypedetection.cpp
+        util/settings.h util/settings.cpp
         viewers/hl/highlighterrule.h viewers/hl/highlighterrule.cpp
         viewers/hl/cpphighlighter.h viewers/hl/cpphighlighter.cpp
         viewers/hl/csharphighlighter.h viewers/hl/csharphighlighter.cpp
@@ -92,6 +86,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         viewers/hl/themes/defaultthemelight.h viewers/hl/themes/defaultthemelight.cpp
         viewers/hl/themes/defaultthemedark.h viewers/hl/themes/defaultthemedark.cpp
         viewers/hl/themes/themeid.h
+        viewers/animationviewwindow.h viewers/animationviewwindow.cpp viewers/animationviewwindow.ui
+        viewers/audioplayerwindow.h viewers/audioplayerwindow.cpp viewers/audioplayerwindow.ui
+        viewers/imageviewwindow.h viewers/imageviewwindow.cpp viewers/imageviewwindow.ui
+        viewers/pdfviewwindow.h viewers/pdfviewwindow.cpp viewers/pdfviewwindow.ui
+        viewers/textviewwindow.h viewers/textviewwindow.cpp viewers/textviewwindow.ui
+        viewers/videoplayerwindow.h viewers/videoplayerwindow.cpp viewers/videoplayerwindow.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET qt-commander APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
