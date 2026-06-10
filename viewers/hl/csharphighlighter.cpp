@@ -27,7 +27,7 @@ CSharpHighlighter::CSharpHighlighter(const Theme& theme, QTextDocument* parent)
     , commentFormat(theme.comment())
 {
     const QTextCharFormat keywordFormat = theme.keyword();
-    const std::array<std::string, 81> keywords = {
+    const std::array<std::string, 80> keywords = {
         "abstract",
         "as",
         "async",
@@ -76,7 +76,7 @@ CSharpHighlighter::CSharpHighlighter(const Theme& theme, QTextDocument* parent)
         "operator",
         "out",
         "override",
-        "params"
+        "params",
         "private",
         "protected",
         "public",

@@ -25,7 +25,7 @@ ShellHighlighter::ShellHighlighter(const Theme& theme, QTextDocument* parent)
     , rules(QList<HighlighterRule>())
 {
     const QTextCharFormat keywordFormat = theme.keyword();
-    const std::array<std::string, 81> keywords = {
+    const std::array<std::string, 16> keywords = {
         "case",
         "coproc",
         "do",
