@@ -434,7 +434,7 @@ SqlHighlighter::SqlHighlighter(const Theme& theme, QTextDocument* parent)
         }
         else
         {
-            words += "|" + keyword;
+            words += QStringLiteral("|") + QString::fromStdString(keyword);
         }
         ++word_count;
         if (word_count >= words_per_regex)
