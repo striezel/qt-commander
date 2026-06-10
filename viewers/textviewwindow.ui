@@ -82,7 +82,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
    <property name="icon">
-    <iconset theme="application-exit"/>
+    <iconset theme="window-close"/>
    </property>
    <property name="text">
     <string>Schließen</string>
