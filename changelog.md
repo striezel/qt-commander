@@ -15,7 +15,7 @@ improvements may be omitted.)_
 
 * __[new feature]__
   The text viewer can now provide basic syntax highlighting for the Java
-  programming language and the SQL database query language.
+  and Pascal programming languages and the SQL database query language.
 
 * __[improvement]__
   When the view button is clicked while a directory is selected, it will now trigger a change to

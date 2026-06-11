@@ -67,6 +67,7 @@
      <addaction name="actionLanguageCpp"/>
      <addaction name="actionLanguageCSharp"/>
      <addaction name="actionLanguageJava"/>
+     <addaction name="actionLanguagePascal"/>
      <addaction name="actionLanguagePython"/>
      <addaction name="actionLanguageRust"/>
      <addaction name="actionLanguageShell"/>
@@ -199,6 +200,14 @@
    </property>
    <property name="text">
     <string>SQL</string>
+   </property>
+  </action>
+  <action name="actionLanguagePascal">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Pascal</string>
    </property>
   </action>
  </widget>

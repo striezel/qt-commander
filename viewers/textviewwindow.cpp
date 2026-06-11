@@ -32,6 +32,7 @@
 #include "hl/cpphighlighter.h"
 #include "hl/csharphighlighter.h"
 #include "hl/javahighlighter.h"
+#include "hl/pascalhighlighter.h"
 #include "hl/pythonhighlighter.h"
 #include "hl/rusthighlighter.h"
 #include "hl/shellhighlighter.h"
@@ -58,6 +59,7 @@ TextViewWindow::TextViewWindow(QWidget *parent)
     connect(ui->actionLanguageCpp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageCSharp, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageJava, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
+    connect(ui->actionLanguagePascal, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguagePython, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageRust, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
     connect(ui->actionLanguageShell, &QAction::triggered, this, &TextViewWindow::actionLanguageChangeTriggered);
@@ -286,6 +288,10 @@ QSyntaxHighlighter *TextViewWindow::getSelectedHighlighter(const Theme &theme) c
     {
         return new JavaHighlighter(theme, ui->plainTextEdit->document());
     }
+    else if (ui->actionLanguagePascal->isChecked())
+    {
+        return new PascalHighlighter(theme, ui->plainTextEdit->document());
+    }
     else if (ui->actionLanguagePython->isChecked())
     {
         return new PythonHighlighter(theme, ui->plainTextEdit->document());
@@ -323,6 +329,10 @@ void TextViewWindow::autoSelectHighlighting()
     else if (suffix == "java")
     {
         ui->actionLanguageJava->setChecked(true);
+    }
+    else if (suffix == "pas")
+    {
+        ui->actionLanguagePascal->setChecked(true);
     }
     else if (suffix == "py")
     {
@@ -366,6 +376,7 @@ void TextViewWindow::createActionGroups()
     actionGroupLanguages->addAction(ui->actionLanguageCpp);
     actionGroupLanguages->addAction(ui->actionLanguageCSharp);
     actionGroupLanguages->addAction(ui->actionLanguageJava);
+    actionGroupLanguages->addAction(ui->actionLanguagePascal);
     actionGroupLanguages->addAction(ui->actionLanguagePython);
     actionGroupLanguages->addAction(ui->actionLanguageRust);
     actionGroupLanguages->addAction(ui->actionLanguageShell);
