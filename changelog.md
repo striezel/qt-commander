@@ -21,6 +21,10 @@ improvements may be omitted.)_
   When the view button is clicked while a directory is selected, it will now trigger a change to
   that directory instead of showing a warning that only files can be viewed.
 
+* __[improvement]__
+  The speed of the text viewer's syntax highlighting has been improved for the
+  existing programming languages from earlier versions.
+
 ## Version 0.1.9 (2026-05-31)
 
 * __[new feature]__
