@@ -46,9 +46,35 @@ ShellHighlighter::ShellHighlighter(const Theme& theme, QTextDocument* parent)
 
     HighlighterRule rule;
 
+    constexpr unsigned int words_per_regex = 16;
+    unsigned int word_count = 0;
+    QString words;
+
     for (const std::string& keyword : keywords)
     {
-        rule.pattern = QRegularExpression(QString::fromStdString("\\b" + keyword + "\\b"));
+        if (words.isEmpty())
+        {
+            words = QString::fromStdString(keyword);
+        }
+        else
+        {
+            words += QStringLiteral("|") + QString::fromStdString(keyword);
+        }
+        ++word_count;
+        if (word_count >= words_per_regex)
+        {
+            rule.pattern = QRegularExpression(QString::fromStdString("\\b(" + keyword + ")\\b"));
+            rule.format = keywordFormat;
+            rules.append(rule);
+
+            words.clear();
+            word_count = 0;
+        }
+    }
+
+    if (word_count > 0)
+    {
+        rule.pattern = QRegularExpression("\\b(" + words + ")\\b");
         rule.format = keywordFormat;
         rules.append(rule);
     }
@@ -76,9 +102,35 @@ ShellHighlighter::ShellHighlighter(const Theme& theme, QTextDocument* parent)
         "[ \t]\\-ne[ \t]", "[ \t]\\-nt[ \t]", "[ \t]\\-ot[ \t]"
     };
     rule.format = theme.operators();
+
+    QString ops;
+    constexpr unsigned int ops_per_regex = 7;
+    unsigned int op_count = 0;
+
     for (const QString& op : operators)
     {
-        rule.pattern = QRegularExpression(op);
+        if (ops.isEmpty())
+        {
+            ops = op;
+        }
+        else
+        {
+            ops += QStringLiteral("|") + op;
+        }
+        ++op_count;
+        if (op_count >= ops_per_regex)
+        {
+            rule.pattern = QRegularExpression(ops);
+            rules.append(rule);
+
+            ops.clear();
+            op_count = 0;
+        }
+    }
+
+    if (op_count > 0)
+    {
+        rule.pattern = QRegularExpression(ops);
         rules.append(rule);
     }
 
