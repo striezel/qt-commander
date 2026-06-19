@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
     QCoreApplication::setOrganizationName("Dirk Stolle");
     QCoreApplication::setApplicationName("Qt Commander");
-    QCoreApplication::setApplicationVersion("0.1.9");
+    QCoreApplication::setApplicationVersion("0.1.10");
 
     QCommandLineParser parser;
     parser.setApplicationDescription("A file manager with two directory views placed side by side.");

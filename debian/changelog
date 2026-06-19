@@ -1,3 +1,23 @@
+qt-commander (0.1.10-1) UNRELEASED; urgency=medium
+
+* The initial directories which are shown can now be set via the command-line.
+  For example, `qt-commander /tmp` will show the directory `/tmp` on the left
+  side (and the home directory on the right side). When two directory paths
+  are given, the first one is opened on the left side and the second one on the
+  right side.
+
+* The text viewer can now provide basic syntax highlighting for the Java and
+  Pascal programming languages and the SQL database query language, too.
+
+* When the view button is clicked while a directory is selected, it will now
+  trigger a change to that directory instead of showing a warning that only
+  files can be viewed.
+
+* The speed of the text viewer's syntax highlighting has been improved for the
+  existing programming languages from earlier versions.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Fri, 19 Jun 2026 03:42:37 +0200
+
 qt-commander (0.1.9-1) UNRELEASED; urgency=medium
 
   * A new configuration option allows to change the delete operation for files /

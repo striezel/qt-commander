@@ -4,7 +4,7 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
-## Next Version (2026-06-??)
+## Version 0.1.10 (2026-06-19)
 
 * __[new feature]__
   The initial directories which are shown can now be set via the command-line.
