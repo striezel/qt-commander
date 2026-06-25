@@ -24,6 +24,7 @@
 #include <QCryptographicHash>
 #include <QDir>
 #include <QFont>
+#include "comparecasesensitivity.h"
 #include "../viewers/hl/themes/themeid.h"
 
 class Settings
@@ -54,6 +55,8 @@ public:
     static const int defaultAudioVolume;
 
     static const QCryptographicHash::Algorithm defaultHashAlgorithm;
+
+    static const CompareCaseSensitivity defaultCompareCaseSensitivity;
 
     /// Resets all values to their defaults.
     void resetToDefaults();
@@ -113,6 +116,9 @@ public:
 
     QCryptographicHash::Algorithm getSelectedHashAlgorithm() const;
     void setSelectedHashAlgorithm(const QCryptographicHash::Algorithm algo);
+
+    CompareCaseSensitivity getCompareCaseSensitivity() const;
+    void setCompareCaseSensitivity(const CompareCaseSensitivity ccs);
 private:
     /// current filters for shown files/directories - applies to both views
     QDir::Filters filters;
@@ -159,6 +165,9 @@ private:
 
     /// the (pre-)selected hash algorithm for the current session (not loaded/saved)
     QCryptographicHash::Algorithm selectedHashAlgorithm;
+
+    /// case-sensitivity of file names for directory comparison
+    CompareCaseSensitivity compareCaseSensitivity;
 };
 
 #endif // SETTINGS_H

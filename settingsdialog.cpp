@@ -116,6 +116,19 @@ Settings SettingsDialog::selectedSettings() const
 
     settings.setSelectedHashAlgorithm(initialSettings.getSelectedHashAlgorithm());
 
+    if (ui->rbCaseInsensitiveCompare->isChecked())
+    {
+        settings.setCompareCaseSensitivity(CompareCaseSensitivity::CaseInsensitive);
+    }
+    else if (ui->rbCaseSensitiveCompare->isChecked())
+    {
+        settings.setCompareCaseSensitivity(CompareCaseSensitivity::CaseSensitive);
+    }
+    else
+    {
+        settings.setCompareCaseSensitivity(CompareCaseSensitivity::SystemDefault);
+    }
+
     return settings;
 }
 
@@ -216,6 +229,20 @@ void SettingsDialog::putSettingsIntoGui(const Settings &settings)
     ui->cbAutoPlayVideo->setChecked(settings.getAutoPlayVideo());
     ui->cbLoopVideoForever->setChecked(settings.getLoopVideoForever());
     ui->sliderVideoVolume->setValue(settings.getVideoVolume());
+
+    // directory comparison
+    switch (settings.getCompareCaseSensitivity())
+    {
+    case CompareCaseSensitivity::CaseInsensitive:
+        ui->rbCaseInsensitiveCompare->setChecked(true);
+        break;
+    case CompareCaseSensitivity::CaseSensitive:
+        ui->rbCaseSensitiveCompare->setChecked(true);
+        break;
+    default:
+        ui->rbSystemDefaultCaseSensitivity->setChecked(true);
+        break;
+    }
 }
 
 QString SettingsDialog::fontToString(const QFont &font)

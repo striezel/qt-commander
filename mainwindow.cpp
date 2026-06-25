@@ -1045,7 +1045,7 @@ void MainWindow::actionCompareDirectoriesTriggered()
 
     DirectoryCompareWindow* window = new DirectoryCompareWindow(
         currentDirectoryLeft.absolutePath(), currentDirectoryRight.absolutePath(),
-        this);
+        settings.getCompareCaseSensitivity(), this);
     window->show();
 }
 

@@ -27,6 +27,7 @@
 #include <QObject>
 #include <QMetaType>
 #include <QString>
+#include "comparecasesensitivity.h"
 
 class Compare: public QObject
 {
@@ -102,7 +103,7 @@ public:
     ///   has completed
     /// - compareCancelled() reports a partial comparison result after the
     ///   comparison has been cancelled
-    void compareDirectories(const QString &left, const QString &right);
+    void compareDirectories(const QString &left, const QString &right, const CompareCaseSensitivity caseSensitivity);
 
     /// Asks to cancel the comparison started by calling compareDirectories().
     /// Note that this may not take effect immediately, but only after the

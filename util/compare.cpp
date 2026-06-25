@@ -96,26 +96,16 @@ Compare::Content Compare::contents(const QFileInfo &left, const QFileInfo &right
     return Content::Identical;
 }
 
-void Compare::compareDirectories(const QString &left, const QString &right)
+void Compare::compareDirectories(const QString &left, const QString &right, const CompareCaseSensitivity caseSensitivity)
 {
     constexpr QDir::Filters compareFilter = QDir::Filter::AllEntries
                                             | QDir::Filter::NoDotAndDotDot
                                             | QDir::Filter::Hidden
                                             | QDir::Filter::System;
-    constexpr QDir::SortFlags compareSort = QDir::SortFlag::Name
-                                            | QDir::SortFlag::DirsFirst
-#if defined(_WIN32)
-    // Not always right these days, but assume that Windows FS is case-insensitive.
-                                            | QDir::SortFlag::IgnoreCase
-#endif
-        ;
-    constexpr Qt::CaseSensitivity compareCaseSensitivity =
-#if defined(_WIN32)
-        Qt::CaseSensitivity::CaseInsensitive
-#else
-        Qt::CaseSensitivity::CaseSensitive
-#endif
-        ;
+    const QDir::SortFlags compareSort = QDir::SortFlag::Name
+                                        | QDir::SortFlag::DirsFirst
+                                        | extraSortFlag(caseSensitivity);
+    const Qt::CaseSensitivity compareCaseSensitivity = toQtCaseSensitivity(caseSensitivity);
 
     QDir leftDir(left);
     QDir rightDir(right);

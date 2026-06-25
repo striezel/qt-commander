@@ -33,12 +33,13 @@ const QString DirectoryCompareWindow::iconNameUnknown{"dialog-question"};
 const QString DirectoryCompareWindow::iconNameLeftSideOnly{"go-previous"};
 const QString DirectoryCompareWindow::iconNameRightSideOnly{"go-next"};
 
-DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QString& pathRight, QWidget *parent)
+DirectoryCompareWindow::DirectoryCompareWindow(const QString& pathLeft, const QString& pathRight, const CompareCaseSensitivity ccs, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::DirectoryCompareWindow)
     , initialShowDone(false)
     , leftPath(pathLeft)
     , rightPath(pathRight)
+    , compareCaseSensitivity(ccs)
     , compare(nullptr)
     , leftSideChanged(false)
     , rightSideChanged(false)
@@ -125,7 +126,7 @@ void DirectoryCompareWindow::showEvent(QShowEvent *event)
 
     thread.start();
 
-    compareDirectories(leftPath, rightPath);
+    compareDirectories(leftPath, rightPath, compareCaseSensitivity);
 }
 
 void DirectoryCompareWindow::progressChanged(int currentProgress)

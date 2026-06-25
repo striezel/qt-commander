@@ -71,6 +71,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         mountedvolumesdialog.h mountedvolumesdialog.cpp mountedvolumesdialog.ui
         settingsdialog.h settingsdialog.cpp settingsdialog.ui
         util/compare.h util/compare.cpp
+        util/comparecasesensitivity.h
         util/dirutils.h util/dirutils.cpp
         util/durationutils.h util/durationutils.cpp
         util/filetypedetection.h util/filetypedetection.cpp

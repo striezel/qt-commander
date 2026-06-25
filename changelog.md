@@ -4,6 +4,12 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-06-??)
+
+* __[improvement]__
+  A new setting is added which determines whether the file names in directory
+  comparison are compared in case-sensitive or case-insensitive manner.
+
 ## Version 0.1.10 (2026-06-19)
 
 * __[new feature]__

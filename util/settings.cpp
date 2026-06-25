@@ -52,6 +52,8 @@ const int Settings::defaultAudioVolume{50};
 
 const QCryptographicHash::Algorithm Settings::defaultHashAlgorithm{QCryptographicHash::Algorithm::Sha256};
 
+const CompareCaseSensitivity Settings::defaultCompareCaseSensitivity{CompareCaseSensitivity::SystemDefault};
+
 Settings::Settings()
     : filters(defaultFilters)
     , sortFlags(defaultSortFlags)
@@ -68,6 +70,7 @@ Settings::Settings()
     , loopAudioForever(defaultLoopAudioForever)
     , audioVolume(defaultAudioVolume)
     , selectedHashAlgorithm(defaultHashAlgorithm)
+    , compareCaseSensitivity(defaultCompareCaseSensitivity)
 {}
 
 QFont Settings::defaultTextViewerFont()
@@ -92,6 +95,7 @@ void Settings::resetToDefaults()
     loopAudioForever = defaultLoopAudioForever;
     audioVolume = defaultAudioVolume;
     selectedHashAlgorithm = defaultHashAlgorithm;
+    compareCaseSensitivity = defaultCompareCaseSensitivity;
 }
 
 void Settings::save()
@@ -115,6 +119,7 @@ void Settings::save()
     settings.setValue("audio-player-loop-forever", loopAudioForever);
     settings.setValue("audio-player-volume", audioVolume);
     settings.setValue("selected-hash-algorithm", selectedHashAlgorithm);
+    settings.setValue("compare-case-sensitivity", static_cast<int>(compareCaseSensitivity));
 }
 
 void Settings::load()
@@ -151,6 +156,9 @@ void Settings::load()
 
     const int algo_int = settings.value("selected-hash-algorithm", defaultHashAlgorithm).toInt();
     setSelectedHashAlgorithm(static_cast<QCryptographicHash::Algorithm>(algo_int));
+
+    const int ccs_int = settings.value("compare-case-sensitivity", static_cast<int>(defaultCompareCaseSensitivity)).toInt();
+    setCompareCaseSensitivity(static_cast<CompareCaseSensitivity>(ccs_int));
 }
 
 QDir::Filters Settings::getFilters() const
@@ -360,4 +368,14 @@ void Settings::setSelectedHashAlgorithm(const QCryptographicHash::Algorithm algo
         selectedHashAlgorithm = QCryptographicHash::Algorithm::Sha256;
         break;
     }
+}
+
+CompareCaseSensitivity Settings::getCompareCaseSensitivity() const
+{
+    return compareCaseSensitivity;
+}
+
+void Settings::setCompareCaseSensitivity(const CompareCaseSensitivity ccs)
+{
+    compareCaseSensitivity = ccs;
 }
