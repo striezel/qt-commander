@@ -350,66 +350,75 @@
       <attribute name="title">
        <string>Löschoperation</string>
       </attribute>
-      <widget class="QGroupBox" name="groupBoxDeleteOperation">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>501</width>
-         <height>81</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>501</width>
-         <height>81</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Art der Löschoperation</string>
-       </property>
-       <widget class="QRadioButton" name="rbDeleteMeansDelete">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>481</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>481</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Löschen löscht Datei / Verzeichnis direkt</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="rbDeleteMovesToTrash">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>50</y>
-          <width>481</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>481</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Löschen verschiebt Datei / Verzeichnis in den Papierkorb</string>
-        </property>
-       </widget>
-      </widget>
+      <layout class="QGridLayout" name="gridLayoutTabDeleteOperation">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBoxDeleteOperation">
+         <property name="minimumSize">
+          <size>
+           <width>501</width>
+           <height>81</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Art der Löschoperation</string>
+         </property>
+         <widget class="QRadioButton" name="rbDeleteMeansDelete">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>481</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>481</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Löschen löscht Datei / Verzeichnis direkt</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="rbDeleteMovesToTrash">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>481</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>481</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Löschen verschiebt Datei / Verzeichnis in den Papierkorb</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacerTabDeleteOperation">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tabTextViewer">
       <attribute name="icon">
