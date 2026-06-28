@@ -388,7 +388,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Löschen löscht Datei direkt</string>
+         <string>Löschen löscht Datei / Verzeichnis direkt</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -410,7 +410,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Löschen verschiebt Datei in den Papierkorb</string>
+         <string>Löschen verschiebt Datei / Verzeichnis in den Papierkorb</string>
         </property>
        </widget>
       </widget>
