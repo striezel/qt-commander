@@ -6,6 +6,10 @@ improvements may be omitted.)_
 
 ## Next Version (2026-06-??)
 
+* __[new feature]__
+  The text viewer can now provide basic syntax highlighting for the Lua
+  programming language.
+
 * __[improvement]__
   A new setting is added which determines whether the file names in directory
   comparison are compared in case-sensitive or case-insensitive manner.
