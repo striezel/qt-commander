@@ -105,6 +105,9 @@
    </property>
   </action>
   <action name="actionChangeFont">
+   <property name="icon">
+    <iconset theme="preferences-desktop-font"/>
+   </property>
    <property name="text">
     <string>Schriftart ändern ...</string>
    </property>

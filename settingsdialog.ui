@@ -533,7 +533,7 @@
            <rect>
             <x>130</x>
             <y>50</y>
-            <width>151</width>
+            <width>171</width>
             <height>24</height>
            </rect>
           </property>
@@ -545,6 +545,9 @@
           </property>
           <property name="text">
            <string>Schriftart ändern ...</string>
+          </property>
+          <property name="icon">
+           <iconset theme="preferences-desktop-font"/>
           </property>
          </widget>
         </widget>
