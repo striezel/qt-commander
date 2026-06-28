@@ -14,6 +14,9 @@ improvements may be omitted.)_
   A new setting is added which determines whether the file names in directory
   comparison are compared in case-sensitive or case-insensitive manner.
 
+* __[improvement]__
+  The GUI layout of the settings dialog has been slightly improved.
+
 ## Version 0.1.10 (2026-06-19)
 
 * __[new feature]__
