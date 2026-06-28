@@ -35,335 +35,313 @@
       <attribute name="title">
        <string>Verzeichnisansicht</string>
       </attribute>
-      <widget class="QGroupBox" name="groupBoxSort">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>130</y>
-         <width>501</width>
-         <height>131</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>501</width>
-         <height>131</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Sortierung</string>
-       </property>
-       <widget class="QRadioButton" name="rbSortByName">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>30</y>
-          <width>221</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>221</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Nach Name sortieren</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="rbSortByDate">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>30</y>
-          <width>221</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>221</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Nach Änderungsdatum sortieren</string>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="rbSortBySize">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>221</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>221</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Nach Größe sortieren</string>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="rbSortByType">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>60</y>
-          <width>211</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>211</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Nach Dateityp (Endung) sortieren</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="cbReverseSort">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>100</y>
-          <width>171</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>171</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Sortierung umkehren</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="cbSortIgnoreCase">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>100</y>
-          <width>221</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>221</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Groß-/Kleinschreibung ignorieren</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QGroupBox" name="groupBoxFilesAndDirectories">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>270</y>
-         <width>501</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>501</width>
-         <height>71</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Reihenfolge von Dateien und Verzeichnissen</string>
-       </property>
-       <widget class="QCheckBox" name="cbSortDirectoriesFirst">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>30</y>
-          <width>221</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>221</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Verzeichnisse zuerst, dann Dateien</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="cbSortFilesFirst">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>30</y>
-          <width>241</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>241</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Dateien zuerst, dann Verzeichnisse</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QGroupBox" name="groupBoxOtherOptions">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>350</y>
-         <width>501</width>
-         <height>81</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>501</width>
-         <height>81</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Weitere Optionen</string>
-       </property>
-       <widget class="QCheckBox" name="cbUseProvidedIcons">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>481</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>481</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Vom System bereitgestellte Dateisymbole verwenden</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="cbShowFormattedSize">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>50</y>
-          <width>481</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>481</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Größenangabe formatieren</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QGroupBox" name="groupBoxDisplayOptions">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>501</width>
-         <height>111</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>501</width>
-         <height>111</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Bestimmte Dateien ein-/ausblenden</string>
-       </property>
-       <widget class="QCheckBox" name="cbShowHiddenFiles">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>341</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>341</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Versteckte Dateien und Verzeichnisse anzeigen</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="cbShowSystemFiles">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>50</y>
-          <width>341</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>341</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Systemdateien und -verzeichnisse anzeigen</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="cbHideFiles">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>80</y>
-          <width>341</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>341</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Dateien ausblenden (zeigt nur Verzeichnisse)</string>
-        </property>
-       </widget>
-      </widget>
+      <layout class="QGridLayout" name="gridLayoutTabView">
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="groupBoxSort">
+         <property name="minimumSize">
+          <size>
+           <width>501</width>
+           <height>131</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Sortierung</string>
+         </property>
+         <widget class="QRadioButton" name="rbSortByName">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>221</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>221</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Nach Name sortieren</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="rbSortByDate">
+          <property name="geometry">
+           <rect>
+            <x>250</x>
+            <y>30</y>
+            <width>221</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>221</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Nach Änderungsdatum sortieren</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="rbSortBySize">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>221</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>221</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Nach Größe sortieren</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="rbSortByType">
+          <property name="geometry">
+           <rect>
+            <x>250</x>
+            <y>60</y>
+            <width>211</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>211</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Nach Dateityp (Endung) sortieren</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="cbReverseSort">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>100</y>
+            <width>171</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>171</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Sortierung umkehren</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="cbSortIgnoreCase">
+          <property name="geometry">
+           <rect>
+            <x>250</x>
+            <y>100</y>
+            <width>221</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>221</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Groß-/Kleinschreibung ignorieren</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QGroupBox" name="groupBoxFilesAndDirectories">
+         <property name="minimumSize">
+          <size>
+           <width>501</width>
+           <height>71</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Reihenfolge von Dateien und Verzeichnissen</string>
+         </property>
+         <widget class="QCheckBox" name="cbSortDirectoriesFirst">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>221</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>221</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Verzeichnisse zuerst, dann Dateien</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="cbSortFilesFirst">
+          <property name="geometry">
+           <rect>
+            <x>250</x>
+            <y>30</y>
+            <width>241</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>241</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Dateien zuerst, dann Verzeichnisse</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QGroupBox" name="groupBoxOtherOptions">
+         <property name="minimumSize">
+          <size>
+           <width>501</width>
+           <height>81</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Weitere Optionen</string>
+         </property>
+         <widget class="QCheckBox" name="cbUseProvidedIcons">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>481</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>481</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Vom System bereitgestellte Dateisymbole verwenden</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="cbShowFormattedSize">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>481</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>481</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Größenangabe formatieren</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBoxDisplayOptions">
+         <property name="minimumSize">
+          <size>
+           <width>501</width>
+           <height>111</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Bestimmte Dateien ein-/ausblenden</string>
+         </property>
+         <widget class="QCheckBox" name="cbShowHiddenFiles">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>341</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>341</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Versteckte Dateien und Verzeichnisse anzeigen</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="cbShowSystemFiles">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>341</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>341</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Systemdateien und -verzeichnisse anzeigen</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="cbHideFiles">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>341</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>341</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Dateien ausblenden (zeigt nur Verzeichnisse)</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tabDeleteOperation">
       <attribute name="icon">
