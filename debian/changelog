@@ -1,3 +1,15 @@
+qt-commander (0.1.11-1) UNRELEASED; urgency=medium
+
+* The text viewer can now provide basic syntax highlighting for the Lua
+  programming language.
+
+* A new setting is added which determines whether the file names in directory
+  comparison are compared in case-sensitive or case-insensitive manner.
+
+* The GUI layout of the settings dialog has been slightly improved.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Sun, 28 Jun 2026 23:41:24 +0200
+
 qt-commander (0.1.10-1) UNRELEASED; urgency=medium
 
 * The initial directories which are shown can now be set via the command-line.
