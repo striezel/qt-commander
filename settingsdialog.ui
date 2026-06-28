@@ -44,6 +44,12 @@
          <height>131</height>
         </rect>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>501</width>
+         <height>131</height>
+        </size>
+       </property>
        <property name="title">
         <string>Sortierung</string>
        </property>
@@ -174,6 +180,12 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>501</width>
+         <height>71</height>
+        </size>
+       </property>
        <property name="title">
         <string>Reihenfolge von Dateien und Verzeichnissen</string>
        </property>
@@ -227,6 +239,12 @@
          <width>501</width>
          <height>81</height>
         </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>501</width>
+         <height>81</height>
+        </size>
        </property>
        <property name="title">
         <string>Weitere Optionen</string>
