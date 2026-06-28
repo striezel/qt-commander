@@ -4,7 +4,7 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
-## Next Version (2026-06-28)
+## Version 0.1.11 (2026-06-28)
 
 * __[new feature]__
   The text viewer can now provide basic syntax highlighting for the Lua
