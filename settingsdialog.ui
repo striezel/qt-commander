@@ -836,85 +836,94 @@
       <attribute name="title">
        <string>Verzeichnisvergleich</string>
       </attribute>
-      <widget class="QGroupBox" name="groupBoxCaseSensitivity">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>501</width>
-         <height>131</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>501</width>
-         <height>131</height>
-        </size>
-       </property>
-       <property name="title">
-        <string>Groß-/Kleinschreibung bei Dateinamenvergleich</string>
-       </property>
-       <widget class="QRadioButton" name="rbSystemDefaultCaseSensitivity">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>30</y>
-          <width>481</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>481</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Standardeinstellung für System verwenden</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="rbCaseSensitiveCompare">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>481</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>481</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Groß-/Kleinschreibung unterscheiden</string>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="rbCaseInsensitiveCompare">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>90</y>
-          <width>471</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>471</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Groß-/Kleinschreibung ignorieren</string>
-        </property>
-       </widget>
-      </widget>
+      <layout class="QGridLayout" name="gridLayoutTabDirectoryCompare">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBoxCaseSensitivity">
+         <property name="minimumSize">
+          <size>
+           <width>501</width>
+           <height>131</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Groß-/Kleinschreibung bei Dateinamenvergleich</string>
+         </property>
+         <widget class="QRadioButton" name="rbSystemDefaultCaseSensitivity">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>481</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>481</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Standardeinstellung für System verwenden</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="rbCaseSensitiveCompare">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>481</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>481</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Groß-/Kleinschreibung unterscheiden</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="rbCaseInsensitiveCompare">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>90</y>
+            <width>471</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>471</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Groß-/Kleinschreibung ignorieren</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacerTabDirectoryCompare">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
