@@ -48,6 +48,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Multimedia)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS MultimediaWidgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS PdfWidgets)
 
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools)
+
+qt_add_translations(qt-commander TS_FILES
+    lang/de.ts
+    lang/en.ts
+)
+
 include_directories(${PROJECT_SOURCE_DIR})
 
 set(PROJECT_SOURCES
