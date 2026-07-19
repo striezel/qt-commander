@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Neues Verzeichnis erstellen</string>
+   <string>Create new directory</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -23,24 +23,24 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Name des zu erstellenden Verzeichnisses eingeben:</string>
+      <string>Enter the name of the directory to be created:</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLineEdit" name="lnEdName">
      <property name="placeholderText">
-      <string>Verzeichnisname</string>
+      <string>Directory name</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>

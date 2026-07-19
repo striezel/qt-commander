@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dateieigenschaften</string>
+   <string>File properties</string>
   </property>
   <property name="windowIcon">
    <iconset theme="document-properties"/>
@@ -27,7 +27,7 @@
        </size>
       </property>
       <property name="title">
-       <string>Datei</string>
+       <string>File</string>
       </property>
       <widget class="QLabel" name="lblFileName">
        <property name="geometry">
@@ -59,7 +59,7 @@
        </size>
       </property>
       <property name="title">
-       <string>Speicher</string>
+       <string>Storage</string>
       </property>
       <widget class="QLabel" name="lblSize">
        <property name="geometry">
@@ -77,7 +77,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Größe:</string>
+        <string>Size:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblSizeValue">
@@ -96,7 +96,7 @@
         </size>
        </property>
        <property name="text">
-        <string>unbekannt</string>
+        <string>unknown</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblAvailable">
@@ -115,7 +115,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Frei:</string>
+        <string>Free:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblAvailableValue">
@@ -134,7 +134,7 @@
         </size>
        </property>
        <property name="text">
-        <string>unbekannt</string>
+        <string>unknown</string>
        </property>
       </widget>
      </widget>
@@ -148,7 +148,7 @@
        </size>
       </property>
       <property name="title">
-       <string>Benutzer</string>
+       <string>Ownership</string>
       </property>
       <widget class="QLabel" name="lblFileOwner">
        <property name="geometry">
@@ -166,7 +166,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Besitzer:</string>
+        <string>Owner:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblOwnerValue">
@@ -185,7 +185,7 @@
         </size>
        </property>
        <property name="text">
-        <string>unbekannt</string>
+        <string>unknown</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblFileGroup">
@@ -204,7 +204,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Gruppe:</string>
+        <string>Group:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblGroupValue">
@@ -223,7 +223,7 @@
         </size>
        </property>
        <property name="text">
-        <string>unbekannt</string>
+        <string>unknown</string>
        </property>
       </widget>
      </widget>
@@ -237,7 +237,7 @@
        </size>
       </property>
       <property name="title">
-       <string>Berechtigungen</string>
+       <string>Permissions</string>
       </property>
       <widget class="QLabel" name="lblUser">
        <property name="geometry">
@@ -255,7 +255,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Besitzer:</string>
+        <string>Owner:</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbUserRead">
@@ -277,7 +277,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Lesen</string>
+        <string>Read</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbUserWrite">
@@ -299,7 +299,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Schreiben</string>
+        <string>Write</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbUserExec">
@@ -321,7 +321,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Ausführen</string>
+        <string>Execute</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblGroup">
@@ -340,7 +340,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Gruppe:</string>
+        <string>Group:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblOther">
@@ -359,7 +359,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Andere:</string>
+        <string>Others:</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbGroupRead">
@@ -381,7 +381,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Lesen</string>
+        <string>Read</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbGroupWrite">
@@ -403,7 +403,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Schreiben</string>
+        <string>Write</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbGroupExec">
@@ -425,7 +425,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Ausführen</string>
+        <string>Execute</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbOtherRead">
@@ -447,7 +447,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Lesen</string>
+        <string>Read</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbOtherWrite">
@@ -469,7 +469,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Schreiben</string>
+        <string>Write</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbOtherExec">
@@ -491,7 +491,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Ausführen</string>
+        <string>Execute</string>
        </property>
       </widget>
      </widget>
@@ -505,7 +505,7 @@
        </size>
       </property>
       <property name="title">
-       <string>Datum</string>
+       <string>Date</string>
       </property>
       <widget class="QLabel" name="lblBirth">
        <property name="geometry">
@@ -523,7 +523,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Erstellt:</string>
+        <string>Created:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblBirthValue">
@@ -542,7 +542,7 @@
         </size>
        </property>
        <property name="text">
-        <string>unbekannt</string>
+        <string>unknown</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblModofied">
@@ -561,7 +561,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Geändert:</string>
+        <string>Modified:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblModifiedValue">
@@ -580,7 +580,7 @@
         </size>
        </property>
        <property name="text">
-        <string>unbekannt</string>
+        <string>unknown</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblAccessed">
@@ -599,7 +599,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Letzter Zugriff:</string>
+        <string>Last accessed:</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblAccessedValue">
@@ -618,7 +618,7 @@
         </size>
        </property>
        <property name="text">
-        <string>unbekannt</string>
+        <string>unknown</string>
        </property>
       </widget>
      </widget>

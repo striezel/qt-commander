@@ -29,7 +29,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Prüfsumme berechnen für:</string>
+      <string>Calculate checksum for:</string>
      </property>
     </widget>
    </item>
@@ -55,7 +55,7 @@
       </size>
      </property>
      <property name="title">
-      <string>Prüfsummenalgorithmus:</string>
+      <string>Checksum algorithm:</string>
      </property>
      <widget class="QRadioButton" name="rbAlgorithmMd5">
       <property name="geometry">
@@ -321,14 +321,14 @@
       </size>
      </property>
      <property name="text">
-      <string>Prüfsummendatei erzeugen</string>
+      <string>Generate checksum file</string>
      </property>
     </widget>
    </item>
    <item row="5" column="0">
     <widget class="QPushButton" name="btnCalculate">
      <property name="text">
-      <string>Berechnen</string>
+      <string>Calculate</string>
      </property>
      <property name="icon">
       <iconset theme="accessories-calculator"/>
@@ -338,7 +338,7 @@
    <item row="5" column="1">
     <widget class="QPushButton" name="btnExit">
      <property name="text">
-      <string>Beenden</string>
+      <string>Exit</string>
      </property>
      <property name="icon">
       <iconset theme="window-close"/>

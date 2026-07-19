@@ -53,12 +53,12 @@
       </column>
       <column>
        <property name="text">
-        <string>Größe</string>
+        <string>Size</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Änderungsdatum</string>
+        <string>Date</string>
        </property>
       </column>
      </widget>
@@ -78,12 +78,12 @@
       </column>
       <column>
        <property name="text">
-        <string>Größe</string>
+        <string>Size</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Änderungsdatum</string>
+        <string>Date</string>
        </property>
       </column>
      </widget>
@@ -91,7 +91,7 @@
     <item row="2" column="0">
      <widget class="QPushButton" name="btnView">
       <property name="text">
-       <string>F3 Anzeigen</string>
+       <string>F3 View</string>
       </property>
       <property name="icon">
        <iconset theme="edit-find"/>
@@ -104,7 +104,7 @@
     <item row="2" column="1">
      <widget class="QPushButton" name="btnCopy">
       <property name="text">
-       <string>F5 Kopieren</string>
+       <string>F5 Copy</string>
       </property>
       <property name="icon">
        <iconset theme="edit-copy"/>
@@ -117,7 +117,7 @@
     <item row="2" column="2">
      <widget class="QPushButton" name="btnMove">
       <property name="text">
-       <string>F6 Verschieben</string>
+       <string>F6 Move</string>
       </property>
       <property name="shortcut">
        <string>F6</string>
@@ -127,7 +127,7 @@
     <item row="2" column="3">
      <widget class="QPushButton" name="btnCreateDirectory">
       <property name="text">
-       <string>F7 Neuer Ordner</string>
+       <string>F7 New directory</string>
       </property>
       <property name="icon">
        <iconset theme="folder-new"/>
@@ -140,7 +140,7 @@
     <item row="2" column="4">
      <widget class="QPushButton" name="btnRemove">
       <property name="text">
-       <string>F8 Löschen</string>
+       <string>F8 Delete</string>
       </property>
       <property name="icon">
        <iconset theme="edit-delete"/>
@@ -153,7 +153,7 @@
     <item row="2" column="5">
      <widget class="QPushButton" name="btnExit">
       <property name="text">
-       <string>F10 Beenden</string>
+       <string>F10 Quit</string>
       </property>
       <property name="icon">
        <iconset theme="application-exit"/>
@@ -176,7 +176,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Datei</string>
+     <string>File</string>
     </property>
     <addaction name="actionShowFileInfo"/>
     <addaction name="separator"/>
@@ -184,7 +184,7 @@
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>Ansicht</string>
+     <string>View</string>
     </property>
     <addaction name="actionShowHiddenFiles"/>
     <addaction name="actionShowSystemFiles"/>
@@ -210,7 +210,7 @@
    </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
-     <string>Einstellungen</string>
+     <string>Settings</string>
     </property>
     <addaction name="actionEditSettings"/>
     <addaction name="actionSaveSettings"/>
@@ -247,7 +247,7 @@
     <iconset theme="application-exit"/>
    </property>
    <property name="text">
-    <string>Beenden</string>
+    <string>Exit</string>
    </property>
   </action>
   <action name="actionRefresh">
@@ -255,7 +255,7 @@
     <iconset theme="view-refresh"/>
    </property>
    <property name="text">
-    <string>Neu einlesen</string>
+    <string>Refresh view</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
@@ -269,7 +269,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Versteckte Dateien u. Verzeichnisse anzeigen</string>
+    <string>Show hidden files and directories</string>
    </property>
   </action>
   <action name="actionShowSystemFiles">
@@ -280,7 +280,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Systemdateien und -verzeichnisse anzeigen</string>
+    <string>Show system files and directories</string>
    </property>
   </action>
   <action name="actionHideFiles">
@@ -288,7 +288,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Dateien ausblenden (zeigt nur Verzeichnisse)</string>
+    <string>Hide files (shows directories only)</string>
    </property>
   </action>
   <action name="actionSortByName">
@@ -299,7 +299,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Nach Name sortieren</string>
+    <string>Sort by name</string>
    </property>
   </action>
   <action name="actionSortByTime">
@@ -307,7 +307,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Nach Änderungsdatum sortieren</string>
+    <string>Sort by modification date</string>
    </property>
   </action>
   <action name="actionSortBySize">
@@ -315,7 +315,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Nach Größe sortieren</string>
+    <string>Sort by size</string>
    </property>
   </action>
   <action name="actionSortByType">
@@ -323,7 +323,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Nach Typ (Dateiendung) sortieren</string>
+    <string>Sort by type (file extension)</string>
    </property>
   </action>
   <action name="actionReverseSort">
@@ -331,7 +331,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Sortierung umkehren</string>
+    <string>Reverse sort</string>
    </property>
   </action>
   <action name="actionSortDirectoriesFirst">
@@ -342,7 +342,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Verzeichnisse zuerst, dann Dateien</string>
+    <string>Directories first, then files</string>
    </property>
   </action>
   <action name="actionSortFilesFirst">
@@ -350,7 +350,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Dateien zuerst, dann Verzeichnisse</string>
+    <string>Files first, then directories</string>
    </property>
   </action>
   <action name="actionSortIgnoreCase">
@@ -361,7 +361,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Groß-/Kleinschreibung ignorieren</string>
+    <string>Ignore upper/lower case</string>
    </property>
   </action>
   <action name="actionSaveSettings">
@@ -369,7 +369,7 @@
     <iconset theme="document-save"/>
    </property>
    <property name="text">
-    <string>Einstellungen speichern</string>
+    <string>Save settings</string>
    </property>
   </action>
   <action name="actionLoadSettings">
@@ -377,7 +377,7 @@
     <iconset theme="document-open"/>
    </property>
    <property name="text">
-    <string>Einstellungen laden</string>
+    <string>Load settings</string>
    </property>
   </action>
   <action name="actionRestoreDefaultSettings">
@@ -385,7 +385,7 @@
     <iconset theme="document-revert"/>
    </property>
    <property name="text">
-    <string>Auf Standard zurücksetzen</string>
+    <string>Restore default settings</string>
    </property>
   </action>
   <action name="actionAboutQt">
@@ -393,7 +393,7 @@
     <iconset theme="dialog-information"/>
    </property>
    <property name="text">
-    <string>Über Qt</string>
+    <string>About Qt</string>
    </property>
   </action>
   <action name="actionAboutQtCommander">
@@ -401,7 +401,7 @@
     <iconset theme="help-about"/>
    </property>
    <property name="text">
-    <string>Über Qt Commander ...</string>
+    <string>About Qt Commander ...</string>
    </property>
   </action>
   <action name="actionUseProvidedIcons">
@@ -412,7 +412,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Vom System bereitgestellte Dateisymbole verwenden</string>
+    <string>Use system-provided file icons</string>
    </property>
   </action>
   <action name="actionShowFileInfo">
@@ -420,7 +420,7 @@
     <iconset theme="document-properties"/>
    </property>
    <property name="text">
-    <string>Dateieigenschaften anzeigen</string>
+    <string>Show file properties</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+I</string>
@@ -431,7 +431,7 @@
     <iconset theme="drive-harddisk"/>
    </property>
    <property name="text">
-    <string>Einhängepunkte anzeigen</string>
+    <string>Show mount points</string>
    </property>
   </action>
   <action name="actionShowFormattedSize">
@@ -442,17 +442,17 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Größenangabe formatieren</string>
+    <string>Display formatted size</string>
    </property>
   </action>
   <action name="actionCalculateChecksum">
    <property name="text">
-    <string>Prüfsumme berechnen ...</string>
+    <string>Calculate checksum ...</string>
    </property>
   </action>
   <action name="actionCompareDirectories">
    <property name="text">
-    <string>Verzeichnisse vergleichen</string>
+    <string>Compare directories</string>
    </property>
   </action>
   <action name="actionEditSettings">
@@ -460,7 +460,7 @@
     <iconset theme="document-properties"/>
    </property>
    <property name="text">
-    <string>Einstellungen bearbeiten ...</string>
+    <string>Edit settings ...</string>
    </property>
   </action>
  </widget>

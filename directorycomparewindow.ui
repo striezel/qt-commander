@@ -24,7 +24,7 @@
        </size>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Hinweis:&lt;/span&gt; Unterverzeichnisse werden (noch) nicht durchsucht. Der Vergleich prüft daher nur die Existenz der Unterverzeichnisse, nicht aber deren Inhalte.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Hint:&lt;/span&gt; Subdirectories are not (yet) searched. The comparison therefore only checks for the existence of the subdirectories, but not their contents.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -40,7 +40,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Links:</string>
+       <string>Left:</string>
       </property>
      </widget>
     </item>
@@ -66,7 +66,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Rechts:</string>
+       <string>Right:</string>
       </property>
      </widget>
     </item>
@@ -135,7 +135,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Fortschritt:</string>
+       <string>Progress:</string>
       </property>
      </widget>
     </item>
@@ -167,7 +167,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Abbrechen</string>
+       <string>Cancel</string>
       </property>
       <property name="icon">
        <iconset theme="process-stop"/>
@@ -187,13 +187,13 @@
    </property>
    <widget class="QMenu" name="menuComparison">
     <property name="title">
-     <string>Vergleich</string>
+     <string>Comparison</string>
     </property>
     <addaction name="actionClose"/>
    </widget>
    <widget class="QMenu" name="menuFileOperations">
     <property name="title">
-     <string>Dateioperation</string>
+     <string>File operation</string>
     </property>
     <addaction name="actionGoToNextDifference"/>
     <addaction name="actionGoToPrevDifference"/>
@@ -212,7 +212,7 @@
     <iconset theme="window-close"/>
    </property>
    <property name="text">
-    <string>Beenden</string>
+    <string>Close</string>
    </property>
   </action>
   <action name="actionCopyToLeft">
@@ -220,7 +220,7 @@
     <iconset theme="go-previous"/>
    </property>
    <property name="text">
-    <string>Nach links kopieren</string>
+    <string>Copy to the left</string>
    </property>
    <property name="shortcut">
     <string>Alt+Left</string>
@@ -231,7 +231,7 @@
     <iconset theme="go-next"/>
    </property>
    <property name="text">
-    <string>Nach rechts kopieren</string>
+    <string>Copy to the right</string>
    </property>
    <property name="shortcut">
     <string>Alt+Right</string>
@@ -242,7 +242,7 @@
     <iconset theme="go-down"/>
    </property>
    <property name="text">
-    <string>Zum nächsten Unterschied</string>
+    <string>Go to next difference</string>
    </property>
    <property name="shortcut">
     <string>Alt+Down</string>
@@ -253,7 +253,7 @@
     <iconset theme="go-up"/>
    </property>
    <property name="text">
-    <string>Zum vorherigen Unterschied</string>
+    <string>Go to previous difference</string>
    </property>
    <property name="shortcut">
     <string>Alt+Up</string>
@@ -264,7 +264,7 @@
     <iconset theme="edit-delete"/>
    </property>
    <property name="text">
-    <string>Löschen</string>
+    <string>Delete</string>
    </property>
    <property name="shortcut">
     <string>Del</string>
