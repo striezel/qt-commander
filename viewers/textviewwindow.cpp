@@ -130,7 +130,7 @@ bool TextViewWindow::loadTextFile(const QString &path)
     ui->plainTextEdit->setDocumentTitle(file.fileName());
     file.close();
 
-    this->setWindowTitle("Textbetrachter - " + path);
+    this->setWindowTitle(tr("Text viewer - ") + path);
     documentPath = path;
 
     return true;

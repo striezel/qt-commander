@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Textbetrachter</string>
+   <string>Text viewer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -33,33 +33,33 @@
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuDatei">
+   <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Datei</string>
+     <string>File</string>
     </property>
     <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuOptions">
     <property name="title">
-     <string>Optionen</string>
+     <string>Options</string>
     </property>
     <addaction name="actionChangeFont"/>
    </widget>
    <widget class="QMenu" name="menuSyntaxHighlighting">
     <property name="title">
-     <string>Syntaxhervorhebung</string>
+     <string>Syntax highlighting</string>
     </property>
     <widget class="QMenu" name="menuStyle">
      <property name="title">
-      <string>Stil</string>
+      <string>Style</string>
      </property>
      <addaction name="actionStyleAyuDark"/>
      <addaction name="actionStyleAyuLight"/>
     </widget>
     <widget class="QMenu" name="menuLanguage">
      <property name="title">
-      <string>Sprache</string>
+      <string>Language</string>
      </property>
      <addaction name="actionAutoSelectLanguage"/>
      <addaction name="separator"/>
@@ -77,7 +77,7 @@
     <addaction name="menuLanguage"/>
     <addaction name="menuStyle"/>
    </widget>
-   <addaction name="menuDatei"/>
+   <addaction name="menuFile"/>
    <addaction name="menuOptions"/>
    <addaction name="menuSyntaxHighlighting"/>
   </widget>
@@ -87,7 +87,7 @@
     <iconset theme="window-close"/>
    </property>
    <property name="text">
-    <string>Schließen</string>
+    <string>Close</string>
    </property>
    <property name="shortcut">
     <string>F3</string>
@@ -98,7 +98,7 @@
     <iconset theme="document-print"/>
    </property>
    <property name="text">
-    <string>Drucken ...</string>
+    <string>Print ...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
@@ -109,7 +109,7 @@
     <iconset theme="preferences-desktop-font"/>
    </property>
    <property name="text">
-    <string>Schriftart ändern ...</string>
+    <string>Change font ...</string>
    </property>
   </action>
   <action name="actionLanguageCpp">
@@ -128,7 +128,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Keine</string>
+    <string>None</string>
    </property>
   </action>
   <action name="actionStyleAyuDark">
@@ -171,7 +171,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Automatisch auswählen</string>
+    <string>Select automatically</string>
    </property>
   </action>
   <action name="actionLanguageRust">

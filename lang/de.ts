@@ -438,7 +438,7 @@
     <message>
         <location filename="../mainwindow.ui" line="100"/>
         <source>F3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">F3</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="107"/>
@@ -840,12 +840,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="458"/>
         <source>Ayu Dark</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ayu Dark</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="477"/>
         <source>Ayu Light</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ayu Light</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="491"/>
@@ -942,6 +942,134 @@
         <location filename="../settingsdialog.ui" line="889"/>
         <source>Groß-/Kleinschreibung unterscheiden</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TextViewWindow</name>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="93"/>
+        <source>F3</source>
+        <translation>F3</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="104"/>
+        <source>Ctrl+P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="120"/>
+        <source>C++</source>
+        <translation>C++</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="139"/>
+        <source>Ayu Dark</source>
+        <translation>Ayu Dark</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="150"/>
+        <source>Ayu Light</source>
+        <translation>Ayu Light</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="158"/>
+        <source>Shell</source>
+        <translation>Shell</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="166"/>
+        <source>C#</source>
+        <translation>Shell</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="38"/>
+        <source>File</source>
+        <translation>Datei</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="14"/>
+        <source>Text viewer</source>
+        <translation>Textbetrachter</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="45"/>
+        <source>Options</source>
+        <translation>Optionen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="51"/>
+        <source>Syntax highlighting</source>
+        <translation>Syntaxhervorhebung</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="55"/>
+        <source>Style</source>
+        <translation>Stil</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="62"/>
+        <source>Language</source>
+        <translation>Sprache</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="90"/>
+        <source>Close</source>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="101"/>
+        <source>Print ...</source>
+        <translation>Drucken ...</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="112"/>
+        <source>Change font ...</source>
+        <translation>Schriftart ändern ...</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="131"/>
+        <source>None</source>
+        <translation>Keine</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="174"/>
+        <source>Select automatically</source>
+        <translation>Automatisch auswählen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="182"/>
+        <source>Rust</source>
+        <translation>Rust</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="190"/>
+        <source>Python</source>
+        <translation>Python</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="198"/>
+        <source>Java</source>
+        <translation>Java</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="206"/>
+        <source>SQL</source>
+        <translation>SQL</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="214"/>
+        <source>Pascal</source>
+        <translation>Pascal</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.ui" line="222"/>
+        <source>Lua</source>
+        <translation>Lua</translation>
+    </message>
+    <message>
+        <location filename="../viewers/textviewwindow.cpp" line="133"/>
+        <source>Text viewer - </source>
+        <translation>Textbetrachter - </translation>
     </message>
 </context>
 <context>
