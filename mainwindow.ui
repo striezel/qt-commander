@@ -235,10 +235,18 @@
     <addaction name="actionCalculateChecksum"/>
     <addaction name="actionCompareDirectories"/>
    </widget>
+   <widget class="QMenu" name="menuLanguage">
+    <property name="title">
+     <string>Language</string>
+    </property>
+    <addaction name="actionLanguageGerman"/>
+    <addaction name="actionLanguageEnglish"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuOperations"/>
    <addaction name="menuSettings"/>
+   <addaction name="menuLanguage"/>
    <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -461,6 +469,22 @@
    </property>
    <property name="text">
     <string>Edit settings ...</string>
+   </property>
+  </action>
+  <action name="actionLanguageGerman">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>German</string>
+   </property>
+  </action>
+  <action name="actionLanguageEnglish">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>English</string>
    </property>
   </action>
  </widget>

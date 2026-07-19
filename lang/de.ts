@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de">
+<TS version="2.1" language="de_DE">
 <context>
     <name>CheckSumDialog</name>
     <message>
@@ -526,139 +526,154 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="250"/>
+        <location filename="../mainwindow.ui" line="240"/>
+        <source>Language</source>
+        <translation>Sprache</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="258"/>
         <source>Exit</source>
         <translation>Beenden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="258"/>
+        <location filename="../mainwindow.ui" line="266"/>
         <source>Refresh view</source>
         <translation>Neu einlesen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="261"/>
+        <location filename="../mainwindow.ui" line="269"/>
         <source>Ctrl+R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="272"/>
+        <location filename="../mainwindow.ui" line="280"/>
         <source>Show hidden files and directories</source>
         <translation>Versteckte Dateien u. Verzeichnisse anzeigen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="283"/>
+        <location filename="../mainwindow.ui" line="291"/>
         <source>Show system files and directories</source>
         <translation>Systemdateien und -verzeichnisse anzeigen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="291"/>
+        <location filename="../mainwindow.ui" line="299"/>
         <source>Hide files (shows directories only)</source>
         <translation>Dateien ausblenden (zeigt nur Verzeichnisse)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="302"/>
+        <location filename="../mainwindow.ui" line="310"/>
         <source>Sort by name</source>
         <translation>Nach Name sortieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="310"/>
+        <location filename="../mainwindow.ui" line="318"/>
         <source>Sort by modification date</source>
         <translation>Nach Änderungsdatum sortieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="318"/>
+        <location filename="../mainwindow.ui" line="326"/>
         <source>Sort by size</source>
         <translation>Nach Größe sortieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="326"/>
+        <location filename="../mainwindow.ui" line="334"/>
         <source>Sort by type (file extension)</source>
         <translation>Nach Typ (Dateiendung) sortieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="334"/>
+        <location filename="../mainwindow.ui" line="342"/>
         <source>Reverse sort</source>
         <translation>Sortierung umkehren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="345"/>
+        <location filename="../mainwindow.ui" line="353"/>
         <source>Directories first, then files</source>
         <translation>Verzeichnisse zuerst, dann Dateien</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="353"/>
+        <location filename="../mainwindow.ui" line="361"/>
         <source>Files first, then directories</source>
         <translation>Dateien zuerst, dann Verzeichnisse</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="364"/>
+        <location filename="../mainwindow.ui" line="372"/>
         <source>Ignore upper/lower case</source>
         <translation>Groß-/Kleinschreibung ignorieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="372"/>
+        <location filename="../mainwindow.ui" line="380"/>
         <source>Save settings</source>
         <translation>Einstellungen speichern</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="380"/>
+        <location filename="../mainwindow.ui" line="388"/>
         <source>Load settings</source>
         <translation>Einstellungen laden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="388"/>
+        <location filename="../mainwindow.ui" line="396"/>
         <source>Restore default settings</source>
         <translation>Auf Standard zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="396"/>
+        <location filename="../mainwindow.ui" line="404"/>
         <source>About Qt</source>
         <translation>Über Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="404"/>
+        <location filename="../mainwindow.ui" line="412"/>
         <source>About Qt Commander ...</source>
         <translation>Über Qt Commander ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="415"/>
+        <location filename="../mainwindow.ui" line="423"/>
         <source>Use system-provided file icons</source>
         <translation>Vom System bereitgestellte Dateisymbole verwenden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="423"/>
+        <location filename="../mainwindow.ui" line="431"/>
         <source>Show file properties</source>
         <translation>Dateieigenschaften anzeigen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="426"/>
+        <location filename="../mainwindow.ui" line="434"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="434"/>
+        <location filename="../mainwindow.ui" line="442"/>
         <source>Show mount points</source>
         <translation>Einhängepunkte anzeigen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="445"/>
+        <location filename="../mainwindow.ui" line="453"/>
         <source>Display formatted size</source>
         <translation>Größenangabe formattieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="450"/>
+        <location filename="../mainwindow.ui" line="458"/>
         <source>Calculate checksum ...</source>
         <translation>Prüfsumme berechnen ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="455"/>
+        <location filename="../mainwindow.ui" line="463"/>
         <source>Compare directories</source>
         <translation>Verzeichnisse vergleichen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="463"/>
+        <location filename="../mainwindow.ui" line="471"/>
         <source>Edit settings ...</source>
         <translation>Einstellungen bearbeiten ...</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="479"/>
+        <source>German</source>
+        <translation>Deutsch</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="487"/>
+        <source>English</source>
+        <translation>Englisch</translation>
     </message>
 </context>
 <context>

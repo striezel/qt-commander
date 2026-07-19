@@ -47,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent, const QStringList& positionalArgs)
     , settings(Settings())
     , sortActionGroup(QActionGroup(this))
     , whatFirstGroup(QActionGroup(this))
+    , languageGroup(QActionGroup(this))
 {
     ui->setupUi(this);
 
@@ -894,6 +895,9 @@ void MainWindow::setUpActionGroups()
     whatFirstGroup.setExclusionPolicy(QActionGroup::ExclusionPolicy::ExclusiveOptional);
     whatFirstGroup.addAction(ui->actionSortFilesFirst);
     whatFirstGroup.addAction(ui->actionSortDirectoriesFirst);
+
+    languageGroup.addAction(ui->actionLanguageEnglish);
+    languageGroup.addAction(ui->actionLanguageGerman);
 }
 
 void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRefresh)
@@ -970,6 +974,9 @@ void MainWindow::connectMenuActions()
     connect(ui->actionSaveSettings, &QAction::triggered, this, &MainWindow::actionSaveSettingsTriggered);
     connect(ui->actionLoadSettings, &QAction::triggered, this, &MainWindow::actionLoadSettingsTriggered);
     connect(ui->actionRestoreDefaultSettings, &QAction::triggered, this, &MainWindow::actionRestoreDefaultSettingsTriggered);
+
+    connect(ui->actionLanguageEnglish, &QAction::triggered, this, &MainWindow::actionLanguageEnglishTriggered);
+    connect(ui->actionLanguageGerman, &QAction::triggered, this, &MainWindow::actionLanguageGermanTriggered);
 
     connect(ui->actionShowMountpoints, &QAction::triggered, this, &MainWindow::actionShowMountpointsTriggered);
     connect(ui->actionAboutQtCommander, &QAction::triggered, this, &MainWindow::actionAboutQtCmdrTriggered);
@@ -1079,6 +1086,50 @@ void MainWindow::actionRestoreDefaultSettingsTriggered()
     restored_settings.resetToDefaults();
 
     putSettingsIntoGui(restored_settings);
+}
+
+void MainWindow::actionLanguageEnglishTriggered(bool checked)
+{
+    if (!checked)
+    {
+        return;
+    }
+
+    QLocale new_locale(QLocale::Language::English, QLocale::Territory::UnitedStates);
+    if (!translator.load(new_locale, ""))
+    {
+        QMessageBox::critical(this, "Failure", "Could not load English language data.");
+        return;
+    }
+    if (!QApplication::installTranslator(&translator))
+    {
+        QMessageBox::critical(this, "Failure", "Could not install English language translator.");
+        return;
+    }
+
+    ui->retranslateUi(this);
+}
+
+void MainWindow::actionLanguageGermanTriggered(bool checked)
+{
+    if (!checked)
+    {
+        return;
+    }
+
+    QLocale new_locale(QLocale::Language::German, QLocale::Territory::Germany);
+    if (!translator.load(new_locale, ""))
+    {
+        QMessageBox::critical(this, "Failure", "Could not load German language data.");
+        return;
+    }
+    if (!QApplication::installTranslator(&translator))
+    {
+        QMessageBox::critical(this, "Failure", "Could not install German language translator.");
+        return;
+    }
+
+    ui->retranslateUi(this);
 }
 
 void MainWindow::actionShowMountpointsTriggered()

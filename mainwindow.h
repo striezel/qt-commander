@@ -29,6 +29,7 @@
 #include <QDir>
 #include <QString>
 #include <QTreeWidget>
+#include <QTranslator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -96,6 +97,9 @@ private slots:
     void actionLoadSettingsTriggered();
     void actionRestoreDefaultSettingsTriggered();
 
+    void actionLanguageEnglishTriggered(bool checked = false);
+    void actionLanguageGermanTriggered(bool checked = false);
+
     void actionShowMountpointsTriggered();
     void actionAboutQtCmdrTriggered();
     void actionAboutQtTriggered();
@@ -110,6 +114,9 @@ private:
 
     QActionGroup sortActionGroup;
     QActionGroup whatFirstGroup;
+    QActionGroup languageGroup;
+
+    QTranslator translator;
 
     FileTypeDetection detection;
 
