@@ -5,8 +5,8 @@
     <name>CheckSumDialog</name>
     <message>
         <location filename="../checksumdialog.ui" line="20"/>
-        <source>Prüfsumme berechnen</source>
-        <translation type="unfinished"></translation>
+        <source>Calculate checksum</source>
+        <translation>Prüfsumme berechnen</translation>
     </message>
     <message>
         <location filename="../checksumdialog.ui" line="32"/>
@@ -383,26 +383,16 @@
     </message>
     <message>
         <location filename="../fileinfowindow.ui" line="639"/>
-        <source>Ansicht</source>
-        <translation type="unfinished"></translation>
+        <source>View</source>
+        <translation>Ansicht</translation>
     </message>
     <message>
         <location filename="../fileinfowindow.ui" line="650"/>
-        <source>Aktualisieren</source>
-        <translation type="unfinished"></translation>
+        <source>Close</source>
+        <translation>Schließen</translation>
     </message>
     <message>
         <location filename="../fileinfowindow.ui" line="653"/>
-        <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../fileinfowindow.ui" line="661"/>
-        <source>Schließen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../fileinfowindow.ui" line="664"/>
         <source>Esc</source>
         <translation type="unfinished"></translation>
     </message>
@@ -522,8 +512,8 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="233"/>
-        <source>Operationen</source>
-        <translation type="unfinished"></translation>
+        <source>Operations</source>
+        <translation>Operationen</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="240"/>
@@ -710,13 +700,13 @@
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="67"/>
-        <source>Left</source>
-        <translation type="unfinished"></translation>
+        <source>Left view</source>
+        <translation>Linker Baum</translation>
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="72"/>
-        <source>Right</source>
-        <translation type="unfinished"></translation>
+        <source>Right view</source>
+        <translation>Rechter Baum</translation>
     </message>
 </context>
 <context>

@@ -64,12 +64,12 @@
      </column>
      <column>
       <property name="text">
-       <string>Left</string>
+       <string>Left view</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Right</string>
+       <string>Right view</string>
       </property>
      </column>
     </widget>
