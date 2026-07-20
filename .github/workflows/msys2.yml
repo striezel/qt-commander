@@ -32,6 +32,7 @@ jobs:
             mingw-w64-ucrt-x86_64-qt6-multimedia-wmf
             mingw-w64-ucrt-x86_64-qt6-pdf
             mingw-w64-ucrt-x86_64-qt6-svg
+            mingw-w64-ucrt-x86_64-qt6-tools
       - name: Build
         run: |
           export MSYSTEM=UCRT64
