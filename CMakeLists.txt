@@ -50,11 +50,6 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS PdfWidgets)
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools)
 
-qt_add_translations(qt-commander TS_FILES
-    lang/de.ts
-    lang/en.ts
-)
-
 include_directories(${PROJECT_SOURCE_DIR})
 
 set(PROJECT_SOURCES
@@ -121,6 +116,11 @@ else()
         )
     endif()
 endif()
+
+qt_add_translations(qt-commander TS_FILES
+    lang/de.ts
+    lang/en.ts
+)
 
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Core)
