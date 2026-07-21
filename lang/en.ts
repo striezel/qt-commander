@@ -146,8 +146,8 @@
     <name>DirectoryCompareWindow</name>
     <message>
         <location filename="../directorycomparewindow.ui" line="14"/>
-        <source>Verzeichnisse vergleichen</source>
-        <translation type="unfinished"></translation>
+        <source>Compare directories</source>
+        <translation>Compare directories</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="27"/>
@@ -749,6 +749,122 @@
         <location filename="../mainwindow.ui" line="487"/>
         <source>English</source>
         <translation>English</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="220"/>
+        <location filename="../mainwindow.cpp" line="242"/>
+        <source>Directory</source>
+        <translation>Directory</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="243"/>
+        <source>Unknown</source>
+        <translation>Unknown</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="549"/>
+        <location filename="../mainwindow.cpp" line="605"/>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="503"/>
+        <source>Invalid directory name</source>
+        <translation>Invalid directory name</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="504"/>
+        <source>The directory name must not be empty.</source>
+        <translation>The directory name must not be empty.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="513"/>
+        <source>Error while creating the directory</source>
+        <translation>Error while creating the directory</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="514"/>
+        <source>The directory &apos;</source>
+        <translation>The directory &apos;</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="514"/>
+        <source>&apos; could not be created.</source>
+        <translation>&apos; could not be created.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="530"/>
+        <source>Directory &apos;</source>
+        <translation>Directory &apos;</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="530"/>
+        <source>&apos; has been created.</source>
+        <translation>&apos; has been created.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="872"/>
+        <source>View of directory &apos;</source>
+        <translation>View of directory &apos;</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="873"/>
+        <source>left</source>
+        <translation>left</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="873"/>
+        <source>right</source>
+        <translation>right</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="874"/>
+        <source>) has been updated.</source>
+        <translation>) has been updated.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1046"/>
+        <source>Same directory</source>
+        <translation>Same directory</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1047"/>
+        <source>The left and the right view show the same directory.</source>
+        <translation>The left and the right view show the same directory.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1048"/>
+        <source> Therefore, a comparison is useless, because the contents are identical.</source>
+        <translation> Therefore, a comparison is useless, because the contents are identical.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1101"/>
+        <location filename="../mainwindow.cpp" line="1106"/>
+        <location filename="../mainwindow.cpp" line="1123"/>
+        <location filename="../mainwindow.cpp" line="1128"/>
+        <source>Failure</source>
+        <translation>Failure</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1101"/>
+        <source>Could not load English language data.</source>
+        <translation>Could not load English language data.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1106"/>
+        <source>Could not install English language translator.</source>
+        <translation>Could not install English language translator.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1123"/>
+        <source>Could not load German language data.</source>
+        <translation>Could not load German language data.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1128"/>
+        <source>Could not install German language translator.</source>
+        <translation>Could not install German language translator.</translation>
     </message>
 </context>
 <context>

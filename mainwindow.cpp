@@ -217,7 +217,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
         const bool isDirectory = info.isDir();
         data.append(!isDirectory
                         ? (showFormatted ? loc.formattedDataSize(info.size()) : QString::number(info.size()))
-                        : QStringLiteral("Verzeichnis"));
+                        : tr("Directory"));
         data.append(loc.toString(info.lastModified(), QLocale::NarrowFormat));
 
         QTreeWidgetItem* item = new QTreeWidgetItem(data);
@@ -239,8 +239,8 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
     {
         QStringList data;
         data.append("..");
-        data.append("Verzeichnis");
-        data.append("Unbekannt");
+        data.append(tr("Directory"));
+        data.append(tr("Unknown"));
         QTreeWidgetItem* item = new QTreeWidgetItem(data);
         item->setIcon(0, directory_icon);
         item->setTextAlignment(1, Qt::AlignRight);
@@ -376,7 +376,7 @@ void MainWindow::btnRemoveClicked()
     if (name == "..")
     {
         QMessageBox::critical(
-            this, "Fehler",
+            this, tr("Error"),
             "Löschoperation kann nicht auf \"..\" ausgeführt werden!");
         return;
     }
@@ -500,8 +500,8 @@ void MainWindow::btnCreateDirectoryClicked()
     dialog = nullptr;
     if (name.isEmpty() || name.contains("../") || name.contains("..\\"))
     {
-        QMessageBox::warning(this, "Ungültiger Verzeichnisname",
-                             "Der Verzeichnisname darf nicht leer sein.");
+        QMessageBox::warning(this, tr("Invalid directory name"),
+                             tr("The directory name must not be empty."));
         return;
     }
 
@@ -510,8 +510,8 @@ void MainWindow::btnCreateDirectoryClicked()
     if (!success)
     {
         QMessageBox::critical(
-            this, "Fehler beim Erstellen des Verzeichnisses",
-            "Das Verzeichnis '" + name + "' konnte nicht erstellt werden.");
+            this, tr("Error while creating the directory"),
+            tr("The directory '") + name + tr("' could not be created."));
         return;
     }
 
@@ -527,7 +527,7 @@ void MainWindow::btnCreateDirectoryClicked()
         fillTreeWidget(ui->treeWidgetRight, currentDirectoryRight.absolutePath());
     }
 
-    statusBar()->showMessage("Verzeichnis '" + name + "' wurde erstellt.", 5000);
+    statusBar()->showMessage(tr("Directory '") + name + tr("' has been created."), 5000);
 }
 
 void MainWindow::btnMoveClicked()
@@ -546,7 +546,7 @@ void MainWindow::btnMoveClicked()
     if (name == "..")
     {
         QMessageBox::critical(
-            this, "Fehler",
+            this, tr("Error"),
             "Verschiebeoperation kann nicht auf \"..\" ausgeführt werden!");
         return;
     }
@@ -602,7 +602,7 @@ void MainWindow::btnCopyClicked()
     if (name == "..")
     {
         QMessageBox::critical(
-            this, "Fehler",
+            this, tr("Error"),
             "Kopieroperation kann nicht auf \"..\" ausgeführt werden!");
         return;
     }
@@ -869,9 +869,9 @@ void MainWindow::refreshView(QTreeWidget *treeWidget, const QDir &dir, const boo
 
     if (showStatusMessage)
     {
-        statusBar()->showMessage("Ansicht für Verzeichnis '" + path + "' ("
-                                     + (treeWidget == ui->treeWidgetLeft ? "links" : "rechts")
-                                     + ") wurde aktualisiert.", 5000);
+        statusBar()->showMessage(tr("View of directory '") + path + "' ("
+                                     + (treeWidget == ui->treeWidgetLeft ? tr("left") : tr("right"))
+                                     + tr(") has been updated."), 5000);
     }
 }
 
@@ -1043,9 +1043,9 @@ void MainWindow::actionCompareDirectoriesTriggered()
     if (DirUtils::isSameDir(currentDirectoryLeft, currentDirectoryRight))
     {
         QMessageBox::information(
-            this, "Gleiches Verzeichnis",
-            QString("Die linke und die rechte Ansicht zeigen beide das gleiche Verzeichnis.")
-            + " Ein Vergleich ist daher nicht sinnvoll, da die Inhalte identisch sind."
+            this, tr("Same directory"),
+            QString(tr("The left and the right view show the same directory."))
+                + tr(" Therefore, a comparison is useless, because the contents are identical.")
             );
         return;
     }
@@ -1098,12 +1098,12 @@ void MainWindow::actionLanguageEnglishTriggered(bool checked)
     QLocale new_locale(QLocale::Language::English, QLocale::Territory::UnitedStates);
     if (!translator.load(new_locale, ""))
     {
-        QMessageBox::critical(this, "Failure", "Could not load English language data.");
+        QMessageBox::critical(this, tr("Failure"), tr("Could not load English language data."));
         return;
     }
     if (!QApplication::installTranslator(&translator))
     {
-        QMessageBox::critical(this, "Failure", "Could not install English language translator.");
+        QMessageBox::critical(this, tr("Failure"), tr("Could not install English language translator."));
         return;
     }
 
@@ -1120,12 +1120,12 @@ void MainWindow::actionLanguageGermanTriggered(bool checked)
     QLocale new_locale(QLocale::Language::German, QLocale::Territory::Germany);
     if (!translator.load(new_locale, ""))
     {
-        QMessageBox::critical(this, "Failure", "Could not load German language data.");
+        QMessageBox::critical(this, tr("Failure"), tr("Could not load German language data."));
         return;
     }
     if (!QApplication::installTranslator(&translator))
     {
-        QMessageBox::critical(this, "Failure", "Could not install German language translator.");
+        QMessageBox::critical(this, tr("Failure"), tr("Could not install German language translator."));
         return;
     }
 

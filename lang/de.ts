@@ -146,8 +146,8 @@
     <name>DirectoryCompareWindow</name>
     <message>
         <location filename="../directorycomparewindow.ui" line="14"/>
-        <source>Verzeichnisse vergleichen</source>
-        <translation type="unfinished"></translation>
+        <source>Compare directories</source>
+        <translation>Verzeichnisse vergleichen</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="27"/>
@@ -394,7 +394,7 @@
     <message>
         <location filename="../fileinfowindow.ui" line="653"/>
         <source>Esc</source>
-        <translation type="unfinished"></translation>
+        <translation>Esc</translation>
     </message>
 </context>
 <context>
@@ -618,6 +618,7 @@
     <message>
         <location filename="../mainwindow.ui" line="269"/>
         <source>Ctrl+R</source>
+        <translatorcomment>Das ist ein Shortcut. Wenn der &quot;übersetzt&quot; wird, funktioniert er nicht mehr.</translatorcomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -713,6 +714,7 @@
     <message>
         <location filename="../mainwindow.ui" line="434"/>
         <source>Ctrl+I</source>
+        <translatorcomment>Das ist ein Shortcut. Wenn der &quot;übersetzt&quot; wird, funktioniert er nicht mehr.</translatorcomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -749,6 +751,122 @@
         <location filename="../mainwindow.ui" line="487"/>
         <source>English</source>
         <translation>Englisch</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="220"/>
+        <location filename="../mainwindow.cpp" line="242"/>
+        <source>Directory</source>
+        <translation>Verzeichnis</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="243"/>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="549"/>
+        <location filename="../mainwindow.cpp" line="605"/>
+        <source>Error</source>
+        <translation>Fehler</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="503"/>
+        <source>Invalid directory name</source>
+        <translation>Ungültiger Verzeichnisname</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="504"/>
+        <source>The directory name must not be empty.</source>
+        <translation>Der Verzeichnisname darf nicht leer sein.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="513"/>
+        <source>Error while creating the directory</source>
+        <translation>Fehler beim Erstellen des Verzeichnisses</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="514"/>
+        <source>The directory &apos;</source>
+        <translation>Das Vrzeichnis &apos;</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="514"/>
+        <source>&apos; could not be created.</source>
+        <translation>&apos; konnte nicht erstellt werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="530"/>
+        <source>Directory &apos;</source>
+        <translation>Verzeichnis &apos;</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="530"/>
+        <source>&apos; has been created.</source>
+        <translation>&apos; wurde erstellt.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="872"/>
+        <source>View of directory &apos;</source>
+        <translation>Ansicht für Verzeichnis &apos;</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="873"/>
+        <source>left</source>
+        <translation>links</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="873"/>
+        <source>right</source>
+        <translation>rechts</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="874"/>
+        <source>) has been updated.</source>
+        <translation>) wurde aktualisiert.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1046"/>
+        <source>Same directory</source>
+        <translation>Gleiches Verzeichnis</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1047"/>
+        <source>The left and the right view show the same directory.</source>
+        <translation>Die linke und die rechte Ansicht zeigen beide das gleiche Verzeichnis.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1048"/>
+        <source> Therefore, a comparison is useless, because the contents are identical.</source>
+        <translation> Ein Vergleich ist daher nicht sinnvoll, da die Inhalte identisch sind.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1101"/>
+        <location filename="../mainwindow.cpp" line="1106"/>
+        <location filename="../mainwindow.cpp" line="1123"/>
+        <location filename="../mainwindow.cpp" line="1128"/>
+        <source>Failure</source>
+        <translation>Fehler</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1101"/>
+        <source>Could not load English language data.</source>
+        <translation>Die englischen Sprachdaten konnten nicht geladen werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1106"/>
+        <source>Could not install English language translator.</source>
+        <translation>Die englische Sprachübersetzung konnte nicht aktiviert werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1123"/>
+        <source>Could not load German language data.</source>
+        <translation>Die deutschen Sprachdaten konnten nicht geladen werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1128"/>
+        <source>Could not install German language translator.</source>
+        <translation>Die deutsche Sprachübersetzung konnte nicht aktiviert werden.</translation>
     </message>
 </context>
 <context>
