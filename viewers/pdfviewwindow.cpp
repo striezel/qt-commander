@@ -79,11 +79,11 @@ bool PdfViewWindow::loadPdfFile(const QString &path)
     if (error == QPdfDocument::DocumentError::NoError)
 #endif
     {
-        setWindowTitle("PDF-Betrachter - " + path);
+        setWindowTitle(tr("PDF viewer - ") + path);
         const int pageCount = document->pageCount();
         statusBar()->showMessage(
-            "PDF geladen, " + QString::number(pageCount)
-            + " Seite(n)");
+            tr("PDF loaded successfully, ") + QString::number(pageCount)
+            + tr(" page(s)"));
         pageSpinBox->setValue(1);
         pageSpinBox->setMaximum(pageCount);
         pageSpinBox->setSuffix(" / " + QString::number(pageCount));
@@ -191,7 +191,7 @@ QSpinBox *PdfViewWindow::createPageSpinBox()
     spinBox->setValue(1);
     spinBox->setMinimum(1);
     spinBox->setMaximum(1);
-    spinBox->setPrefix("Seite ");
+    spinBox->setPrefix(tr("Page "));
     spinBox->setSuffix(" / 1");
     return spinBox;
 }

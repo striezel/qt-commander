@@ -795,6 +795,84 @@
     </message>
 </context>
 <context>
+    <name>PdfViewWindow</name>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="20"/>
+        <source>PDF viewer</source>
+        <translation>PDF-Betrachter</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="53"/>
+        <source>File</source>
+        <translation>Datei</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="62"/>
+        <source>toolBar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="92"/>
+        <source>Previous page</source>
+        <translation>Vorherige Seite</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="103"/>
+        <source>Next page</source>
+        <translation>Nächste Seite</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="114"/>
+        <source>Close</source>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="117"/>
+        <source>F3</source>
+        <translation>F3</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="125"/>
+        <source>Zoom out</source>
+        <translation>Verkleinern</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="136"/>
+        <source>Zoom in</source>
+        <translation>Vergrößern</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="147"/>
+        <source>Zoom to fit</source>
+        <translation>Auf Fensterbreite zoomen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.ui" line="158"/>
+        <source>Zoom to original size</source>
+        <translation>Auf Originalgröße zoomen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.cpp" line="82"/>
+        <source>PDF viewer - </source>
+        <translation>PDF-Betrachter - </translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.cpp" line="85"/>
+        <source>PDF loaded successfully, </source>
+        <translation>PDF geladen, </translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.cpp" line="86"/>
+        <source> page(s)</source>
+        <translation> Seite(n)</translation>
+    </message>
+    <message>
+        <location filename="../viewers/pdfviewwindow.cpp" line="194"/>
+        <source>Page </source>
+        <translation>Seite </translation>
+    </message>
+</context>
+<context>
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
