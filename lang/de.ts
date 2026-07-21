@@ -398,6 +398,91 @@
     </message>
 </context>
 <context>
+    <name>ImageViewWindow</name>
+    <message>
+        <location filename="../viewers/imageviewwindow.ui" line="14"/>
+        <source>Image viewer</source>
+        <translation>Bildbetrachter</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.ui" line="21"/>
+        <source>An image could be shown here.</source>
+        <translation>Hier könnte ein Bild angezeigt werden.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.ui" line="41"/>
+        <source>File</source>
+        <translation>Datei</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.ui" line="47"/>
+        <source>Info</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.ui" line="60"/>
+        <source>Close</source>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.ui" line="63"/>
+        <source>F3</source>
+        <translation>F3</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.ui" line="71"/>
+        <location filename="../viewers/imageviewwindow.cpp" line="115"/>
+        <source>Supported file formats</source>
+        <translation>Unterstützte Dateiformate</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="57"/>
+        <source>Image viewer - </source>
+        <translation>Bildbetrachter - </translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="92"/>
+        <source>The image viewer supports the following MIME types:</source>
+        <translation>Der Bildbetrachter unterstützt folgende MIME-Typen:</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="98"/>
+        <source>Support may vary depending on the system and the Qt modules installed.</source>
+        <translation>Die Unterstützung kann je nach System und installierten Qt-Modulen variieren.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="103"/>
+        <source> Installing the Qt Image Formats Add-On</source>
+        <translation> Durch Installation des Qt Image Formats Add-Ons kann</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="104"/>
+        <source> provides support for WebP, TGA and TIFF, among others.</source>
+        <translation> unter anderem die Unterstützung für WebP, TGA und TIFF erreicht werden.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="108"/>
+        <source> Support for SVG files can be added by installing the Qt SVG module.</source>
+        <translation> Durch Installation des Qt-SVG-Moduls kann die Unterstützung für SVG-Dateien hinzugefügt werden.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="140"/>
+        <location filename="../viewers/imageviewwindow.cpp" line="148"/>
+        <source>Image size: </source>
+        <translation>Bildgröße: </translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="142"/>
+        <source> pixels, scaled to </source>
+        <translation> Pixel, skaliert auf </translation>
+    </message>
+    <message>
+        <location filename="../viewers/imageviewwindow.cpp" line="150"/>
+        <source> pixels</source>
+        <translation> Pixel</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.ui" line="14"/>
@@ -438,7 +523,7 @@
     <message>
         <location filename="../mainwindow.ui" line="100"/>
         <source>F3</source>
-        <translation type="unfinished">F3</translation>
+        <translation>F3</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="107"/>
@@ -448,7 +533,7 @@
     <message>
         <location filename="../mainwindow.ui" line="113"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="120"/>
@@ -458,7 +543,7 @@
     <message>
         <location filename="../mainwindow.ui" line="123"/>
         <source>F6</source>
-        <translation type="unfinished"></translation>
+        <translation>F6</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="130"/>
@@ -468,7 +553,7 @@
     <message>
         <location filename="../mainwindow.ui" line="136"/>
         <source>F7</source>
-        <translation type="unfinished"></translation>
+        <translation>F7</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="143"/>
@@ -478,7 +563,7 @@
     <message>
         <location filename="../mainwindow.ui" line="149"/>
         <source>F8</source>
-        <translation type="unfinished"></translation>
+        <translation>F8</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="156"/>
@@ -488,7 +573,7 @@
     <message>
         <location filename="../mainwindow.ui" line="162"/>
         <source>F10</source>
-        <translation type="unfinished"></translation>
+        <translation>F10</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="179"/>

@@ -54,7 +54,7 @@ bool ImageViewWindow::loadImageFile(const QString &path)
 
     ui->label->setPixmap(*new_pixmap);
 
-    this->setWindowTitle("Bildbetrachter - " + path);
+    this->setWindowTitle(tr("Image viewer - ") + path);
     delete loadedPixmap;
     loadedPixmap = new_pixmap;
     rescaleToFit();
@@ -89,30 +89,30 @@ void ImageViewWindow::resizeEvent(QResizeEvent *event)
 
 QString ImageViewWindow::supportedFormatsMessage()
 {
-    QString message = "Der Bildbetrachter unterstützt folgende MIME-Typen:\n";
+    QString message = tr("The image viewer supports the following MIME types:") + "\n";
     const QList<QByteArray> supported_types = QImageReader::supportedMimeTypes();
     for (const QByteArray& element: supported_types)
     {
         message = message + "\n" + element;
     }
-    message += "\n\nDie Unterstützung kann je nach System und installierten Qt-Modulen variieren.";
+    message += "\n\n" + tr("Support may vary depending on the system and the Qt modules installed.");
     if (!supported_types.contains("image/webp")
         || !supported_types.contains("image/tiff")
         || !supported_types.contains("image/x-tga"))
     {
-        message += QString(" Durch Installation des Qt Image Formats Add-Ons kann")
-                   + " unter anderem die Unterstützung für WebP, TGA und TIFF erreicht werden.";
+        message += QString(tr(" Installing the Qt Image Formats Add-On"))
+                   + tr(" provides support for WebP, TGA and TIFF, among others.");
     }
     if (!supported_types.contains("image/svg+xml"))
     {
-        message += " Durch Installation des Qt-SVG-Moduls kann die Unterstützung für SVG-Dateien hinzugefügt werden.";
+        message += tr(" Support for SVG files can be added by installing the Qt SVG module.");
     }
     return message;
 }
 
 void ImageViewWindow::actionSupportedFileFormatsTriggered()
 {
-    QMessageBox::about(this, "Unterstützte Dateiformate", supportedFormatsMessage());
+    QMessageBox::about(this, tr("Supported file formats"), supportedFormatsMessage());
 }
 
 void ImageViewWindow::rescaleToFit()
@@ -137,16 +137,16 @@ void ImageViewWindow::rescaleToFit()
                                 ? (re_size.height() * 100.0 / img_size.height())
                                 : (re_size.width() * 100.0 / img_size.width());
         percentage = std::round(percentage * 10.0) / 10.0;
-        ui->statusbar->showMessage("Bildgröße: " + QString::number(img_size.width())
+        ui->statusbar->showMessage(tr("Image size: ") + QString::number(img_size.width())
                                    + " x " + QString::number(img_size.height())
-                                   + " Pixel, skaliert auf " + QString::number(percentage) + " %");
+                                   + tr(" pixels, scaled to ") + QString::number(percentage) + " %");
     }
     else
     {
         // label is big enough to fit the pixmap, so use it directly
         ui->label->setPixmap(*loadedPixmap);
-        ui->statusbar->showMessage("Bildgröße: " + QString::number(img_size.width())
+        ui->statusbar->showMessage(tr("Image size: ") + QString::number(img_size.width())
                                    + " x " + QString::number(img_size.height())
-                                   + " Pixel");
+                                   + tr(" pixels"));
     }
 }
