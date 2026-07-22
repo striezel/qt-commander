@@ -2,6 +2,129 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de_DE">
 <context>
+    <name>AudioPlayerWindow</name>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="20"/>
+        <source>Audio player</source>
+        <translation>Audiowiedergabe</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="55"/>
+        <source>xx:xx / yy:yy</source>
+        <translation>xx:xx / yy:yy</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="71"/>
+        <source>Start</source>
+        <translation>Start</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="87"/>
+        <source>Stop</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="103"/>
+        <source>Pause</source>
+        <translation>Pause</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="119"/>
+        <source>Volume:</source>
+        <translation>Lautstärke:</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="157"/>
+        <source>50 %</source>
+        <translation>50 %</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="177"/>
+        <source>File</source>
+        <translation>Datei</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="183"/>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="190"/>
+        <source>Info</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="205"/>
+        <source>Close</source>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="208"/>
+        <source>F3</source>
+        <translation>F3</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="216"/>
+        <source>Auto-play audio</source>
+        <translation>Audio automatisch abspielen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="224"/>
+        <source>Supported formats ...</source>
+        <translation>Unterstützte Formate ...</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="229"/>
+        <source>Show metadata</source>
+        <translation>Metadaten anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.ui" line="240"/>
+        <source>Loop file endlessly</source>
+        <translation>Datei in Endlosschleife abspielen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.cpp" line="108"/>
+        <source>Audio player - </source>
+        <translation>Audiowiedergabe - </translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.cpp" line="310"/>
+        <source>The audio player supports the following audio codecs:</source>
+        <translation>Die Audiowiedergabe unterstützt folgende Audiocodecs:</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.cpp" line="319"/>
+        <source>None (This is really bad.)</source>
+        <translation>Keine (Das ist wirklich schlecht.)</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.cpp" line="322"/>
+        <source>Supported codecs can vary, depending on the system.</source>
+        <translation>Die unterstützten Codecs können je nach System variieren.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.cpp" line="328"/>
+        <source>Supported formats and audio codecs</source>
+        <translation>Unterstütze Formate und Audiocodecs</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.cpp" line="339"/>
+        <source>Media&apos;s meta data:</source>
+        <translation>Medienmetadaten:</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.cpp" line="344"/>
+        <source>No meta data available.</source>
+        <translation>Keine Metadaten vorhanden.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/audioplayerwindow.cpp" line="350"/>
+        <source>Meta data</source>
+        <translation>Metadaten</translation>
+    </message>
+</context>
+<context>
     <name>CheckSumDialog</name>
     <message>
         <location filename="../checksumdialog.ui" line="20"/>

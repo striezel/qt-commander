@@ -105,7 +105,7 @@ bool AudioPlayerWindow::loadAudioFile(const QString &path)
 
     mediaPlayer->setAudioOutput(audioOutput);
 
-    setWindowTitle("Audiowiedergabe - " + path);
+    setWindowTitle(tr("Audio player - ") + path);
 
     const QMediaMetaData metaData = mediaPlayer->metaData();
     QVariant duration = metaData.value(QMediaMetaData::Duration);
@@ -307,7 +307,7 @@ void AudioPlayerWindow::actionLoopForeverTriggered(bool checked)
 
 QString AudioPlayerWindow::supportedFormatsMessage()
 {
-    QString message = "Die Audiowiedergabe unterstützt folgende Audiocodecs:\n";
+    QString message = tr("The audio player supports the following audio codecs:") + "\n";
     QMediaFormat mf;
     const QList<QMediaFormat::AudioCodec> codecs = mf.supportedAudioCodecs(QMediaFormat::ConversionMode::Decode);
     for (const QMediaFormat::AudioCodec codec: codecs)
@@ -316,16 +316,16 @@ QString AudioPlayerWindow::supportedFormatsMessage()
     }
     if (codecs.empty())
     {
-        message += "\nKeine (Das ist wirklich schlecht.)";
+        message += "\n" + tr("None (This is really bad.)");
     }
 
-    message += "\n\nDie unterstützten Codecs können je nach System variieren.";
+    message += "\n\n"+ tr("Supported codecs can vary, depending on the system.");
     return message;
 }
 
 void AudioPlayerWindow::actionSupportedFormatsTriggered()
 {
-    QMessageBox::about(this, "Unterstützte Formate und Audiocodecs",
+    QMessageBox::about(this, tr("Supported formats and audio codecs"),
                        supportedFormatsMessage());
 }
 
@@ -336,18 +336,18 @@ void AudioPlayerWindow::actionShowMetadataTriggered()
         return;
     }
 
-    QString message = "Medienmetadaten:\n";
+    QString message = tr("Media's meta data:") + "\n";
     const QMediaMetaData md = mediaPlayer->metaData();
     const QList<QMediaMetaData::Key> keys = md.keys();
     if (keys.isEmpty())
     {
-        message += "\nKeine Metadaten vorhanden.";
+        message += "\n" + tr("No meta data available.");
     }
     for (const QMediaMetaData::Key key: keys)
     {
         message += "\n" + QMediaMetaData::metaDataKeyToString(key) + ": " + md.stringValue(key);
     }
-    QMessageBox::about(this, "Metadaten", message);
+    QMessageBox::about(this, tr("Meta data"), message);
 }
 
 void AudioPlayerWindow::showPosition(const qint64 currentPositionMs, const qint64 durationMs)
