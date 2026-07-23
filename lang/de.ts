@@ -1244,12 +1244,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="458"/>
         <source>Ayu Dark</source>
-        <translation type="unfinished">Ayu Dark</translation>
+        <translation>Ayu Dark</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="477"/>
         <source>Ayu Light</source>
-        <translation type="unfinished">Ayu Light</translation>
+        <translation>Ayu Light</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="491"/>
@@ -1305,7 +1305,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="713"/>
         <source>50 %</source>
-        <translation type="unfinished"></translation>
+        <translation>50 %</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="722"/>
@@ -1325,7 +1325,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="828"/>
         <source>75 %</source>
-        <translation type="unfinished"></translation>
+        <translation>75 %</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="837"/>
