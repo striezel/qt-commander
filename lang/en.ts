@@ -2,6 +2,75 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>AnimationViewWindow</name>
+    <message>
+        <location filename="../viewers/animationviewwindow.ui" line="14"/>
+        <source>Animation viewer</source>
+        <translation>Animation viewer</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.ui" line="24"/>
+        <source>An animation could be shown here.</source>
+        <translation>An animation could be shown here.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.ui" line="44"/>
+        <source>File</source>
+        <translation>File</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.ui" line="50"/>
+        <source>Info</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.ui" line="63"/>
+        <source>Close</source>
+        <translation>Close</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.ui" line="66"/>
+        <source>F3</source>
+        <translation>F3</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.ui" line="74"/>
+        <location filename="../viewers/animationviewwindow.cpp" line="126"/>
+        <source>Supported file formats</source>
+        <translation>Supported file formats</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.cpp" line="61"/>
+        <source>Animation viewer - </source>
+        <translation>Animation viewer - </translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.cpp" line="105"/>
+        <source>The animation viewer supports the following file types:</source>
+        <translation>The animation viewer supports the following file types:</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.cpp" line="113"/>
+        <source>None. This is bad.</source>
+        <translation>None. This is bad.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.cpp" line="115"/>
+        <source>Support may vary depending on the system and the Qt modules installed.</source>
+        <translation>Support may vary depending on the system and the Qt modules installed.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.cpp" line="118"/>
+        <source> Installing the Qt Image Formats Add-On</source>
+        <translation> Installing the Qt Image Formats Add-On</translation>
+    </message>
+    <message>
+        <location filename="../viewers/animationviewwindow.cpp" line="119"/>
+        <source> provides support for MNG and WebP, among others.</source>
+        <translation> provides support for MNG and WebP, among others.</translation>
+    </message>
+</context>
+<context>
     <name>AudioPlayerWindow</name>
     <message>
         <location filename="../viewers/audioplayerwindow.ui" line="20"/>

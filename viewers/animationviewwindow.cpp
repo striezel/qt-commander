@@ -58,7 +58,7 @@ bool AnimationViewWindow::loadMovieFile(const QString &path)
 
     ui->label->setMovie(new_movie);
 
-    setWindowTitle("Animationsbetrachter - " + path);
+    setWindowTitle(tr("Animation viewer - ") + path);
     if (movie != nullptr)
     {
         if (movie->state() == QMovie::MovieState::Running)
@@ -102,7 +102,7 @@ void AnimationViewWindow::startAnimation()
 
 QString AnimationViewWindow::supportedFormatsMessage()
 {
-    QString message = "Der Animationsbetrachter unterstützt folgende Dateitypen:\n";
+    QString message = tr("The animation viewer supports the following file types:") + "\n";
     const QList<QByteArray> formats = QMovie::supportedFormats();
     for (const QByteArray& element: formats)
     {
@@ -110,18 +110,18 @@ QString AnimationViewWindow::supportedFormatsMessage()
     }
     if (formats.empty())
     {
-        message += "\nKeine. Das ist schlecht.";
+        message += "\n" + tr("None. This is bad.");
     }
-    message += "\n\nUnterstützung kann je nach System und installierten Qt-Modulen unterschiedlich ausfallen.";
+    message += "\n\n" + tr("Support may vary depending on the system and the Qt modules installed.");
     if (!formats.contains("mng") || !formats.contains("webp"))
     {
-        message += QString(" Durch Installation des Qt Image Formats Add-Ons kann")
-        + " unter anderem die Unterstützung für MNG und WebP erreicht werden.";
+        message += QString(tr(" Installing the Qt Image Formats Add-On"))
+        + tr(" provides support for MNG and WebP, among others.");
     }
     return message;
 }
 
 void AnimationViewWindow::actionSupportedFileTypesTriggered()
 {
-    QMessageBox::about(this, "Unterstützte Dateiformate", supportedFormatsMessage());
+    QMessageBox::about(this, tr("Supported file formats"), supportedFormatsMessage());
 }
