@@ -104,7 +104,7 @@ bool VideoPlayerWindow::loadVideoFile(const QString &path)
     mediaPlayer->setAudioOutput(audioOutput);
     mediaPlayer->setVideoOutput(ui->videoWidget);
 
-    setWindowTitle("Videowiedergabe - " + path);
+    setWindowTitle(tr("Video player - ") + path);
 
     const QMediaMetaData metaData = mediaPlayer->metaData();
     QVariant duration = metaData.value(QMediaMetaData::Duration);
@@ -255,9 +255,10 @@ void VideoPlayerWindow::mediaErrorOccurred(QMediaPlayer::Error error, const QStr
     }
     if (this->isVisible())
     {
-        QMessageBox::warning(this, "Fehler bei Videowiedergabe", "Ein Fehler ist aufgetreten: " + msg);
+        QMessageBox::warning(this, tr("Error while playing the video"),
+                             tr("An error occurred: ") + msg);
     }
-    ui->statusbar->showMessage("Ein Fehler ist aufgetreten: " + msg);
+    ui->statusbar->showMessage(tr("An error occurred: ") + msg);
 }
 
 void VideoPlayerWindow::actionAutoPlayVideoTriggered(bool checked)
@@ -281,7 +282,7 @@ void VideoPlayerWindow::actionLoopForeverTriggered(bool checked)
 
 QString VideoPlayerWindow::supportedFormatsMessage()
 {
-    QString message = "Die Videowiedergabe unterstützt folgende Codecs:\n";
+    QString message = tr("The video player supports the following codecs:") + "\n";
     QMediaFormat mf;
     const QList<QMediaFormat::VideoCodec> codecs = mf.supportedVideoCodecs(QMediaFormat::ConversionMode::Decode);
     for (const QMediaFormat::VideoCodec codec: codecs)
@@ -290,16 +291,16 @@ QString VideoPlayerWindow::supportedFormatsMessage()
     }
     if (codecs.empty())
     {
-        message += "\nKeine (Das ist wirklich schlecht.)";
+        message += "\n" + tr("None (This is really bad.)");
     }
 
-    message += "\n\nDie unterstützten Codecs können je nach System variieren.";
+    message += "\n\n"+ tr("Supported codecs can vary, depending on the system.");
     return message;
 }
 
 void VideoPlayerWindow::actionSupportedFormatsTriggered()
 {
-    QMessageBox::about(this, "Unterstützte Videocodecs",
+    QMessageBox::about(this, tr("Supported video codecs"),
                        supportedFormatsMessage());
 }
 
@@ -310,18 +311,18 @@ void VideoPlayerWindow::actionShowMetadataTriggered()
         return;
     }
 
-    QString message = "Medienmetadaten:\n";
+    QString message = tr("Media's meta data:") + "\n";
     const QMediaMetaData md = mediaPlayer->metaData();
     const QList<QMediaMetaData::Key> keys = md.keys();
     if (keys.isEmpty())
     {
-        message += "\nKeine Metadaten vorhanden.";
+        message += "\n" + tr("No meta data available.");
     }
     for (const QMediaMetaData::Key key: keys)
     {
         message += "\n" + QMediaMetaData::metaDataKeyToString(key) + ": " + md.stringValue(key);
     }
-    QMessageBox::about(this, "Metadaten", message);
+    QMessageBox::about(this, tr("Meta data"), message);
 }
 
 void VideoPlayerWindow::showPosition(const qint64 currentPositionMs, const qint64 durationMs)

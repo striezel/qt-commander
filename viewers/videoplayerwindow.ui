@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Videowiedergabe</string>
+   <string>Video player</string>
   </property>
   <property name="windowIcon">
    <iconset theme="multimedia-player"/>
@@ -111,7 +111,7 @@
        </size>
       </property>
       <property name="text">
-       <string>Lautstärke:</string>
+       <string>Volume:</string>
       </property>
      </widget>
     </item>
@@ -154,7 +154,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Datei</string>
+     <string>File</string>
     </property>
     <addaction name="actionClose"/>
    </widget>
@@ -167,7 +167,7 @@
    </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
-     <string>Einstellungen</string>
+     <string>Settings</string>
     </property>
     <addaction name="actionAutoPlayVideo"/>
     <addaction name="actionLoopForever"/>
@@ -182,7 +182,7 @@
     <iconset theme="window-close"/>
    </property>
    <property name="text">
-    <string>Schließen</string>
+    <string>Close</string>
    </property>
    <property name="shortcut">
     <string>F3</string>
@@ -193,12 +193,12 @@
     <iconset theme="dialog-information"/>
    </property>
    <property name="text">
-    <string>Unterstützte Formate</string>
+    <string>Supported formats</string>
    </property>
   </action>
   <action name="actionShowMetadata">
    <property name="text">
-    <string>Metadaten anzeigen</string>
+    <string>Show metadata</string>
    </property>
   </action>
   <action name="actionAutoPlayVideo">
@@ -209,7 +209,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Videos automatisch abspielen</string>
+    <string>Auto-play video</string>
    </property>
   </action>
   <action name="actionLoopForever">
@@ -220,7 +220,7 @@
     <iconset theme="media-playlist-repeat"/>
    </property>
    <property name="text">
-    <string>Datei in Endlosschleife abspielen</string>
+    <string>Loop file endlessly</string>
    </property>
   </action>
  </widget>

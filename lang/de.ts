@@ -1477,6 +1477,140 @@
     </message>
 </context>
 <context>
+    <name>VideoPlayerWindow</name>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="14"/>
+        <source>Video player</source>
+        <translation>Videowiedergabe</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="50"/>
+        <source>--:-- / --:--</source>
+        <translation>--:-- / --:--</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="66"/>
+        <source>Start</source>
+        <translation>Start</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="82"/>
+        <source>Stop</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="98"/>
+        <source>Pause</source>
+        <translation>Pause</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="114"/>
+        <source>Volume:</source>
+        <translation>Lautstärke:</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="140"/>
+        <source>75 %</source>
+        <translation>75 %</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="157"/>
+        <source>File</source>
+        <translation>Datei</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="163"/>
+        <source>Info</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="170"/>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="185"/>
+        <source>Close</source>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="188"/>
+        <source>F3</source>
+        <translation>F3</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="196"/>
+        <source>Supported formats</source>
+        <translation>Unterstütze Formate</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="201"/>
+        <source>Show metadata</source>
+        <translation>Metadaten anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="212"/>
+        <source>Auto-play video</source>
+        <translation>Videos automatisch abspielen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.ui" line="223"/>
+        <source>Loop file endlessly</source>
+        <translation>Datei in Endlosschleife abspielen</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="107"/>
+        <source>Video player - </source>
+        <translation>Videowiedergabe - </translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="258"/>
+        <source>Error while playing the video</source>
+        <translation>Fehler bei der Videowiedergabe</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="259"/>
+        <location filename="../viewers/videoplayerwindow.cpp" line="261"/>
+        <source>An error occurred: </source>
+        <translation>Ein Fehler ist aufgetreten: </translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="285"/>
+        <source>The video player supports the following codecs:</source>
+        <translation>Die Videowiedergabe unterstützt die folgenden Codecs:</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="294"/>
+        <source>None (This is really bad.)</source>
+        <translation>Keine (Das ist wirklich schlecht.)</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="297"/>
+        <source>Supported codecs can vary, depending on the system.</source>
+        <translation>Die unterstützten Codecs können je nach System variieren.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="303"/>
+        <source>Supported video codecs</source>
+        <translation>Unterstützte Videocodecs</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="314"/>
+        <source>Media&apos;s meta data:</source>
+        <translation>Medienmetadaten:</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="319"/>
+        <source>No meta data available.</source>
+        <translation>Keine Metadaten vorhanden.</translation>
+    </message>
+    <message>
+        <location filename="../viewers/videoplayerwindow.cpp" line="325"/>
+        <source>Meta data</source>
+        <translation>Metadaten</translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <location filename="../main.cpp" line="40"/>
