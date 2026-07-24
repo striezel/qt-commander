@@ -164,9 +164,9 @@ void CheckSumDialog::btnCalculateClicked()
     QFile file(fileName);
     if (!file.open(QIODeviceBase::OpenModeFlag::ReadOnly))
     {
-        QMessageBox::critical(this, "Fehler beim Öffnen der Datei",
-            "Die Datei " + fileName + " konnte nicht zum Lesen geöffnet werden."
-            + " Damit kann auch keine Prüfsumme berechnet werden.");
+        QMessageBox::critical(this, tr("Error while opening the file"),
+                              tr("The file ") + fileName + tr(" could not be opened for reading.")
+                                  + tr(" Therefore, no checksum can be calculated."));
         return;
     }
 
@@ -174,9 +174,9 @@ void CheckSumDialog::btnCalculateClicked()
     file.close();
     if (!success)
     {
-        QMessageBox::critical(this, "Fehler beim Öffnen der Datei",
-                              "Die Datei " + fileName + " konnte nicht zum Lesen geöffnet werden."
-                                  + " Damit kann auch keine Prüfsumme berechnet werden.");
+        QMessageBox::critical(this, tr("Error while opening the file"),
+                              tr("The file ") + fileName + tr(" could not be opened for reading.")
+                                  + tr(" Therefore, no checksum can be calculated."));
 
         return;
     }
@@ -198,8 +198,8 @@ void CheckSumDialog::btnCalculateClicked()
                                     | QIODeviceBase::OpenModeFlag::Text;
     if (checksumFile.exists())
     {
-        if (QMessageBox::question(this, "Prüfsummendatei existiert bereits",
-                "Die Datei " + checksumFileName + " existiert bereits. Soll sie überschrieben werden?")
+        if (QMessageBox::question(this, tr("Checksum file already exists"),
+                                  tr("The file ") + checksumFileName + tr(" already exists. Shall it be overwritten?"))
             == QMessageBox::StandardButton::NoButton)
         {
             return;
@@ -210,9 +210,9 @@ void CheckSumDialog::btnCalculateClicked()
     }
     if (!checksumFile.open(flags))
     {
-        QMessageBox::critical(this, "Fehler beim Erstellen der Prüfsummendatei",
-                              "Die Prüfsummendatei " + checksumFileName + " konnte nicht erstellt und zum Schreiben geöffnet werden."
-                                  + " Möglicherweise fehlen die Berechtigungen zum Erstellen der Datei.");
+        QMessageBox::critical(this, tr("Error while creating the checksum file"),
+                              tr("The checksum file ") + checksumFileName + tr(" could not be created and opened for writing.")
+                                  + tr(" Maybe permissions to create the file are missing."));
         return;
     }
     QTextStream stream(&checksumFile);

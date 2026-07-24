@@ -151,7 +151,7 @@ void DirectoryCompareWindow::progressMaximumChanged(int maximum)
 
 void DirectoryCompareWindow::compareFinished(const QList<Compare::Info>& list)
 {
-    statusBar()->showMessage("Vergleich ist abgeschlossen.");
+    statusBar()->showMessage(tr("The comparison is complete."));
     addResult(list);
 }
 
@@ -179,7 +179,7 @@ void DirectoryCompareWindow::addResult(const QList<Compare::Info>& list)
 
 void DirectoryCompareWindow::compareCancelled(const QList<Compare::Info> &list)
 {
-    statusBar()->showMessage("Vergleich wurde abgebrochen.");
+    statusBar()->showMessage(tr("Comparison has been cancelled."));
     addResult(list);
 }
 
@@ -270,8 +270,8 @@ void DirectoryCompareWindow::actionGoToNextDifferenceTriggered()
     }
 
     QMessageBox::information(
-        this, "Keine weiteren Unterschiede vorhanden",
-        "Es gibt keine nachfolgenden Einträge mit unterschiedlichen Dateien.");
+        this, tr("No further differences exist"),
+        tr("There are no subsequent entries with different files."));
 }
 
 void DirectoryCompareWindow::actionGoToPrevDifferenceTriggered()
@@ -319,8 +319,8 @@ void DirectoryCompareWindow::actionGoToPrevDifferenceTriggered()
     }
 
     QMessageBox::information(
-        this, "Keine vorherigen Unterschiede vorhanden",
-        "Es gibt keine vorherigen Einträge mit unterschiedlichen Dateien.");
+        this, tr("No prior differences exist"),
+        tr("There are no previous entries with different files."));
 }
 
 void DirectoryCompareWindow::actionCopyToLeftTriggered()
@@ -328,8 +328,8 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
     const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
     if (selection.isEmpty())
     {
-        QMessageBox::warning(this, "Keine Auswahl vorhanden",
-                             "Es wurde keine Datei zum Kopieren ausgewählt.");
+        QMessageBox::warning(this, tr("No file selected"),
+                             tr("No file was selected to copy."));
         return;
     }
     QTreeWidgetItem* item = selection.at(0);
@@ -337,24 +337,24 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
     if (info.result == Compare::Result::Identical)
     {
         QMessageBox::warning(
-            this, "Kopieren nicht notwendig",
-            "Die Datei ist in beiden Verzeichnissen identisch. Ein Kopieren ist daher nicht notwendig.");
+            this, tr("Copy not necessary"),
+            tr("The file is identical in both directories. Therefore, it is not necessary to copy it."));
         return;
     }
     if (info.result == Compare::Result::LeftSideOnly)
     {
         QMessageBox::warning(
-            this, "Kopieren nicht möglich",
-            QStringLiteral("Die Datei ist nur auf der linken Seite vorhanden. ")
-                + "Ein Kopieren von rechts nach links ist daher nicht möglich.");
+            this, tr("Copy not possible"),
+            tr("The file only exists on the left side. ")
+                + tr("Therefore, a copy from the right side to the left side is not possible."));
         return;
     }
     if (info.isDirectory)
     {
         QMessageBox::warning(
-            this, "Kopieren von Verzeichnissen",
-            QStringLiteral("Der ausgewählte Eintrag ist ein Verzeichnis. ")
-                + "Ein Kopieren von Verzeichnissen ist in dieser Ansicht aber nicht möglich.");
+            this, tr("Copying directories"),
+            tr("The selected entry is a directory. ")
+                + tr("However, copying directories is not possible in this dialog."));
         return;
     }
 
@@ -365,8 +365,8 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
     if (QFile::exists(destination))
     {
         const QMessageBox::StandardButton button = QMessageBox::question(
-            this, "Ziel wird überschrieben",
-            "Durch diese Aktion wird die Datei auf der linken Seite gelöscht / überschrieben. Soll die Aktion dennoch ausgeführt werden?");
+            this, tr("Destination will be overwritten"),
+            tr("This action will delete / overwrite the file on the left side. Do you still want to proceed?"));
         if (button != QMessageBox::StandardButton::Yes)
         {
             return;
@@ -375,8 +375,8 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
         if (!QFile::remove(destination))
         {
             QMessageBox::critical(
-                this, "Fehler beim Überschreiben",
-                "Die vorhandene Datei auf der linken Seite konnte nicht entfernt / überschrieben werden.");
+                this, tr("Error while overwriting"),
+                tr("The existing file on the left side could not be removed / overwritten."));
             return;
         }
         leftSideChanged = true;
@@ -386,16 +386,17 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
         info.leftSize = -1;
         item->setIcon(colIdxResult, QIcon::fromTheme(iconNameRightSideOnly));
         item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
-        item->setText(colIdxLeftDate, "keins");
-        item->setText(colIdxLeftSize, "keine");
+        item->setText(colIdxLeftDate, tr("none", "no_date"));
+        item->setText(colIdxLeftSize, tr("none", "no_size"));
     }
 
     if (!QFile::copy(source, destination))
     {
         QMessageBox::critical(
-            this, "Kopieren fehlgeschlagen",
-            QStringLiteral("Die Datei ") + name + " konnte nicht nach "
-                + destination + " kopiert werden");
+            this, tr("Copying failed"),
+            tr("The file %1 could not be copied to %2.")
+                .arg(name)
+                .arg(destination));
 
         // update enabled flag of copy to left/right actions
         treeWidgetSelectionChanged();
@@ -406,7 +407,7 @@ void DirectoryCompareWindow::actionCopyToLeftTriggered()
 
     // Adjust widget item.
     item->setIcon(colIdxResult, QIcon::fromTheme(iconNameIdentical));
-    item->setText(colIdxResult, "Dateien sind identisch.");
+    item->setText(colIdxResult, tr("Files are identical."));
     info.result = Compare::Result::Identical;
     const QFileInfo fileInfo = QFileInfo(destination);
     info.leftDate = fileInfo.lastModified();
@@ -424,8 +425,8 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
     const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
     if (selection.isEmpty())
     {
-        QMessageBox::warning(this, "Keine Auswahl vorhanden",
-                             "Es wurde keine Datei zum Kopieren ausgewählt.");
+        QMessageBox::warning(this, tr("No file selected"),
+                             tr("No file was selected to copy."));
         return;
     }
     QTreeWidgetItem* item = selection.at(0);
@@ -433,24 +434,24 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
     if (info.result == Compare::Result::Identical)
     {
         QMessageBox::warning(
-            this, "Kopieren nicht notwendig",
-            "Die Datei ist in beiden Verzeichnissen identisch. Ein Kopieren ist daher nicht notwendig.");
+            this, tr("Copy not necessary"),
+            tr("The file is identical in both directories. Therefore, it is not necessary to copy it."));
         return;
     }
     if (info.result == Compare::Result::RightSideOnly)
     {
         QMessageBox::warning(
-            this, "Kopieren nicht möglich",
-            QStringLiteral("Die Datei ist nur auf der rechten Seite vorhanden. ")
-                + "Ein Kopieren von links nach rechts ist daher nicht möglich.");
+            this, tr("Copy not possible"),
+            tr("The file only exists on the right side. ")
+                + tr("Therefore, a copy from the left side to the right side is not possible."));
         return;
     }
     if (info.isDirectory)
     {
         QMessageBox::warning(
-            this, "Kopieren von Verzeichnissen",
-            QStringLiteral("Der ausgewählte Eintrag ist ein Verzeichnis. ")
-                + "Ein Kopieren von Verzeichnissen ist in dieser Ansicht aber nicht möglich.");
+            this, tr("Copying directories"),
+            tr("The selected entry is a directory. ")
+                + tr("However, copying directories is not possible in this dialog."));
         return;
     }
 
@@ -461,8 +462,8 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
     if (QFile::exists(destination))
     {
         const QMessageBox::StandardButton button = QMessageBox::question(
-            this, "Ziel wird überschrieben",
-            "Durch diese Aktion wird die Datei auf der rechten Seite gelöscht / überschrieben. Soll die Aktion dennoch ausgeführt werden?");
+            this, tr("Destination will be overwritten"),
+            tr("This action will delete / overwrite the file on the right side. Do you still want to proceed?"));
         if (button != QMessageBox::StandardButton::Yes)
         {
             return;
@@ -471,8 +472,8 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
         if (!QFile::remove(destination))
         {
             QMessageBox::critical(
-                this, "Fehler beim Überschreiben",
-                "Die vorhandene Datei auf der rechten Seite konnte nicht entfernt / überschrieben werden.");
+                this, tr("Error while overwriting"),
+                tr("The existing file on the right side could not be removed / overwritten."));
             return;
         }
         rightSideChanged = true;
@@ -482,16 +483,17 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
         info.rightSize = -1;
         item->setIcon(colIdxResult, QIcon::fromTheme(iconNameLeftSideOnly));
         item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
-        item->setText(colIdxRightDate, "keins");
-        item->setText(colIdxRightSize, "keine");
+        item->setText(colIdxRightDate, tr("none", "no_date"));
+        item->setText(colIdxRightSize, tr("none", "no_size"));
     }
 
     if (!QFile::copy(source, destination))
     {
         QMessageBox::critical(
-            this, "Kopieren fehlgeschlagen",
-            QStringLiteral("Die Datei ") + name + " konnte nicht nach "
-                + destination + " kopiert werden");
+            this, tr("Copying failed"),
+            tr("The file %1 could not be copied to %2.")
+                .arg(name)
+                .arg(destination));
 
         // update enabled flag of copy to left/right actions
         treeWidgetSelectionChanged();
@@ -502,7 +504,7 @@ void DirectoryCompareWindow::actionCopyToRightTriggered()
 
     // Adjust widget item.
     item->setIcon(colIdxResult, QIcon::fromTheme(iconNameIdentical));
-    item->setText(colIdxResult, "Dateien sind identisch.");
+    item->setText(colIdxResult, tr("Files are identical."));
     info.result = Compare::Result::Identical;
     const QFileInfo fileInfo = QFileInfo(destination);
     info.rightDate = fileInfo.lastModified();
@@ -520,8 +522,8 @@ void DirectoryCompareWindow::actionDeleteTriggered()
     const QList<QTreeWidgetItem*> selection = ui->treeWidget->selectedItems();
     if (selection.isEmpty())
     {
-        QMessageBox::warning(this, "Keine Auswahl vorhanden",
-                             "Es wurde keine Datei zum Löschen ausgewählt.");
+        QMessageBox::warning(this, tr("No file selected"),
+                             tr("No file was selected for deletion."));
         return;
     }
     QTreeWidgetItem* item = selection.at(0);
@@ -530,9 +532,9 @@ void DirectoryCompareWindow::actionDeleteTriggered()
     if (info.isDirectory)
     {
         QMessageBox::warning(
-            this, "Löschen von Verzeichnissen",
-            QStringLiteral("Der ausgewählte Eintrag ist ein Verzeichnis. ")
-                + "Ein Löschen von Verzeichnissen ist in dieser Ansicht aber nicht möglich.");
+            this, tr("Deleting directories"),
+            tr("The selected entry is a directory. ")
+                + tr("However, deleting directories is not possible in this dialog."));
         return;
     }
 
@@ -541,20 +543,20 @@ void DirectoryCompareWindow::actionDeleteTriggered()
         switch (info.result)
         {
         case Compare::Result::LeftSideOnly:
-            message = "Durch diese Aktion wird die Datei " + info.name
-                      + " auf der linken Seite gelöscht. Soll die Aktion wirklich ausgeführt werden?";
+            message = tr("This action will delete the file %1 on the left side. Are you sure you want to perform this action?")
+                          .arg(info.name);
             break;
         case Compare::Result::RightSideOnly:
-            message = "Durch diese Aktion wird die Datei " + info.name
-                      + " auf der rechten Seite gelöscht. Soll die Aktion wirklich ausgeführt werden?";
+            message = tr("This action will delete the file %1 on the right side. Are you sure you want to perform this action?")
+                          .arg(info.name);
             break;
         default:
-            message = "Durch diese Aktion wird die Datei " + info.name
-                      + " in beiden Verzeichnissen gelöscht. Soll die Aktion wirklich ausgeführt werden?";
+            message = tr("This action will delete the file %1 in both directories. Are you sure you want to perform this action?")
+                          .arg(info.name);
             break;
         }
         const QMessageBox::StandardButton button = QMessageBox::question(
-            this, "Wirklich löschen?", message);
+            this, tr("Are you sure you want to delete this?"), message);
         if (button != QMessageBox::StandardButton::Yes)
         {
             return;
@@ -566,8 +568,8 @@ void DirectoryCompareWindow::actionDeleteTriggered()
         if (!QFile::remove(leftFile))
         {
             QMessageBox::critical(
-                this, "Fehler beim Löschen",
-                "Die Datei " + leftFile + " konnte nicht entfernt werden.");
+                this, tr("Error while deleting"),
+                tr("The file ") + leftFile + tr(" could not be removed."));
             return;
         }
         leftSideChanged = true;
@@ -586,8 +588,8 @@ void DirectoryCompareWindow::actionDeleteTriggered()
         info.leftSize = -1;
         item->setIcon(colIdxResult, QIcon::fromTheme(iconNameRightSideOnly));
         item->setData(colIdxResult, Qt::UserRole, QVariant::fromValue(info));
-        item->setText(colIdxLeftDate, "keins");
-        item->setText(colIdxLeftSize, "keine");
+        item->setText(colIdxLeftDate, tr("none", "no_date"));
+        item->setText(colIdxLeftSize, tr("none", "no_size"));
     }
 
     // Path on right side must exist, because this entry's result was not equal
@@ -596,8 +598,8 @@ void DirectoryCompareWindow::actionDeleteTriggered()
     if (!QFile::remove(rightFile))
     {
         QMessageBox::critical(
-            this, "Fehler beim Löschen",
-            "Die Datei " + rightFile + " konnte nicht entfernt werden.");
+            this, tr("Error while deleting"),
+            tr("The file ") + rightFile + tr(" could not be removed."));
         return;
     }
     rightSideChanged = true;
@@ -609,17 +611,17 @@ void DirectoryCompareWindow::addLeftSideOnlyEntry(const Compare::Info &info, con
 {
     QStringList data;
     data.append(info.name);
-    data.append("Nur links: " + info.name);
+    data.append(tr("Left side only: ") + info.name);
     data.append(loc.toString(info.leftDate, QLocale::NarrowFormat));
-    data.append("keins");
+    data.append(tr("none", "no_date"));
     if (info.isDirectory)
     {
-        data << "Verzeichnis" << "keine";
+        data << tr("Directory") << tr("none", "no_size");
     }
     else
     {
         data.append(loc.formattedDataSize(info.leftSize));
-        data.append("keine");
+        data.append(tr("none", "no_size"));
     }
     QTreeWidgetItem* item = new QTreeWidgetItem(data);
     item->setIcon(0, info.isDirectory
@@ -634,16 +636,16 @@ void DirectoryCompareWindow::addRightSideOnlyEntry(const Compare::Info &info, co
 {
     QStringList data;
     data.append(info.name);
-    data.append("Nur rechts: " + info.name);
-    data.append("keins");
+    data.append(tr("Right side only: ") + info.name);
+    data.append(tr("none", "no_date"));
     data.append(loc.toString(info.rightDate, QLocale::NarrowFormat));
     if (info.isDirectory)
     {
-        data << "keine" << "Verzeichnis";
+        data << tr("none", "no_size") << tr("Directory");
     }
     else
     {
-        data.append("keine");
+        data.append(tr("none", "no_size"));
         data.append(loc.formattedDataSize(info.rightSize));
     }
     QTreeWidgetItem* item = new QTreeWidgetItem(data);
@@ -659,10 +661,10 @@ void DirectoryCompareWindow::addDirectoryExistsEntry(const Compare::Info &info, 
 {
     QStringList data;
     data.append(info.name);
-    data.append("Existiert in beiden Verzeichnissen");
+    data.append(tr("Exists in both directories"));
     data.append(loc.toString(info.leftDate, QLocale::NarrowFormat));
     data.append(loc.toString(info.rightDate, QLocale::NarrowFormat));
-    data << "Verzeichnis" << "Verzeichnis";
+    data << tr("Directory") << tr("Directory");
 
     QTreeWidgetItem* item = new QTreeWidgetItem(data);
 
@@ -681,17 +683,17 @@ void DirectoryCompareWindow::addFileEntry(const Compare::Info &info, const QLoca
     switch(info.result)
     {
     case Compare::Result::Identical:
-        data.append("Dateien sind identisch.");
+        data.append(tr("Files are identical."));
         break;
     case Compare::Result::Different:
-        data.append("Dateien sind unterschiedlich.");
+        data.append(tr("Files are different."));
         break;
     case Compare::Result::Unknown:
-        data.append("Dateien konnten nicht verglichen werden.");
+        data.append(tr("Files could not be compared."));
         break;
     default:
         // Should not happen, but intercept it anyway.
-        data.append("Fehler: Wert " + QString::number(static_cast<int>(info.result)));
+        data.append(tr("Error: Value ") + QString::number(static_cast<int>(info.result)));
         break;
     }
     data.append(loc.toString(info.leftDate, QLocale::NarrowFormat));

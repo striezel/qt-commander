@@ -96,32 +96,32 @@
       </attribute>
       <column>
        <property name="text">
-        <string>Dateiname</string>
+        <string>File name</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Vergleichsergebnis</string>
+        <string>Comparison result</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Datum links</string>
+        <string>Left date</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Datum rechts</string>
+        <string>Right date</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Größe links</string>
+        <string>Left size</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Größe rechts</string>
+        <string>Right size</string>
        </property>
       </column>
      </widget>

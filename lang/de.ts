@@ -315,6 +315,61 @@
         <source>Exit</source>
         <translation>Beenden</translation>
     </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="167"/>
+        <location filename="../checksumdialog.cpp" line="177"/>
+        <source>Error while opening the file</source>
+        <translation>Fehler beim Öffnen der Datei</translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="168"/>
+        <location filename="../checksumdialog.cpp" line="178"/>
+        <location filename="../checksumdialog.cpp" line="202"/>
+        <source>The file </source>
+        <translation>Die Datei </translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="168"/>
+        <location filename="../checksumdialog.cpp" line="178"/>
+        <source> could not be opened for reading.</source>
+        <translation> konnte nicht zum Lesen geöffnet werden.</translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="169"/>
+        <location filename="../checksumdialog.cpp" line="179"/>
+        <source> Therefore, no checksum can be calculated.</source>
+        <translation> Damit kann auch keine Prüfsumme berechnet werden.</translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="201"/>
+        <source>Checksum file already exists</source>
+        <translation>Prüfsummendatei existiert bereits</translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="202"/>
+        <source> already exists. Shall it be overwritten?</source>
+        <translation> existiert bereits. Soll sie überschrieben werden?</translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="213"/>
+        <source>Error while creating the checksum file</source>
+        <translation>Fehler beim Erstellen der Prüfsummendatei</translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="214"/>
+        <source>The checksum file </source>
+        <translation>Die Prüfsummendatei </translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="214"/>
+        <source> could not be created and opened for writing.</source>
+        <translation> konnte nicht erstellt und zum Schreiben geöffnet werden.</translation>
+    </message>
+    <message>
+        <location filename="../checksumdialog.cpp" line="215"/>
+        <source> Maybe permissions to create the file are missing.</source>
+        <translation> Möglicherweise fehlen die Berechtigungen zum Erstellen der Datei.</translation>
+    </message>
 </context>
 <context>
     <name>CreateDirectoryDialog</name>
@@ -358,33 +413,33 @@
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="99"/>
-        <source>Dateiname</source>
-        <translation type="unfinished"></translation>
+        <source>File name</source>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="104"/>
-        <source>Vergleichsergebnis</source>
-        <translation type="unfinished"></translation>
+        <source>Comparison result</source>
+        <translation>Vergleichsergebnis</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="109"/>
-        <source>Datum links</source>
-        <translation type="unfinished"></translation>
+        <source>Left date</source>
+        <translation>Datum links</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="114"/>
-        <source>Datum rechts</source>
-        <translation type="unfinished"></translation>
+        <source>Right date</source>
+        <translation>Datum rechts</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="119"/>
-        <source>Größe links</source>
-        <translation type="unfinished"></translation>
+        <source>Left size</source>
+        <translation>Größe links</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="124"/>
-        <source>Größe rechts</source>
-        <translation type="unfinished"></translation>
+        <source>Right size</source>
+        <translation>Größe rechts</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="138"/>
@@ -460,6 +515,270 @@
         <location filename="../directorycomparewindow.ui" line="270"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="154"/>
+        <source>The comparison is complete.</source>
+        <translation>Vergleich ist abgeschlossen.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="182"/>
+        <source>Comparison has been cancelled.</source>
+        <translation>Vergleich wurde abgebrochen.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="273"/>
+        <source>No further differences exist</source>
+        <translation>Keine weiteren Unterschiede vorhanden</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="274"/>
+        <source>There are no subsequent entries with different files.</source>
+        <translation>Es gibt keine nachfolgenden Einträge mit unterschiedlichen Dateien.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="322"/>
+        <source>No prior differences exist</source>
+        <translation>Keine vorherigen Unterschiede vorhanden</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="323"/>
+        <source>There are no previous entries with different files.</source>
+        <translation>Es gibt keine vorherigen Einträge mit unterschiedlichen Dateien.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="331"/>
+        <location filename="../directorycomparewindow.cpp" line="428"/>
+        <location filename="../directorycomparewindow.cpp" line="525"/>
+        <source>No file selected</source>
+        <translation>Keine Auswahl vorhanden</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="332"/>
+        <location filename="../directorycomparewindow.cpp" line="429"/>
+        <source>No file was selected to copy.</source>
+        <translation>Es wurde keine Datei zum Kopieren ausgewählt.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="340"/>
+        <location filename="../directorycomparewindow.cpp" line="437"/>
+        <source>Copy not necessary</source>
+        <translation>Kopieren nicht notwendig</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="341"/>
+        <location filename="../directorycomparewindow.cpp" line="438"/>
+        <source>The file is identical in both directories. Therefore, it is not necessary to copy it.</source>
+        <translation>Die Datei ist in beiden Verzeichnissen identisch. Ein Kopieren ist daher nicht notwendig.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="347"/>
+        <location filename="../directorycomparewindow.cpp" line="444"/>
+        <source>Copy not possible</source>
+        <translation>Kopieren nicht möglich</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="348"/>
+        <source>The file only exists on the left side. </source>
+        <translation>Die Datei ist nur auf der linken Seite vorhanden. </translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="349"/>
+        <source>Therefore, a copy from the right side to the left side is not possible.</source>
+        <translation>Ein Kopieren von links nach rechts ist daher nicht möglich.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="355"/>
+        <location filename="../directorycomparewindow.cpp" line="452"/>
+        <source>Copying directories</source>
+        <translation>Kopieren von Verzeichnissen</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="356"/>
+        <location filename="../directorycomparewindow.cpp" line="453"/>
+        <location filename="../directorycomparewindow.cpp" line="536"/>
+        <source>The selected entry is a directory. </source>
+        <translation>Der ausgewählte Eintrag ist ein Verzeichnis. </translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="357"/>
+        <location filename="../directorycomparewindow.cpp" line="454"/>
+        <source>However, copying directories is not possible in this dialog.</source>
+        <translation>Ein Kopieren von Verzeichnissen ist in dieser Ansicht aber nicht möglich.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="368"/>
+        <location filename="../directorycomparewindow.cpp" line="465"/>
+        <source>Destination will be overwritten</source>
+        <translation>Ziel wird überschrieben</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="369"/>
+        <source>This action will delete / overwrite the file on the left side. Do you still want to proceed?</source>
+        <translation>Durch diese Aktion wird die Datei auf der linken Seite gelöscht / überschrieben. Soll die Aktion dennoch ausgeführt werden?</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="378"/>
+        <location filename="../directorycomparewindow.cpp" line="475"/>
+        <source>Error while overwriting</source>
+        <translation>Fehler beim Überschreiben</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="379"/>
+        <source>The existing file on the left side could not be removed / overwritten.</source>
+        <translation>Die vorhandene Datei auf der linken Seite konnte nicht entfernt / überschrieben werden.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="389"/>
+        <location filename="../directorycomparewindow.cpp" line="486"/>
+        <location filename="../directorycomparewindow.cpp" line="591"/>
+        <location filename="../directorycomparewindow.cpp" line="616"/>
+        <location filename="../directorycomparewindow.cpp" line="640"/>
+        <source>none</source>
+        <comment>no_date</comment>
+        <translation>keins</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="390"/>
+        <location filename="../directorycomparewindow.cpp" line="487"/>
+        <location filename="../directorycomparewindow.cpp" line="592"/>
+        <location filename="../directorycomparewindow.cpp" line="619"/>
+        <location filename="../directorycomparewindow.cpp" line="624"/>
+        <location filename="../directorycomparewindow.cpp" line="644"/>
+        <location filename="../directorycomparewindow.cpp" line="648"/>
+        <source>none</source>
+        <comment>no_size</comment>
+        <translation>keine</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="396"/>
+        <location filename="../directorycomparewindow.cpp" line="493"/>
+        <source>Copying failed</source>
+        <translation>Kopieren fehlgeschlagen</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="397"/>
+        <location filename="../directorycomparewindow.cpp" line="494"/>
+        <source>The file %1 could not be copied to %2.</source>
+        <translation>Die Datei %1 konnte nicht nach %2 kopiert werden.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="410"/>
+        <location filename="../directorycomparewindow.cpp" line="507"/>
+        <location filename="../directorycomparewindow.cpp" line="686"/>
+        <source>Files are identical.</source>
+        <translation>Dateien sind identisch.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="445"/>
+        <source>The file only exists on the right side. </source>
+        <translation>Die Datei ist nur auf der rechten Seite vorhanden. </translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="446"/>
+        <source>Therefore, a copy from the left side to the right side is not possible.</source>
+        <translation>Ein Kopieren von links nach rechts ist daher nicht möglich.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="466"/>
+        <source>This action will delete / overwrite the file on the right side. Do you still want to proceed?</source>
+        <translation>Durch diese Aktion wird die Datei auf der rechten Seite gelöscht / überschrieben. Soll die Aktion dennoch ausgeführt werden?</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="476"/>
+        <source>The existing file on the right side could not be removed / overwritten.</source>
+        <translation>Die vorhandene Datei auf der rechten Seite konnte nicht entfernt / überschrieben werden.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="526"/>
+        <source>No file was selected for deletion.</source>
+        <translation>Es wurde keine Datei zum Löschen ausgewählt.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="535"/>
+        <source>Deleting directories</source>
+        <translation>Löschen von Verzeichnissen</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="537"/>
+        <source>However, deleting directories is not possible in this dialog.</source>
+        <translation>Ein Löschen von Verzeichnissen ist in dieser Ansicht aber nicht möglich.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="546"/>
+        <source>This action will delete the file %1 on the left side. Are you sure you want to perform this action?</source>
+        <translation>Durch diese Aktion wird die Datei %1 auf der linken Seite gelöscht. Soll die Aktion wirklich ausgeführt werden?</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="550"/>
+        <source>This action will delete the file %1 on the right side. Are you sure you want to perform this action?</source>
+        <translation>Durch diese Aktion wird die Datei %1 auf der rechten Seite gelöscht. Soll die Aktion wirklich ausgeführt werden?</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="554"/>
+        <source>This action will delete the file %1 in both directories. Are you sure you want to perform this action?</source>
+        <translation>Durch diese Aktion wird die Datei %1 in beiden Verzeichnissen gelöscht. Soll die Aktion wirklich ausgeführt werden?</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="559"/>
+        <source>Are you sure you want to delete this?</source>
+        <translation>Wirklich löschen?</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="571"/>
+        <location filename="../directorycomparewindow.cpp" line="601"/>
+        <source>Error while deleting</source>
+        <translation>Fehler beim Löschen</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="572"/>
+        <location filename="../directorycomparewindow.cpp" line="602"/>
+        <source>The file </source>
+        <translation>Die Datei </translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="572"/>
+        <location filename="../directorycomparewindow.cpp" line="602"/>
+        <source> could not be removed.</source>
+        <translation> konnte nicht entfernt werden.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="614"/>
+        <source>Left side only: </source>
+        <translation>Nur links: </translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="619"/>
+        <location filename="../directorycomparewindow.cpp" line="644"/>
+        <location filename="../directorycomparewindow.cpp" line="667"/>
+        <location filename="../directorycomparewindow.cpp" line="667"/>
+        <source>Directory</source>
+        <translation>Verzeichnis</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="639"/>
+        <source>Right side only: </source>
+        <translation>Nur rechts: </translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="664"/>
+        <source>Exists in both directories</source>
+        <translation>Existiert in beiden Verzeichnissen</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="689"/>
+        <source>Files are different.</source>
+        <translation>Dateien sind unterschiedlich.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="692"/>
+        <source>Files could not be compared.</source>
+        <translation>Dateien konnten nicht verglichen werden.</translation>
+    </message>
+    <message>
+        <location filename="../directorycomparewindow.cpp" line="696"/>
+        <source>Error: Value </source>
+        <translation>Fehler: Wert </translation>
     </message>
 </context>
 <context>
@@ -1118,8 +1437,8 @@
     </message>
     <message>
         <location filename="../viewers/pdfviewwindow.ui" line="62"/>
-        <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <source>tool bar</source>
+        <translation>Werkzeugleiste</translation>
     </message>
     <message>
         <location filename="../viewers/pdfviewwindow.ui" line="92"/>
