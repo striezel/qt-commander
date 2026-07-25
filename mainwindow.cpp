@@ -1108,6 +1108,7 @@ void MainWindow::actionLanguageEnglishTriggered(bool checked)
     }
 
     ui->retranslateUi(this);
+    refreshBothViews();
 }
 
 void MainWindow::actionLanguageGermanTriggered(bool checked)
@@ -1130,6 +1131,7 @@ void MainWindow::actionLanguageGermanTriggered(bool checked)
     }
 
     ui->retranslateUi(this);
+    refreshBothViews();
 }
 
 void MainWindow::actionShowMountpointsTriggered()
