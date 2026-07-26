@@ -1354,8 +1354,8 @@
     <message>
         <location filename="../mainwindow.cpp" line="1101"/>
         <location filename="../mainwindow.cpp" line="1106"/>
-        <location filename="../mainwindow.cpp" line="1123"/>
-        <location filename="../mainwindow.cpp" line="1128"/>
+        <location filename="../mainwindow.cpp" line="1124"/>
+        <location filename="../mainwindow.cpp" line="1129"/>
         <source>Failure</source>
         <translation>Fehler</translation>
     </message>
@@ -1370,12 +1370,12 @@
         <translation>Die englische Sprachübersetzung konnte nicht aktiviert werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1123"/>
+        <location filename="../mainwindow.cpp" line="1124"/>
         <source>Could not load German language data.</source>
         <translation>Die deutschen Sprachdaten konnten nicht geladen werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1128"/>
+        <location filename="../mainwindow.cpp" line="1129"/>
         <source>Could not install German language translator.</source>
         <translation>Die deutsche Sprachübersetzung konnte nicht aktiviert werden.</translation>
     </message>
@@ -1509,94 +1509,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="36"/>
-        <source>Verzeichnisansicht</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="48"/>
-        <source>Sortierung</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="66"/>
-        <source>Nach Name sortieren</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="88"/>
-        <source>Nach Änderungsdatum sortieren</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="107"/>
-        <source>Nach Größe sortieren</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="126"/>
-        <source>Nach Dateityp (Endung) sortieren</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="145"/>
-        <source>Sortierung umkehren</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="164"/>
         <location filename="../settingsdialog.ui" line="908"/>
         <source>Groß-/Kleinschreibung ignorieren</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="178"/>
-        <source>Reihenfolge von Dateien und Verzeichnissen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="196"/>
-        <source>Verzeichnisse zuerst, dann Dateien</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="218"/>
-        <source>Dateien zuerst, dann Verzeichnisse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="232"/>
-        <source>Weitere Optionen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="250"/>
-        <source>Vom System bereitgestellte Dateisymbole verwenden</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="269"/>
-        <source>Größenangabe formatieren</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="283"/>
-        <source>Bestimmte Dateien ein-/ausblenden</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="301"/>
-        <source>Versteckte Dateien und Verzeichnisse anzeigen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="320"/>
-        <source>Systemdateien und -verzeichnisse anzeigen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="339"/>
-        <source>Dateien ausblenden (zeigt nur Verzeichnisse)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1620,16 +1534,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="428"/>
-        <source>Textbetrachter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="440"/>
-        <source>Stil für Syntaxhervorhebung</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="458"/>
         <source>Ayu Dark</source>
         <translation>Ayu Dark</translation>
@@ -1640,34 +1544,134 @@
         <translation>Ayu Light</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="491"/>
-        <source>Schriftart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="509"/>
-        <source>Schriftart:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="528"/>
         <source>Font Description Placeholder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="36"/>
+        <source>Directory view</source>
+        <translation>Verzeichnisansicht</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Sorting</source>
+        <translation>Sortierung</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="66"/>
+        <source>Sort by name</source>
+        <translation>Nach Name sortieren</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="88"/>
+        <source>Sort by modification date</source>
+        <translation>Nach Änderungsdatum sortieren</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="107"/>
+        <source>Sort by size</source>
+        <translation>Nach Größe sortieren</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <source>Sort by type (file extension)</source>
+        <translation>Nach Dateityp (Endung) sortieren</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="145"/>
+        <source>Reverse sort</source>
+        <translation>Sortierung umkehren</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="164"/>
+        <source>Ignore upper/lower case</source>
+        <translation>Groß-/Kleinschreibung ignorieren</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="178"/>
+        <source>Order of files and directories</source>
+        <translation>Reihenfolge von Dateien und Verzeichnissen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="196"/>
+        <source>Directories first, then files</source>
+        <translation>Verzeichnisse zuerst, dann Dateien</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="218"/>
+        <source>Files first, then directories</source>
+        <translation>Dateien zuerst, dann Verzeichnisse</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="232"/>
+        <source>Other options</source>
+        <translation>Weitere Optionen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="250"/>
+        <source>Use system-provided file icons</source>
+        <translation>Vom System bereitgestellte Dateisymbole verwenden</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="269"/>
+        <source>Show formatted size</source>
+        <translation>Größenangabe formatieren</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="283"/>
+        <source>Show/Hide certain files</source>
+        <translation>Bestimmte Dateien ein-/ausblenden</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="301"/>
+        <source>Show hidden files and directories</source>
+        <translation>Versteckte Dateien und Verzeichnisse anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="320"/>
+        <source>Show system files and directories</source>
+        <translation>Systemdateien und -verzeichnisse anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="339"/>
+        <source>Hide files (shows directories only)</source>
+        <translation>Dateien ausblenden (zeigt nur Verzeichnisse)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="428"/>
+        <source>Text viewer</source>
+        <translation>Textbetrachter</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="440"/>
+        <source>Style for syntax highlighting</source>
+        <translation>Stil für Syntaxhervorhebung</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="491"/>
+        <source>Font</source>
+        <translation>Schriftart</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="509"/>
+        <source>Font:</source>
+        <translation>Schriftart:</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="547"/>
-        <source>Schriftart ändern ...</source>
-        <translation type="unfinished"></translation>
+        <source>Change font ...</source>
+        <translation>Schriftart ändern ...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="564"/>
-        <source>Automatische Syntaxhervorhebung</source>
-        <translation type="unfinished"></translation>
+        <source>Automatic syntax highlighting</source>
+        <translation>Automatische Syntaxhervorhebung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="582"/>
-        <source>Automatisch passende Sprache für Syntaxhervorhebung wählen</source>
-        <translation type="unfinished"></translation>
+        <source>Automatically select the matching language for syntax highlighting</source>
+        <translation>Automatisch passende Sprache für Syntaxhervorhebung wählen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="607"/>

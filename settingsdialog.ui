@@ -33,7 +33,7 @@
        <iconset theme="folder"/>
       </attribute>
       <attribute name="title">
-       <string>Verzeichnisansicht</string>
+       <string>Directory view</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayoutTabView">
        <item row="1" column="0">
@@ -45,7 +45,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Sortierung</string>
+          <string>Sorting</string>
          </property>
          <widget class="QRadioButton" name="rbSortByName">
           <property name="geometry">
@@ -63,7 +63,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Nach Name sortieren</string>
+           <string>Sort by name</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -85,7 +85,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Nach Änderungsdatum sortieren</string>
+           <string>Sort by modification date</string>
           </property>
          </widget>
          <widget class="QRadioButton" name="rbSortBySize">
@@ -104,7 +104,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Nach Größe sortieren</string>
+           <string>Sort by size</string>
           </property>
          </widget>
          <widget class="QRadioButton" name="rbSortByType">
@@ -123,7 +123,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Nach Dateityp (Endung) sortieren</string>
+           <string>Sort by type (file extension)</string>
           </property>
          </widget>
          <widget class="QCheckBox" name="cbReverseSort">
@@ -142,7 +142,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Sortierung umkehren</string>
+           <string>Reverse sort</string>
           </property>
          </widget>
          <widget class="QCheckBox" name="cbSortIgnoreCase">
@@ -161,7 +161,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Groß-/Kleinschreibung ignorieren</string>
+           <string>Ignore upper/lower case</string>
           </property>
          </widget>
         </widget>
@@ -175,7 +175,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Reihenfolge von Dateien und Verzeichnissen</string>
+          <string>Order of files and directories</string>
          </property>
          <widget class="QCheckBox" name="cbSortDirectoriesFirst">
           <property name="geometry">
@@ -193,7 +193,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Verzeichnisse zuerst, dann Dateien</string>
+           <string>Directories first, then files</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -215,7 +215,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Dateien zuerst, dann Verzeichnisse</string>
+           <string>Files first, then directories</string>
           </property>
          </widget>
         </widget>
@@ -229,7 +229,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Weitere Optionen</string>
+          <string>Other options</string>
          </property>
          <widget class="QCheckBox" name="cbUseProvidedIcons">
           <property name="geometry">
@@ -247,7 +247,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Vom System bereitgestellte Dateisymbole verwenden</string>
+           <string>Use system-provided file icons</string>
           </property>
          </widget>
          <widget class="QCheckBox" name="cbShowFormattedSize">
@@ -266,7 +266,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Größenangabe formatieren</string>
+           <string>Show formatted size</string>
           </property>
          </widget>
         </widget>
@@ -280,7 +280,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Bestimmte Dateien ein-/ausblenden</string>
+          <string>Show/Hide certain files</string>
          </property>
          <widget class="QCheckBox" name="cbShowHiddenFiles">
           <property name="geometry">
@@ -298,7 +298,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Versteckte Dateien und Verzeichnisse anzeigen</string>
+           <string>Show hidden files and directories</string>
           </property>
          </widget>
          <widget class="QCheckBox" name="cbShowSystemFiles">
@@ -317,7 +317,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Systemdateien und -verzeichnisse anzeigen</string>
+           <string>Show system files and directories</string>
           </property>
          </widget>
          <widget class="QCheckBox" name="cbHideFiles">
@@ -336,7 +336,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Dateien ausblenden (zeigt nur Verzeichnisse)</string>
+           <string>Hide files (shows directories only)</string>
           </property>
          </widget>
         </widget>
@@ -425,7 +425,7 @@
        <iconset theme="accessories-text-editor"/>
       </attribute>
       <attribute name="title">
-       <string>Textbetrachter</string>
+       <string>Text viewer</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayoutTabTextViewer">
        <item row="1" column="0">
@@ -437,7 +437,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Stil für Syntaxhervorhebung</string>
+          <string>Style for syntax highlighting</string>
          </property>
          <widget class="QRadioButton" name="rbDefaultDarkStyle">
           <property name="geometry">
@@ -488,7 +488,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Schriftart</string>
+          <string>Font</string>
          </property>
          <widget class="QLabel" name="lblTextViewerFont">
           <property name="geometry">
@@ -506,7 +506,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Schriftart:</string>
+           <string>Font:</string>
           </property>
          </widget>
          <widget class="QLabel" name="lblTextViewerFontValue">
@@ -544,7 +544,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Schriftart ändern ...</string>
+           <string>Change font ...</string>
           </property>
           <property name="icon">
            <iconset theme="preferences-desktop-font"/>
@@ -561,7 +561,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Automatische Syntaxhervorhebung</string>
+          <string>Automatic syntax highlighting</string>
          </property>
          <widget class="QCheckBox" name="cbTextViewerAutoSelectLanguage">
           <property name="geometry">
@@ -579,7 +579,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Automatisch passende Sprache für Syntaxhervorhebung wählen</string>
+           <string>Automatically select the matching language for syntax highlighting</string>
           </property>
          </widget>
         </widget>
