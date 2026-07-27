@@ -1502,34 +1502,40 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>Einstellungen</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="607"/>
+        <source>Audio player</source>
+        <translation>Audio player</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="908"/>
-        <source>Groß-/Kleinschreibung ignorieren</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="625"/>
+        <source>Auto-play audio</source>
+        <translation>Auto-play audio</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="351"/>
-        <source>Löschoperation</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="644"/>
+        <source>Loop audio endlessly</source>
+        <translation>Loop audio endlessly</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="363"/>
-        <source>Art der Löschoperation</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="663"/>
+        <location filename="../settingsdialog.ui" line="778"/>
+        <source>Volume:</source>
+        <translation>Volume:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="381"/>
-        <source>Löschen löscht Datei / Verzeichnis direkt</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="722"/>
+        <source>Video player</source>
+        <translation>Video player</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="403"/>
-        <source>Löschen verschiebt Datei / Verzeichnis in den Papierkorb</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="740"/>
+        <source>Auto-play video</source>
+        <translation>Auto-play video</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="759"/>
+        <source>Loop video file endlessly</source>
+        <translation>Loop video file endlessly</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="458"/>
@@ -1550,6 +1556,11 @@
         <location filename="../settingsdialog.ui" line="36"/>
         <source>Directory view</source>
         <translation>Directory view</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>Settings</source>
+        <translation>Settings</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
@@ -1637,6 +1648,26 @@
         <translation>Hide files (shows directories only)</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="351"/>
+        <source>Delete operation</source>
+        <translation>Delete operation</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="363"/>
+        <source>Type of delete operation</source>
+        <translation>Type of delete operation</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="381"/>
+        <source>Delete directly removes file / directory</source>
+        <translation>Delete directly removes file / directory</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="403"/>
+        <source>Delete moves file / directory to trash</source>
+        <translation>Delete moves file / directory to trash</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="428"/>
         <source>Text viewer</source>
         <translation>Text viewer</translation>
@@ -1672,45 +1703,9 @@
         <translation>Automatically select the matching language for syntax highlighting</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="607"/>
-        <source>Audiowiedergabe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="625"/>
-        <source>Audio automatisch abspielen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="644"/>
-        <source>Audio in Endlosschleife abspielen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="663"/>
-        <location filename="../settingsdialog.ui" line="778"/>
-        <source>Lautstärke:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="713"/>
         <source>50 %</source>
         <translation>50 %</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="722"/>
-        <source>Videowiedergabe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="740"/>
-        <source>Video automatisch abspielen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="759"/>
-        <source>Video in Endlosschleife abspielen</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="828"/>
@@ -1719,23 +1714,28 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="837"/>
-        <source>Verzeichnisvergleich</source>
-        <translation type="unfinished"></translation>
+        <source>Directory comparison</source>
+        <translation>Directory comparison</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="849"/>
-        <source>Groß-/Kleinschreibung bei Dateinamenvergleich</source>
-        <translation type="unfinished"></translation>
+        <source>Case sensitivity in file name comparison</source>
+        <translation>Case sensitivity in file name comparison</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="867"/>
-        <source>Standardeinstellung für System verwenden</source>
-        <translation type="unfinished"></translation>
+        <source>Use system&apos;s default case sensitivity</source>
+        <translation>Use system&apos;s default case sensitivity</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="889"/>
-        <source>Groß-/Kleinschreibung unterscheiden</source>
-        <translation type="unfinished"></translation>
+        <source>Perform case-sensitive file name comparison</source>
+        <translation>Perform case-sensitive file name comparison</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="908"/>
+        <source>Perform case-insensitive file name comparison</source>
+        <translation>Perform case-insensitive file name comparison</translation>
     </message>
 </context>
 <context>

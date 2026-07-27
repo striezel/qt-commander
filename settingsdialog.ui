@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Einstellungen</string>
+   <string>Settings</string>
   </property>
   <property name="windowIcon">
    <iconset theme="document-properties"/>
@@ -348,7 +348,7 @@
        <iconset theme="edit-delete"/>
       </attribute>
       <attribute name="title">
-       <string>Löschoperation</string>
+       <string>Delete operation</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayoutTabDeleteOperation">
        <item row="0" column="0">
@@ -360,7 +360,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Art der Löschoperation</string>
+          <string>Type of delete operation</string>
          </property>
          <widget class="QRadioButton" name="rbDeleteMeansDelete">
           <property name="geometry">
@@ -378,7 +378,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Löschen löscht Datei / Verzeichnis direkt</string>
+           <string>Delete directly removes file / directory</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -400,7 +400,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Löschen verschiebt Datei / Verzeichnis in den Papierkorb</string>
+           <string>Delete moves file / directory to trash</string>
           </property>
          </widget>
         </widget>
@@ -604,7 +604,7 @@
        <iconset theme="audio-volume-medium"/>
       </attribute>
       <attribute name="title">
-       <string>Audiowiedergabe</string>
+       <string>Audio player</string>
       </attribute>
       <widget class="QCheckBox" name="cbAutoPlayAudio">
        <property name="geometry">
@@ -622,7 +622,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Audio automatisch abspielen</string>
+        <string>Auto-play audio</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbLoopAudioForever">
@@ -641,7 +641,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Audio in Endlosschleife abspielen</string>
+        <string>Loop audio endlessly</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblAudioVolume">
@@ -660,7 +660,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Lautstärke:</string>
+        <string>Volume:</string>
        </property>
       </widget>
       <widget class="QSlider" name="sliderAudioVolume">
@@ -719,7 +719,7 @@
        <iconset theme="applications-multimedia"/>
       </attribute>
       <attribute name="title">
-       <string>Videowiedergabe</string>
+       <string>Video player</string>
       </attribute>
       <widget class="QCheckBox" name="cbAutoPlayVideo">
        <property name="geometry">
@@ -737,7 +737,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Video automatisch abspielen</string>
+        <string>Auto-play video</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="cbLoopVideoForever">
@@ -756,7 +756,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Video in Endlosschleife abspielen</string>
+        <string>Loop video file endlessly</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblVideoVolume">
@@ -775,7 +775,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Lautstärke:</string>
+        <string>Volume:</string>
        </property>
       </widget>
       <widget class="QSlider" name="sliderVideoVolume">
@@ -834,7 +834,7 @@
        <iconset theme="folder"/>
       </attribute>
       <attribute name="title">
-       <string>Verzeichnisvergleich</string>
+       <string>Directory comparison</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayoutTabDirectoryCompare">
        <item row="0" column="0">
@@ -846,7 +846,7 @@
           </size>
          </property>
          <property name="title">
-          <string>Groß-/Kleinschreibung bei Dateinamenvergleich</string>
+          <string>Case sensitivity in file name comparison</string>
          </property>
          <widget class="QRadioButton" name="rbSystemDefaultCaseSensitivity">
           <property name="geometry">
@@ -864,7 +864,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Standardeinstellung für System verwenden</string>
+           <string>Use system's default case sensitivity</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -886,7 +886,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Groß-/Kleinschreibung unterscheiden</string>
+           <string>Perform case-sensitive file name comparison</string>
           </property>
          </widget>
          <widget class="QRadioButton" name="rbCaseInsensitiveCompare">
@@ -905,7 +905,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Groß-/Kleinschreibung ignorieren</string>
+           <string>Perform case-insensitive file name comparison</string>
           </property>
          </widget>
         </widget>
