@@ -1787,6 +1787,11 @@
         <source>, underlined</source>
         <translation>, unterstrichen</translation>
     </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="273"/>
+        <source>, strikeout</source>
+        <translation>, durchgestrichen</translation>
+    </message>
 </context>
 <context>
     <name>TextViewWindow</name>

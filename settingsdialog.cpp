@@ -268,5 +268,9 @@ QString SettingsDialog::fontToString(const QFont &font)
     {
         description.append(tr(", underlined"));
     }
+    if (font.strikeOut())
+    {
+        description.append(tr(", strikeout"));
+    }
     return description;
 }
