@@ -61,19 +61,19 @@ void MountedVolumesDialog::loadData()
     ui->tableWidget->clear();
 
     ui->tableWidget->setColumnCount(7);
-    QTableWidgetItem* headerItem = new QTableWidgetItem("Gerät");
+    QTableWidgetItem* headerItem = new QTableWidgetItem(tr("Device"));
     ui->tableWidget->setHorizontalHeaderItem(0, headerItem);
-    headerItem = new QTableWidgetItem("Wurzelpfad");
+    headerItem = new QTableWidgetItem(tr("Root path"));
     ui->tableWidget->setHorizontalHeaderItem(1, headerItem);
-    headerItem = new QTableWidgetItem("Dateisystem");
+    headerItem = new QTableWidgetItem(tr("File system"));
     ui->tableWidget->setHorizontalHeaderItem(ColumnIdxFileSystem, headerItem);
-    headerItem = new QTableWidgetItem("Freier Speicher");
+    headerItem = new QTableWidgetItem(tr("Free storage"));
     ui->tableWidget->setHorizontalHeaderItem(ColumnIdxFreeSize, headerItem);
-    headerItem = new QTableWidgetItem("Speicherkapazität");
+    headerItem = new QTableWidgetItem(tr("Capacity"));
     ui->tableWidget->setHorizontalHeaderItem(ColumnIdxTotalSize, headerItem);
-    headerItem = new QTableWidgetItem("Linker Baum");
+    headerItem = new QTableWidgetItem(tr("Left view"));
     ui->tableWidget->setHorizontalHeaderItem(ColumnIdxLeft, headerItem);
-    headerItem = new QTableWidgetItem("Rechter Baum");
+    headerItem = new QTableWidgetItem(tr("Right view"));
     ui->tableWidget->setHorizontalHeaderItem(ColumnIdxRight, headerItem);
 
     const QIcon jumpIcon = QIcon::hasThemeIcon("go-jump") ? QIcon::fromTheme("go-jump") : QIcon();
@@ -120,8 +120,9 @@ void MountedVolumesDialog::loadData()
         item->setFlags(item->flags() & ~ Qt::ItemFlag::ItemIsEditable);
         ui->tableWidget->setItem(row_idx, ColumnIdxTotalSize, item);
 
-        QPushButton* btn = new QPushButton("Hierhin wechseln");
-        btn->setToolTip("Wechselt das angezeigte Verzeichnis des linken Baumes auf " + info.rootPath());
+        QPushButton* btn = new QPushButton(tr("Go here"));
+        btn->setToolTip(tr("Changes the directory displayed in the left tree to %1")
+                            .arg(info.rootPath()));
         if (!jumpIcon.isNull())
         {
             btn->setIcon(jumpIcon);
@@ -131,8 +132,9 @@ void MountedVolumesDialog::loadData()
         });
         ui->tableWidget->setCellWidget(row_idx, ColumnIdxLeft, btn);
 
-        btn = new QPushButton("Hierhin wechseln");
-        btn->setToolTip("Wechselt das angezeigte Verzeichnis des rechten Baumes auf " + info.rootPath());
+        btn = new QPushButton(tr("Go here"));
+        btn->setToolTip(tr("Changes the directory displayed in the right tree to %1")
+                            .arg(info.rootPath()));
         if (!jumpIcon.isNull())
         {
             btn->setIcon(jumpIcon);

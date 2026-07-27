@@ -1387,38 +1387,61 @@
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="42"/>
+        <location filename="../mountedvolumesdialog.cpp" line="64"/>
         <source>Device</source>
         <translation>Device</translation>
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="47"/>
+        <location filename="../mountedvolumesdialog.cpp" line="66"/>
         <source>Root path</source>
         <translation>Root path</translation>
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="52"/>
+        <location filename="../mountedvolumesdialog.cpp" line="68"/>
         <source>File system</source>
         <translation>File system</translation>
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="57"/>
+        <location filename="../mountedvolumesdialog.cpp" line="70"/>
         <source>Free storage</source>
         <translation>Free storage</translation>
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="62"/>
+        <location filename="../mountedvolumesdialog.cpp" line="72"/>
         <source>Capacity</source>
         <translation>Capacity</translation>
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="67"/>
+        <location filename="../mountedvolumesdialog.cpp" line="74"/>
         <source>Left view</source>
         <translation>Left view</translation>
     </message>
     <message>
         <location filename="../mountedvolumesdialog.ui" line="72"/>
+        <location filename="../mountedvolumesdialog.cpp" line="76"/>
         <source>Right view</source>
         <translation>Right view</translation>
+    </message>
+    <message>
+        <location filename="../mountedvolumesdialog.cpp" line="123"/>
+        <location filename="../mountedvolumesdialog.cpp" line="135"/>
+        <source>Go here</source>
+        <translation>Go here</translation>
+    </message>
+    <message>
+        <location filename="../mountedvolumesdialog.cpp" line="124"/>
+        <source>Changes the directory displayed in the left tree to %1</source>
+        <translation>Changes the directory displayed in the left tree to %1</translation>
+    </message>
+    <message>
+        <location filename="../mountedvolumesdialog.cpp" line="136"/>
+        <source>Changes the directory displayed in the right tree to %1</source>
+        <translation>Changes the directory displayed in the right tree to %1</translation>
     </message>
 </context>
 <context>
@@ -1736,6 +1759,31 @@
         <location filename="../settingsdialog.ui" line="908"/>
         <source>Perform case-insensitive file name comparison</source>
         <translation>Perform case-insensitive file name comparison</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="253"/>
+        <source> pt</source>
+        <translation> pt</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="257"/>
+        <source> px</source>
+        <translation> px</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="261"/>
+        <source>, bold</source>
+        <translation>, bold</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="265"/>
+        <source>, italic</source>
+        <translation>, italic</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="269"/>
+        <source>, underlined</source>
+        <translation>, underlined</translation>
     </message>
 </context>
 <context>

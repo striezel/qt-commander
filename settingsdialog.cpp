@@ -250,23 +250,23 @@ QString SettingsDialog::fontToString(const QFont &font)
     QString description = font.family();
     if (font.pointSize() != -1)
     {
-        description.append(", " + QString::number(font.pointSize()) + " pt");
+        description.append(", " + QString::number(font.pointSize()) + tr(" pt"));
     }
     if (font.pixelSize() != -1)
     {
-        description.append(", " + QString::number(font.pixelSize()) + " px");
+        description.append(", " + QString::number(font.pixelSize()) + tr(" px"));
     }
     if (font.bold())
     {
-        description.append(", fett");
+        description.append(tr(", bold"));
     }
     if (font.italic())
     {
-        description.append(", kursiv");
+        description.append(tr(", italic"));
     }
     if (font.underline())
     {
-        description.append(", unterstrichen");
+        description.append(tr(", underlined"));
     }
     return description;
 }
