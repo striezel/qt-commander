@@ -1282,6 +1282,78 @@
         <translation>Fehler</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="380"/>
+        <source>The delete operation cannot be performed on &quot;..&quot;!</source>
+        <translation>Löschoperation kann nicht auf &quot;..&quot; ausgeführt werden!</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="387"/>
+        <source>Move to the recycle bin?</source>
+        <translation>Wirklich in den Papierkorb verschieben?</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="388"/>
+        <source>Do you really want to delete this?</source>
+        <translation>Wirklich löschen?</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="390"/>
+        <source>Do you really want to move %1 to the recycle bin?</source>
+        <translation>Soll %1 wirklich in den Papierkorb verschoben werden?</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="391"/>
+        <source>Do you really want to delete %1?</source>
+        <translation>Soll %1 wirklich gelöscht werden?</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="414"/>
+        <source>&quot; could not be deleted.</source>
+        <translation>&quot; konnte nicht gelöscht werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="436"/>
+        <source>The file </source>
+        <translation>Die Datei </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="440"/>
+        <source>The directory </source>
+        <translation>Das Verzeichnis </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="422"/>
+        <source>Maybe the directory is not empty.</source>
+        <translation>Möglicherweise ist das Verzeichnis nicht leer.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="424"/>
+        <source>Error while deleting</source>
+        <translation>Fehler beim Löschen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="433"/>
+        <source>&quot; could not be moved into the recycle bin.</source>
+        <translation>&quot; konnte nicht in den Papierkorb verschoben werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="442"/>
+        <source>Error while moving to recyle bin</source>
+        <translation>Fehler beim Verschieben in den Papierkorb</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="480"/>
+        <source>&apos;%1&apos; has been moved into the recycle bin.</source>
+        <translation>&apos;%1&apos; wurde in den Papierkorb verschoben.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="484"/>
+        <source>&apos;%1&apos; has been deleted.</source>
+        <translation>&apos;%1&apos; wurde gelöscht.</translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="503"/>
         <source>Invalid directory name</source>
         <translation>Ungültiger Verzeichnisname</translation>
@@ -1317,65 +1389,183 @@
         <translation>&apos; wurde erstellt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="872"/>
+        <location filename="../mainwindow.cpp" line="550"/>
+        <source>Move operation cannot be performed on &quot;..&quot;!</source>
+        <translation>Verschiebeoperation kann nicht auf &quot;..&quot; ausgeführt werden!</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="557"/>
+        <source>Moving to same directory is not possible</source>
+        <translation>Verschieben in gleiches Verzeichnis nicht möglich</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="558"/>
+        <source>Both views show the same directory (&quot;%1&quot;). Therefore, a move is not possible.</source>
+        <translation>Die beiden Ansichten zeigen das gleiche Verzeichnis (&quot;%1%). Ein Verschieben ist daher nicht möglich.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="570"/>
+        <source>Error while moving</source>
+        <translation>Fehler beim Verschieben</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="571"/>
+        <source>The element &apos;%1&apos; could not be moved.</source>
+        <translation>Das Element &apos;%1&apos; konnte nicht verschoben werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="585"/>
+        <source>&apos;%1&apos; has been moved to %2.</source>
+        <translation>&apos;%1&apos; wurde nach %2 verschoben.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="606"/>
+        <source>Copy operation cannot be performed on &quot;..&quot;!</source>
+        <translation>Kopieroperation kann nicht auf &quot;..&quot; ausgeführt werden!</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="613"/>
+        <source>Copying to same directory is not possible</source>
+        <translation>Kopieren in gleiches Verzeichnis nicht möglich</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="614"/>
+        <source>Both views show the same directory (&quot;%1&quot;). Therefore, a copy is not possible.</source>
+        <translation>Die beiden Ansichten zeigen das gleiche Verzeichnis (&quot;%1%). Ein Kopieren ist daher nicht möglich.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="628"/>
+        <location filename="../mainwindow.cpp" line="639"/>
+        <source>Error while copying</source>
+        <translation>Fehler beim Kopieren</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="629"/>
+        <source>The file &apos;%1&apos; could not be copied.</source>
+        <translation>Die Datei &apos;%1&apos; konnte nicht kopiert werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="640"/>
+        <source>The directory &apos;%1&apos; could not be copied.</source>
+        <translation>Das Verzeichnis &apos;%1&apos; konnte nicht kopiert werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="714"/>
+        <location filename="../mainwindow.cpp" line="734"/>
+        <location filename="../mainwindow.cpp" line="755"/>
+        <location filename="../mainwindow.cpp" line="777"/>
+        <location filename="../mainwindow.cpp" line="796"/>
+        <location filename="../mainwindow.cpp" line="814"/>
+        <source>The file &apos;%1&apos; could not be opened for reading.</source>
+        <translation>Die Datei &apos;%1&apos; konnte nicht zum Lesen geöffnet werden.</translation>
+    </message>
+    <message>
+        <source>The file &apos;%&apos; could not be copied.</source>
+        <translation type="vanished">Die Datei &apos;%1&apos; konnte nicht kopiert werden.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="656"/>
+        <source>&apos;%1&apos; was copied to %2.</source>
+        <translation>&apos;%1&apos; wurde nach &apos;%2&apos; kopiert.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="667"/>
+        <location filename="../mainwindow.cpp" line="692"/>
+        <source>No file selected</source>
+        <translation type="unfinished">Keine Auswahl vorhanden</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="668"/>
+        <source>No file has been selected to be viewed.</source>
+        <translation>Es wurde keine Datei zum Anzeigen ausgewählt.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="688"/>
+        <location filename="../mainwindow.cpp" line="693"/>
+        <source>No file has been selected to be displayed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="689"/>
+        <location filename="../mainwindow.cpp" line="694"/>
+        <source>Only files can be selected for viewing. Directories cannot be viewed.</source>
+        <translation>Zum Betrachten können nur Dateien ausgewählt werden, nicht jedoch Verzeichnisse.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="690"/>
+        <source> Special file types like block devices, FIFOs or sockets cannot be viewed either.</source>
+        <translation> Spezielle Dateien wie Blockgeräte, FIFOs oder Sockets werden ebenfalls nicht unterstützt.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="713"/>
+        <location filename="../mainwindow.cpp" line="733"/>
+        <location filename="../mainwindow.cpp" line="754"/>
+        <location filename="../mainwindow.cpp" line="776"/>
+        <location filename="../mainwindow.cpp" line="795"/>
+        <location filename="../mainwindow.cpp" line="813"/>
+        <source>Error while opening the file</source>
+        <translation>Fehler beim Öffnen der Datei</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="878"/>
         <source>View of directory &apos;</source>
         <translation>Ansicht für Verzeichnis &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="873"/>
+        <location filename="../mainwindow.cpp" line="879"/>
         <source>left</source>
         <translation>links</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="873"/>
+        <location filename="../mainwindow.cpp" line="879"/>
         <source>right</source>
         <translation>rechts</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="874"/>
+        <location filename="../mainwindow.cpp" line="880"/>
         <source>) has been updated.</source>
         <translation>) wurde aktualisiert.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1046"/>
+        <location filename="../mainwindow.cpp" line="1052"/>
         <source>Same directory</source>
         <translation>Gleiches Verzeichnis</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1047"/>
+        <location filename="../mainwindow.cpp" line="1053"/>
         <source>The left and the right view show the same directory.</source>
         <translation>Die linke und die rechte Ansicht zeigen beide das gleiche Verzeichnis.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1048"/>
+        <location filename="../mainwindow.cpp" line="1054"/>
         <source> Therefore, a comparison is useless, because the contents are identical.</source>
         <translation> Ein Vergleich ist daher nicht sinnvoll, da die Inhalte identisch sind.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1101"/>
-        <location filename="../mainwindow.cpp" line="1106"/>
-        <location filename="../mainwindow.cpp" line="1124"/>
-        <location filename="../mainwindow.cpp" line="1129"/>
+        <location filename="../mainwindow.cpp" line="1107"/>
+        <location filename="../mainwindow.cpp" line="1112"/>
+        <location filename="../mainwindow.cpp" line="1130"/>
+        <location filename="../mainwindow.cpp" line="1135"/>
         <source>Failure</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1101"/>
+        <location filename="../mainwindow.cpp" line="1107"/>
         <source>Could not load English language data.</source>
         <translation>Die englischen Sprachdaten konnten nicht geladen werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1106"/>
+        <location filename="../mainwindow.cpp" line="1112"/>
         <source>Could not install English language translator.</source>
         <translation>Die englische Sprachübersetzung konnte nicht aktiviert werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1124"/>
+        <location filename="../mainwindow.cpp" line="1130"/>
         <source>Could not load German language data.</source>
         <translation>Die deutschen Sprachdaten konnten nicht geladen werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1129"/>
+        <location filename="../mainwindow.cpp" line="1135"/>
         <source>Could not install German language translator.</source>
         <translation>Die deutsche Sprachübersetzung konnte nicht aktiviert werden.</translation>
     </message>

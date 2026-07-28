@@ -377,18 +377,18 @@ void MainWindow::btnRemoveClicked()
     {
         QMessageBox::critical(
             this, tr("Error"),
-            "Löschoperation kann nicht auf \"..\" ausgeführt werden!");
+            tr("The delete operation cannot be performed on \"..\"!"));
         return;
     }
 
     // Ask user whether the file / directory shall really be deleted.
 
     const QString title = settings.getDeleteMovesToTrash()
-                              ? "Wirklich in den Papierkorb verschieben?"
-                              : "Wirklich löschen?";
+                              ? tr("Move to the recycle bin?")
+                              : tr("Do you really want to delete this?");
     const QString text = settings.getDeleteMovesToTrash()
-                             ?  "Soll \"" + name + "\" wirklich in den Papierkorb verschoben werden?"
-                             :  "Soll \"" + name + "\" wirklich gelöscht werden?";
+                             ?  tr("Do you really want to move %1 to the recycle bin?").arg(name)
+                             :  tr("Do you really want to delete %1?").arg(name);
     const int answer = QMessageBox::question(this, title, text);
     if (answer != QMessageBox::Yes)
     {
@@ -411,17 +411,17 @@ void MainWindow::btnRemoveClicked()
         }
         if (!success)
         {
-            QString message = "\"" + name + "\" konnte nicht gelöscht werden.";
+            QString message = "\"" + name + tr("\" could not be deleted.");
             if (info.isFile())
             {
-                message = "Die Datei " + message;
+                message = tr("The file ") + message;
             }
             else
             {
-                message = "Das Verzeichnis " + message
-                          + "\n\nMöglicherweise ist das Verzeichnis nicht leer.";
+                message = tr("The directory ") + message
+                          + "\n\n" + tr("Maybe the directory is not empty.");
             }
-            QMessageBox::critical(this, "Fehler beim Löschen", message);
+            QMessageBox::critical(this, tr("Error while deleting"), message);
             return;
         }
     }
@@ -430,16 +430,16 @@ void MainWindow::btnRemoveClicked()
         success = QFile::moveToTrash(info.absoluteFilePath());
         if (!success)
         {
-            QString message = "\"" + name + "\" konnte nicht in den Papierkorb verschoben werden.";
+            QString message = "\"" + name + tr("\" could not be moved into the recycle bin.");
             if (info.isFile())
             {
-                message = "Die Datei " + message;
+                message = tr("The file ") + message;
             }
             else
             {
-                message = "Das Verzeichnis " + message;
+                message = tr("The directory ") + message;
             }
-            QMessageBox::critical(this, "Fehler beim Verschieben in den Papierkorb", message);
+            QMessageBox::critical(this, tr("Error while moving to recyle bin"), message);
             return;
         }
     }
@@ -477,11 +477,11 @@ void MainWindow::btnRemoveClicked()
 
     if (settings.getDeleteMovesToTrash())
     {
-        statusBar()->showMessage("'" + name + "' wurde in den Papierkorb verschoben.", 5000);
+        statusBar()->showMessage(tr("'%1' has been moved into the recycle bin.").arg(name), 5000);
     }
     else
     {
-        statusBar()->showMessage("'" + name + "' wurde gelöscht.", 5000);
+        statusBar()->showMessage(tr("'%1' has been deleted.").arg(name), 5000);
     }
 }
 
@@ -547,16 +547,16 @@ void MainWindow::btnMoveClicked()
     {
         QMessageBox::critical(
             this, tr("Error"),
-            "Verschiebeoperation kann nicht auf \"..\" ausgeführt werden!");
+            tr("Move operation cannot be performed on \"..\"!"));
         return;
     }
 
     if (DirUtils::isSameDir(currentDirectoryLeft, currentDirectoryRight))
     {
         QMessageBox::warning(
-            this, "Verschieben in gleiches Verzeichnis nicht möglich",
-            "Die beiden Bäume zeigen auf das gleiche Verzeichnis (\""
-                + currentDirectoryLeft.absolutePath() + "\"). Ein Verschieben ist daher nicht möglich.");
+            this, tr("Moving to same directory is not possible"),
+            tr("Both views show the same directory (\"%1\"). Therefore, a move is not possible.")
+                .arg(currentDirectoryLeft.absolutePath()));
         return;
     }
 
@@ -567,8 +567,8 @@ void MainWindow::btnMoveClicked()
     if (!QFile::rename(source, destination))
     {
         QMessageBox::critical(
-            this, "Fehler beim Verschieben",
-            "Das Element '" + name + "' konnte nicht verschoben werden.");
+            this, tr("Error while moving"),
+            tr("The element '%1' could not be moved.").arg(name));
         return;
     }
 
@@ -582,8 +582,8 @@ void MainWindow::btnMoveClicked()
     fillTreeWidget(otherTreeWidget(), otherDirectory().absolutePath());
 
     statusBar()->showMessage(
-        "'" + name + "' wurde nach " + otherDirectory().absolutePath()
-            + " verschoben.", 5000);
+        tr("'%1' has been moved to %2.").arg(name)
+            .arg(otherDirectory().absolutePath()), 5000);
 }
 
 void MainWindow::btnCopyClicked()
@@ -603,16 +603,16 @@ void MainWindow::btnCopyClicked()
     {
         QMessageBox::critical(
             this, tr("Error"),
-            "Kopieroperation kann nicht auf \"..\" ausgeführt werden!");
+            tr("Copy operation cannot be performed on \"..\"!"));
         return;
     }
 
     if (DirUtils::isSameDir(currentDirectoryLeft, currentDirectoryRight))
     {
         QMessageBox::warning(
-            this, "Kopieren in gleiches Verzeichnis nicht möglich",
-            "Die beiden Bäume zeigen auf das gleiche Verzeichnis (\""
-                + currentDirectoryLeft.absolutePath() + "\"). Ein Kopieren ist daher nicht möglich.");
+            this, tr("Copying to same directory is not possible"),
+            tr("Both views show the same directory (\"%1\"). Therefore, a copy is not possible.")
+                .arg(currentDirectoryLeft.absolutePath()));
         return;
     }
 
@@ -625,8 +625,8 @@ void MainWindow::btnCopyClicked()
         if (!QFile::copy(source, destination))
         {
             QMessageBox::critical(
-                this, "Fehler beim Kopieren",
-                "Die Datei '" + name + "' konnte nicht kopiert werden.");
+                this, tr("Error while copying"),
+                tr("The file '%1' could not be copied.").arg(name));
             return;
         }
     }
@@ -636,8 +636,8 @@ void MainWindow::btnCopyClicked()
         if (!DirUtils::copyRecursively(source, destination))
         {
             QMessageBox::critical(
-                this, "Fehler beim Kopieren",
-                "Das Verzeichnis '" + name + "' konnte nicht kopiert werden.");
+                this, tr("Error while copying"),
+                tr("The directory '%1' could not be copied.").arg(name));
             // Still need to update the other widget, if at least one directory
             // was created.
             const QDir partialCopy(destination);
@@ -653,8 +653,8 @@ void MainWindow::btnCopyClicked()
     fillTreeWidget(otherTreeWidget(), otherDirectory().absolutePath());
 
     statusBar()->showMessage(
-        "'" + name + "' wurde nach " + otherDirectory().absolutePath()
-            + " kopiert.", 5000);
+        tr("'%1' was copied to %2.").arg(name)
+            .arg(otherDirectory().absolutePath()), 5000);
 }
 
 void MainWindow::btnViewClicked()
@@ -664,8 +664,8 @@ void MainWindow::btnViewClicked()
     if (selection.isEmpty())
     {
         QMessageBox::information(
-            this, "Keine aktive Auswahl vorhanden",
-            "Es wurde keine Datei zum Anzeigen ausgewählt.");
+            this, tr("No file selected"),
+            tr("No file has been selected to be viewed."));
         return;
     }
     QTreeWidgetItem* item = selection.at(0);
@@ -685,13 +685,13 @@ void MainWindow::btnViewClicked()
 #if defined(__linux__)
         const QString title = QStringLiteral("Keine passende Datei ausgewählt");
         const QString message =
-            QStringLiteral("Es wurde keine passende Datei zum Anzeigen ausgewählt.\n\n")
-            + QStringLiteral("Zum Betrachten können nur Dateien ausgewählt werden, nicht jedoch Verzeichnisse.")
-            + QStringLiteral(" Spezielle Dateien wie Blockgeräte, FIFOs oder Sockets werden ebenfalls nicht unterstützt.");
+            tr("No file has been selected to be displayed.") + "\n\n"
+            + tr("Only files can be selected for viewing. Directories cannot be viewed.")
+            + tr(" Special file types like block devices, FIFOs or sockets cannot be viewed either.");
 #else
-        const QString title = QStringLiteral("Keine Datei ausgewählt");
-        const QString message = QString("Es wurde keine Datei zum Anzeigen ausgewählt.\n\n")
-            + "Zum Betrachten können nur Dateien ausgewählt werden, nicht jedoch Verzeichnisse.";
+        const QString title = tr("No file selected");
+        const QString message = tr("No file has been selected to be displayed.") + "\n\n"
+            + tr("Only files can be selected for viewing. Directories cannot be viewed.");
 #endif
         QMessageBox::information(this, title, message);
         return;
@@ -710,8 +710,9 @@ void MainWindow::btnViewClicked()
         if (!viewer->loadPdfFile(selectedFile))
         {
             QMessageBox::critical(
-                this, "Fehler beim Öffnen der Datei",
-                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+                this, tr("Error while opening the file"),
+                tr("The file '%1' could not be opened for reading.")
+                    .arg(selectedFile));
             delete viewer;
             return;
         }
@@ -729,8 +730,9 @@ void MainWindow::btnViewClicked()
         if (!viewer->loadAudioFile(selectedFile))
         {
             QMessageBox::critical(
-                this, "Fehler beim Öffnen der Datei",
-                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+                this, tr("Error while opening the file"),
+                tr("The file '%1' could not be opened for reading.")
+                    .arg(selectedFile));
             delete viewer;
             return;
         }
@@ -749,8 +751,9 @@ void MainWindow::btnViewClicked()
         if (!viewer->loadVideoFile(selectedFile))
         {
             QMessageBox::critical(
-                this, "Fehler beim Öffnen der Datei",
-                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+                this, tr("Error while opening the file"),
+                tr("The file '%1' could not be opened for reading.")
+                    .arg(selectedFile));
             delete viewer;
             return;
         }
@@ -770,8 +773,9 @@ void MainWindow::btnViewClicked()
         if (!viewer->loadMovieFile(selectedFile))
         {
             QMessageBox::critical(
-                this, "Fehler beim Öffnen der Datei",
-                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+                this, tr("Error while opening the file"),
+                tr("The file '%1' could not be opened for reading.")
+                    .arg(selectedFile));
             delete viewer;
             return;
         }
@@ -788,8 +792,9 @@ void MainWindow::btnViewClicked()
         if (!viewer->loadImageFile(selectedFile))
         {
             QMessageBox::critical(
-                this, "Fehler beim Öffnen der Datei",
-                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+                this, tr("Error while opening the file"),
+                tr("The file '%1' could not be opened for reading.")
+                    .arg(selectedFile));
             delete viewer;
             return;
         }
@@ -805,8 +810,9 @@ void MainWindow::btnViewClicked()
         if (!viewer->loadTextFile(selectedFile))
         {
             QMessageBox::critical(
-                this, "Fehler beim Öffnen der Datei",
-                "Die Datei '" + selectedFile + "' konnte nicht zum Lesen geöffnet werden.");
+                this, tr("Error while opening the file"),
+                tr("The file '%1' could not be opened for reading.")
+                    .arg(selectedFile));
             delete viewer;
             return;
         }
