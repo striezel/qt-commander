@@ -1105,11 +1105,13 @@ void MainWindow::actionLanguageEnglishTriggered(bool checked)
     if (!translator.load(new_locale, ""))
     {
         QMessageBox::critical(this, tr("Failure"), tr("Could not load English language data."));
+        ui->actionLanguageEnglish->setChecked(false);
         return;
     }
     if (!QApplication::installTranslator(&translator))
     {
         QMessageBox::critical(this, tr("Failure"), tr("Could not install English language translator."));
+        ui->actionLanguageEnglish->setChecked(false);
         return;
     }
 
@@ -1128,11 +1130,13 @@ void MainWindow::actionLanguageGermanTriggered(bool checked)
     if (!translator.load(new_locale, ""))
     {
         QMessageBox::critical(this, tr("Failure"), tr("Could not load German language data."));
+        ui->actionLanguageGerman->setChecked(false);
         return;
     }
     if (!QApplication::installTranslator(&translator))
     {
         QMessageBox::critical(this, tr("Failure"), tr("Could not install German language translator."));
+        ui->actionLanguageGerman->setChecked(false);
         return;
     }
 

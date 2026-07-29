@@ -1458,14 +1458,6 @@
         <translation>The file &apos;%1&apos; could not be opened for reading.</translation>
     </message>
     <message>
-        <source>The file &apos;%&apos; could not be copied.</source>
-        <translation type="vanished">The file &apos;%1&apos; could not be copied.</translation>
-    </message>
-    <message>
-        <source>The directory &apos;%&apos; could not be copied.</source>
-        <translation type="vanished">The directory &apos;%&apos; could not be copied.</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="656"/>
         <source>&apos;%1&apos; was copied to %2.</source>
         <translation>&apos;%1&apos; was copied to %2.</translation>
