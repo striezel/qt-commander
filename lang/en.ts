@@ -816,6 +816,7 @@
         <location filename="../fileinfowindow.ui" line="545"/>
         <location filename="../fileinfowindow.ui" line="583"/>
         <location filename="../fileinfowindow.ui" line="621"/>
+        <location filename="../fileinfowindow.cpp" line="73"/>
         <source>unknown</source>
         <translation>unknown</translation>
     </message>
@@ -906,6 +907,26 @@
         <location filename="../fileinfowindow.ui" line="653"/>
         <source>Esc</source>
         <translation>Esc</translation>
+    </message>
+    <message>
+        <location filename="../fileinfowindow.cpp" line="69"/>
+        <source> bytes)</source>
+        <translation> bytes)</translation>
+    </message>
+    <message>
+        <location filename="../fileinfowindow.cpp" line="69"/>
+        <source> byte)</source>
+        <translation> byte)</translation>
+    </message>
+    <message>
+        <location filename="../fileinfowindow.cpp" line="96"/>
+        <source>&lt;unknown&gt;</source>
+        <translation>&lt;unknown&gt;</translation>
+    </message>
+    <message>
+        <location filename="../fileinfowindow.cpp" line="141"/>
+        <source>date not available</source>
+        <translation>date not available</translation>
     </message>
 </context>
 <context>
@@ -1537,9 +1558,9 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1107"/>
-        <location filename="../mainwindow.cpp" line="1112"/>
-        <location filename="../mainwindow.cpp" line="1130"/>
-        <location filename="../mainwindow.cpp" line="1135"/>
+        <location filename="../mainwindow.cpp" line="1113"/>
+        <location filename="../mainwindow.cpp" line="1132"/>
+        <location filename="../mainwindow.cpp" line="1138"/>
         <source>Failure</source>
         <translation>Failure</translation>
     </message>
@@ -1549,17 +1570,17 @@
         <translation>Could not load English language data.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1112"/>
+        <location filename="../mainwindow.cpp" line="1113"/>
         <source>Could not install English language translator.</source>
         <translation>Could not install English language translator.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1130"/>
+        <location filename="../mainwindow.cpp" line="1132"/>
         <source>Could not load German language data.</source>
         <translation>Could not load German language data.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1135"/>
+        <location filename="../mainwindow.cpp" line="1138"/>
         <source>Could not install German language translator.</source>
         <translation>Could not install German language translator.</translation>
     </message>

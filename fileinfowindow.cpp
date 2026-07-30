@@ -66,11 +66,11 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     const qint64 file_size = info.size();
     ui->lblSizeValue->setText(loc.formattedDataSize(file_size)
                               + " (" + loc.toString(file_size)
-                              + (file_size != 1 ? " Bytes)" : " Byte)"));
+                              + (file_size != 1 ? tr(" bytes)") : tr(" byte)")));
     const QStorageInfo storage(filePath);
     if (!storage.isValid() || !storage.isReady())
     {
-        ui->lblAvailableValue->setText("unbekannt");
+        ui->lblAvailableValue->setText(tr("unknown"));
     }
     else
     {
@@ -93,7 +93,7 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     QString owner = info.owner();
     if (owner.isEmpty())
     {
-        owner = "<unbekannt>";
+        owner = tr("<unknown>");
     }
     const uint owner_id = info.ownerId();
     if (owner_id != NoId)
@@ -138,7 +138,7 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     }
     else
     {
-        ui->lblBirthValue->setText("Datum nicht verfügbar");
+        ui->lblBirthValue->setText(tr("date not available"));
     }
     ui->lblModifiedValue->setText(loc.toString(info.lastModified(), QLocale::LongFormat));
     ui->lblAccessedValue->setText(loc.toString(info.lastRead(), QLocale::LongFormat));
