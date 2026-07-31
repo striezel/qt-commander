@@ -68,6 +68,8 @@ Source: "..\{#BuildDir}\networkinformation\*.dll"; DestDir: "{app}\networkinform
 Source: "..\{#BuildDir}\platforms\*.dll"; DestDir: "{app}\platforms"; Flags: ignoreversion
 Source: "..\{#BuildDir}\styles\*.dll"; DestDir: "{app}\styles"; Flags: ignoreversion
 Source: "..\{#BuildDir}\tls\*.dll"; DestDir: "{app}\tls"; Flags: ignoreversion
+; language files
+Source: "..\{#BuildDir}\*.qm"; DestDir: "{app}"; Flags: ignoreversion
 ; GPL 3 license text
 Source: "..\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
 ; changelog
