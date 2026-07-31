@@ -683,9 +683,9 @@ void MainWindow::btnViewClicked()
     if (!info.isFile())
     {
 #if defined(__linux__)
-        const QString title = QStringLiteral("Keine passende Datei ausgewählt");
+        const QString title = tr("No suitable file selected");
         const QString message =
-            tr("No file has been selected to be displayed.") + "\n\n"
+            tr("No suitable file has been selected to be displayed.") + "\n\n"
             + tr("Only files can be selected for viewing. Directories cannot be viewed.")
             + tr(" Special file types like block devices, FIFOs or sockets cannot be viewed either.");
 #else
@@ -834,8 +834,8 @@ void MainWindow::actionShowFileInfoTriggered()
     if (selection.isEmpty())
     {
         QMessageBox::information(
-            this, "Keine aktive Auswahl vorhanden",
-            "Es wurde weder eine Datei noch ein Verzeichnis ausgewählt, dessen Eigenschaften angezeigt werden könnten.");
+            this, tr("No file selected"),
+            tr("No file or directory has been selected whose properties could be displayed."));
         return;
     }
     QTreeWidgetItem* item = selection.at(0);
@@ -1001,8 +1001,8 @@ void MainWindow::actionCalculateChecksumTriggered()
     if (selection.isEmpty())
     {
         QMessageBox::information(
-            this, "Keine aktive Auswahl vorhanden",
-            "Es wurde keine Datei ausgewählt. Zum Berechnen der Prüfsumme muss jedoch eine Datei ausgewählt sein.");
+            this, tr("No file selected"),
+            tr("No file has been selected. However, a file must be selected to calculate the checksum."));
         return;
     }
     QTreeWidgetItem* item = selection.at(0);
@@ -1014,15 +1014,15 @@ void MainWindow::actionCalculateChecksumTriggered()
     if (!info.isFile())
     {
 #if defined(__linux__)
-        const QString title = QStringLiteral("Keine passende Datei ausgewählt");
+        const QString title = tr("No suitable file selected");
         const QString message =
-            QStringLiteral("Es wurde keine Datei zum Berechnen ausgewählt.\n\n")
-            + QStringLiteral("Prüfsummen können nur von Dateien berechnet werden, nicht jedoch von Verzeichnissen.")
-            + QStringLiteral(" Spezielle Dateien wie Blockgeräte, FIFOs oder Sockets werden ebenfalls nicht unterstützt.");
+            tr("No file has been selected for the calculation.") + "\n\n"
+            + tr("Checksums can only be calculated for files, not for directories.")
+            + tr(" Special file types like block devices, FIFOs or sockets are not supported either.");
 #else
         const QString title = QStringLiteral("Keine Datei ausgewählt");
-        const QString message = QString("Es wurde keine Datei zum Berechnen ausgewählt.\n\n")
-            + "Prüfsummen können nur von Dateien berechnet werden, nicht jedoch von Verzeichnissen.";
+        const QString message = tr("No file has been selected for the calculation.") + "\n\n"
+            + tr("Checksums can only be calculated for files, not for directories.");
 #endif
         QMessageBox::information(this, title, message);
         return;

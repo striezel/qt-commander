@@ -1471,6 +1471,17 @@
         <translation>Das Verzeichnis &apos;%1&apos; konnte nicht kopiert werden.</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="686"/>
+        <location filename="../mainwindow.cpp" line="1017"/>
+        <source>No suitable file selected</source>
+        <translation>Keine passende Datei ausgewählt</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="688"/>
+        <source>No suitable file has been selected to be displayed.</source>
+        <translation>Es wurde keine passende Datei zum Anzeigen ausgewählt.</translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="714"/>
         <location filename="../mainwindow.cpp" line="734"/>
         <location filename="../mainwindow.cpp" line="755"/>
@@ -1481,10 +1492,6 @@
         <translation>Die Datei &apos;%1&apos; konnte nicht zum Lesen geöffnet werden.</translation>
     </message>
     <message>
-        <source>The file &apos;%&apos; could not be copied.</source>
-        <translation type="vanished">Die Datei &apos;%1&apos; konnte nicht kopiert werden.</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="656"/>
         <source>&apos;%1&apos; was copied to %2.</source>
         <translation>&apos;%1&apos; wurde nach &apos;%2&apos; kopiert.</translation>
@@ -1492,8 +1499,10 @@
     <message>
         <location filename="../mainwindow.cpp" line="667"/>
         <location filename="../mainwindow.cpp" line="692"/>
+        <location filename="../mainwindow.cpp" line="837"/>
+        <location filename="../mainwindow.cpp" line="1004"/>
         <source>No file selected</source>
-        <translation type="unfinished">Keine Auswahl vorhanden</translation>
+        <translation>Keine aktive Auswahl vorhanden</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="668"/>
@@ -1501,10 +1510,9 @@
         <translation>Es wurde keine Datei zum Anzeigen ausgewählt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="688"/>
         <location filename="../mainwindow.cpp" line="693"/>
         <source>No file has been selected to be displayed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es wurde keine Datei zum Anzeigen ausgewählt.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="689"/>
@@ -1528,6 +1536,11 @@
         <translation>Fehler beim Öffnen der Datei</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="838"/>
+        <source>No file or directory has been selected whose properties could be displayed.</source>
+        <translation>Es wurde weder eine Datei noch ein Verzeichnis ausgewählt, dessen Eigenschaften angezeigt werden könnten.</translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="878"/>
         <source>View of directory &apos;</source>
         <translation>Ansicht für Verzeichnis &apos;</translation>
@@ -1546,6 +1559,28 @@
         <location filename="../mainwindow.cpp" line="880"/>
         <source>) has been updated.</source>
         <translation>) wurde aktualisiert.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1005"/>
+        <source>No file has been selected. However, a file must be selected to calculate the checksum.</source>
+        <translation>Es wurde keine Datei ausgewählt. Zum Berechnen der Prüfsumme muss jedoch eine Datei ausgewählt sein.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1019"/>
+        <location filename="../mainwindow.cpp" line="1024"/>
+        <source>No file has been selected for the calculation.</source>
+        <translation>Es wurde keine Datei zum Berechnen ausgewählt.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1020"/>
+        <location filename="../mainwindow.cpp" line="1025"/>
+        <source>Checksums can only be calculated for files, not for directories.</source>
+        <translation>Prüfsummen können nur von Dateien berechnet werden, nicht jedoch von Verzeichnissen.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1021"/>
+        <source> Special file types like block devices, FIFOs or sockets are not supported either.</source>
+        <translation> Spezielle Dateien wie Blockgeräte, FIFOs oder Sockets werden ebenfalls nicht unterstützt.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1052"/>

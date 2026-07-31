@@ -1469,6 +1469,17 @@
         <translation>The directory &apos;%1&apos; could not be copied.</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="686"/>
+        <location filename="../mainwindow.cpp" line="1017"/>
+        <source>No suitable file selected</source>
+        <translation>No suitable file selected</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="688"/>
+        <source>No suitable file has been selected to be displayed.</source>
+        <translation>No suitable file has been selected to be displayed.</translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="714"/>
         <location filename="../mainwindow.cpp" line="734"/>
         <location filename="../mainwindow.cpp" line="755"/>
@@ -1486,6 +1497,8 @@
     <message>
         <location filename="../mainwindow.cpp" line="667"/>
         <location filename="../mainwindow.cpp" line="692"/>
+        <location filename="../mainwindow.cpp" line="837"/>
+        <location filename="../mainwindow.cpp" line="1004"/>
         <source>No file selected</source>
         <translation>No file selected</translation>
     </message>
@@ -1495,7 +1508,6 @@
         <translation>No file has been selected to be viewed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="688"/>
         <location filename="../mainwindow.cpp" line="693"/>
         <source>No file has been selected to be displayed.</source>
         <translation>No file has been selected to be displayed.</translation>
@@ -1522,6 +1534,11 @@
         <translation>Error while opening the file</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="838"/>
+        <source>No file or directory has been selected whose properties could be displayed.</source>
+        <translation>No file or directory has been selected whose properties could be displayed.</translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="878"/>
         <source>View of directory &apos;</source>
         <translation>View of directory &apos;</translation>
@@ -1540,6 +1557,28 @@
         <location filename="../mainwindow.cpp" line="880"/>
         <source>) has been updated.</source>
         <translation>) has been updated.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1005"/>
+        <source>No file has been selected. However, a file must be selected to calculate the checksum.</source>
+        <translation>No file has been selected. However, a file must be selected to calculate the checksum.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1019"/>
+        <location filename="../mainwindow.cpp" line="1024"/>
+        <source>No file has been selected for the calculation.</source>
+        <translation>No file has been selected for the calculation.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1020"/>
+        <location filename="../mainwindow.cpp" line="1025"/>
+        <source>Checksums can only be calculated for files, not for directories.</source>
+        <translation>Checksums can only be calculated for files, not for directories.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1021"/>
+        <source> Special file types like block devices, FIFOs or sockets are not supported either.</source>
+        <translation> Special file types like block devices, FIFOs or sockets are not supported either.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1052"/>
