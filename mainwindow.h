@@ -169,5 +169,7 @@ private:
     void setUpActionGroups();
 
     void putSettingsIntoGui(const Settings& settings, const bool avoidRefresh = false);
+
+    void attemptToLoadMatchingTranslation();
 };
 #endif // MAINWINDOW_H

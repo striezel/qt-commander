@@ -55,6 +55,8 @@ MainWindow::MainWindow(QWidget *parent, const QStringList& positionalArgs)
     settings.load();
     putSettingsIntoGui(settings, true);
 
+    attemptToLoadMatchingTranslation();
+
     ui->treeWidgetLeft->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
     ui->treeWidgetRight->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
 
@@ -945,6 +947,25 @@ void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRe
     {
         refreshBothViews();
     }
+}
+
+void MainWindow::attemptToLoadMatchingTranslation()
+{
+    if (locale().language() != QLocale::Language::German)
+    {
+        return;
+    }
+
+    if (!translator.load(locale(), ""))
+    {
+        return;
+    }
+    if (!QApplication::installTranslator(&translator))
+    {
+        return;
+    }
+
+    ui->retranslateUi(this);
 }
 
 void MainWindow::connectMenuActions()
