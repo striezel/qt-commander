@@ -4,6 +4,12 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-08-??)
+
+* __[new feature]__
+  The application is now properly translated.
+  At the moment only English and German translations are available.
+
 ## Version 0.1.11 (2026-06-28)
 
 * __[new feature]__
