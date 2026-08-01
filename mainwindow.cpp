@@ -1124,6 +1124,8 @@ void MainWindow::actionLanguageEnglishTriggered(bool checked)
         return;
     }
 
+    QApplication::removeTranslator(&translator);
+
     QLocale new_locale(QLocale::Language::English, QLocale::Territory::UnitedStates);
     if (!translator.load(new_locale, "", translatorPrefix))
     {
@@ -1148,6 +1150,8 @@ void MainWindow::actionLanguageGermanTriggered(bool checked)
     {
         return;
     }
+
+    QApplication::removeTranslator(&translator);
 
     QLocale new_locale(QLocale::Language::German, QLocale::Territory::Germany);
     if (!translator.load(new_locale, "", translatorPrefix))
