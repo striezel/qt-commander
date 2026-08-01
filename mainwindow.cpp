@@ -39,6 +39,8 @@
 #include "viewers/textviewwindow.h"
 #include "viewers/videoplayerwindow.h"
 
+const QString MainWindow::translatorPrefix{QStringLiteral("qt-commander_")};
+
 MainWindow::MainWindow(QWidget *parent, const QStringList& positionalArgs)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -956,7 +958,7 @@ void MainWindow::attemptToLoadMatchingTranslation()
         return;
     }
 
-    if (!translator.load(locale(), ""))
+    if (!translator.load(locale(), "", translatorPrefix))
     {
         return;
     }
@@ -1123,7 +1125,7 @@ void MainWindow::actionLanguageEnglishTriggered(bool checked)
     }
 
     QLocale new_locale(QLocale::Language::English, QLocale::Territory::UnitedStates);
-    if (!translator.load(new_locale, ""))
+    if (!translator.load(new_locale, "", translatorPrefix))
     {
         QMessageBox::critical(this, tr("Failure"), tr("Could not load English language data."));
         ui->actionLanguageEnglish->setChecked(false);
@@ -1148,7 +1150,7 @@ void MainWindow::actionLanguageGermanTriggered(bool checked)
     }
 
     QLocale new_locale(QLocale::Language::German, QLocale::Territory::Germany);
-    if (!translator.load(new_locale, ""))
+    if (!translator.load(new_locale, "", translatorPrefix))
     {
         QMessageBox::critical(this, tr("Failure"), tr("Could not load German language data."));
         ui->actionLanguageGerman->setChecked(false);

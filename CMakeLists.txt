@@ -118,8 +118,8 @@ else()
 endif()
 
 qt_add_translations(qt-commander TS_FILES
-    lang/de.ts
-    lang/en.ts
+    lang/qt-commander_de.ts
+    lang/qt-commander_en.ts
 )
 
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
