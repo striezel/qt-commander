@@ -171,6 +171,8 @@ private:
 
     void putSettingsIntoGui(const Settings& settings, const bool avoidRefresh = false);
 
+    void changeLanguage(const QLocale& new_locale, QAction* action);
+
     void attemptToLoadMatchingTranslation();
 };
 #endif // MAINWINDOW_H

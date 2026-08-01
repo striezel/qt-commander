@@ -951,6 +951,31 @@ void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRe
     }
 }
 
+void MainWindow::changeLanguage(const QLocale &new_locale, QAction* action)
+{
+    QApplication::removeTranslator(&translator);
+
+    if (!translator.load(new_locale, "", translatorPrefix))
+    {
+        QMessageBox::critical(this, tr("Failure"),
+                              tr("Could not load %1 language data.")
+                                  .arg(new_locale.languageToString(new_locale.language())));
+        action->setChecked(false);
+        return;
+    }
+    if (!QApplication::installTranslator(&translator))
+    {
+        QMessageBox::critical(this, tr("Failure"),
+                              tr("Could not install %1 language translator.")
+                                  .arg(new_locale.languageToString(new_locale.language())));
+        action->setChecked(false);
+        return;
+    }
+
+    ui->retranslateUi(this);
+    refreshBothViews();
+}
+
 void MainWindow::attemptToLoadMatchingTranslation()
 {
     if (locale().language() != QLocale::Language::German)
@@ -1124,24 +1149,8 @@ void MainWindow::actionLanguageEnglishTriggered(bool checked)
         return;
     }
 
-    QApplication::removeTranslator(&translator);
-
-    QLocale new_locale(QLocale::Language::English, QLocale::Territory::UnitedStates);
-    if (!translator.load(new_locale, "", translatorPrefix))
-    {
-        QMessageBox::critical(this, tr("Failure"), tr("Could not load English language data."));
-        ui->actionLanguageEnglish->setChecked(false);
-        return;
-    }
-    if (!QApplication::installTranslator(&translator))
-    {
-        QMessageBox::critical(this, tr("Failure"), tr("Could not install English language translator."));
-        ui->actionLanguageEnglish->setChecked(false);
-        return;
-    }
-
-    ui->retranslateUi(this);
-    refreshBothViews();
+    const QLocale new_locale(QLocale::Language::English, QLocale::Territory::UnitedStates);
+    changeLanguage(new_locale, ui->actionLanguageEnglish);
 }
 
 void MainWindow::actionLanguageGermanTriggered(bool checked)
@@ -1151,24 +1160,8 @@ void MainWindow::actionLanguageGermanTriggered(bool checked)
         return;
     }
 
-    QApplication::removeTranslator(&translator);
-
-    QLocale new_locale(QLocale::Language::German, QLocale::Territory::Germany);
-    if (!translator.load(new_locale, "", translatorPrefix))
-    {
-        QMessageBox::critical(this, tr("Failure"), tr("Could not load German language data."));
-        ui->actionLanguageGerman->setChecked(false);
-        return;
-    }
-    if (!QApplication::installTranslator(&translator))
-    {
-        QMessageBox::critical(this, tr("Failure"), tr("Could not install German language translator."));
-        ui->actionLanguageGerman->setChecked(false);
-        return;
-    }
-
-    ui->retranslateUi(this);
-    refreshBothViews();
+    const QLocale new_locale(QLocale::Language::German, QLocale::Territory::Germany);
+    changeLanguage(new_locale, ui->actionLanguageGerman);
 }
 
 void MainWindow::actionShowMountpointsTriggered()
