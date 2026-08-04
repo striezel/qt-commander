@@ -9,6 +9,9 @@ improvements may be omitted.)_
 * __[improvement]__
   Fix wrong translation in text viewer's syntax hightlighting menu.
 
+* __[improvement]__
+  Fix syntax hightlighting of keywords in shell scripts so that they are now highligted again.
+
 ## Version 0.2 (2026-08-04)
 
 * __[new feature]__

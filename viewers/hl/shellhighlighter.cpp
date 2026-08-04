@@ -63,7 +63,7 @@ ShellHighlighter::ShellHighlighter(const Theme& theme, QTextDocument* parent)
         ++word_count;
         if (word_count >= words_per_regex)
         {
-            rule.pattern = QRegularExpression(QString::fromStdString("\\b(" + keyword + ")\\b"));
+            rule.pattern = QRegularExpression("\\b(" + words + ")\\b");
             rule.format = keywordFormat;
             rules.append(rule);
 
