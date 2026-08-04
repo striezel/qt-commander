@@ -40,6 +40,13 @@
 #include "viewers/videoplayerwindow.h"
 
 const QString MainWindow::translatorPrefix{QStringLiteral("qt-commander_")};
+const QString MainWindow::translatorDirectory{
+#if defined(__linux__)
+    QStringLiteral("/usr/share/qt-commander/translations")
+#else
+    QStringLiteral("")
+#endif
+};
 
 MainWindow::MainWindow(QWidget *parent, const QStringList& positionalArgs)
     : QMainWindow(parent)
@@ -955,7 +962,7 @@ void MainWindow::changeLanguage(const QLocale &new_locale, QAction* action)
 {
     QApplication::removeTranslator(&translator);
 
-    if (!translator.load(new_locale, "", translatorPrefix))
+    if (!translator.load(new_locale, "", translatorPrefix, translatorDirectory))
     {
         QMessageBox::critical(this, tr("Failure"),
                               tr("Could not load %1 language data.")
@@ -983,7 +990,7 @@ void MainWindow::attemptToLoadMatchingTranslation()
         return;
     }
 
-    if (!translator.load(locale(), "", translatorPrefix))
+    if (!translator.load(locale(), "", translatorPrefix, translatorDirectory))
     {
         return;
     }

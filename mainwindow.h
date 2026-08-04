@@ -117,6 +117,7 @@ private:
     QActionGroup languageGroup;
 
     static const QString translatorPrefix;
+    static const QString translatorDirectory;
     QTranslator translator;
 
     FileTypeDetection detection;
