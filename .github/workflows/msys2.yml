@@ -58,6 +58,7 @@ jobs:
           # remove left-over build files
           rm -rf CMakeFiles cmake_install.cmake qt-commander_autogen .qt
           rm -f .ninja_deps .ninja_log build.ninja CMakeCache.txt
+          rm -rf .lupdate
           ls -lah
 
           # copy possibly missing DLL files
