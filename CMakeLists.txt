@@ -39,6 +39,11 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clan
     add_definitions (-Wall -Wextra -Wpedantic -pedantic-errors)
 endif ()
 
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+    message(STATUS "Running debug build, so translation files in application directory are used instead of files in /usr/share.")
+    add_definitions (-DUSE_EMPTY_TRANSLATION_DIRECTORY=1)
+endif()
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)

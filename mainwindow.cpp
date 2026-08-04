@@ -41,7 +41,7 @@
 
 const QString MainWindow::translatorPrefix{QStringLiteral("qt-commander_")};
 const QString MainWindow::translatorDirectory{
-#if defined(__linux__)
+#if defined(__linux__) && !defined(USE_EMPTY_TRANSLATION_DIRECTORY)
     QStringLiteral("/usr/share/qt-commander/translations")
 #else
     QStringLiteral("")
