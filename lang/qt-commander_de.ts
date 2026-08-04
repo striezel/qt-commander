@@ -2061,7 +2061,7 @@
     <message>
         <location filename="../viewers/textviewwindow.ui" line="166"/>
         <source>C#</source>
-        <translation>Shell</translation>
+        <translation>C#</translation>
     </message>
     <message>
         <location filename="../viewers/textviewwindow.ui" line="38"/>

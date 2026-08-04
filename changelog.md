@@ -4,6 +4,11 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-08-??)
+
+* __[improvement]__
+  Fix wrong translation in text viewer's syntax hightlighting menu.
+
 ## Version 0.2 (2026-08-04)
 
 * __[new feature]__
