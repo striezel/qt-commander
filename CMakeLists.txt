@@ -120,6 +120,7 @@ endif()
 qt_add_translations(qt-commander TS_FILES
     lang/qt-commander_de.ts
     lang/qt-commander_en.ts
+    QM_FILES_OUTPUT_VARIABLE ALL_QM_FILES
 )
 
 target_link_libraries(qt-commander PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
@@ -150,6 +151,9 @@ install(TARGETS qt-commander
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+if (LINUX)
+    install(FILES ${ALL_QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/qt-commander/translations)
+endif()
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(qt-commander)
