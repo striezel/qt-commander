@@ -751,7 +751,6 @@
         <location filename="../directorycomparewindow.cpp" line="619"/>
         <location filename="../directorycomparewindow.cpp" line="644"/>
         <location filename="../directorycomparewindow.cpp" line="667"/>
-        <location filename="../directorycomparewindow.cpp" line="667"/>
         <source>Directory</source>
         <translation>Directory</translation>
     </message>
@@ -1283,331 +1282,331 @@
         <translation>English</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="224"/>
-        <location filename="../mainwindow.cpp" line="246"/>
+        <location filename="../mainwindow.cpp" line="231"/>
+        <location filename="../mainwindow.cpp" line="253"/>
         <source>Directory</source>
         <translation>Directory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="247"/>
+        <location filename="../mainwindow.cpp" line="254"/>
         <source>Unknown</source>
         <translation>Unknown</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="383"/>
-        <location filename="../mainwindow.cpp" line="553"/>
-        <location filename="../mainwindow.cpp" line="609"/>
+        <location filename="../mainwindow.cpp" line="390"/>
+        <location filename="../mainwindow.cpp" line="560"/>
+        <location filename="../mainwindow.cpp" line="616"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="384"/>
+        <location filename="../mainwindow.cpp" line="391"/>
         <source>The delete operation cannot be performed on &quot;..&quot;!</source>
         <translation>The delete operation cannot be performed on &quot;..&quot;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="391"/>
+        <location filename="../mainwindow.cpp" line="398"/>
         <source>Move to the recycle bin?</source>
         <translation>Move to the recycle bin?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="392"/>
+        <location filename="../mainwindow.cpp" line="399"/>
         <source>Do you really want to delete this?</source>
         <translation>Do you really want to delete this?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="394"/>
+        <location filename="../mainwindow.cpp" line="401"/>
         <source>Do you really want to move %1 to the recycle bin?</source>
         <translation>Do you really want to move %1 to the recycle bin?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="395"/>
+        <location filename="../mainwindow.cpp" line="402"/>
         <source>Do you really want to delete %1?</source>
         <translation>Do you really want to delete %1?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>&quot; could not be deleted.</source>
         <translation>&quot; could not be deleted.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>The file </source>
         <translation>The file </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>The directory </source>
         <translation>The directory </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="426"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>Maybe the directory is not empty.</source>
         <translation>Maybe the directory is not empty.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Error while deleting</source>
         <translation>Error while deleting</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="437"/>
+        <location filename="../mainwindow.cpp" line="444"/>
         <source>&quot; could not be moved into the recycle bin.</source>
         <translation>&quot; could not be moved into the recycle bin.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="453"/>
         <source>Error while moving to recyle bin</source>
         <translation>Error while moving to recyle bin</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="484"/>
+        <location filename="../mainwindow.cpp" line="491"/>
         <source>&apos;%1&apos; has been moved into the recycle bin.</source>
         <translation>&apos;%1&apos; has been moved into the recycle bin.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="488"/>
+        <location filename="../mainwindow.cpp" line="495"/>
         <source>&apos;%1&apos; has been deleted.</source>
         <translation>&apos;%1&apos; has been deleted.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="507"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>Invalid directory name</source>
         <translation>Invalid directory name</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="508"/>
+        <location filename="../mainwindow.cpp" line="515"/>
         <source>The directory name must not be empty.</source>
         <translation>The directory name must not be empty.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="517"/>
+        <location filename="../mainwindow.cpp" line="524"/>
         <source>Error while creating the directory</source>
         <translation>Error while creating the directory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="525"/>
         <source>The directory &apos;</source>
         <translation>The directory &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="525"/>
         <source>&apos; could not be created.</source>
         <translation>&apos; could not be created.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="534"/>
+        <location filename="../mainwindow.cpp" line="541"/>
         <source>Directory &apos;</source>
         <translation>Directory &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="534"/>
+        <location filename="../mainwindow.cpp" line="541"/>
         <source>&apos; has been created.</source>
         <translation>&apos; has been created.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="554"/>
+        <location filename="../mainwindow.cpp" line="561"/>
         <source>Move operation cannot be performed on &quot;..&quot;!</source>
         <translation>Move operation cannot be performed on &quot;..&quot;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="561"/>
+        <location filename="../mainwindow.cpp" line="568"/>
         <source>Moving to same directory is not possible</source>
         <translation>Moving to same directory is not possible</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="562"/>
+        <location filename="../mainwindow.cpp" line="569"/>
         <source>Both views show the same directory (&quot;%1&quot;). Therefore, a move is not possible.</source>
         <translation>Both views show the same directory (&quot;%1&quot;). Therefore, a move is not possible.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="574"/>
+        <location filename="../mainwindow.cpp" line="581"/>
         <source>Error while moving</source>
         <translation>Error while moving</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="575"/>
+        <location filename="../mainwindow.cpp" line="582"/>
         <source>The element &apos;%1&apos; could not be moved.</source>
         <translation>The element &apos;%1&apos; could not be moved.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="596"/>
         <source>&apos;%1&apos; has been moved to %2.</source>
         <translation>&apos;%1&apos; has been moved to %2.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="610"/>
+        <location filename="../mainwindow.cpp" line="617"/>
         <source>Copy operation cannot be performed on &quot;..&quot;!</source>
         <translation>Copy operation cannot be performed on &quot;..&quot;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="617"/>
+        <location filename="../mainwindow.cpp" line="624"/>
         <source>Copying to same directory is not possible</source>
         <translation>Copying to same directory is not possible</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="618"/>
+        <location filename="../mainwindow.cpp" line="625"/>
         <source>Both views show the same directory (&quot;%1&quot;). Therefore, a copy is not possible.</source>
         <translation>Both views show the same directory (&quot;%1&quot;). Therefore, a copy is not possible.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="632"/>
-        <location filename="../mainwindow.cpp" line="643"/>
+        <location filename="../mainwindow.cpp" line="639"/>
+        <location filename="../mainwindow.cpp" line="650"/>
         <source>Error while copying</source>
         <translation>Error while copying</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="640"/>
         <source>The file &apos;%1&apos; could not be copied.</source>
         <translation>The file &apos;%1&apos; could not be copied.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="644"/>
+        <location filename="../mainwindow.cpp" line="651"/>
         <source>The directory &apos;%1&apos; could not be copied.</source>
         <translation>The directory &apos;%1&apos; could not be copied.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="690"/>
-        <location filename="../mainwindow.cpp" line="1065"/>
+        <location filename="../mainwindow.cpp" line="697"/>
+        <location filename="../mainwindow.cpp" line="1072"/>
         <source>No suitable file selected</source>
         <translation>No suitable file selected</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="692"/>
+        <location filename="../mainwindow.cpp" line="699"/>
         <source>No suitable file has been selected to be displayed.</source>
         <translation>No suitable file has been selected to be displayed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="718"/>
-        <location filename="../mainwindow.cpp" line="738"/>
-        <location filename="../mainwindow.cpp" line="759"/>
-        <location filename="../mainwindow.cpp" line="781"/>
-        <location filename="../mainwindow.cpp" line="800"/>
-        <location filename="../mainwindow.cpp" line="818"/>
+        <location filename="../mainwindow.cpp" line="725"/>
+        <location filename="../mainwindow.cpp" line="745"/>
+        <location filename="../mainwindow.cpp" line="766"/>
+        <location filename="../mainwindow.cpp" line="788"/>
+        <location filename="../mainwindow.cpp" line="807"/>
+        <location filename="../mainwindow.cpp" line="825"/>
         <source>The file &apos;%1&apos; could not be opened for reading.</source>
         <translation>The file &apos;%1&apos; could not be opened for reading.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="660"/>
+        <location filename="../mainwindow.cpp" line="667"/>
         <source>&apos;%1&apos; was copied to %2.</source>
         <translation>&apos;%1&apos; was copied to %2.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="671"/>
-        <location filename="../mainwindow.cpp" line="696"/>
-        <location filename="../mainwindow.cpp" line="841"/>
-        <location filename="../mainwindow.cpp" line="1052"/>
+        <location filename="../mainwindow.cpp" line="678"/>
+        <location filename="../mainwindow.cpp" line="703"/>
+        <location filename="../mainwindow.cpp" line="848"/>
+        <location filename="../mainwindow.cpp" line="1059"/>
         <source>No file selected</source>
         <translation>No file selected</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="672"/>
+        <location filename="../mainwindow.cpp" line="679"/>
         <source>No file has been selected to be viewed.</source>
         <translation>No file has been selected to be viewed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="697"/>
+        <location filename="../mainwindow.cpp" line="704"/>
         <source>No file has been selected to be displayed.</source>
         <translation>No file has been selected to be displayed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="693"/>
-        <location filename="../mainwindow.cpp" line="698"/>
+        <location filename="../mainwindow.cpp" line="700"/>
+        <location filename="../mainwindow.cpp" line="705"/>
         <source>Only files can be selected for viewing. Directories cannot be viewed.</source>
         <translation>Only files can be selected for viewing. Directories cannot be viewed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="694"/>
+        <location filename="../mainwindow.cpp" line="701"/>
         <source> Special file types like block devices, FIFOs or sockets cannot be viewed either.</source>
         <translation> Special file types like block devices, FIFOs or sockets cannot be viewed either.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="717"/>
-        <location filename="../mainwindow.cpp" line="737"/>
-        <location filename="../mainwindow.cpp" line="758"/>
-        <location filename="../mainwindow.cpp" line="780"/>
-        <location filename="../mainwindow.cpp" line="799"/>
-        <location filename="../mainwindow.cpp" line="817"/>
+        <location filename="../mainwindow.cpp" line="724"/>
+        <location filename="../mainwindow.cpp" line="744"/>
+        <location filename="../mainwindow.cpp" line="765"/>
+        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="806"/>
+        <location filename="../mainwindow.cpp" line="824"/>
         <source>Error while opening the file</source>
         <translation>Error while opening the file</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="842"/>
+        <location filename="../mainwindow.cpp" line="849"/>
         <source>No file or directory has been selected whose properties could be displayed.</source>
         <translation>No file or directory has been selected whose properties could be displayed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="882"/>
+        <location filename="../mainwindow.cpp" line="889"/>
         <source>View of directory &apos;</source>
         <translation>View of directory &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="883"/>
+        <location filename="../mainwindow.cpp" line="890"/>
         <source>left</source>
         <translation>left</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="883"/>
+        <location filename="../mainwindow.cpp" line="890"/>
         <source>right</source>
         <translation>right</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="884"/>
+        <location filename="../mainwindow.cpp" line="891"/>
         <source>) has been updated.</source>
         <translation>) has been updated.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="961"/>
+        <location filename="../mainwindow.cpp" line="968"/>
         <source>Could not load %1 language data.</source>
         <translation>Could not load %1 language data.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="969"/>
+        <location filename="../mainwindow.cpp" line="976"/>
         <source>Could not install %1 language translator.</source>
         <translation>Could not install %1 language translator.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1053"/>
+        <location filename="../mainwindow.cpp" line="1060"/>
         <source>No file has been selected. However, a file must be selected to calculate the checksum.</source>
         <translation>No file has been selected. However, a file must be selected to calculate the checksum.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1067"/>
-        <location filename="../mainwindow.cpp" line="1072"/>
+        <location filename="../mainwindow.cpp" line="1074"/>
+        <location filename="../mainwindow.cpp" line="1079"/>
         <source>No file has been selected for the calculation.</source>
         <translation>No file has been selected for the calculation.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1068"/>
-        <location filename="../mainwindow.cpp" line="1073"/>
+        <location filename="../mainwindow.cpp" line="1075"/>
+        <location filename="../mainwindow.cpp" line="1080"/>
         <source>Checksums can only be calculated for files, not for directories.</source>
         <translation>Checksums can only be calculated for files, not for directories.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1069"/>
+        <location filename="../mainwindow.cpp" line="1076"/>
         <source> Special file types like block devices, FIFOs or sockets are not supported either.</source>
         <translation> Special file types like block devices, FIFOs or sockets are not supported either.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1100"/>
+        <location filename="../mainwindow.cpp" line="1107"/>
         <source>Same directory</source>
         <translation>Same directory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1101"/>
+        <location filename="../mainwindow.cpp" line="1108"/>
         <source>The left and the right view show the same directory.</source>
         <translation>The left and the right view show the same directory.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1102"/>
+        <location filename="../mainwindow.cpp" line="1109"/>
         <source> Therefore, a comparison is useless, because the contents are identical.</source>
         <translation> Therefore, a comparison is useless, because the contents are identical.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="960"/>
-        <location filename="../mainwindow.cpp" line="968"/>
+        <location filename="../mainwindow.cpp" line="967"/>
+        <location filename="../mainwindow.cpp" line="975"/>
         <source>Failure</source>
         <translation>Failure</translation>
     </message>
