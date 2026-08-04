@@ -4,7 +4,7 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
-## Next Version (2026-08-??)
+## Version 0.2 (2026-08-04)
 
 * __[new feature]__
   The application is now properly translated.

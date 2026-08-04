@@ -1,3 +1,10 @@
+qt-commander (0.2-1) UNRELEASED; urgency=medium
+
+  * The application is now properly translated.
+    At the moment only English and German translations are available.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Tue, 4 Aug 2026 20:56:09 +0200
+
 qt-commander (0.1.11-1) UNRELEASED; urgency=medium
 
   * The text viewer can now provide basic syntax highlighting for the Lua
