@@ -664,7 +664,8 @@ void DirectoryCompareWindow::addDirectoryExistsEntry(const Compare::Info &info, 
     data.append(tr("Exists in both directories"));
     data.append(loc.toString(info.leftDate, QLocale::NarrowFormat));
     data.append(loc.toString(info.rightDate, QLocale::NarrowFormat));
-    data << tr("Directory") << tr("Directory");
+    data << tr("Directory")
+         << tr("Directory");
 
     QTreeWidgetItem* item = new QTreeWidgetItem(data);
 

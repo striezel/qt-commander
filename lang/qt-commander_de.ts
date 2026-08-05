@@ -665,7 +665,7 @@
     <message>
         <location filename="../directorycomparewindow.cpp" line="410"/>
         <location filename="../directorycomparewindow.cpp" line="507"/>
-        <location filename="../directorycomparewindow.cpp" line="686"/>
+        <location filename="../directorycomparewindow.cpp" line="687"/>
         <source>Files are identical.</source>
         <translation>Dateien sind identisch.</translation>
     </message>
@@ -751,6 +751,7 @@
         <location filename="../directorycomparewindow.cpp" line="619"/>
         <location filename="../directorycomparewindow.cpp" line="644"/>
         <location filename="../directorycomparewindow.cpp" line="667"/>
+        <location filename="../directorycomparewindow.cpp" line="668"/>
         <source>Directory</source>
         <translation>Verzeichnis</translation>
     </message>
@@ -765,17 +766,17 @@
         <translation>Existiert in beiden Verzeichnissen</translation>
     </message>
     <message>
-        <location filename="../directorycomparewindow.cpp" line="689"/>
+        <location filename="../directorycomparewindow.cpp" line="690"/>
         <source>Files are different.</source>
         <translation>Dateien sind unterschiedlich.</translation>
     </message>
     <message>
-        <location filename="../directorycomparewindow.cpp" line="692"/>
+        <location filename="../directorycomparewindow.cpp" line="693"/>
         <source>Files could not be compared.</source>
         <translation>Dateien konnten nicht verglichen werden.</translation>
     </message>
     <message>
-        <location filename="../directorycomparewindow.cpp" line="696"/>
+        <location filename="../directorycomparewindow.cpp" line="697"/>
         <source>Error: Value </source>
         <translation>Fehler: Wert </translation>
     </message>
