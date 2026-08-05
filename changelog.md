@@ -7,10 +7,10 @@ improvements may be omitted.)_
 ## Next Version (2026-08-??)
 
 * __[improvement]__
-  Fix wrong translation in text viewer's syntax hightlighting menu.
+  Fix wrong translation in text viewer's syntax highlighting menu.
 
 * __[improvement]__
-  Fix syntax hightlighting of keywords in shell scripts so that they are now highligted again.
+  Fix syntax highlighting of keywords in shell scripts so that they are now highlighted again.
 
 ## Version 0.2 (2026-08-04)
 
