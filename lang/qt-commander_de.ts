@@ -1360,7 +1360,7 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="453"/>
-        <source>Error while moving to recyle bin</source>
+        <source>Error while moving to recycle bin</source>
         <translation>Fehler beim Verschieben in den Papierkorb</translation>
     </message>
     <message>

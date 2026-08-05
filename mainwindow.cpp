@@ -450,7 +450,7 @@ void MainWindow::btnRemoveClicked()
             {
                 message = tr("The directory ") + message;
             }
-            QMessageBox::critical(this, tr("Error while moving to recyle bin"), message);
+            QMessageBox::critical(this, tr("Error while moving to recycle bin"), message);
             return;
         }
     }

@@ -1358,8 +1358,8 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="453"/>
-        <source>Error while moving to recyle bin</source>
-        <translation>Error while moving to recyle bin</translation>
+        <source>Error while moving to recycle bin</source>
+        <translation>Error while moving to recycle bin</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="491"/>
