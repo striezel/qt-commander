@@ -6,6 +6,9 @@ improvements may be omitted.)_
 
 ## Next Version (2026-08-??)
 
+* __[new feature]__
+  Buttons have been added which allow quick navigation to the user's home directory.
+
 * __[improvement]__
   Fix wrong translation in text viewer's syntax highlighting menu.
 

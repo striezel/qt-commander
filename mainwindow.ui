@@ -18,7 +18,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" colspan="15">
+    <item row="0" column="0" colspan="14">
      <widget class="QLineEdit" name="lnEdPathLeft">
       <property name="text">
        <string>C:\Users\foo</string>
@@ -28,13 +28,39 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="15" colspan="15">
+    <item row="0" column="14">
+     <widget class="QPushButton" name="btnGoHomeLeft">
+      <property name="toolTip">
+       <string>Go to home directory</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="go-home"/>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="15" colspan="14">
      <widget class="QLineEdit" name="lnEdPathRight">
       <property name="text">
        <string>C:\Users\foo</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="29">
+     <widget class="QPushButton" name="btnGoHomeRight">
+      <property name="toolTip">
+       <string>Go to home directory</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="go-home"/>
       </property>
      </widget>
     </item>

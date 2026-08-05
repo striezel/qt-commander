@@ -371,6 +371,19 @@ void MainWindow::rightTreeWidgetActivated(const QModelIndex &idx)
     treeItemDoubleClicked(item, -1 - idx.column());
 }
 
+void MainWindow::btnGoHomeClicked()
+{
+    const QString path = QDir::homePath();
+    if (sender() == ui->btnGoHomeLeft)
+    {
+        fillTreeWidget(ui->treeWidgetLeft, path, true);
+    }
+    else
+    {
+        fillTreeWidget(ui->treeWidgetRight, path, true);
+    }
+}
+
 void MainWindow::btnRemoveClicked()
 {
     QTreeWidget* treeWidget = latestTreeWidget();
@@ -900,6 +913,9 @@ void MainWindow::connectButtons()
     connect(ui->btnCreateDirectory, &QPushButton::clicked, this, &MainWindow::btnCreateDirectoryClicked);
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
     connect(ui->btnExit, &QPushButton::clicked, this, &MainWindow::close);
+
+    connect(ui->btnGoHomeLeft, &QPushButton::clicked, this, &MainWindow::btnGoHomeClicked);
+    connect(ui->btnGoHomeRight, &QPushButton::clicked, this, &MainWindow::btnGoHomeClicked);
 }
 
 void MainWindow::setUpActionGroups()
