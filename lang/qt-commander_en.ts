@@ -886,7 +886,7 @@
     <message>
         <location filename="../fileinfowindow.ui" line="564"/>
         <source>Modified:</source>
-        <translation>Modified</translation>
+        <translation>Modified:</translation>
     </message>
     <message>
         <location filename="../fileinfowindow.ui" line="602"/>
@@ -1011,7 +1011,7 @@
     <message>
         <location filename="../viewers/imageviewwindow.cpp" line="150"/>
         <source> pixels</source>
-        <translation>pixels</translation>
+        <translation> pixels</translation>
     </message>
 </context>
 <context>
@@ -1829,7 +1829,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="528"/>
         <source>Font Description Placeholder</source>
-        <translation type="unfinished"></translation>
+        <translation>Font Description Placeholder</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="36"/>
@@ -2314,12 +2314,12 @@
     <message>
         <location filename="../main.cpp" line="40"/>
         <source>The directory to open on the left side of the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>The directory to open on the left side of the application.</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="44"/>
         <source>The directory to open on the right side of the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>The directory to open on the right side of the application.</translation>
     </message>
 </context>
 </TS>

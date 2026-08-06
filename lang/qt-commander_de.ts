@@ -1832,7 +1832,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="528"/>
         <source>Font Description Placeholder</source>
-        <translation type="unfinished"></translation>
+        <translation>Platzhalter für Schriftartenbeschreibung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="36"/>
