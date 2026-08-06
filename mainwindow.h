@@ -64,6 +64,7 @@ private slots:
     void leftTreeWidgetActivated(const QModelIndex& idx);
     void rightTreeWidgetActivated(const QModelIndex& idx);
 
+    void btnGoUpClicked();
     void btnGoHomeClicked();
 
     void btnRemoveClicked();

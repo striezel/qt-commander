@@ -371,6 +371,21 @@ void MainWindow::rightTreeWidgetActivated(const QModelIndex &idx)
     treeItemDoubleClicked(item, -1 - idx.column());
 }
 
+void MainWindow::btnGoUpClicked()
+{
+    const bool leftSide = sender() == ui->btnGoUpLeft;
+    const QDir& directory = leftSide ? currentDirectoryLeft : currentDirectoryRight;
+    if (directory.isRoot())
+    {
+        QMessageBox::information(this, tr("Already in root directory"),
+                                 tr("You already are in the root directory. There is no parent directory for that directory."));
+        return;
+    }
+    const QFileInfo info = QFileInfo(directory.path());
+    QTreeWidget * treeWidget = leftSide ? ui->treeWidgetLeft : ui->treeWidgetRight;
+    fillTreeWidget(treeWidget, info.path(), false, info.fileName());
+}
+
 void MainWindow::btnGoHomeClicked()
 {
     const QString path = QDir::homePath();
@@ -914,7 +929,9 @@ void MainWindow::connectButtons()
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::btnRemoveClicked);
     connect(ui->btnExit, &QPushButton::clicked, this, &MainWindow::close);
 
+    connect(ui->btnGoUpLeft, &QPushButton::clicked, this, &MainWindow::btnGoUpClicked);
     connect(ui->btnGoHomeLeft, &QPushButton::clicked, this, &MainWindow::btnGoHomeClicked);
+    connect(ui->btnGoUpRight, &QPushButton::clicked, this, &MainWindow::btnGoUpClicked);
     connect(ui->btnGoHomeRight, &QPushButton::clicked, this, &MainWindow::btnGoHomeClicked);
 }
 

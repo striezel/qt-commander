@@ -18,13 +18,26 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" colspan="14">
+    <item row="0" column="0" colspan="13">
      <widget class="QLineEdit" name="lnEdPathLeft">
       <property name="text">
        <string>C:\Users\foo</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="13">
+     <widget class="QPushButton" name="btnGoUpLeft">
+      <property name="toolTip">
+       <string>Go to parent directory</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="go-up"/>
       </property>
      </widget>
     </item>
@@ -41,13 +54,26 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="15" colspan="14">
+    <item row="0" column="15" colspan="13">
      <widget class="QLineEdit" name="lnEdPathRight">
       <property name="text">
        <string>C:\Users\foo</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="28">
+     <widget class="QPushButton" name="btnGoUpRight">
+      <property name="toolTip">
+       <string>Go to parent directory</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset theme="go-up"/>
       </property>
      </widget>
     </item>
