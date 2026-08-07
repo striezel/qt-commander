@@ -1,3 +1,15 @@
+qt-commander (0.2.1-1) UNRELEASED; urgency=medium
+
+  * Buttons have been added which allow quick navigation to the user's home
+    directory or the parent directory of the current directory.
+
+  * Fix wrong translation in text viewer's syntax highlighting menu.
+
+  * Fix syntax highlighting of keywords in shell scripts so that they are now
+    highlighted again.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Fri, 7 Aug 2026 23:32:03 +0200
+
 qt-commander (0.2-1) UNRELEASED; urgency=medium
 
   * The application is now properly translated.
