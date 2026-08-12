@@ -112,13 +112,13 @@
            <rect>
             <x>250</x>
             <y>60</y>
-            <width>211</width>
+            <width>241</width>
             <height>20</height>
            </rect>
           </property>
           <property name="minimumSize">
            <size>
-            <width>211</width>
+            <width>241</width>
             <height>20</height>
            </size>
           </property>
@@ -150,9 +150,15 @@
            <rect>
             <x>250</x>
             <y>100</y>
-            <width>221</width>
+            <width>246</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>246</width>
+            <height>20</height>
+           </size>
           </property>
           <property name="maximumSize">
            <size>
