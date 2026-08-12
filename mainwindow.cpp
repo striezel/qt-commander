@@ -948,6 +948,7 @@ void MainWindow::setUpActionGroups()
 
     languageGroup.addAction(ui->actionLanguageEnglish);
     languageGroup.addAction(ui->actionLanguageGerman);
+    languageGroup.addAction(ui->actionLanguageDutch);
 }
 
 void MainWindow::putSettingsIntoGui(const Settings& settings, const bool avoidRefresh)
@@ -1018,7 +1019,8 @@ void MainWindow::changeLanguage(const QLocale &new_locale, QAction* action)
 
 void MainWindow::attemptToLoadMatchingTranslation()
 {
-    if (locale().language() != QLocale::Language::German)
+    const QLocale::Language lang = locale().language();
+    if ((lang != QLocale::Language::German) && (lang != QLocale::Language::Dutch))
     {
         return;
     }
@@ -1071,6 +1073,7 @@ void MainWindow::connectMenuActions()
 
     connect(ui->actionLanguageEnglish, &QAction::triggered, this, &MainWindow::actionLanguageEnglishTriggered);
     connect(ui->actionLanguageGerman, &QAction::triggered, this, &MainWindow::actionLanguageGermanTriggered);
+    connect(ui->actionLanguageDutch, &QAction::triggered, this, &MainWindow::actionLanguageDutchTriggered);
 
     connect(ui->actionShowMountpoints, &QAction::triggered, this, &MainWindow::actionShowMountpointsTriggered);
     connect(ui->actionAboutQtCommander, &QAction::triggered, this, &MainWindow::actionAboutQtCmdrTriggered);
@@ -1202,6 +1205,17 @@ void MainWindow::actionLanguageGermanTriggered(bool checked)
 
     const QLocale new_locale(QLocale::Language::German, QLocale::Territory::Germany);
     changeLanguage(new_locale, ui->actionLanguageGerman);
+}
+
+void MainWindow::actionLanguageDutchTriggered(bool checked)
+{
+    if (!checked)
+    {
+        return;
+    }
+
+    const QLocale new_locale(QLocale::Language::Dutch, QLocale::Territory::Netherlands);
+    changeLanguage(new_locale, ui->actionLanguageDutch);
 }
 
 void MainWindow::actionShowMountpointsTriggered()

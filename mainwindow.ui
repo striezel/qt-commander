@@ -293,6 +293,7 @@
     </property>
     <addaction name="actionLanguageGerman"/>
     <addaction name="actionLanguageEnglish"/>
+    <addaction name="actionLanguageDutch"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -537,6 +538,14 @@
    </property>
    <property name="text">
     <string>English</string>
+   </property>
+  </action>
+  <action name="actionLanguageDutch">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dutch</string>
    </property>
   </action>
  </widget>

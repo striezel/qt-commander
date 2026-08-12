@@ -1150,149 +1150,154 @@
         <translation>Language</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="310"/>
+        <location filename="../mainwindow.ui" line="311"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="318"/>
+        <location filename="../mainwindow.ui" line="319"/>
         <source>Refresh view</source>
         <translation>Refresh view</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="321"/>
+        <location filename="../mainwindow.ui" line="322"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="332"/>
+        <location filename="../mainwindow.ui" line="333"/>
         <source>Show hidden files and directories</source>
         <translation>Show hidden files and directories</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="343"/>
+        <location filename="../mainwindow.ui" line="344"/>
         <source>Show system files and directories</source>
         <translation>Show system files and directories</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="351"/>
+        <location filename="../mainwindow.ui" line="352"/>
         <source>Hide files (shows directories only)</source>
         <translation>Hide files (shows directories only)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="362"/>
+        <location filename="../mainwindow.ui" line="363"/>
         <source>Sort by name</source>
         <translation>Sort by name</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="370"/>
+        <location filename="../mainwindow.ui" line="371"/>
         <source>Sort by modification date</source>
         <translation>Sort by modification date</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="378"/>
+        <location filename="../mainwindow.ui" line="379"/>
         <source>Sort by size</source>
         <translation>Sort by size</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="386"/>
+        <location filename="../mainwindow.ui" line="387"/>
         <source>Sort by type (file extension)</source>
         <translation>Sort by type (file extension)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="394"/>
+        <location filename="../mainwindow.ui" line="395"/>
         <source>Reverse sort</source>
         <translation>Reverse sort</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="405"/>
+        <location filename="../mainwindow.ui" line="406"/>
         <source>Directories first, then files</source>
         <translation>Directories first, then files</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="413"/>
+        <location filename="../mainwindow.ui" line="414"/>
         <source>Files first, then directories</source>
         <translation>Files first, then directories</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="424"/>
+        <location filename="../mainwindow.ui" line="425"/>
         <source>Ignore upper/lower case</source>
         <translation>Ignore upper/lower case</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="432"/>
+        <location filename="../mainwindow.ui" line="433"/>
         <source>Save settings</source>
         <translation>Save settings</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="440"/>
+        <location filename="../mainwindow.ui" line="441"/>
         <source>Load settings</source>
         <translation>Load settings</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="448"/>
+        <location filename="../mainwindow.ui" line="449"/>
         <source>Restore default settings</source>
         <translation>Restore default settings</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="456"/>
+        <location filename="../mainwindow.ui" line="457"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="464"/>
+        <location filename="../mainwindow.ui" line="465"/>
         <source>About Qt Commander ...</source>
         <translation>About Qt Commander ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="475"/>
+        <location filename="../mainwindow.ui" line="476"/>
         <source>Use system-provided file icons</source>
         <translation>Use system-provided file icons</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="483"/>
+        <location filename="../mainwindow.ui" line="484"/>
         <source>Show file properties</source>
         <translation>Show file properties</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="486"/>
+        <location filename="../mainwindow.ui" line="487"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="494"/>
+        <location filename="../mainwindow.ui" line="495"/>
         <source>Show mount points</source>
         <translation>Show mount points</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="505"/>
+        <location filename="../mainwindow.ui" line="506"/>
         <source>Display formatted size</source>
         <translation>Display formatted size</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="510"/>
+        <location filename="../mainwindow.ui" line="511"/>
         <source>Calculate checksum ...</source>
         <translation>Calculate checksum ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="515"/>
+        <location filename="../mainwindow.ui" line="516"/>
         <source>Compare directories</source>
         <translation>Compare directories</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="523"/>
+        <location filename="../mainwindow.ui" line="524"/>
         <source>Edit settings ...</source>
         <translation>Edit settings ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="531"/>
+        <location filename="../mainwindow.ui" line="532"/>
         <source>German</source>
         <translation>German</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="539"/>
+        <location filename="../mainwindow.ui" line="540"/>
         <source>English</source>
         <translation>English</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="548"/>
+        <source>Dutch</source>
+        <translation>Dutch</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="231"/>
@@ -1492,7 +1497,7 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="725"/>
-        <location filename="../mainwindow.cpp" line="1105"/>
+        <location filename="../mainwindow.cpp" line="1108"/>
         <source>No suitable file selected</source>
         <translation>No suitable file selected</translation>
     </message>
@@ -1520,7 +1525,7 @@
         <location filename="../mainwindow.cpp" line="706"/>
         <location filename="../mainwindow.cpp" line="731"/>
         <location filename="../mainwindow.cpp" line="876"/>
-        <location filename="../mainwindow.cpp" line="1092"/>
+        <location filename="../mainwindow.cpp" line="1095"/>
         <source>No file selected</source>
         <translation>No file selected</translation>
     </message>
@@ -1581,55 +1586,55 @@
         <translation>) has been updated.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1001"/>
+        <location filename="../mainwindow.cpp" line="1002"/>
         <source>Could not load %1 language data.</source>
         <translation>Could not load %1 language data.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1009"/>
+        <location filename="../mainwindow.cpp" line="1010"/>
         <source>Could not install %1 language translator.</source>
         <translation>Could not install %1 language translator.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1093"/>
+        <location filename="../mainwindow.cpp" line="1096"/>
         <source>No file has been selected. However, a file must be selected to calculate the checksum.</source>
         <translation>No file has been selected. However, a file must be selected to calculate the checksum.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1107"/>
-        <location filename="../mainwindow.cpp" line="1112"/>
+        <location filename="../mainwindow.cpp" line="1110"/>
+        <location filename="../mainwindow.cpp" line="1115"/>
         <source>No file has been selected for the calculation.</source>
         <translation>No file has been selected for the calculation.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1108"/>
-        <location filename="../mainwindow.cpp" line="1113"/>
+        <location filename="../mainwindow.cpp" line="1111"/>
+        <location filename="../mainwindow.cpp" line="1116"/>
         <source>Checksums can only be calculated for files, not for directories.</source>
         <translation>Checksums can only be calculated for files, not for directories.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1109"/>
+        <location filename="../mainwindow.cpp" line="1112"/>
         <source> Special file types like block devices, FIFOs or sockets are not supported either.</source>
         <translation> Special file types like block devices, FIFOs or sockets are not supported either.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1140"/>
+        <location filename="../mainwindow.cpp" line="1143"/>
         <source>Same directory</source>
         <translation>Same directory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1141"/>
+        <location filename="../mainwindow.cpp" line="1144"/>
         <source>The left and the right view show the same directory.</source>
         <translation>The left and the right view show the same directory.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1142"/>
+        <location filename="../mainwindow.cpp" line="1145"/>
         <source> Therefore, a comparison is useless, because the contents are identical.</source>
         <translation> Therefore, a comparison is useless, because the contents are identical.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1000"/>
-        <location filename="../mainwindow.cpp" line="1008"/>
+        <location filename="../mainwindow.cpp" line="1001"/>
+        <location filename="../mainwindow.cpp" line="1009"/>
         <source>Failure</source>
         <translation>Failure</translation>
     </message>

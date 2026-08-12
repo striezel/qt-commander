@@ -102,6 +102,7 @@ private slots:
 
     void actionLanguageEnglishTriggered(bool checked = false);
     void actionLanguageGermanTriggered(bool checked = false);
+    void actionLanguageDutchTriggered(bool checked = false);
 
     void actionShowMountpointsTriggered();
     void actionAboutQtCmdrTriggered();

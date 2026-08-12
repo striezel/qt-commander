@@ -1148,149 +1148,154 @@
         <translation>Taal</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="310"/>
+        <location filename="../mainwindow.ui" line="311"/>
         <source>Exit</source>
         <translation>Afsluiten</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="318"/>
+        <location filename="../mainwindow.ui" line="319"/>
         <source>Refresh view</source>
         <translation>Opnieuw inlezen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="321"/>
+        <location filename="../mainwindow.ui" line="322"/>
         <source>Ctrl+R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="332"/>
+        <location filename="../mainwindow.ui" line="333"/>
         <source>Show hidden files and directories</source>
         <translation>Verborgen bestanden en mappen weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="343"/>
+        <location filename="../mainwindow.ui" line="344"/>
         <source>Show system files and directories</source>
         <translation>Systeembestanden en -mappen weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="351"/>
+        <location filename="../mainwindow.ui" line="352"/>
         <source>Hide files (shows directories only)</source>
         <translation>Bestanden verbergen (toont alleen mappen)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="362"/>
+        <location filename="../mainwindow.ui" line="363"/>
         <source>Sort by name</source>
         <translation>Op naam sorteren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="370"/>
+        <location filename="../mainwindow.ui" line="371"/>
         <source>Sort by modification date</source>
         <translation>Sorteren op wijzigingsdatum</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="378"/>
+        <location filename="../mainwindow.ui" line="379"/>
         <source>Sort by size</source>
         <translation>Op grootte sorteren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="386"/>
+        <location filename="../mainwindow.ui" line="387"/>
         <source>Sort by type (file extension)</source>
         <translation>Sorteren op type (bestandsextensie)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="394"/>
+        <location filename="../mainwindow.ui" line="395"/>
         <source>Reverse sort</source>
         <translation>Sorteervolgorde omkeren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="405"/>
+        <location filename="../mainwindow.ui" line="406"/>
         <source>Directories first, then files</source>
         <translation>Eerst mappen, dan bestanden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="413"/>
+        <location filename="../mainwindow.ui" line="414"/>
         <source>Files first, then directories</source>
         <translation>Eerst bestanden, daarna mappen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="424"/>
+        <location filename="../mainwindow.ui" line="425"/>
         <source>Ignore upper/lower case</source>
         <translation>Hoofdletters en kleine letters negeren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="432"/>
+        <location filename="../mainwindow.ui" line="433"/>
         <source>Save settings</source>
         <translation>Instellingen opslaan</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="440"/>
+        <location filename="../mainwindow.ui" line="441"/>
         <source>Load settings</source>
         <translation>Instellingen laden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="448"/>
+        <location filename="../mainwindow.ui" line="449"/>
         <source>Restore default settings</source>
         <translation>Terugzetten naar standaardinstellingen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="456"/>
+        <location filename="../mainwindow.ui" line="457"/>
         <source>About Qt</source>
         <translation>Over Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="464"/>
+        <location filename="../mainwindow.ui" line="465"/>
         <source>About Qt Commander ...</source>
         <translation>Over Qt Commander ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="475"/>
+        <location filename="../mainwindow.ui" line="476"/>
         <source>Use system-provided file icons</source>
         <translation>Bestandsiconen gebruiken die door het systeem worden aangeboden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="483"/>
+        <location filename="../mainwindow.ui" line="484"/>
         <source>Show file properties</source>
         <translation>Bestandseigenschappen weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="486"/>
+        <location filename="../mainwindow.ui" line="487"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="494"/>
+        <location filename="../mainwindow.ui" line="495"/>
         <source>Show mount points</source>
         <translation>Mountpoint&apos;s / schijven weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="505"/>
+        <location filename="../mainwindow.ui" line="506"/>
         <source>Display formatted size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="510"/>
+        <location filename="../mainwindow.ui" line="511"/>
         <source>Calculate checksum ...</source>
         <translation>Controlesom berekenen ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="515"/>
+        <location filename="../mainwindow.ui" line="516"/>
         <source>Compare directories</source>
         <translation>Mappen vergelijken</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="523"/>
+        <location filename="../mainwindow.ui" line="524"/>
         <source>Edit settings ...</source>
         <translation>Instellingen bewerken ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="531"/>
+        <location filename="../mainwindow.ui" line="532"/>
         <source>German</source>
         <translation>Duits</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="539"/>
+        <location filename="../mainwindow.ui" line="540"/>
         <source>English</source>
         <translation>Engels</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="548"/>
+        <source>Dutch</source>
+        <translation>Nederlands</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="231"/>
@@ -1497,7 +1502,7 @@
         <location filename="../mainwindow.cpp" line="706"/>
         <location filename="../mainwindow.cpp" line="731"/>
         <location filename="../mainwindow.cpp" line="876"/>
-        <location filename="../mainwindow.cpp" line="1092"/>
+        <location filename="../mainwindow.cpp" line="1095"/>
         <source>No file selected</source>
         <translation>Er is geen actieve selectie</translation>
     </message>
@@ -1508,7 +1513,7 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="725"/>
-        <location filename="../mainwindow.cpp" line="1105"/>
+        <location filename="../mainwindow.cpp" line="1108"/>
         <source>No suitable file selected</source>
         <translation>Er is geen geschikt bestand geselecteerd</translation>
     </message>
@@ -1579,55 +1584,55 @@
         <translation>) is bijgewerkt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1000"/>
-        <location filename="../mainwindow.cpp" line="1008"/>
+        <location filename="../mainwindow.cpp" line="1001"/>
+        <location filename="../mainwindow.cpp" line="1009"/>
         <source>Failure</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1001"/>
+        <location filename="../mainwindow.cpp" line="1002"/>
         <source>Could not load %1 language data.</source>
         <translation>De taalgegevens voor de volgende taal konden niet worden geladen: %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1009"/>
+        <location filename="../mainwindow.cpp" line="1010"/>
         <source>Could not install %1 language translator.</source>
         <translation>De taalvertaling voor de volgende taal kon niet worden geactiveerd: %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1093"/>
+        <location filename="../mainwindow.cpp" line="1096"/>
         <source>No file has been selected. However, a file must be selected to calculate the checksum.</source>
         <translation>Er is geen bestand geselecteerd. Om de controlesom te berekenen, moet er echter een bestand worden geselecteerd.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1107"/>
-        <location filename="../mainwindow.cpp" line="1112"/>
+        <location filename="../mainwindow.cpp" line="1110"/>
+        <location filename="../mainwindow.cpp" line="1115"/>
         <source>No file has been selected for the calculation.</source>
         <translation>Er is geen bestand geselecteerd voor de berekening.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1108"/>
-        <location filename="../mainwindow.cpp" line="1113"/>
+        <location filename="../mainwindow.cpp" line="1111"/>
+        <location filename="../mainwindow.cpp" line="1116"/>
         <source>Checksums can only be calculated for files, not for directories.</source>
         <translation>Controlesommen kunnen alleen voor bestanden worden berekend, maar niet voor mappen.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1109"/>
+        <location filename="../mainwindow.cpp" line="1112"/>
         <source> Special file types like block devices, FIFOs or sockets are not supported either.</source>
         <translation> Speciale bestanden zoals blokapparaten, FIFO&apos;s of sockets worden evenmin ondersteund.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1140"/>
+        <location filename="../mainwindow.cpp" line="1143"/>
         <source>Same directory</source>
         <translation>Dezelfde map</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1141"/>
+        <location filename="../mainwindow.cpp" line="1144"/>
         <source>The left and the right view show the same directory.</source>
         <translation>Zowel het linker- als het rechterbeeld tonen dezelfde map.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1142"/>
+        <location filename="../mainwindow.cpp" line="1145"/>
         <source> Therefore, a comparison is useless, because the contents are identical.</source>
         <translation> Een vergelijking heeft daarom geen zin, aangezien de inhoud identiek is.</translation>
     </message>

@@ -125,6 +125,7 @@ endif()
 qt_add_translations(qt-commander TS_FILES
     lang/qt-commander_de.ts
     lang/qt-commander_en.ts
+    lang/qt-commander_nl.ts
     QM_FILES_OUTPUT_VARIABLE ALL_QM_FILES
 )
 
