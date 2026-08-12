@@ -399,7 +399,7 @@
     <message>
         <location filename="../directorycomparewindow.ui" line="27"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Hint:&lt;/span&gt; Subdirectories are not (yet) searched. The comparison therefore only checks for the existence of the subdirectories, but not their contents.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Hinweis:&lt;/span&gt; Unterverzeichnisse werden (noch) nicht durchsucht. Cer Vergleich prüft daher nur die Existenz der Unterverzeichnisse, nicht aber deren Inhalte.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Hinweis:&lt;/span&gt; Unterverzeichnisse werden (noch) nicht durchsucht. Der Vergleich prüft daher nur die Existenz der Unterverzeichnisse, nicht aber deren Inhalte.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.ui" line="43"/>
@@ -1415,7 +1415,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="553"/>
         <source>The directory &apos;</source>
-        <translation>Das Vrzeichnis &apos;</translation>
+        <translation>Das Verzeichnis &apos;</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="553"/>
