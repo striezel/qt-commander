@@ -585,7 +585,7 @@
     <message>
         <location filename="../directorycomparewindow.cpp" line="349"/>
         <source>Therefore, a copy from the right side to the left side is not possible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het is daarom niet mogelijk om van rechts naar links te kopiëren.</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.cpp" line="355"/>
@@ -1125,7 +1125,7 @@
     <message>
         <location filename="../mainwindow.ui" line="239"/>
         <source>View</source>
-        <translation type="unfinished">Weergave</translation>
+        <translation>Weergave</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="265"/>
@@ -1265,7 +1265,7 @@
     <message>
         <location filename="../mainwindow.ui" line="506"/>
         <source>Display formatted size</source>
-        <translation type="unfinished"></translation>
+        <translation>Geformatteerde grootte weergeven</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="511"/>
@@ -1856,7 +1856,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="269"/>
         <source>Show formatted size</source>
-        <translation type="unfinished"></translation>
+        <translation>Geformatteerde grootte tonen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="283"/>

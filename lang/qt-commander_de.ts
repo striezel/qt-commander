@@ -585,7 +585,7 @@
     <message>
         <location filename="../directorycomparewindow.cpp" line="349"/>
         <source>Therefore, a copy from the right side to the left side is not possible.</source>
-        <translation>Ein Kopieren von links nach rechts ist daher nicht möglich.</translation>
+        <translation>Ein Kopieren von rechts nach links ist daher nicht möglich.</translation>
     </message>
     <message>
         <location filename="../directorycomparewindow.cpp" line="355"/>
