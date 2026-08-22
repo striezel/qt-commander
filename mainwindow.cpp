@@ -463,14 +463,22 @@ void MainWindow::btnRemoveClicked()
         if (!success)
         {
             QString message = "\"" + name + tr("\" could not be deleted.");
-            if (info.isFile())
+            if (info.isDir())
             {
-                message = tr("The file ") + message;
+                message = tr("The directory ") + message;
+                if (!settings.getRecursiveDeleteEnabled())
+                {
+                    message += "\n\n" + tr("Maybe the directory is not empty.")
+                        + " " + tr("If that's the case, try enabling recursive deletion of directories in the settings.")
+                        + " " + tr("(Go to %1 - %2 - %3 to enable it.)")
+                                    .arg(ui->menuSettings->title())
+                                    .arg(ui->actionEditSettings->text())
+                                    .arg(SettingsDialog::tr("Delete operation"));
+                }
             }
             else
             {
-                message = tr("The directory ") + message
-                          + "\n\n" + tr("Maybe the directory is not empty.");
+                message = tr("The file ") + message;
             }
             QMessageBox::critical(this, tr("Error while deleting"), message);
             return;
