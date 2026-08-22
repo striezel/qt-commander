@@ -440,13 +440,25 @@ void MainWindow::btnRemoveClicked()
     bool success = false;
     if (!settings.getDeleteMovesToTrash())
     {
-        if (info.isFile())
+        if (info.isDir())
         {
-            success = baseDir.remove(name);
+            if (settings.getRecursiveDeleteEnabled())
+            {
+                QDir dirToRemove(baseDir.absoluteFilePath(name));
+                // Note: This may take long for large recursive directory trees.
+                // TODO: Implement deletion with progress meter and possibility
+                // to cancel the deletion when it takes too long.
+                success = dirToRemove.removeRecursively();
+            }
+            else
+            {
+                // Try remove the directory. Only works when directory is empty.
+                success = baseDir.rmdir(name);
+            }
         }
         else
         {
-            success = baseDir.rmdir(name);
+            success = baseDir.remove(name);
         }
         if (!success)
         {

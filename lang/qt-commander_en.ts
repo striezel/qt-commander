@@ -1322,8 +1322,8 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="418"/>
-        <location filename="../mainwindow.cpp" line="588"/>
-        <location filename="../mainwindow.cpp" line="644"/>
+        <location filename="../mainwindow.cpp" line="600"/>
+        <location filename="../mainwindow.cpp" line="656"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
@@ -1353,288 +1353,288 @@
         <translation>Do you really want to delete %1?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="453"/>
+        <location filename="../mainwindow.cpp" line="465"/>
         <source>&quot; could not be deleted.</source>
         <translation>&quot; could not be deleted.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="456"/>
-        <location filename="../mainwindow.cpp" line="475"/>
+        <location filename="../mainwindow.cpp" line="468"/>
+        <location filename="../mainwindow.cpp" line="487"/>
         <source>The file </source>
         <translation>The file </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="460"/>
-        <location filename="../mainwindow.cpp" line="479"/>
+        <location filename="../mainwindow.cpp" line="472"/>
+        <location filename="../mainwindow.cpp" line="491"/>
         <source>The directory </source>
         <translation>The directory </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="473"/>
         <source>Maybe the directory is not empty.</source>
         <translation>Maybe the directory is not empty.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="475"/>
         <source>Error while deleting</source>
         <translation>Error while deleting</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="472"/>
+        <location filename="../mainwindow.cpp" line="484"/>
         <source>&quot; could not be moved into the recycle bin.</source>
         <translation>&quot; could not be moved into the recycle bin.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="481"/>
+        <location filename="../mainwindow.cpp" line="493"/>
         <source>Error while moving to recycle bin</source>
         <translation>Error while moving to recycle bin</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="519"/>
+        <location filename="../mainwindow.cpp" line="531"/>
         <source>&apos;%1&apos; has been moved into the recycle bin.</source>
         <translation>&apos;%1&apos; has been moved into the recycle bin.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="523"/>
+        <location filename="../mainwindow.cpp" line="535"/>
         <source>&apos;%1&apos; has been deleted.</source>
         <translation>&apos;%1&apos; has been deleted.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="542"/>
+        <location filename="../mainwindow.cpp" line="554"/>
         <source>Invalid directory name</source>
         <translation>Invalid directory name</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="543"/>
+        <location filename="../mainwindow.cpp" line="555"/>
         <source>The directory name must not be empty.</source>
         <translation>The directory name must not be empty.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="552"/>
+        <location filename="../mainwindow.cpp" line="564"/>
         <source>Error while creating the directory</source>
         <translation>Error while creating the directory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="553"/>
+        <location filename="../mainwindow.cpp" line="565"/>
         <source>The directory &apos;</source>
         <translation>The directory &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="553"/>
+        <location filename="../mainwindow.cpp" line="565"/>
         <source>&apos; could not be created.</source>
         <translation>&apos; could not be created.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="569"/>
+        <location filename="../mainwindow.cpp" line="581"/>
         <source>Directory &apos;</source>
         <translation>Directory &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="569"/>
+        <location filename="../mainwindow.cpp" line="581"/>
         <source>&apos; has been created.</source>
         <translation>&apos; has been created.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="601"/>
         <source>Move operation cannot be performed on &quot;..&quot;!</source>
         <translation>Move operation cannot be performed on &quot;..&quot;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="596"/>
+        <location filename="../mainwindow.cpp" line="608"/>
         <source>Moving to same directory is not possible</source>
         <translation>Moving to same directory is not possible</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="597"/>
+        <location filename="../mainwindow.cpp" line="609"/>
         <source>Both views show the same directory (&quot;%1&quot;). Therefore, a move is not possible.</source>
         <translation>Both views show the same directory (&quot;%1&quot;). Therefore, a move is not possible.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="609"/>
+        <location filename="../mainwindow.cpp" line="621"/>
         <source>Error while moving</source>
         <translation>Error while moving</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="610"/>
+        <location filename="../mainwindow.cpp" line="622"/>
         <source>The element &apos;%1&apos; could not be moved.</source>
         <translation>The element &apos;%1&apos; could not be moved.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="624"/>
+        <location filename="../mainwindow.cpp" line="636"/>
         <source>&apos;%1&apos; has been moved to %2.</source>
         <translation>&apos;%1&apos; has been moved to %2.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="645"/>
+        <location filename="../mainwindow.cpp" line="657"/>
         <source>Copy operation cannot be performed on &quot;..&quot;!</source>
         <translation>Copy operation cannot be performed on &quot;..&quot;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="652"/>
+        <location filename="../mainwindow.cpp" line="664"/>
         <source>Copying to same directory is not possible</source>
         <translation>Copying to same directory is not possible</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="653"/>
+        <location filename="../mainwindow.cpp" line="665"/>
         <source>Both views show the same directory (&quot;%1&quot;). Therefore, a copy is not possible.</source>
         <translation>Both views show the same directory (&quot;%1&quot;). Therefore, a copy is not possible.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="667"/>
-        <location filename="../mainwindow.cpp" line="678"/>
+        <location filename="../mainwindow.cpp" line="679"/>
+        <location filename="../mainwindow.cpp" line="690"/>
         <source>Error while copying</source>
         <translation>Error while copying</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="668"/>
+        <location filename="../mainwindow.cpp" line="680"/>
         <source>The file &apos;%1&apos; could not be copied.</source>
         <translation>The file &apos;%1&apos; could not be copied.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="679"/>
+        <location filename="../mainwindow.cpp" line="691"/>
         <source>The directory &apos;%1&apos; could not be copied.</source>
         <translation>The directory &apos;%1&apos; could not be copied.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="725"/>
-        <location filename="../mainwindow.cpp" line="1108"/>
+        <location filename="../mainwindow.cpp" line="737"/>
+        <location filename="../mainwindow.cpp" line="1120"/>
         <source>No suitable file selected</source>
         <translation>No suitable file selected</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="727"/>
+        <location filename="../mainwindow.cpp" line="739"/>
         <source>No suitable file has been selected to be displayed.</source>
         <translation>No suitable file has been selected to be displayed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="753"/>
-        <location filename="../mainwindow.cpp" line="773"/>
-        <location filename="../mainwindow.cpp" line="794"/>
-        <location filename="../mainwindow.cpp" line="816"/>
-        <location filename="../mainwindow.cpp" line="835"/>
-        <location filename="../mainwindow.cpp" line="853"/>
+        <location filename="../mainwindow.cpp" line="765"/>
+        <location filename="../mainwindow.cpp" line="785"/>
+        <location filename="../mainwindow.cpp" line="806"/>
+        <location filename="../mainwindow.cpp" line="828"/>
+        <location filename="../mainwindow.cpp" line="847"/>
+        <location filename="../mainwindow.cpp" line="865"/>
         <source>The file &apos;%1&apos; could not be opened for reading.</source>
         <translation>The file &apos;%1&apos; could not be opened for reading.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="695"/>
+        <location filename="../mainwindow.cpp" line="707"/>
         <source>&apos;%1&apos; was copied to %2.</source>
         <translation>&apos;%1&apos; was copied to %2.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="706"/>
-        <location filename="../mainwindow.cpp" line="731"/>
-        <location filename="../mainwindow.cpp" line="876"/>
-        <location filename="../mainwindow.cpp" line="1095"/>
+        <location filename="../mainwindow.cpp" line="718"/>
+        <location filename="../mainwindow.cpp" line="743"/>
+        <location filename="../mainwindow.cpp" line="888"/>
+        <location filename="../mainwindow.cpp" line="1107"/>
         <source>No file selected</source>
         <translation>No file selected</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="707"/>
+        <location filename="../mainwindow.cpp" line="719"/>
         <source>No file has been selected to be viewed.</source>
         <translation>No file has been selected to be viewed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="732"/>
+        <location filename="../mainwindow.cpp" line="744"/>
         <source>No file has been selected to be displayed.</source>
         <translation>No file has been selected to be displayed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="728"/>
-        <location filename="../mainwindow.cpp" line="733"/>
+        <location filename="../mainwindow.cpp" line="740"/>
+        <location filename="../mainwindow.cpp" line="745"/>
         <source>Only files can be selected for viewing. Directories cannot be viewed.</source>
         <translation>Only files can be selected for viewing. Directories cannot be viewed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="729"/>
+        <location filename="../mainwindow.cpp" line="741"/>
         <source> Special file types like block devices, FIFOs or sockets cannot be viewed either.</source>
         <translation> Special file types like block devices, FIFOs or sockets cannot be viewed either.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="752"/>
-        <location filename="../mainwindow.cpp" line="772"/>
-        <location filename="../mainwindow.cpp" line="793"/>
-        <location filename="../mainwindow.cpp" line="815"/>
-        <location filename="../mainwindow.cpp" line="834"/>
-        <location filename="../mainwindow.cpp" line="852"/>
+        <location filename="../mainwindow.cpp" line="764"/>
+        <location filename="../mainwindow.cpp" line="784"/>
+        <location filename="../mainwindow.cpp" line="805"/>
+        <location filename="../mainwindow.cpp" line="827"/>
+        <location filename="../mainwindow.cpp" line="846"/>
+        <location filename="../mainwindow.cpp" line="864"/>
         <source>Error while opening the file</source>
         <translation>Error while opening the file</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="877"/>
+        <location filename="../mainwindow.cpp" line="889"/>
         <source>No file or directory has been selected whose properties could be displayed.</source>
         <translation>No file or directory has been selected whose properties could be displayed.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="917"/>
+        <location filename="../mainwindow.cpp" line="929"/>
         <source>View of directory &apos;</source>
         <translation>View of directory &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="918"/>
+        <location filename="../mainwindow.cpp" line="930"/>
         <source>left</source>
         <translation>left</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="918"/>
+        <location filename="../mainwindow.cpp" line="930"/>
         <source>right</source>
         <translation>right</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="919"/>
+        <location filename="../mainwindow.cpp" line="931"/>
         <source>) has been updated.</source>
         <translation>) has been updated.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1002"/>
+        <location filename="../mainwindow.cpp" line="1014"/>
         <source>Could not load %1 language data.</source>
         <translation>Could not load %1 language data.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1010"/>
+        <location filename="../mainwindow.cpp" line="1022"/>
         <source>Could not install %1 language translator.</source>
         <translation>Could not install %1 language translator.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1096"/>
+        <location filename="../mainwindow.cpp" line="1108"/>
         <source>No file has been selected. However, a file must be selected to calculate the checksum.</source>
         <translation>No file has been selected. However, a file must be selected to calculate the checksum.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1110"/>
-        <location filename="../mainwindow.cpp" line="1115"/>
+        <location filename="../mainwindow.cpp" line="1122"/>
+        <location filename="../mainwindow.cpp" line="1127"/>
         <source>No file has been selected for the calculation.</source>
         <translation>No file has been selected for the calculation.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1111"/>
-        <location filename="../mainwindow.cpp" line="1116"/>
+        <location filename="../mainwindow.cpp" line="1123"/>
+        <location filename="../mainwindow.cpp" line="1128"/>
         <source>Checksums can only be calculated for files, not for directories.</source>
         <translation>Checksums can only be calculated for files, not for directories.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1112"/>
+        <location filename="../mainwindow.cpp" line="1124"/>
         <source> Special file types like block devices, FIFOs or sockets are not supported either.</source>
         <translation> Special file types like block devices, FIFOs or sockets are not supported either.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1143"/>
+        <location filename="../mainwindow.cpp" line="1155"/>
         <source>Same directory</source>
         <translation>Same directory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1144"/>
+        <location filename="../mainwindow.cpp" line="1156"/>
         <source>The left and the right view show the same directory.</source>
         <translation>The left and the right view show the same directory.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1145"/>
+        <location filename="../mainwindow.cpp" line="1157"/>
         <source> Therefore, a comparison is useless, because the contents are identical.</source>
         <translation> Therefore, a comparison is useless, because the contents are identical.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1001"/>
-        <location filename="../mainwindow.cpp" line="1009"/>
+        <location filename="../mainwindow.cpp" line="1013"/>
+        <location filename="../mainwindow.cpp" line="1021"/>
         <source>Failure</source>
         <translation>Failure</translation>
     </message>
@@ -1786,53 +1786,53 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="607"/>
+        <location filename="../settingsdialog.ui" line="645"/>
         <source>Audio player</source>
         <translation>Audio player</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="625"/>
+        <location filename="../settingsdialog.ui" line="663"/>
         <source>Auto-play audio</source>
         <translation>Auto-play audio</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="644"/>
+        <location filename="../settingsdialog.ui" line="682"/>
         <source>Loop audio endlessly</source>
         <translation>Loop audio endlessly</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="663"/>
-        <location filename="../settingsdialog.ui" line="778"/>
+        <location filename="../settingsdialog.ui" line="701"/>
+        <location filename="../settingsdialog.ui" line="816"/>
         <source>Volume:</source>
         <translation>Volume:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="722"/>
+        <location filename="../settingsdialog.ui" line="760"/>
         <source>Video player</source>
         <translation>Video player</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="740"/>
+        <location filename="../settingsdialog.ui" line="778"/>
         <source>Auto-play video</source>
         <translation>Auto-play video</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="759"/>
+        <location filename="../settingsdialog.ui" line="797"/>
         <source>Loop video file endlessly</source>
         <translation>Loop video file endlessly</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="458"/>
+        <location filename="../settingsdialog.ui" line="496"/>
         <source>Ayu Dark</source>
         <translation>Ayu Dark</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="477"/>
+        <location filename="../settingsdialog.ui" line="515"/>
         <source>Ayu Light</source>
         <translation>Ayu Light</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="528"/>
+        <location filename="../settingsdialog.ui" line="566"/>
         <source>Font Description Placeholder</source>
         <translation>Font Description Placeholder</translation>
     </message>
@@ -1877,177 +1877,187 @@
         <translation>Reverse sort</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="164"/>
+        <location filename="../settingsdialog.ui" line="170"/>
         <source>Ignore upper/lower case</source>
         <translation>Ignore upper/lower case</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="178"/>
+        <location filename="../settingsdialog.ui" line="184"/>
         <source>Order of files and directories</source>
         <translation>Order of files and directories</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="196"/>
+        <location filename="../settingsdialog.ui" line="202"/>
         <source>Directories first, then files</source>
         <translation>Directories first, then files</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="218"/>
+        <location filename="../settingsdialog.ui" line="224"/>
         <source>Files first, then directories</source>
         <translation>Files first, then directories</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="232"/>
+        <location filename="../settingsdialog.ui" line="238"/>
         <source>Other options</source>
         <translation>Other options</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="250"/>
+        <location filename="../settingsdialog.ui" line="256"/>
         <source>Use system-provided file icons</source>
         <translation>Use system-provided file icons</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="269"/>
+        <location filename="../settingsdialog.ui" line="275"/>
         <source>Show formatted size</source>
         <translation>Show formatted size</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="283"/>
+        <location filename="../settingsdialog.ui" line="289"/>
         <source>Show/Hide certain files</source>
         <translation>Show/Hide certain files</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="301"/>
+        <location filename="../settingsdialog.ui" line="307"/>
         <source>Show hidden files and directories</source>
         <translation>Show hidden files and directories</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="320"/>
+        <location filename="../settingsdialog.ui" line="326"/>
         <source>Show system files and directories</source>
         <translation>Show system files and directories</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="339"/>
+        <location filename="../settingsdialog.ui" line="345"/>
         <source>Hide files (shows directories only)</source>
         <translation>Hide files (shows directories only)</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="351"/>
+        <location filename="../settingsdialog.ui" line="357"/>
         <source>Delete operation</source>
         <translation>Delete operation</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="363"/>
+        <location filename="../settingsdialog.ui" line="369"/>
+        <source>Recursive delete</source>
+        <translation>Recursive delete</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="387"/>
+        <source>Enable recursive deletion of directories</source>
+        <translation>Enable recursive deletion of directories</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="401"/>
         <source>Type of delete operation</source>
         <translation>Type of delete operation</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="381"/>
+        <location filename="../settingsdialog.ui" line="419"/>
         <source>Delete directly removes file / directory</source>
         <translation>Delete directly removes file / directory</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="403"/>
+        <location filename="../settingsdialog.ui" line="441"/>
         <source>Delete moves file / directory to trash</source>
         <translation>Delete moves file / directory to trash</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="428"/>
+        <location filename="../settingsdialog.ui" line="466"/>
         <source>Text viewer</source>
         <translation>Text viewer</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="440"/>
+        <location filename="../settingsdialog.ui" line="478"/>
         <source>Style for syntax highlighting</source>
         <translation>Style for syntax highlighting</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="491"/>
+        <location filename="../settingsdialog.ui" line="529"/>
         <source>Font</source>
         <translation>Font</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="509"/>
+        <location filename="../settingsdialog.ui" line="547"/>
         <source>Font:</source>
         <translation>Font:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="547"/>
+        <location filename="../settingsdialog.ui" line="585"/>
         <source>Change font ...</source>
         <translation>Change font ...</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="564"/>
+        <location filename="../settingsdialog.ui" line="602"/>
         <source>Automatic syntax highlighting</source>
         <translation>Automatic syntax highlighting</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="582"/>
+        <location filename="../settingsdialog.ui" line="620"/>
         <source>Automatically select the matching language for syntax highlighting</source>
         <translation>Automatically select the matching language for syntax highlighting</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="713"/>
+        <location filename="../settingsdialog.ui" line="751"/>
         <source>50 %</source>
         <translation>50 %</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="828"/>
+        <location filename="../settingsdialog.ui" line="866"/>
         <source>75 %</source>
         <translation>75 %</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="837"/>
+        <location filename="../settingsdialog.ui" line="875"/>
         <source>Directory comparison</source>
         <translation>Directory comparison</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="849"/>
+        <location filename="../settingsdialog.ui" line="887"/>
         <source>Case sensitivity in file name comparison</source>
         <translation>Case sensitivity in file name comparison</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="867"/>
+        <location filename="../settingsdialog.ui" line="905"/>
         <source>Use system&apos;s default case sensitivity</source>
         <translation>Use system&apos;s default case sensitivity</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="889"/>
+        <location filename="../settingsdialog.ui" line="927"/>
         <source>Perform case-sensitive file name comparison</source>
         <translation>Perform case-sensitive file name comparison</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="908"/>
+        <location filename="../settingsdialog.ui" line="946"/>
         <source>Perform case-insensitive file name comparison</source>
         <translation>Perform case-insensitive file name comparison</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="253"/>
+        <location filename="../settingsdialog.cpp" line="255"/>
         <source> pt</source>
         <translation> pt</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="257"/>
+        <location filename="../settingsdialog.cpp" line="259"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="261"/>
+        <location filename="../settingsdialog.cpp" line="263"/>
         <source>, bold</source>
         <translation>, bold</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="265"/>
+        <location filename="../settingsdialog.cpp" line="267"/>
         <source>, italic</source>
         <translation>, italic</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="269"/>
+        <location filename="../settingsdialog.cpp" line="271"/>
         <source>, underlined</source>
         <translation>, underlined</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="273"/>
+        <location filename="../settingsdialog.cpp" line="275"/>
         <source>, strikeout</source>
         <translation>, strikeout</translation>
     </message>

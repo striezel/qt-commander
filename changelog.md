@@ -7,6 +7,10 @@ improvements may be omitted.)_
 ## Next Version (2026-08-??)
 
 * __[new feature]__
+  Add possibility to enable recursive deletion of directories. That possibility
+  can be enabled in the settings for the delete operation.
+
+* __[new feature]__
   A Dutch translation is added.
 
 ## Version 0.2.1 (2026-08-07)

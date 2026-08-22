@@ -100,6 +100,7 @@ Settings SettingsDialog::selectedSettings() const
     settings.setShowFormattedSize(ui->cbShowFormattedSize->isChecked());
 
     settings.setDeleteMovesToTrash(ui->rbDeleteMovesToTrash->isChecked());
+    settings.setRecursiveDeleteEnabled(ui->cbEnableRecursiveDelete->isChecked());
 
     settings.setTextViewerFont(selectedTextViewerFont);
     settings.setTextViewerAutoSelectLanguage(ui->cbTextViewerAutoSelectLanguage->isChecked());
@@ -206,6 +207,7 @@ void SettingsDialog::putSettingsIntoGui(const Settings &settings)
     {
         ui->rbDeleteMeansDelete->setChecked(true);
     }
+    ui->cbEnableRecursiveDelete->setChecked(settings.getRecursiveDeleteEnabled());
 
     // text viewer
     ui->lblTextViewerFontValue->setText(fontToString(settings.getTextViewerFont()));

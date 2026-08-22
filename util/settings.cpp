@@ -38,6 +38,7 @@ const bool Settings::defaultUseProvidedFileIcons{true};
 const bool Settings::defaultShowFormattedSize{true};
 
 const bool Settings::defaultDeleteOnlyMovesToTrash{false};
+const bool Settings::defaultRecursiveDeleteEnabled{false};
 
 const bool Settings::defaultTextViewerAutoSelectLanguage{false};
 const ThemeId Settings::defaultTextViewerHightlightingTheme{ThemeId::DefaultLight};
@@ -60,6 +61,7 @@ Settings::Settings()
     , useProvidedFileIcons(defaultUseProvidedFileIcons)
     , showFormattedSize(defaultShowFormattedSize)
     , deleteOnlyMovesToTrash(defaultDeleteOnlyMovesToTrash)
+    , recursiveDeleteEnabled(defaultRecursiveDeleteEnabled)
     , textViewerFont(defaultTextViewerFont())
     , textViewerAutoSelect(defaultTextViewerAutoSelectLanguage)
     , textViewerHighlightingTheme(defaultTextViewerHightlightingTheme)
@@ -85,6 +87,7 @@ void Settings::resetToDefaults()
     useProvidedFileIcons = defaultUseProvidedFileIcons;
     showFormattedSize = defaultShowFormattedSize;
     deleteOnlyMovesToTrash = defaultDeleteOnlyMovesToTrash;
+    recursiveDeleteEnabled = defaultRecursiveDeleteEnabled;
     textViewerFont = defaultTextViewerFont();
     textViewerAutoSelect = defaultTextViewerAutoSelectLanguage;
     textViewerHighlightingTheme = defaultTextViewerHightlightingTheme;
@@ -109,6 +112,7 @@ void Settings::save()
     settings.setValue("use-provided-file-icons", useProvidedFileIcons);
     settings.setValue("show-formatted-size", showFormattedSize);
     settings.setValue("delete-only-moves-to-trash", deleteOnlyMovesToTrash);
+    settings.setValue("recursive-delete-enabled", recursiveDeleteEnabled);
     settings.setValue("text-viewer-font", textViewerFont);
     settings.setValue("text-viewer-auto-select", textViewerAutoSelect);
     settings.setValue("text-viewer-highlighting-theme", static_cast<int>(textViewerHighlightingTheme));
@@ -137,6 +141,7 @@ void Settings::load()
     useProvidedFileIcons = settings.value("use-provided-file-icons", defaultUseProvidedFileIcons).toBool();
     showFormattedSize = settings.value("show-formatted-size", defaultShowFormattedSize).toBool();
     deleteOnlyMovesToTrash = settings.value("delete-only-moves-to-trash", defaultDeleteOnlyMovesToTrash).toBool();
+    recursiveDeleteEnabled = settings.value("recursive-delete-enabled", defaultRecursiveDeleteEnabled).toBool();
 
     QFont font = settings.value("text-viewer-font", defaultTextViewerFont()).value<QFont>();
     setTextViewerFont(font);
@@ -232,6 +237,16 @@ bool Settings::getDeleteMovesToTrash() const
 void Settings::setDeleteMovesToTrash(const bool moveToTrash)
 {
     deleteOnlyMovesToTrash = moveToTrash;
+}
+
+bool Settings::getRecursiveDeleteEnabled() const
+{
+    return recursiveDeleteEnabled;
+}
+
+void Settings::setRecursiveDeleteEnabled(const bool enabled)
+{
+    recursiveDeleteEnabled = enabled;
 }
 
 QFont Settings::getTextViewerFont() const

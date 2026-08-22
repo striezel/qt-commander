@@ -41,6 +41,7 @@ public:
     static const bool defaultShowFormattedSize;
 
     static const bool defaultDeleteOnlyMovesToTrash;
+    static const bool defaultRecursiveDeleteEnabled;
 
     static QFont defaultTextViewerFont();
     static const bool defaultTextViewerAutoSelectLanguage;
@@ -86,6 +87,9 @@ public:
 
     bool getDeleteMovesToTrash() const;
     void setDeleteMovesToTrash(const bool moveToTrash);
+
+    bool getRecursiveDeleteEnabled() const;
+    void setRecursiveDeleteEnabled(const bool enabled);
 
     QFont getTextViewerFont() const;
     void setTextViewerFont(QFont font);
@@ -134,6 +138,9 @@ private:
 
     /// whether delete only moves files to trash (or actually deletes)
     bool deleteOnlyMovesToTrash;
+
+    /// whether recursive deletion of directories is enabled
+    bool recursiveDeleteEnabled;
 
     /// the font which is used by the text viewer
     QFont textViewerFont;
