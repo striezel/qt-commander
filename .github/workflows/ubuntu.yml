@@ -9,8 +9,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-24.04
-          - os: ubuntu-24.04
-            image: 'ubuntu:26.04'
+          - os: ubuntu-26.04
     runs-on: ${{ matrix.os }}
     container: ${{ matrix.image }}
     steps:
@@ -23,13 +22,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y cmake g++ libgl-dev qt6-base-dev qt6-multimedia-dev qt6-pdf-dev qt6-tools-dev qt6-tools-dev-tools
-        if: matrix.image == ''
-      - name: Install Debian packages (container)
-        run: |
-          export DEBIAN_FRONTEND=noninteractive
-          apt-get update && apt-get upgrade -y
-          apt-get install -y cmake g++ git libgl-dev qt6-base-dev qt6-multimedia-dev qt6-pdf-dev qt6-tools-dev qt6-tools-dev-tools
-        if: matrix.image != ''
       - name: Build with GCC on ${{ matrix.os }}
         run: |
           export CXX=g++
