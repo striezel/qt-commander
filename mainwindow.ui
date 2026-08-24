@@ -171,6 +171,9 @@
       <property name="text">
        <string>F6 Move</string>
       </property>
+      <property name="icon">
+       <iconset theme="go-next"/>
+      </property>
       <property name="shortcut">
        <string>F6</string>
       </property>
