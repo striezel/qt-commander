@@ -468,12 +468,13 @@ void MainWindow::btnRemoveClicked()
                 message = tr("The directory ") + message;
                 if (!settings.getRecursiveDeleteEnabled())
                 {
-                    message += "\n\n" + tr("Maybe the directory is not empty.")
+                    message += "<br>\n<br>\n" + tr("Maybe the directory is not empty.")
                         + " " + tr("If that's the case, try enabling recursive deletion of directories in the settings.")
-                        + " " + tr("(Go to %1 - %2 - %3 to enable it.)")
+                        + " " + tr("(Go to <b>%1</b> - <b>%2</b> - <b>%3</b> to enable it.)")
                                     .arg(ui->menuSettings->title())
                                     .arg(ui->actionEditSettings->text())
                                     .arg(SettingsDialog::tr("Delete operation"));
+                    message = "<html><head/><body><p>" + message + "</p></body></html>";
                 }
             }
             else
