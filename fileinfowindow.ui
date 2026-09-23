@@ -596,7 +596,7 @@
         <string>unknown</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lblModofied">
+      <widget class="QLabel" name="lblModified">
        <property name="geometry">
         <rect>
          <x>20</x>
