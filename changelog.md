@@ -4,6 +4,11 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-09-??)
+
+* __[improvement]__
+  Fix empty icon for parent directories on Windows.
+
 ## Version 0.2.2 (2026-08-24)
 
 * __[new feature]__

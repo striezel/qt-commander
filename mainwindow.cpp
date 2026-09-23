@@ -235,7 +235,14 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
         const QIcon provided_icon = useProvided ? icon_provider.icon(info) : QIcon();
         if (info.isDir())
         {
-            item->setIcon(0, provided_icon.isNull() ? directory_icon : provided_icon);
+            item->setIcon(0, provided_icon.isNull()
+#if defined(_WIN32)
+                          // Windows shows some empty, non-null icon for parent
+                          // directory, so let's fix that by showing the
+                          // directory icon instead.
+                          || (info.fileName() == "..")
+#endif
+                              ? directory_icon : provided_icon);
         }
         else
         {
