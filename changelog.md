@@ -6,6 +6,9 @@ improvements may be omitted.)_
 
 ## Next Version (2026-09-??)
 
+* __[new feature]__
+  The file information dialog will now show the MIME type of the file, too.
+
 * __[improvement]__
   Fix empty icon for parent directories on Windows.
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>501</width>
-    <height>566</height>
+    <height>608</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,6 +51,57 @@
      </widget>
     </item>
     <item row="1" column="0">
+     <widget class="QGroupBox" name="gbType">
+      <property name="minimumSize">
+       <size>
+        <width>483</width>
+        <height>57</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Type</string>
+      </property>
+      <widget class="QLabel" name="lblMimeType">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>81</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>MIME type:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblMimeTypeValue">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>331</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>unknown</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="0">
      <widget class="QGroupBox" name="gbStorage">
       <property name="minimumSize">
        <size>
@@ -139,7 +190,7 @@
       </widget>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="3" column="0">
      <widget class="QGroupBox" name="gbOwnership">
       <property name="minimumSize">
        <size>
@@ -228,7 +279,7 @@
       </widget>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="4" column="0">
      <widget class="QGroupBox" name="gbPermissions">
       <property name="minimumSize">
        <size>
@@ -496,7 +547,7 @@
       </widget>
      </widget>
     </item>
-    <item row="4" column="0">
+    <item row="5" column="0">
      <widget class="QGroupBox" name="gbDates">
       <property name="minimumSize">
        <size>

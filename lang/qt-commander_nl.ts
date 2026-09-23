@@ -799,132 +799,149 @@
         <translation>file.ext</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="62"/>
+        <location filename="../fileinfowindow.ui" line="113"/>
         <source>Storage</source>
         <translation>Geheugen</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="80"/>
+        <location filename="../fileinfowindow.ui" line="131"/>
         <source>Size:</source>
         <translation>Grootte:</translation>
     </message>
     <message>
         <location filename="../fileinfowindow.ui" line="99"/>
-        <location filename="../fileinfowindow.ui" line="137"/>
+        <location filename="../fileinfowindow.ui" line="150"/>
         <location filename="../fileinfowindow.ui" line="188"/>
-        <location filename="../fileinfowindow.ui" line="226"/>
-        <location filename="../fileinfowindow.ui" line="545"/>
-        <location filename="../fileinfowindow.ui" line="583"/>
-        <location filename="../fileinfowindow.ui" line="621"/>
-        <location filename="../fileinfowindow.cpp" line="73"/>
+        <location filename="../fileinfowindow.ui" line="239"/>
+        <location filename="../fileinfowindow.ui" line="277"/>
+        <location filename="../fileinfowindow.ui" line="596"/>
+        <location filename="../fileinfowindow.ui" line="634"/>
+        <location filename="../fileinfowindow.ui" line="672"/>
+        <location filename="../fileinfowindow.cpp" line="74"/>
+        <location filename="../fileinfowindow.cpp" line="85"/>
         <source>unknown</source>
         <translation>onbekend</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="118"/>
+        <location filename="../fileinfowindow.ui" line="62"/>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <location filename="../fileinfowindow.ui" line="80"/>
+        <source>MIME type:</source>
+        <translation>MIME type:</translation>
+    </message>
+    <message>
+        <location filename="../fileinfowindow.ui" line="169"/>
         <source>Free:</source>
         <translation>Vrij:</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="151"/>
+        <location filename="../fileinfowindow.ui" line="202"/>
         <source>Ownership</source>
         <translation>Eigendom</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="169"/>
-        <location filename="../fileinfowindow.ui" line="258"/>
+        <location filename="../fileinfowindow.ui" line="220"/>
+        <location filename="../fileinfowindow.ui" line="309"/>
         <source>Owner:</source>
         <translation>Eigenaar:</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="207"/>
-        <location filename="../fileinfowindow.ui" line="343"/>
+        <location filename="../fileinfowindow.ui" line="258"/>
+        <location filename="../fileinfowindow.ui" line="394"/>
         <source>Group:</source>
         <translation>Groep:</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="240"/>
+        <location filename="../fileinfowindow.ui" line="291"/>
         <source>Permissions</source>
         <translation>Rechten</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="280"/>
-        <location filename="../fileinfowindow.ui" line="384"/>
-        <location filename="../fileinfowindow.ui" line="450"/>
+        <location filename="../fileinfowindow.ui" line="331"/>
+        <location filename="../fileinfowindow.ui" line="435"/>
+        <location filename="../fileinfowindow.ui" line="501"/>
         <source>Read</source>
         <translation>Lezen</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="302"/>
-        <location filename="../fileinfowindow.ui" line="406"/>
-        <location filename="../fileinfowindow.ui" line="472"/>
+        <location filename="../fileinfowindow.ui" line="353"/>
+        <location filename="../fileinfowindow.ui" line="457"/>
+        <location filename="../fileinfowindow.ui" line="523"/>
         <source>Write</source>
         <translation>Schrijven</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="324"/>
-        <location filename="../fileinfowindow.ui" line="428"/>
-        <location filename="../fileinfowindow.ui" line="494"/>
+        <location filename="../fileinfowindow.ui" line="375"/>
+        <location filename="../fileinfowindow.ui" line="479"/>
+        <location filename="../fileinfowindow.ui" line="545"/>
         <source>Execute</source>
         <translation>Uitvoeren</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="362"/>
+        <location filename="../fileinfowindow.ui" line="413"/>
         <source>Others:</source>
         <translation>Overige:</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="508"/>
+        <location filename="../fileinfowindow.ui" line="559"/>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="526"/>
+        <location filename="../fileinfowindow.ui" line="577"/>
         <source>Created:</source>
         <translation>Gemaakt:</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="564"/>
+        <location filename="../fileinfowindow.ui" line="615"/>
         <source>Modified:</source>
         <translation>Gewijzigd:</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="602"/>
+        <location filename="../fileinfowindow.ui" line="653"/>
         <source>Last accessed:</source>
         <translation>Laatste toegang:</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="639"/>
+        <location filename="../fileinfowindow.ui" line="690"/>
         <source>View</source>
         <translation>Weergave</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="650"/>
+        <location filename="../fileinfowindow.ui" line="701"/>
         <source>Close</source>
         <translation>Sluiten</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.ui" line="653"/>
+        <location filename="../fileinfowindow.ui" line="704"/>
         <source>Esc</source>
         <translation>Esc</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.cpp" line="69"/>
+        <location filename="../fileinfowindow.cpp" line="68"/>
+        <source>none (directory)</source>
+        <translation>geen (map)</translation>
+    </message>
+    <message>
+        <location filename="../fileinfowindow.cpp" line="81"/>
         <source> bytes)</source>
         <translation> bytes)</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.cpp" line="69"/>
+        <location filename="../fileinfowindow.cpp" line="81"/>
         <source> byte)</source>
         <translation> byte)</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.cpp" line="96"/>
+        <location filename="../fileinfowindow.cpp" line="108"/>
         <source>&lt;unknown&gt;</source>
         <translation>&lt;onbekend&gt;</translation>
     </message>
     <message>
-        <location filename="../fileinfowindow.cpp" line="141"/>
+        <location filename="../fileinfowindow.cpp" line="153"/>
         <source>date not available</source>
         <translation>Datum niet beschikbaar</translation>
     </message>

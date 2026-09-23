@@ -29,6 +29,7 @@
     #include <QtGlobal>
   #endif
 #endif
+#include <QMimeDatabase>
 #if defined(_WIN32) && (QT_VERSION >= QT_VERSION_CHECK(6, 6, 0))
 #include <QNtfsPermissionCheckGuard>
 #endif
@@ -61,6 +62,17 @@ void FileInfoWindow::loadInformation(const QString &filePath)
     const QFileInfo info(filePath);
 
     ui->lblFileName->setText(info.fileName());
+
+    if (info.isDir())
+    {
+        ui->lblMimeTypeValue->setText(tr("none (directory)"));
+    }
+    else
+    {
+        QMimeDatabase db;
+        const QMimeType type = db.mimeTypeForFile(info);
+        ui->lblMimeTypeValue->setText(type.isValid() ? type.name() : tr("unknown"));
+    }
 
     const QLocale loc = locale();
     const qint64 file_size = info.size();
