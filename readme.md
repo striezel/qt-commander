@@ -3,7 +3,7 @@
 Qt Commander is a GUI-based file manager.
 
 The file manager consists of two directory views placed side by side, similar to
-traditional text-based programs such as "NortonCommander" or graphical
+traditional text-based programs such as "Norton Commander" or graphical
 equivalents such as "Total Commander." In this view, standard file operations
 such as copying, moving, and deleting files and directories as well as the
 creation of new directories are possible.
