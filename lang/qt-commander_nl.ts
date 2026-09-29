@@ -1170,147 +1170,147 @@
         <translation>Afsluiten</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="322"/>
+        <location filename="../mainwindow.ui" line="325"/>
         <source>Refresh view</source>
         <translation>Opnieuw inlezen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="325"/>
+        <location filename="../mainwindow.ui" line="328"/>
         <source>Ctrl+R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="336"/>
+        <location filename="../mainwindow.ui" line="339"/>
         <source>Show hidden files and directories</source>
         <translation>Verborgen bestanden en mappen weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="347"/>
+        <location filename="../mainwindow.ui" line="350"/>
         <source>Show system files and directories</source>
         <translation>Systeembestanden en -mappen weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="355"/>
+        <location filename="../mainwindow.ui" line="358"/>
         <source>Hide files (shows directories only)</source>
         <translation>Bestanden verbergen (toont alleen mappen)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="366"/>
+        <location filename="../mainwindow.ui" line="369"/>
         <source>Sort by name</source>
         <translation>Op naam sorteren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="374"/>
+        <location filename="../mainwindow.ui" line="377"/>
         <source>Sort by modification date</source>
         <translation>Sorteren op wijzigingsdatum</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="382"/>
+        <location filename="../mainwindow.ui" line="385"/>
         <source>Sort by size</source>
         <translation>Op grootte sorteren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="390"/>
+        <location filename="../mainwindow.ui" line="393"/>
         <source>Sort by type (file extension)</source>
         <translation>Sorteren op type (bestandsextensie)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="398"/>
+        <location filename="../mainwindow.ui" line="401"/>
         <source>Reverse sort</source>
         <translation>Sorteervolgorde omkeren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="409"/>
+        <location filename="../mainwindow.ui" line="412"/>
         <source>Directories first, then files</source>
         <translation>Eerst mappen, dan bestanden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="417"/>
+        <location filename="../mainwindow.ui" line="420"/>
         <source>Files first, then directories</source>
         <translation>Eerst bestanden, daarna mappen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="428"/>
+        <location filename="../mainwindow.ui" line="431"/>
         <source>Ignore upper/lower case</source>
         <translation>Hoofdletters en kleine letters negeren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="436"/>
+        <location filename="../mainwindow.ui" line="439"/>
         <source>Save settings</source>
         <translation>Instellingen opslaan</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="444"/>
+        <location filename="../mainwindow.ui" line="447"/>
         <source>Load settings</source>
         <translation>Instellingen laden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="452"/>
+        <location filename="../mainwindow.ui" line="455"/>
         <source>Restore default settings</source>
         <translation>Terugzetten naar standaardinstellingen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="460"/>
+        <location filename="../mainwindow.ui" line="463"/>
         <source>About Qt</source>
         <translation>Over Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="468"/>
+        <location filename="../mainwindow.ui" line="474"/>
         <source>About Qt Commander ...</source>
         <translation>Over Qt Commander ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="479"/>
+        <location filename="../mainwindow.ui" line="488"/>
         <source>Use system-provided file icons</source>
         <translation>Bestandsiconen gebruiken die door het systeem worden aangeboden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="487"/>
+        <location filename="../mainwindow.ui" line="496"/>
         <source>Show file properties</source>
         <translation>Bestandseigenschappen weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="490"/>
+        <location filename="../mainwindow.ui" line="499"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="498"/>
+        <location filename="../mainwindow.ui" line="507"/>
         <source>Show mount points</source>
         <translation>Mountpoint&apos;s / schijven weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="509"/>
+        <location filename="../mainwindow.ui" line="518"/>
         <source>Display formatted size</source>
         <translation>Geformatteerde grootte weergeven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="514"/>
+        <location filename="../mainwindow.ui" line="523"/>
         <source>Calculate checksum ...</source>
         <translation>Controlesom berekenen ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="519"/>
+        <location filename="../mainwindow.ui" line="528"/>
         <source>Compare directories</source>
         <translation>Mappen vergelijken</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="527"/>
+        <location filename="../mainwindow.ui" line="536"/>
         <source>Edit settings ...</source>
         <translation>Instellingen bewerken ...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="535"/>
+        <location filename="../mainwindow.ui" line="547"/>
         <source>German</source>
         <translation>Duits</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="543"/>
+        <location filename="../mainwindow.ui" line="555"/>
         <source>English</source>
         <translation>Engels</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="551"/>
+        <location filename="../mainwindow.ui" line="563"/>
         <source>Dutch</source>
         <translation>Nederlands</translation>
     </message>

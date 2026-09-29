@@ -313,6 +313,9 @@
    <property name="text">
     <string>Exit</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
   <action name="actionRefresh">
    <property name="icon">
@@ -459,6 +462,9 @@
    <property name="text">
     <string>About Qt</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::AboutQtRole</enum>
+   </property>
   </action>
   <action name="actionAboutQtCommander">
    <property name="icon">
@@ -466,6 +472,9 @@
    </property>
    <property name="text">
     <string>About Qt Commander ...</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="actionUseProvidedIcons">
@@ -525,6 +534,9 @@
    </property>
    <property name="text">
     <string>Edit settings ...</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
    </property>
   </action>
   <action name="actionLanguageGerman">
