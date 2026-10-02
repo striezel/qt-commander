@@ -7,6 +7,9 @@ improvements may be omitted.)_
 ## Next Version (2026-09-??)
 
 * __[new feature]__
+  The directory view will now also show the number of files and directories in the current view.
+
+* __[new feature]__
   The file information dialog will now show the MIME type of the file, too.
 
 * __[improvement]__

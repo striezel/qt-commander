@@ -140,7 +140,21 @@
       </column>
      </widget>
     </item>
-    <item row="2" column="0" colspan="5">
+    <item row="2" column="0" colspan="15">
+     <widget class="QLabel" name="lblObjectCountLeft">
+      <property name="text">
+       <string notr="true">x objects (y directories, z files)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="15" colspan="15">
+     <widget class="QLabel" name="lblObjectCountRight">
+      <property name="text">
+       <string notr="true">x objects (y directories, z files)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="5">
      <widget class="QPushButton" name="btnView">
       <property name="text">
        <string>F3 View</string>
@@ -153,7 +167,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="5" colspan="5">
+    <item row="3" column="5" colspan="5">
      <widget class="QPushButton" name="btnCopy">
       <property name="text">
        <string>F5 Copy</string>
@@ -166,7 +180,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="10" colspan="5">
+    <item row="3" column="10" colspan="5">
      <widget class="QPushButton" name="btnMove">
       <property name="text">
        <string>F6 Move</string>
@@ -179,7 +193,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="15" colspan="5">
+    <item row="3" column="15" colspan="5">
      <widget class="QPushButton" name="btnCreateDirectory">
       <property name="text">
        <string>F7 New directory</string>
@@ -192,7 +206,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="20" colspan="5">
+    <item row="3" column="20" colspan="5">
      <widget class="QPushButton" name="btnRemove">
       <property name="text">
        <string>F8 Delete</string>
@@ -205,7 +219,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="25" colspan="5">
+    <item row="3" column="25" colspan="5">
      <widget class="QPushButton" name="btnExit">
       <property name="text">
        <string>F10 Quit</string>

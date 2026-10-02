@@ -221,6 +221,9 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
 
     const QLocale loc = locale();
 
+    quint64 numFiles = 0;
+    quint64 numDirs = 0;
+
     for (const QFileInfo& info: list)
     {
         QStringList data;
@@ -233,8 +236,9 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
 
         QTreeWidgetItem* item = new QTreeWidgetItem(data);
         const QIcon provided_icon = useProvided ? icon_provider.icon(info) : QIcon();
-        if (info.isDir())
+        if (isDirectory)
         {
+            ++numDirs;
             item->setIcon(0, provided_icon.isNull()
 #if defined(_WIN32)
                           // Windows shows some empty, non-null icon for parent
@@ -246,6 +250,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
         }
         else
         {
+            ++numFiles;
             item->setIcon(0, provided_icon.isNull() ? file_icon : provided_icon);
         }
         item->setTextAlignment(1, Qt::AlignRight);
@@ -268,13 +273,25 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
     const bool isLeftTree = treeWidget == ui->treeWidgetLeft;
     if (isLeftTree)
     {
-      currentDirectoryLeft = dir;
-      ui->lnEdPathLeft->setText(currentDirectoryLeft.absolutePath());
+        currentDirectoryLeft = dir;
+        ui->lnEdPathLeft->setText(currentDirectoryLeft.absolutePath());
+        ui->lblObjectCountLeft->setText(
+            tr("%1 objects (%2 directories, %3 files)")
+                .arg(numDirs + numFiles)
+                .arg(numDirs)
+                .arg(numFiles)
+            );
     }
     else
     {
         currentDirectoryRight = dir;
         ui->lnEdPathRight->setText(currentDirectoryRight.absolutePath());
+        ui->lblObjectCountRight->setText(
+            tr("%1 objects (%2 directories, %3 files)")
+                .arg(numDirs + numFiles)
+                .arg(numDirs)
+                .arg(numFiles)
+            );
     }
 
     // Adjust width of column for file size.
