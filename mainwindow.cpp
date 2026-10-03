@@ -271,27 +271,28 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
     }
 
     const bool isLeftTree = treeWidget == ui->treeWidgetLeft;
+    const bool oneDir = numDirs == 1;
+    const bool oneFile = numFiles == 1;
+    const bool oneObject = (numDirs + numFiles) == 1;
+    const auto objectCountText =
+        tr("%1 %2 (%3 %4, %5 %6)")
+            .arg(numDirs + numFiles)
+            .arg(oneObject ? tr("object") : tr("objects"))
+            .arg(numDirs)
+            .arg(oneDir ? tr("directory") : tr("directories"))
+            .arg(numFiles)
+            .arg(oneFile ? tr("file") : tr("files"));
     if (isLeftTree)
     {
         currentDirectoryLeft = dir;
         ui->lnEdPathLeft->setText(currentDirectoryLeft.absolutePath());
-        ui->lblObjectCountLeft->setText(
-            tr("%1 objects (%2 directories, %3 files)")
-                .arg(numDirs + numFiles)
-                .arg(numDirs)
-                .arg(numFiles)
-            );
+        ui->lblObjectCountLeft->setText(objectCountText);
     }
     else
     {
         currentDirectoryRight = dir;
         ui->lnEdPathRight->setText(currentDirectoryRight.absolutePath());
-        ui->lblObjectCountRight->setText(
-            tr("%1 objects (%2 directories, %3 files)")
-                .arg(numDirs + numFiles)
-                .arg(numDirs)
-                .arg(numFiles)
-            );
+        ui->lblObjectCountRight->setText(objectCountText);
     }
 
     // Adjust width of column for file size.
