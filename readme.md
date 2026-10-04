@@ -12,6 +12,8 @@ It includes viewers for text files, PDF, image files and even players for audio
 and video files. Furthermore, it can calculate checksums for files and also
 allows directory comparisons.
 
+![Screenshot of Qt Commander 0.2.3](documentation/qt-commander-0.2.3.png "Main GUI of Qt Commander")
+
 ## Available releases
 
 Check out the [release section](https://github.com/striezel/qt-commander/releases)
