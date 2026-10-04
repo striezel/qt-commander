@@ -1,3 +1,14 @@
+qt-commander (0.2.3-1) UNRELEASED; urgency=medium
+
+  * The directory view will now also show the number of files and directories
+    in the current view.
+
+  * The file information dialog will now show the MIME type of the file, too.
+
+  * Fix empty icon for parent directories on Windows.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Sun, 4 Oct 2026 15:51:51 +0200
+
 qt-commander (0.2.2-1) UNRELEASED; urgency=medium
 
   * Add possibility to enable recursive deletion of directories. That
