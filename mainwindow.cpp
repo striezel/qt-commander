@@ -221,8 +221,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
 
     const QLocale loc = locale();
 
-    quint64 numFiles = 0;
-    quint64 numDirs = 0;
+    ObjectCount objectCount;
 
     for (const QFileInfo& info: list)
     {
@@ -238,7 +237,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
         const QIcon provided_icon = useProvided ? icon_provider.icon(info) : QIcon();
         if (isDirectory)
         {
-            ++numDirs;
+            ++objectCount.numDirs;
             item->setIcon(0, provided_icon.isNull()
 #if defined(_WIN32)
                           // Windows shows some empty, non-null icon for parent
@@ -250,7 +249,7 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
         }
         else
         {
-            ++numFiles;
+            ++objectCount.numFiles;
             item->setIcon(0, provided_icon.isNull() ? file_icon : provided_icon);
         }
         item->setTextAlignment(1, Qt::AlignRight);
@@ -271,28 +270,19 @@ void MainWindow::fillTreeWidget(QTreeWidget* treeWidget, const QString &path, co
     }
 
     const bool isLeftTree = treeWidget == ui->treeWidgetLeft;
-    const bool oneDir = numDirs == 1;
-    const bool oneFile = numFiles == 1;
-    const bool oneObject = (numDirs + numFiles) == 1;
-    const auto objectCountText =
-        tr("%1 %2 (%3 %4, %5 %6)")
-            .arg(numDirs + numFiles)
-            .arg(oneObject ? tr("object") : tr("objects"))
-            .arg(numDirs)
-            .arg(oneDir ? tr("directory") : tr("directories"))
-            .arg(numFiles)
-            .arg(oneFile ? tr("file") : tr("files"));
     if (isLeftTree)
     {
         currentDirectoryLeft = dir;
         ui->lnEdPathLeft->setText(currentDirectoryLeft.absolutePath());
-        ui->lblObjectCountLeft->setText(objectCountText);
+        ui->lblObjectCountLeft->setText(objectCount.text());
+        objectCountLeft = objectCount;
     }
     else
     {
         currentDirectoryRight = dir;
         ui->lnEdPathRight->setText(currentDirectoryRight.absolutePath());
-        ui->lblObjectCountRight->setText(objectCountText);
+        ui->lblObjectCountRight->setText(objectCount.text());
+        objectCountRight = objectCount;
     }
 
     // Adjust width of column for file size.
@@ -462,10 +452,11 @@ void MainWindow::btnRemoveClicked()
                         ? currentDirectoryLeft
                         : currentDirectoryRight;
     const QFileInfo info(baseDir.absoluteFilePath(name));
+    const bool isDir = info.isDir();
     bool success = false;
     if (!settings.getDeleteMovesToTrash())
     {
-        if (info.isDir())
+        if (isDir)
         {
             if (settings.getRecursiveDeleteEnabled())
             {
@@ -488,7 +479,7 @@ void MainWindow::btnRemoveClicked()
         if (!success)
         {
             QString message = "\"" + name + tr("\" could not be deleted.");
-            if (info.isDir())
+            if (isDir)
             {
                 message = tr("The directory ") + message;
                 if (!settings.getRecursiveDeleteEnabled())
@@ -516,13 +507,13 @@ void MainWindow::btnRemoveClicked()
         if (!success)
         {
             QString message = "\"" + name + tr("\" could not be moved into the recycle bin.");
-            if (info.isFile())
+            if (isDir)
             {
-                message = tr("The file ") + message;
+                message = tr("The directory ") + message;
             }
             else
             {
-                message = tr("The directory ") + message;
+                message = tr("The file ") + message;
             }
             QMessageBox::critical(this, tr("Error while moving to recycle bin"), message);
             return;
@@ -534,6 +525,18 @@ void MainWindow::btnRemoveClicked()
     QTreeWidgetItem* toDelete = treeWidget->takeTopLevelItem(index);
     delete toDelete;
     toDelete = nullptr;
+    // Update object counts.
+    const bool isLeftTree = treeWidget == ui->treeWidgetLeft;
+    ObjectCount& oc = isLeftTree ? objectCountLeft : objectCountRight;
+    isDir ? oc.decreaseDirectoryCount() : oc.decreaseFileCount();
+    if (isLeftTree)
+    {
+        ui->lblObjectCountLeft->setText(oc.text());
+    }
+    else
+    {
+        ui->lblObjectCountRight->setText(oc.text());
+    }
 
     // If both tree widgets show the same directory, then the other widget needs
     // to be updated, too. That is, we have to remove the corresponding item
@@ -551,6 +554,17 @@ void MainWindow::btnRemoveClicked()
         QTreeWidgetItem* toDeleteOther = other->takeTopLevelItem(indexToTake);
         delete toDeleteOther;
         toDeleteOther = nullptr;
+        // Update object counts.
+        ObjectCount& oc_other = isLeftTree ? objectCountRight : objectCountLeft;
+        isDir ? oc_other.decreaseDirectoryCount() : oc.decreaseFileCount();
+        if (isLeftTree)
+        {
+            ui->lblObjectCountRight->setText(oc_other.text());
+        }
+        else
+        {
+            ui->lblObjectCountLeft->setText(oc_other.text());
+        }
     }
     // ... or when the other tree shows a subdirectory of the deleted directory,
     // then the other tree has to change "upwards" to the directory which still
@@ -662,6 +676,19 @@ void MainWindow::btnMoveClicked()
     QTreeWidgetItem* toDelete = treeWidget->takeTopLevelItem(index);
     delete toDelete;
     toDelete = nullptr;
+    // Update object counts.
+    const bool isLeftTree = treeWidget == ui->treeWidgetLeft;
+    ObjectCount& oc = isLeftTree ? objectCountLeft : objectCountRight;
+    const QFileInfo info(destination);
+    info.isDir() ? oc.decreaseDirectoryCount() : oc.decreaseFileCount();
+    if (isLeftTree)
+    {
+        ui->lblObjectCountLeft->setText(oc.text());
+    }
+    else
+    {
+        ui->lblObjectCountRight->setText(oc.text());
+    }
 
     // Refresh other tree view.
     fillTreeWidget(otherTreeWidget(), otherDirectory().absolutePath());

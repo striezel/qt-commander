@@ -4,6 +4,12 @@ _(Note: This changelog focuses on the major changes between the different
 versions. Therefore, it may not contain all changes. Especially smaller fixes or
 improvements may be omitted.)_
 
+## Next Version (2026-10-??)
+
+* __[improvement]__
+  File and directory counts will now update properly when a file or directory
+  is moved or deleted.
+
 ## Version 0.2.3 (2026-10-04)
 
 * __[new feature]__

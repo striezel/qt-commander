@@ -1315,386 +1315,351 @@
         <translation>Nederlands</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="234"/>
-        <location filename="../mainwindow.cpp" line="265"/>
+        <location filename="../mainwindow.cpp" line="233"/>
+        <location filename="../mainwindow.cpp" line="264"/>
         <source>Directory</source>
         <translation>Map</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="266"/>
+        <location filename="../mainwindow.cpp" line="265"/>
         <source>Unknown</source>
         <translation>Onbekend</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="278"/>
-        <source>%1 %2 (%3 %4, %5 %6)</source>
-        <translation>%1 %2 (%3 %4, %5 %6)</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="280"/>
-        <source>object</source>
-        <translation>object</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="280"/>
-        <source>objects</source>
-        <translation>objecten</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="282"/>
-        <source>directory</source>
-        <translation>map</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="282"/>
-        <source>directories</source>
-        <translation>mappen</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="284"/>
-        <source>file</source>
-        <translation>bestand</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="284"/>
-        <source>files</source>
-        <translation>bestanden</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="405"/>
+        <location filename="../mainwindow.cpp" line="395"/>
         <source>Already in root directory</source>
         <translation>Al in de hoofdmap</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="406"/>
+        <location filename="../mainwindow.cpp" line="396"/>
         <source>You already are in the root directory. There is no parent directory for that directory.</source>
         <translation>U bevindt zich al in de hoofdmap. Er is geen bovenliggende map voor deze map.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="443"/>
-        <location filename="../mainwindow.cpp" line="634"/>
-        <location filename="../mainwindow.cpp" line="690"/>
+        <location filename="../mainwindow.cpp" line="433"/>
+        <location filename="../mainwindow.cpp" line="648"/>
+        <location filename="../mainwindow.cpp" line="717"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="434"/>
         <source>The delete operation cannot be performed on &quot;..&quot;!</source>
         <translation>De verwijderingsbewerking kan niet worden uitgevoerd op &quot;..&quot;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>Move to the recycle bin?</source>
         <translation>Wil je dit echt naar de prullenbak verplaatsen?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="452"/>
+        <location filename="../mainwindow.cpp" line="442"/>
         <source>Do you really want to delete this?</source>
         <translation>Wil je dit echt verwijderen?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="444"/>
         <source>Do you really want to move %1 to the recycle bin?</source>
         <translation>Wil je %1 echt naar de prullenbak verplaatsen?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="455"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>Do you really want to delete %1?</source>
         <translation>Wil je %1 echt verwijderen?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="490"/>
+        <location filename="../mainwindow.cpp" line="481"/>
         <source>&quot; could not be deleted.</source>
         <translation>&quot; kon niet worden verwijderd.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="498"/>
+        <location filename="../mainwindow.cpp" line="489"/>
         <source>(Go to &lt;b&gt;%1&lt;/b&gt; - &lt;b&gt;%2&lt;/b&gt; - &lt;b&gt;%3&lt;/b&gt; to enable it.)</source>
         <translation>(Ga naar &lt;b&gt;%1&lt;/b&gt; - &lt;b&gt;%2&lt;/b&gt; - &lt;b&gt;%3&lt;/b&gt; om deze functie in te schakelen.)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="507"/>
-        <location filename="../mainwindow.cpp" line="521"/>
+        <location filename="../mainwindow.cpp" line="498"/>
+        <location filename="../mainwindow.cpp" line="516"/>
         <source>The file </source>
         <translation>Het bestand </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="493"/>
-        <location filename="../mainwindow.cpp" line="525"/>
+        <location filename="../mainwindow.cpp" line="484"/>
+        <location filename="../mainwindow.cpp" line="512"/>
         <source>The directory </source>
         <translation>De map </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="496"/>
+        <location filename="../mainwindow.cpp" line="487"/>
         <source>Maybe the directory is not empty.</source>
         <translation>Het is mogelijk dat de map niet leeg is.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="497"/>
+        <location filename="../mainwindow.cpp" line="488"/>
         <source>If that&apos;s the case, try enabling recursive deletion of directories in the settings.</source>
         <translation>Als dat het geval is, probeer dan in de instellingen het recursief verwijderen van mappen in te schakelen.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="509"/>
+        <location filename="../mainwindow.cpp" line="500"/>
         <source>Error while deleting</source>
         <translation>Fout bij het verwijderen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="509"/>
         <source>&quot; could not be moved into the recycle bin.</source>
         <translation>&quot; kon niet naar de prullenbak worden verplaatst.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="527"/>
+        <location filename="../mainwindow.cpp" line="518"/>
         <source>Error while moving to recycle bin</source>
         <translation>Fout bij het verplaatsen naar de prullenbak</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="565"/>
+        <location filename="../mainwindow.cpp" line="579"/>
         <source>&apos;%1&apos; has been moved into the recycle bin.</source>
         <translation>&apos;%1&apos; is naar de prullenbak verplaatst.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="569"/>
+        <location filename="../mainwindow.cpp" line="583"/>
         <source>&apos;%1&apos; has been deleted.</source>
         <translation>&apos;%1&apos; is verwijderd.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="588"/>
+        <location filename="../mainwindow.cpp" line="602"/>
         <source>Invalid directory name</source>
         <translation>Ongeldige mapnaam</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="603"/>
         <source>The directory name must not be empty.</source>
         <translation>De mapnaam mag niet leeg zijn.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="598"/>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>Error while creating the directory</source>
         <translation>Fout bij het aanmaken van de map</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="599"/>
+        <location filename="../mainwindow.cpp" line="613"/>
         <source>The directory &apos;</source>
         <translation>De map &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="599"/>
+        <location filename="../mainwindow.cpp" line="613"/>
         <source>&apos; could not be created.</source>
         <translation>&apos; kon niet worden aangemaakt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="615"/>
+        <location filename="../mainwindow.cpp" line="629"/>
         <source>Directory &apos;</source>
         <translation>De map &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="615"/>
+        <location filename="../mainwindow.cpp" line="629"/>
         <source>&apos; has been created.</source>
         <translation>&apos; is aangemaakt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="635"/>
+        <location filename="../mainwindow.cpp" line="649"/>
         <source>Move operation cannot be performed on &quot;..&quot;!</source>
         <translation>De verplaatsingsbewerking kan niet worden uitgevoerd op &quot;..&quot;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="642"/>
+        <location filename="../mainwindow.cpp" line="656"/>
         <source>Moving to same directory is not possible</source>
         <translation>Verplaatsen naar dezelfde map is niet mogelijk</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="643"/>
+        <location filename="../mainwindow.cpp" line="657"/>
         <source>Both views show the same directory (&quot;%1&quot;). Therefore, a move is not possible.</source>
         <translation>Beide weergaven tonen dezelfde map (&quot;%1%). Verplaatsen is daarom niet mogelijk.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="655"/>
+        <location filename="../mainwindow.cpp" line="669"/>
         <source>Error while moving</source>
         <translation>Fout bij het verplaatsen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="656"/>
+        <location filename="../mainwindow.cpp" line="670"/>
         <source>The element &apos;%1&apos; could not be moved.</source>
         <translation>Het element &apos;%1&apos; kon niet worden verplaatst.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="670"/>
+        <location filename="../mainwindow.cpp" line="697"/>
         <source>&apos;%1&apos; has been moved to %2.</source>
         <translation>&apos;%1&apos; is verplaatst naar %2.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="691"/>
+        <location filename="../mainwindow.cpp" line="718"/>
         <source>Copy operation cannot be performed on &quot;..&quot;!</source>
         <translation>De kopieerbewerking kan niet worden uitgevoerd op &quot;..&quot;!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="698"/>
+        <location filename="../mainwindow.cpp" line="725"/>
         <source>Copying to same directory is not possible</source>
         <translation>Kopiëren naar dezelfde map is niet mogelijk</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="699"/>
+        <location filename="../mainwindow.cpp" line="726"/>
         <source>Both views show the same directory (&quot;%1&quot;). Therefore, a copy is not possible.</source>
         <translation>Beide weergaven tonen dezelfde map (&quot;%1&quot;). Daarom is kopiëren niet mogelijk.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="713"/>
-        <location filename="../mainwindow.cpp" line="724"/>
+        <location filename="../mainwindow.cpp" line="740"/>
+        <location filename="../mainwindow.cpp" line="751"/>
         <source>Error while copying</source>
         <translation>Fout bij het kopiëren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="714"/>
+        <location filename="../mainwindow.cpp" line="741"/>
         <source>The file &apos;%1&apos; could not be copied.</source>
         <translation>Het bestand &apos;%1&apos; kon niet worden gekopieerd.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="725"/>
+        <location filename="../mainwindow.cpp" line="752"/>
         <source>The directory &apos;%1&apos; could not be copied.</source>
         <translation>De map &apos;%1&apos; kon niet worden gekopieerd.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="741"/>
+        <location filename="../mainwindow.cpp" line="768"/>
         <source>&apos;%1&apos; was copied to %2.</source>
         <translation>&apos;%1&apos; is naar &apos;%2&apos; gekopieerd.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="752"/>
-        <location filename="../mainwindow.cpp" line="777"/>
-        <location filename="../mainwindow.cpp" line="922"/>
-        <location filename="../mainwindow.cpp" line="1141"/>
+        <location filename="../mainwindow.cpp" line="779"/>
+        <location filename="../mainwindow.cpp" line="804"/>
+        <location filename="../mainwindow.cpp" line="949"/>
+        <location filename="../mainwindow.cpp" line="1168"/>
         <source>No file selected</source>
         <translation>Er is geen actieve selectie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="753"/>
+        <location filename="../mainwindow.cpp" line="780"/>
         <source>No file has been selected to be viewed.</source>
         <translation>Er is geen bestand geselecteerd om weer te geven.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="771"/>
-        <location filename="../mainwindow.cpp" line="1154"/>
+        <location filename="../mainwindow.cpp" line="798"/>
+        <location filename="../mainwindow.cpp" line="1181"/>
         <source>No suitable file selected</source>
         <translation>Er is geen geschikt bestand geselecteerd</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="773"/>
+        <location filename="../mainwindow.cpp" line="800"/>
         <source>No suitable file has been selected to be displayed.</source>
         <translation>Er is geen geschikt bestand geselecteerd om weer te geven.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="774"/>
-        <location filename="../mainwindow.cpp" line="779"/>
+        <location filename="../mainwindow.cpp" line="801"/>
+        <location filename="../mainwindow.cpp" line="806"/>
         <source>Only files can be selected for viewing. Directories cannot be viewed.</source>
         <translation>Er kunnen alleen bestanden worden geselecteerd om te bekijken, maar geen mappen.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="775"/>
+        <location filename="../mainwindow.cpp" line="802"/>
         <source> Special file types like block devices, FIFOs or sockets cannot be viewed either.</source>
         <translation> Speciale bestanden zoals blokapparaten, FIFO&apos;s of sockets worden evenmin ondersteund.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="778"/>
+        <location filename="../mainwindow.cpp" line="805"/>
         <source>No file has been selected to be displayed.</source>
         <translation>Er is geen bestand geselecteerd om weer te geven.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="798"/>
-        <location filename="../mainwindow.cpp" line="818"/>
-        <location filename="../mainwindow.cpp" line="839"/>
-        <location filename="../mainwindow.cpp" line="861"/>
-        <location filename="../mainwindow.cpp" line="880"/>
-        <location filename="../mainwindow.cpp" line="898"/>
+        <location filename="../mainwindow.cpp" line="825"/>
+        <location filename="../mainwindow.cpp" line="845"/>
+        <location filename="../mainwindow.cpp" line="866"/>
+        <location filename="../mainwindow.cpp" line="888"/>
+        <location filename="../mainwindow.cpp" line="907"/>
+        <location filename="../mainwindow.cpp" line="925"/>
         <source>Error while opening the file</source>
         <translation>Fout bij het openen van het bestand</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="799"/>
-        <location filename="../mainwindow.cpp" line="819"/>
-        <location filename="../mainwindow.cpp" line="840"/>
-        <location filename="../mainwindow.cpp" line="862"/>
-        <location filename="../mainwindow.cpp" line="881"/>
-        <location filename="../mainwindow.cpp" line="899"/>
+        <location filename="../mainwindow.cpp" line="826"/>
+        <location filename="../mainwindow.cpp" line="846"/>
+        <location filename="../mainwindow.cpp" line="867"/>
+        <location filename="../mainwindow.cpp" line="889"/>
+        <location filename="../mainwindow.cpp" line="908"/>
+        <location filename="../mainwindow.cpp" line="926"/>
         <source>The file &apos;%1&apos; could not be opened for reading.</source>
         <translation>Het bestand &apos;%1&apos; kon niet worden geopend om te lezen.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="923"/>
+        <location filename="../mainwindow.cpp" line="950"/>
         <source>No file or directory has been selected whose properties could be displayed.</source>
         <translation>Er is geen bestand of map geselecteerd waarvan de eigenschappen kunnen worden weergegeven.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="963"/>
+        <location filename="../mainwindow.cpp" line="990"/>
         <source>View of directory &apos;</source>
         <translation>Het overzicht van de map &apos;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="964"/>
+        <location filename="../mainwindow.cpp" line="991"/>
         <source>left</source>
         <translation>links</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="964"/>
+        <location filename="../mainwindow.cpp" line="991"/>
         <source>right</source>
         <translation>rechts</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="965"/>
+        <location filename="../mainwindow.cpp" line="992"/>
         <source>) has been updated.</source>
         <translation>) is bijgewerkt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1047"/>
-        <location filename="../mainwindow.cpp" line="1055"/>
+        <location filename="../mainwindow.cpp" line="1074"/>
+        <location filename="../mainwindow.cpp" line="1082"/>
         <source>Failure</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1048"/>
+        <location filename="../mainwindow.cpp" line="1075"/>
         <source>Could not load %1 language data.</source>
         <translation>De taalgegevens voor de volgende taal konden niet worden geladen: %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1056"/>
+        <location filename="../mainwindow.cpp" line="1083"/>
         <source>Could not install %1 language translator.</source>
         <translation>De taalvertaling voor de volgende taal kon niet worden geactiveerd: %1.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1142"/>
+        <location filename="../mainwindow.cpp" line="1169"/>
         <source>No file has been selected. However, a file must be selected to calculate the checksum.</source>
         <translation>Er is geen bestand geselecteerd. Om de controlesom te berekenen, moet er echter een bestand worden geselecteerd.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1156"/>
-        <location filename="../mainwindow.cpp" line="1161"/>
+        <location filename="../mainwindow.cpp" line="1183"/>
+        <location filename="../mainwindow.cpp" line="1188"/>
         <source>No file has been selected for the calculation.</source>
         <translation>Er is geen bestand geselecteerd voor de berekening.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1157"/>
-        <location filename="../mainwindow.cpp" line="1162"/>
+        <location filename="../mainwindow.cpp" line="1184"/>
+        <location filename="../mainwindow.cpp" line="1189"/>
         <source>Checksums can only be calculated for files, not for directories.</source>
         <translation>Controlesommen kunnen alleen voor bestanden worden berekend, maar niet voor mappen.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1158"/>
+        <location filename="../mainwindow.cpp" line="1185"/>
         <source> Special file types like block devices, FIFOs or sockets are not supported either.</source>
         <translation> Speciale bestanden zoals blokapparaten, FIFO&apos;s of sockets worden evenmin ondersteund.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1189"/>
+        <location filename="../mainwindow.cpp" line="1216"/>
         <source>Same directory</source>
         <translation>Dezelfde map</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1190"/>
+        <location filename="../mainwindow.cpp" line="1217"/>
         <source>The left and the right view show the same directory.</source>
         <translation>Zowel het linker- als het rechterbeeld tonen dezelfde map.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1191"/>
+        <location filename="../mainwindow.cpp" line="1218"/>
         <source> Therefore, a comparison is useless, because the contents are identical.</source>
         <translation> Een vergelijking heeft daarom geen zin, aangezien de inhoud identiek is.</translation>
     </message>
@@ -1844,6 +1809,44 @@
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <location filename="../util/objectcount.cpp" line="34"/>
+        <source>%1 %2 (%3 %4, %5 %6)</source>
+        <translation>%1 %2 (%3 %4, %5 %6)</translation>
+    </message>
+    <message>
+        <location filename="../util/objectcount.cpp" line="36"/>
+        <source>object</source>
+        <translation>object</translation>
+    </message>
+    <message>
+        <location filename="../util/objectcount.cpp" line="36"/>
+        <source>objects</source>
+        <translation>objecten</translation>
+    </message>
+    <message>
+        <location filename="../util/objectcount.cpp" line="38"/>
+        <source>directory</source>
+        <translation>map</translation>
+    </message>
+    <message>
+        <location filename="../util/objectcount.cpp" line="38"/>
+        <source>directories</source>
+        <translation>mappen</translation>
+    </message>
+    <message>
+        <location filename="../util/objectcount.cpp" line="40"/>
+        <source>file</source>
+        <translation>bestand</translation>
+    </message>
+    <message>
+        <location filename="../util/objectcount.cpp" line="40"/>
+        <source>files</source>
+        <translation>bestanden</translation>
+    </message>
+</context>
+<context>
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
@@ -1942,7 +1945,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="357"/>
-        <location filename="../mainwindow.cpp" line="501"/>
+        <location filename="../mainwindow.cpp" line="492"/>
         <source>Delete operation</source>
         <translation>Verwijderingsbewerking</translation>
     </message>

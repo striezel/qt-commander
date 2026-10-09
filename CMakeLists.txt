@@ -82,6 +82,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         util/dirutils.h util/dirutils.cpp
         util/durationutils.h util/durationutils.cpp
         util/filetypedetection.h util/filetypedetection.cpp
+        util/objectcount.h util/objectcount.cpp
         util/settings.h util/settings.cpp
         viewers/hl/highlighterrule.h viewers/hl/highlighterrule.cpp
         viewers/hl/cpphighlighter.h viewers/hl/cpphighlighter.cpp

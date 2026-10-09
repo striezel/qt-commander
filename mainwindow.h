@@ -22,6 +22,7 @@
 #define MAINWINDOW_H
 
 #include "util/filetypedetection.h"
+#include "util/objectcount.h"
 #include "util/settings.h"
 
 #include <QMainWindow>
@@ -113,6 +114,9 @@ private:
 
     QDir currentDirectoryLeft;
     QDir currentDirectoryRight;
+
+    ObjectCount objectCountLeft;
+    ObjectCount objectCountRight;
 
     Settings settings;
 
