@@ -528,7 +528,7 @@ void MainWindow::btnRemoveClicked()
     // Update object counts.
     const bool isLeftTree = treeWidget == ui->treeWidgetLeft;
     ObjectCount& oc = isLeftTree ? objectCountLeft : objectCountRight;
-    isDir ? oc.decreaseDirectoryCount() : oc.decreaseFileCount();
+    oc.decrease(isDir);
     if (isLeftTree)
     {
         ui->lblObjectCountLeft->setText(oc.text());
@@ -556,7 +556,7 @@ void MainWindow::btnRemoveClicked()
         toDeleteOther = nullptr;
         // Update object counts.
         ObjectCount& oc_other = isLeftTree ? objectCountRight : objectCountLeft;
-        isDir ? oc_other.decreaseDirectoryCount() : oc.decreaseFileCount();
+        oc_other.decrease(isDir);
         if (isLeftTree)
         {
             ui->lblObjectCountRight->setText(oc_other.text());
@@ -680,7 +680,7 @@ void MainWindow::btnMoveClicked()
     const bool isLeftTree = treeWidget == ui->treeWidgetLeft;
     ObjectCount& oc = isLeftTree ? objectCountLeft : objectCountRight;
     const QFileInfo info(destination);
-    info.isDir() ? oc.decreaseDirectoryCount() : oc.decreaseFileCount();
+    oc.decrease(info);
     if (isLeftTree)
     {
         ui->lblObjectCountLeft->setText(oc.text());

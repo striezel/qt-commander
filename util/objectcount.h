@@ -21,6 +21,7 @@
 #ifndef OBJECTCOUNT_H
 #define OBJECTCOUNT_H
 
+#include <QFileInfo>
 #include <qglobal.h>
 
 class ObjectCount
@@ -40,6 +41,12 @@ public:
 
     /// Decreases number of files by one.
     void decreaseFileCount();
+
+    /// Decreases either directory count (if isDirectory is true) or file count.
+    void decrease(const bool isDirectory);
+
+    /// Decreases either directory count (if info.isDir() is true) or file count.
+    void decrease(const QFileInfo& info);
 };
 
 #endif // OBJECTCOUNT_H

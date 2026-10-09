@@ -55,3 +55,20 @@ void ObjectCount::decreaseFileCount()
         --numFiles;
     }
 }
+
+void ObjectCount::decrease(const bool isDirectory)
+{
+    if (isDirectory)
+    {
+        decreaseDirectoryCount();
+    }
+    else
+    {
+        decreaseFileCount();
+    }
+}
+
+void ObjectCount::decrease(const QFileInfo &info)
+{
+    decrease(info.isDir());
+}
