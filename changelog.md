@@ -13,7 +13,8 @@ improvements may be omitted.)_
 ## Version 0.2.3 (2026-10-04)
 
 * __[new feature]__
-  The directory view will now also show the number of files and directories in the current view.
+  The directory view will now also show the number of files and directories in
+  the current view.
 
 * __[new feature]__
   The file information dialog will now show the MIME type of the file, too.
@@ -40,7 +41,8 @@ improvements may be omitted.)_
   Fix wrong translation in text viewer's syntax highlighting menu.
 
 * __[improvement]__
-  Fix syntax highlighting of keywords in shell scripts so that they are now highlighted again.
+  Fix syntax highlighting of keywords in shell scripts so that they are now
+  highlighted again.
 
 ## Version 0.2 (2026-08-04)
 
@@ -75,8 +77,9 @@ improvements may be omitted.)_
   and Pascal programming languages and the SQL database query language.
 
 * __[improvement]__
-  When the view button is clicked while a directory is selected, it will now trigger a change to
-  that directory instead of showing a warning that only files can be viewed.
+  When the view button is clicked while a directory is selected, it will now
+  trigger a change to that directory instead of showing a warning that only
+  files can be viewed.
 
 * __[improvement]__
   The speed of the text viewer's syntax highlighting has been improved for the
@@ -85,8 +88,8 @@ improvements may be omitted.)_
 ## Version 0.1.9 (2026-05-31)
 
 * __[new feature]__
-  A new configuration option allows to change the delete operation for files / directories from
-  actual deletion to move to trash.
+  A new configuration option allows to change the delete operation for files /
+  directories from actual deletion to move to trash.
 
 * __[improvement]__
   All settings can now be edited in a new dialog. This dialog also includes the
