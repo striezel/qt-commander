@@ -610,7 +610,7 @@ void MainWindow::btnCreateDirectoryClicked()
     {
         QMessageBox::critical(
             this, tr("Error while creating the directory"),
-            tr("The directory '") + name + tr("' could not be created."));
+            tr("The directory '%1' could not be created.").arg(name));
         return;
     }
 
@@ -637,7 +637,7 @@ void MainWindow::btnCreateDirectoryClicked()
         }
     }
 
-    statusBar()->showMessage(tr("Directory '") + name + tr("' has been created."), 5000);
+    statusBar()->showMessage(tr("Directory '%1' has been created.").arg(name), 5000);
 }
 
 void MainWindow::btnMoveClicked()
