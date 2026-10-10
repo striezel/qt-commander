@@ -10,6 +10,10 @@ improvements may be omitted.)_
   File and directory counts will now update properly when a file or directory
   is moved or deleted.
 
+* __[improvement]__
+  When a new directory is created, the view will now focus on the created
+  directory.
+
 ## Version 0.2.3 (2026-10-04)
 
 * __[new feature]__

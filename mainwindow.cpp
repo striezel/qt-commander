@@ -594,7 +594,7 @@ void MainWindow::btnCreateDirectoryClicked()
         return;
     }
 
-    QString name = dialog->directoryName();
+    const QString name = dialog->directoryName();
     delete dialog;
     dialog = nullptr;
     if (name.isEmpty() || name.contains("../") || name.contains("..\\"))
@@ -617,13 +617,24 @@ void MainWindow::btnCreateDirectoryClicked()
     // refresh corresponding tree widget(s)
     // We might need to refresh both trees, if both tree widgets are showing the
     // same directory.
+    const bool leftIsCurrent = leftTreeIsLatest();
     if (baseDir.absolutePath() == currentDirectoryLeft.absolutePath())
     {
-        fillTreeWidget(ui->treeWidgetLeft, currentDirectoryLeft.absolutePath());
+        fillTreeWidget(ui->treeWidgetLeft, currentDirectoryLeft.absolutePath(),
+                       false, leftIsCurrent ? name : "");
+        if (leftIsCurrent)
+        {
+            ui->treeWidgetLeft->setFocus();
+        }
     }
     if (baseDir.absolutePath() == currentDirectoryRight.absolutePath())
     {
-        fillTreeWidget(ui->treeWidgetRight, currentDirectoryRight.absolutePath());
+        fillTreeWidget(ui->treeWidgetRight, currentDirectoryRight.absolutePath(),
+                       false, leftIsCurrent ? "" : name);
+        if (!leftIsCurrent)
+        {
+            ui->treeWidgetRight->setFocus();
+        }
     }
 
     statusBar()->showMessage(tr("Directory '") + name + tr("' has been created."), 5000);
