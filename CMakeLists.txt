@@ -66,6 +66,14 @@ set(PROJECT_SOURCES
         util/GitInfos.hpp
 )
 
+if (WIN32)
+    execute_process(COMMAND windres.exe "${CMAKE_CURRENT_SOURCE_DIR}/qt-commander-icon.rc" -o "qt-commander-icon.o"
+                    COMMAND_ERROR_IS_FATAL ANY)
+    set(app_icon_resource "qt-commander-icon.o")
+else ()
+    set(app_icon_resource "")
+endif()
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(qt-commander
         MANUAL_FINALIZATION
@@ -104,6 +112,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         viewers/pdfviewwindow.h viewers/pdfviewwindow.cpp viewers/pdfviewwindow.ui
         viewers/textviewwindow.h viewers/textviewwindow.cpp viewers/textviewwindow.ui
         viewers/videoplayerwindow.h viewers/videoplayerwindow.cpp viewers/videoplayerwindow.ui
+        ${app_icon_resource}
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET qt-commander APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
