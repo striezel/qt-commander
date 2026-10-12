@@ -13,7 +13,7 @@ AppPublisherURL=https://github.com/striezel/qt-commander
 AppSupportURL=https://github.com/striezel/qt-commander
 AppUpdatesURL=https://github.com/striezel/qt-commander/releases
 DefaultDirName={autopf}\Qt Commander
-; UninstallDisplayIcon={app}\{#MyAppExeName}
+UninstallDisplayIcon={app}\qt-commander.exe
 ArchitecturesAllowed=x64compatible
 ; "ArchitecturesInstallIn64BitMode=x64compatible" requests that the
 ; install be done in "64-bit mode" on x64 or Windows 11 on Arm,
