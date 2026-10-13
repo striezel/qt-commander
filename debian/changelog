@@ -1,3 +1,13 @@
+qt-commander (0.2.4-1) UNRELEASED; urgency=medium
+
+  * File and directory counts will now update properly when a file or directory
+    is moved or deleted.
+
+  * When a new directory is created, the view will now focus on the created
+    directory.
+
+ -- Dirk Stolle <striezel-dev@web.de>  Tue, 13 Oct 2026 04:56:07 +0200
+
 qt-commander (0.2.3-1) UNRELEASED; urgency=medium
 
   * The directory view will now also show the number of files and directories
